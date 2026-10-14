@@ -6,7 +6,7 @@ Date/time: __________  Participants: __________  Display/room: __________
 
 | Artifact or handoff | Target minute | Actual minute | Evidence or adjustment |
 |---|---:|---:|---|
-| Case, constraint and roles selected | 6 | | |
+| Assignment understood; case, constraint and roles recorded on page 6 | 6 | | |
 | Intent and preserved dependency written | 10 | | |
 | Proposal disposition and missing test written | 18 | | |
 | Exception authority/expiry and rollout criteria written | 26 | | |
@@ -19,6 +19,8 @@ Date/time: __________  Participants: __________  Display/room: __________
 | Questions and closing complete | 60 | | |
 
 ## Evidence of participation
+
+Before Round 1, ask a general security participant to explain the assignment without presenter help: which case the table chose, which record it must complete, what it decides, and what stays sealed. Their answer and any correction: __________
 
 Record at least one concern stated by the independent reviewer: __________
 

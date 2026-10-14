@@ -2,6 +2,8 @@
 
 Co-presenters: **Milind Gunjan and Vivek Mayuranathan**. October 26, 2026, 4:30–5:30 PM Mountain Time. Four selectable incident cases, timed decisions, sealed evidence and a written containment review.
 
+The opening now establishes the fictional incident and assigns each table the incident review role before introducing controls. Attendees see their mission, materials, round sequence and co-presenter responsibilities. Slides 5–7 let tables choose their case/constraint, assign roles and open the shared page 6 decision record. Participant page 1 carries the same instructions, and page 6 includes all four role names and a rollback-condition field. The setup remains six minutes; detailed scoring stays on the printed scorecard.
+
 | Material | Use |
 |---|---|
 | [SC2632-session-four-cases.pptx](SC2632-session-four-cases.pptx) | Current editable deck: 29 main slides and six hidden backups |

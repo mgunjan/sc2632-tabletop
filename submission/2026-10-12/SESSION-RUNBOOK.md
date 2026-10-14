@@ -22,7 +22,7 @@ The exercise takes place on a shared production Kubernetes platform. The affecte
 
 | Minutes | Slides | Activity and observable output |
 |---|---|---|
-| 00-06 | 1-7 | Brief, select a case and operational constraint, assign roles |
+| 00-06 | 1-7 | Incident context, participant assignment, materials and round sequence; choose a case/constraint, assign roles and open page 6 |
 | 06-10 | 8 | Team writes intent and a preserved dependency |
 | 10-13:30 | 9-11 | Explain typed decisions, demonstrate reference compiler, show missing coverage |
 | 13:30-18 | 12 | Team reviews proposal and writes APPROVE/MODIFY/REJECT/ESCALATE with one reason |
@@ -37,6 +37,12 @@ The exercise takes place on a shared production Kubernetes platform. The affecte
 | 49-50 | 26 | Compare historical model quality and measured cost/time per run |
 | 50-54 | 27 | Write exit criteria and recovery authority |
 | 54-60 | 28-29 | Personal Monday action, resources and questions |
+
+## The first six minutes
+
+Slide 2 establishes the fictional incident before naming control products: a shared production platform, operating services, uncertain exposure and the service cost of broad isolation. Slide 3 assigns each table the incident review role and identifies its written outputs. Slide 4 identifies the actual materials and the discuss, record, reveal, revise sequence. Slides 5–7 give participants time to choose their case and constraint, assign roles and open the page 6 decision record. The detailed opening leads and spoken wording are in CO-PRESENTER-CARDS.md.
+
+Milind leads the incident briefing and operating-constraint explanation. Vivek leads the assignment, materials and case selection. Both check table readiness before Round 1. Do not fill the setup minute with a control-layer lecture or a detailed score explanation. A ready table can name its case, primary constraint, recorder, worksheet and minimum service. Keep incident pages 7/8 and independent-review findings sealed. The technical enforcement layers are introduced with the proposal review, after participants know the job they are doing.
 
 ## The independent proposal review
 

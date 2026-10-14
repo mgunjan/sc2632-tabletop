@@ -4,9 +4,21 @@ Co-presenters: Milind Gunjan and Vivek Mayuranathan.
 
 Your team operates a Kubernetes platform supporting several production services. Unexpected workload activity has been detected. Depending on the selected case, the evidence concerns network connections, assistant tool activity, workload mutation or cross-namespace Secret enumeration. The affected service remains operational, and the extent of compromise is uncertain.
 
+Customer services and automated agents depend on the same platform. Broad isolation may interrupt legitimate dependencies, while delay may expose other workloads. Each table reviews one selected case. The opening alerts are alternatives, not four simultaneous confirmed incidents.
+
 Propose a containment change that restricts the affected identities and workloads, preserves evidence and maintains essential service dependencies. Record every unresolved security requirement and every exception's scope, owner, approver and expiry. Define the evidence needed to promote enforcement and to authorize recovery.
 
 The platform and incident context are fictional. Workload and namespace names such as `payments-api`, `payments`, `hr-sync` and `ops-agent` are retained from the repository fixtures and recordings for traceability. They do not imply a payroll deadline or a particular industry. Initial observations do not establish root cause.
+
+## Participant assignment and materials
+
+Your table is the incident review team. Decide what may proceed, what you hold and what evidence must come before enforcement. Use one shared decision record on participant pack page 6. It captures your intent, proposal disposition, exception/rollout conditions, containment order and recovery criteria. No laptops or YAML authoring are required.
+
+Before Round 1, choose a case on pages 2–5, choose a primary operational constraint, assign an incident lead, recorder, analyst and independent reviewer, and write a measurable minimum service. The lead states the decision, the recorder documents it, the analyst checks claims against the evidence, and the reviewer raises a concern before the decision. Combine roles if the table has fewer than four people.
+
+The table receives case cards and proposal excerpts, a worksheet, sealed incident updates and an independent-review handout/scorecard. Discuss the evidence and record a decision before each reveal. After the new evidence, revise beside the original answer. Keep pages 7/8 and the separate review findings closed until their round opens.
+
+Milind demonstrates the compiler and policy consequences. Vivek leads proposal reviews and evidence reveals. Both share round discussion and debrief. The model proposes bounded choices; participants retain review authority. The common compiler demonstration uses a supplied reference spec. The audience's newly written intent is a review artifact, not an automatically deployed change.
 
 ## Four selectable cases
 

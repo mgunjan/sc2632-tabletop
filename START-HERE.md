@@ -2,6 +2,12 @@
 
 This package accompanies SC2632, presented by Milind Gunjan and Vivek Mayuranathan. It contains the four incident cases, reference controls, review worksheets and recorded evidence. Share the complete package after the exercise: the control-review handout's second page and the lab records contain answers intended for a later reveal.
 
+## Your task in the workshop
+
+Your table acts as the incident review team for a shared production Kubernetes platform. Services are operating, suspicious activity is under investigation and the extent of exposure is uncertain. Decide what may proceed, what you hold and what evidence must precede enforcement. Choose one case and an operational constraint, then record intent, proposal decisions, exception conditions, ordered containment and recovery criteria on participant pack page 6.
+
+The opening slides and participant page 1 explain roles, supplied materials and the round sequence. Discuss, write before the reveal, hear the new evidence and revise beside the first decision. Keep participant pages 7/8 and the separate review findings sealed until their round opens. No laptop or YAML authoring is required. Milind and Vivek co-present the demonstrations, reviews and debrief.
+
 ## Reproduce a reviewable proposal
 
 Use Python 3.10 or newer and Kyverno CLI **1.19.1**. Obtain the CLI for your operating system from the [official Kyverno release](https://github.com/kyverno/kyverno/releases/tag/v1.19.1). Clone the public source or extract the source ZIP, then run from its root:

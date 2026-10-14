@@ -10,6 +10,28 @@ Alternate the speaking lead by round. During team work, each co-presenter visits
 
 At most two table reports per round, 20 seconds each. A report has a decision, a boundary and the evidence needed to proceed. Park implementation questions that cannot change the current decision. The score rewards documented reasoning under the chosen constraint, never speed or the most restrictive quarantine level. Use SCORING-ANCHORS.md to calibrate a refusal and a bounded approval before the hour. Credit stated verification requirements; a paper plan cannot establish that a live test passed.
 
+## 00–06: Context, participant assignment and setup
+
+The opening must establish the incident and the participants' task before explaining enforcement layers. Use the visible opening slides, not a spoken explanation over the cover.
+
+| Minutes | Lead and visible slide | What attendees do |
+|---|---|---|
+| 00–00:45 | Milind, slide 1: session and co-presenters | Find a table and the participant pack. |
+| 00:45–01:30 | Milind, slide 2: incident briefing | Understand that services are operating, exposure is uncertain and containment can disrupt dependencies. |
+| 01:30–02:15 | Vivek, slide 3: participant assignment | Locate the shared decision record on page 6 and understand the decisions they will own. |
+| 02:15–03:00 | Vivek, slide 4: materials and round sequence | Identify case pages 2–5, the worksheet and the sealed incident updates/review findings. |
+| 03:00–04:15 | Vivek, slide 5: case selection | Choose one case and read its opening alert. Both co-presenters support different tables. |
+| 04:15–05:00 | Milind, slide 6: operating constraint | Choose a primary constraint and record a measurable minimum service. |
+| 05:00–06:00 | Both, slide 7: team setup | Assign roles and record the table, case, constraint and service floor on page 6. |
+
+**Milind's context statement:** “Your organisation runs customer services and automated agents on a shared Kubernetes platform. An alert shows activity outside an expected boundary. Services are still operating. You do not yet know the extent of exposure. Broad isolation could break dependencies. Delay could expose other workloads. Your selected case provides the observations available so far.”
+
+**Vivek's assignment statement:** “Your table is the incident review team. Decide what may proceed, what you hold and what evidence must come before enforcement. Write your security intent, review the proposal and exception conditions, then order containment and define recovery. Use one shared record on page 6. Discuss, write before the reveal, hear the new evidence, and revise beside your first answer.”
+
+Hold up the actual materials while identifying them. Keep pages 7 and 8 covered and the independent review findings sealed. Tell participants that the model proposes controls and the team retains review authority. The compiler demonstration uses a supplied reference specification; audience prose does not automatically deploy. Both co-presenters lead discussion, demonstrate evidence and debrief. These opening leads do not make either co-presenter an assistant.
+
+**Setup check before Round 1:** Each table can identify its case, primary constraint, recorder, decision worksheet and minimum service. An attendee can explain the assignment without needing Kubernetes YAML. Keep the score explanation to one sentence and leave detailed scoring on the printed scorecard.
+
 ## 06–10: Intent
 
 **Opening prompt:** “Which behavior must stop, which identity is responsible, and which dependency must keep working?”
