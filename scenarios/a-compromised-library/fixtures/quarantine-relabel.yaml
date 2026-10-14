@@ -1,0 +1,39 @@
+# payments-api AFTER capture-evidence.sh step 4 relabels it as a suspect. Evaluated as an UPDATE.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: payments-api
+  namespace: payments
+  labels:
+    app: payments-api
+    trustfall.example/egress-profile: quarantined
+    trustfall.example/suspect: "true"
+spec:
+  serviceAccountName: payments-api
+  containers:
+    - name: api
+      image: registry.trustfall.internal/payments/api:2.14.3
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+---
+# report-runner, whose image is from docker.io (non-compliant with the registry rule).
+# Under Q2 the registry rule is in Deny. Quarantining it must still be admitted.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: report-runner
+  namespace: payments
+  labels:
+    app: report-runner
+    trustfall.example/egress-profile: quarantined
+    trustfall.example/suspect: "true"
+spec:
+  serviceAccountName: report-runner
+  restartPolicy: OnFailure
+  containers:
+    - name: runner
+      image: docker.io/trustfall/report-runner:0.9.7
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true

@@ -1,0 +1,26 @@
+# The cleanup controller already discovers PolicyExceptions via its chart role.
+# This additional permission allows deletion only in the approved exception namespace.
+# It cannot create or update exceptions, grant permissions, or delete other resources.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: expire-policy-exceptions
+  namespace: payments
+rules:
+  - apiGroups: ['policies.kyverno.io']
+    resources: ['policyexceptions']
+    verbs: ['delete']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: expire-policy-exceptions
+  namespace: payments
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: expire-policy-exceptions
+subjects:
+  - kind: ServiceAccount
+    name: kyverno-cleanup-controller
+    namespace: kyverno

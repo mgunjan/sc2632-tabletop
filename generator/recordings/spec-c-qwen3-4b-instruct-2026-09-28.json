@@ -1,0 +1,56 @@
+{
+ "clauses": [
+  {
+   "control": "restrict_api_access",
+   "id": 1,
+   "text": "Prevent the ops agent from mutating workloads outside the agents namespace.",
+   "note": "restrict_api_access cannot be fully implemented by admission policy alone; it requires RBAC changes to restrict which namespaces the agent can mutate. Admission controls can only restrict API calls, not the source of the caller. This control is enabled but not fully implementable via admission control alone; it is therefore set to in_intent=true with a note explaining the limitation. However, since the intent is to prevent mutation outside the agents namespace, and the agent is only allowed to '"
+  },
+  {
+   "control": "require_ticket_on_agent_changes",
+   "id": 2,
+   "text": "Require a ticket reference on any change the agent makes.",
+   "note": "This control is not directly implementable in Kubernetes admission control because the 'agent' is not a defined entity in the API; it is an application-level process. Admission policies cannot enforce application-level behavior such as ticket references. Therefore, this clause is not_implementable."
+  },
+  {
+   "control": "require_ticket_on_agent_changes",
+   "id": 3,
+   "text": "Do not stop the agent from reading.",
+   "note": "This is a permission override. Since reading is not a mutation, and admission policies do not block reads, this clause is satisfied by default. No action is required. This control is not_implementable because it is a passive behavior, not a policy rule that can be enforced by admission."
+  }
+ ],
+ "controls": {
+  "restrict_api_access": {
+   "enabled": true,
+   "in_intent": true,
+   "note": "This control is enabled to prevent the ops agent from mutating workloads outside the agents namespace. However, it cannot be fully implemented via Kubernetes admission control alone. It requires RBAC configuration to restrict the agent's ability to mutate resources in namespaces other than 'agents'. Admission policies can only restrict API calls, not the source of the caller. This control is therefore only partially effective without RBAC changes. Workloads in other namespaces will be blocked from being mutated by the agent if the agent is not allowed to perform mutations in those namespaces via RBAC."
+  },
+  "restrict_registry": {
+   "enabled": false,
+   "in_intent": false,
+   "registry": "not-applicable"
+  }
+ },
+ "exceptions": [
+  {
+   "control": "restrict_registry",
+   "owner": "ops-team",
+   "reason": "The ops-agent-tools deployment in the agents namespace is a valid workload and requires access to the registry for image updates.",
+   "ttl_hours": 72,
+   "workload": "ops-agent-tools"
+  },
+  {
+   "control": "restrict_registry",
+   "owner": "ops-team",
+   "reason": "The ops-agent-cache deployment in the agents namespace requires access to the registry for image updates.",
+   "ttl_hours": 72,
+   "workload": "ops-agent-cache"
+  }
+ ],
+ "namespace": "agents",
+ "rollout": [
+  "Audit",
+  "Warn",
+  "Deny"
+ ]
+}

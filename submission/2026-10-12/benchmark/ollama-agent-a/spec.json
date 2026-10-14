@@ -1,0 +1,42 @@
+{
+  "namespace": "payments",
+  "clauses": [
+    {
+      "id": 1,
+      "text": "Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+      "control": "restrict_api_access",
+      "note": "Needs RBAC changes; admission alone cannot do it."
+    },
+    {
+      "id": 2,
+      "text": "Prevent privilege escalation by workloads in that namespace.",
+      "control": "restrict_api_access",
+      "note": "Needs RBAC changes; admission alone cannot do it."
+    },
+    {
+      "id": 3,
+      "text": "Restrict the compromised workload's access to the Kubernetes API.",
+      "control": "restrict_api_access",
+      "note": "Needs RBAC changes; admission alone cannot do it."
+    },
+    {
+      "id": 4,
+      "text": "Do not disrupt running workloads; roll out in stages and time-box any exception.",
+      "control": "restrict_api_access",
+      "note": "Needs RBAC changes; admission alone cannot do it."
+    }
+  ],
+  "controls": {
+    "restrict_api_access": {
+      "enabled": false,
+      "in_intent": true,
+      "note": "Requires RBAC and ServiceAccount changes beyond admission control."
+    }
+  },
+  "exceptions": [],
+  "rollout": [
+    "Audit",
+    "Warn",
+    "Deny"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "run": 2,
+  "elapsed_seconds": 0.9430135000147857,
+  "api_seconds": 0.41094841703306884,
+  "api_calls": 0,
+  "decision_calls": 4,
+  "input_tokens": null,
+  "output_tokens": null,
+  "estimated_usd": null,
+  "escalations": 1,
+  "exception_requests": 0,
+  "privilege_policy_present": true
+}

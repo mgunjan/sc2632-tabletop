@@ -1,0 +1,38 @@
+# Verification record
+
+All listed checks passed on this checkout. Mock tests use no paid inference. Model measurements are documented separately in REVIEW.md.
+
+| Check | Passed | What it verifies |
+|---|---:|---|
+| benchmark/test_provider_clients.py and test_runtime_questions.py | 14 | Responses/Decisions contracts, finite scores, refusals, cost accounting, calibrated-flag reporting and runtime question parity |
+| benchmark/test_workflow_cost.py | 1 | Failed API calls remain counted with unknown cost and an incomplete proposal |
+| laya_variant/test_evaluation_integrity.py | 10 | Missing answers stay wrong, zero/invalid confidence, bounded rounding, identity pairing, state bootstrap and bound Decisions replay |
+| laya_variant/test_baselines.py | 5 | Real local mock HTTP flow, learned probabilities, parsing, scaling and paired arithmetic |
+| laya_variant/test_control_training.py | 2 | Disjoint templates/states, vocabulary order and refusal to select on test data |
+| laya_variant/test_pipeline.py | 7 | Tiny random checkpoint: train/encode/calibrate/evaluate/classify plumbing; no model-quality claim |
+| generator/test_control_library.py | 5 | Vocabulary/template binding, evidence requirements, hashes, exception limits and shared artifact writer |
+| generator/test_generate.py | 5 | Mock compiler flow, schema/CEL injection rejection and policy rendering |
+| generator/test_policy_agent.py | 12 | Fixture proposal/replay, abstention, omission detection, model identity and local review artifacts |
+| generator/test_policy_contracts.py | 4 | Fixed positive/negative privilege checks and independent requirement ledger |
+| generator/test_demo_gate.py | 9 | Current code/config/input/host/recording gate bindings |
+| generator/test_presenter_demo.py | 4 | Evidence preservation, bounded execution and child termination |
+| generator/test_lab_guards.py | 5 | Rejection of unmarked existing clusters, unsupported runtimes, unevaluated live-model claims and live writes without PyYAML |
+| generator/test_image_import.py | 4 | Native archive import, content verification on every node, preservation of BusyBox aliases, offline cached base and wrong-context refusal |
+
+Also passed: catalog lint, Python syntax checks, shell syntax for the touched lab/preflight scripts, and git diff whitespace checks.
+
+The real local model runs use cached pretrained weights on MPS, with the protocol/data/checkpoint configuration retained. The complete proposal measurements use fixtures and Kyverno CLI; no live cluster changes were performed in this training task.
+
+OpenAI Decisions inference remains untested because no credential is configured. Offline adapter tests cannot establish live endpoint access.
+
+The later session revision repaired native Docker image export/import and verified content on all three nodes of the separate presenting-Mac rehearsal cluster. The actual e2e run records 61 passes, zero failures and three documented gaps. The first real expiry run failed because the cleanup controller lacked PolicyException deletion permission; preserve it alongside the repaired verification. See [live-rehearsal evidence](live-rehearsal/README.md) for the final scope and results.
+
+The current deck and handouts are now reauthored with the recorded trained-proposal exercise. Package, geometry, font-policy and first-party import checks passed; changed rendered slides and handouts were visually inspected. This is separate from native PowerPoint/projector verification and the full human rehearsal, which remain pending.
+
+## Four-case revision and CI reproduction
+
+The current deck is `SC2632-session-four-cases.pptx`: 35 slides, 29 main and six hidden backups, with 11 editable native tables. The revised case summary and actual Case D evidence table were visually inspected at full size and the whole deck was scanned. All 35 PDF embedded images match the current rendered slides exactly. The eight-page participant pack's changed pages 1, 5 and 8 were inspected. Speaker notes require Case D predictions before the reveal. Native PowerPoint/projector execution remains unverified because macOS computer-use permissions are pending.
+
+The complete local `scripts/test-all.sh` run passed all installed policy, Python, evidence-capture, expiry and static Falco checks. Kubeconform, shellcheck and the legacy packet browser-render check were skipped locally because those dependencies were unavailable; the CI workflow installs the first two. Case D's five offline guard tests passed. Its real 58-observation run and separate resource-absence verification are retained in `live-rehearsal/case-d/`.
+
+The prior GitHub run for commit `16778d9` failed: the baseline test relied on ignored generated training data, and the separate Laya job lacked scikit-learn. The corrected baseline test builds its training split in memory; all five checks passed in a source copy with no generated data directory. A shared CPU requirements file now supplies pinned numpy/scikit-learn to both CI jobs. The local tiny-checkpoint pipeline passed seven checks; this verifies plumbing, not model quality. A new CI run must verify the changed workflow after push. The live CI lab uses a separate kubeconfig and also runs Case D after the existing e2e exercise.

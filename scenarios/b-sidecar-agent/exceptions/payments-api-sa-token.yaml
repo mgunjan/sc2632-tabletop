@@ -1,0 +1,26 @@
+# The exception the generator proposes in Scenario B — for the compromised workload itself.
+#
+# platform-ops wants 24 hours to change the Deployment (automountServiceAccountToken: false
+# is a template change; it rolls every replica) after payroll, not during it.
+# Round 2 question: do you grant a time-boxed exception to the thing that is compromised,
+# because the fix rolls the Deployment thirty minutes before payroll?
+apiVersion: policies.kyverno.io/v1
+kind: PolicyException
+metadata:
+  name: payments-api-sa-token
+  namespace: payments
+  labels:
+    cleanup.kyverno.io/ttl: 24h
+  annotations:
+    trustfall.example/owner: platform-ops@trustfall.example
+    trustfall.example/ticket: PLAT-4418
+    trustfall.example/reason: >-
+      Setting automountServiceAccountToken=false on payments-api rolls all replicas.
+      Requesting 24h to schedule the rollout after the 10:00 payroll batch.
+spec:
+  policyRefs:
+    - name: deny-sa-token-for-agent-sidecars
+      kind: ValidatingPolicy
+  matchConditions:
+    - name: payments-api-only
+      expression: "object.metadata.namespace == 'payments' && object.metadata.name.startsWith('payments-api')"

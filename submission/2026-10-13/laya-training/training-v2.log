@@ -1,0 +1,8 @@
+/tmp/sc2632-venv/lib/python3.12/site-packages/laya/agent.py:913: RuntimeWarning: laya: this checkpoint ships invalid temperatures or values outside [0.5, 5]; using choice:11+=0.10058280825614929 -> 0.5. Treat confidence from the affected entries as uncalibrated.
+  return Agent(model_id_or_path, device=device, token=token, subfolder=subfolder, fast=fast,
+train states 480 (480 question rows), cal states 60
+before: cal loss 1.3400 acc 0.667
+  step 50/120 loss 0.6125 acc 0.500 22s
+  step 100/120 loss 1.1513 acc 0.500 44s
+epoch 1: cal loss 0.7065 acc 0.667
+saved epoch 1 (dev loss 0.7065) -> .session-build/laya-control-training/checkpoint-v2

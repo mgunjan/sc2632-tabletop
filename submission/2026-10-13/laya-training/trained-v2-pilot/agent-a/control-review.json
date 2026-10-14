@@ -1,0 +1,84 @@
+{
+  "catalog_version": "0.1.0",
+  "catalog_status": "reference",
+  "catalog_sha256": "ccfa61972eeaedb2fca6c501918f0c58d8e6f7778e66173d4949b6b993bd2898",
+  "compiler_sha256": "c668cfcaf70cda69596acd86bcbaeacdda87995cbc2c325c807f29ea0b9f0690",
+  "spec_sha256": "b16195b377be6df1c95ccef1fd52a45650cd5031ba169b965e64a3e31cd35e28",
+  "promotion_allowed": false,
+  "controls": [
+    {
+      "id": "ACG-POD-001",
+      "owner_role": "platform-security",
+      "approver_role": "security-engineering",
+      "objective": "Reject newly created privileged containers and containers permitting privilege escalation.",
+      "implementation": "t_privesc",
+      "policy": "deny-privilege-escalation",
+      "layer": "admission",
+      "coverage": "Regular and init containers on Pod CREATE; privileged=false and explicit allowPrivilegeEscalation=false.",
+      "limits": [
+        "Does not evict existing Pods.",
+        "Does not implement the full Restricted Pod Security Standard, runAsNonRoot, capabilities, seccomp or ephemeral-container controls."
+      ],
+      "dependencies": [
+        "Explicit Linux workload applicability",
+        "Admission-controller availability and failure policy reviewed"
+      ],
+      "tests": [
+        "generator/contracts/privilege-test.yaml",
+        "generator/contracts/privilege-resources.yaml"
+      ],
+      "platform_evidence": [
+        "Positive and negative CREATE requests on the target API server",
+        "Existing-workload response and debug-subresource restrictions reviewed"
+      ],
+      "exception_max_hours": 4,
+      "rollback": "Move this control to Audit or restore its previous revision; assess each workload before replacement.",
+      "references": [
+        "https://kubernetes.io/docs/concepts/security/pod-security-standards/"
+      ],
+      "key": "deny_privilege_escalation",
+      "parameters": {
+        "enabled": true,
+        "in_intent": true
+      },
+      "parameter_schema": "generator/schema.json#/properties/controls/properties/deny_privilege_escalation",
+      "rendered_sha256": "a31194a12e6b1bc82e03d7088354a2126498f0587025ae39af573547ac6d5415",
+      "status": "PLATFORM_EVIDENCE_REQUIRED",
+      "excessive_exception_workloads": [],
+      "evidence_status": "NOT_EXECUTED_BY_CATALOG_REVIEW"
+    },
+    {
+      "id": "ACG-GOV-002",
+      "owner_role": "security-architecture",
+      "approver_role": "security-engineering",
+      "objective": "Route requirements beyond this admission compiler to their actual enforcement owner.",
+      "implementation": null,
+      "policy": null,
+      "layer": "application / runtime / human review",
+      "coverage": "Explicit unsupported requirement; no policy or security success is inferred.",
+      "limits": [
+        "Reads, tool calls, evidence capture and existing processes require other enforcement layers."
+      ],
+      "dependencies": [
+        "Named requirement owner and enforcement component"
+      ],
+      "tests": [],
+      "platform_evidence": [
+        "Requirement-specific positive and negative runtime or application test"
+      ],
+      "exception_max_hours": 1,
+      "rollback": "Restore the reviewed enforcement component according to its own playbook.",
+      "references": [
+        "https://kubernetes.io/docs/concepts/security/"
+      ],
+      "key": "not_implementable",
+      "parameters": {},
+      "parameter_schema": null,
+      "rendered_sha256": null,
+      "status": "HUMAN_IMPLEMENTATION_REQUIRED",
+      "excessive_exception_workloads": [],
+      "evidence_status": "NOT_EXECUTED_BY_CATALOG_REVIEW"
+    }
+  ],
+  "exception_limits_basis": "Proposed reference limits; enterprise owners must ratify them. No exception is granted."
+}

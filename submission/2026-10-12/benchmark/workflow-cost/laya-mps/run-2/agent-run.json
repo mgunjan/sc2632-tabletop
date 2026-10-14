@@ -1,0 +1,223 @@
+{
+  "recorded_at": "2026-10-12T11:32:38+00:00",
+  "scenario": "a",
+  "intent_sha256": "1a4f8aaf22f3dedd734d45ac7959743b9fbde836d6b8bb5c127cd692df94993b",
+  "questions_sha256": "15018cd8574e1318abf1a490fdf6e15b1b7dbf301fff390a17f257e26137ca8e",
+  "threshold": 0.6,
+  "model": [
+    "convaiinnovations/laya-typed-decisions"
+  ],
+  "tested_against": "scenario fixtures",
+  "trace": [
+    {
+      "step": 1,
+      "what": "map the intent",
+      "detail": "4 sentences -> ?, ?, ?, ?"
+    },
+    {
+      "step": 2,
+      "what": "look at what's running",
+      "detail": "5 workloads in payments (scenario fixtures)"
+    },
+    {
+      "step": 3,
+      "what": "stop",
+      "detail": "no sentence maps to a guardrail it can write: handing the intent to a human"
+    },
+    {
+      "step": 4,
+      "what": "open pull request",
+      "detail": "run-2/PR.md: 0 exception request(s), 4 item(s) for a human"
+    }
+  ],
+  "requests": [],
+  "escalations": [
+    {
+      "about": "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+      "best_guess": "deny_privilege_escalation",
+      "confidence": 0.2583
+    },
+    {
+      "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+      "best_guess": "deny_privilege_escalation",
+      "confidence": 0.2684
+    },
+    {
+      "about": "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+      "best_guess": "deny_privilege_escalation",
+      "confidence": 0.2024
+    },
+    {
+      "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+      "best_guess": "deny_privilege_escalation",
+      "confidence": 0.2691
+    }
+  ],
+  "accepted_blocks": [],
+  "calls": [
+    {
+      "about": "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+      "state_sha256": "4a5ea3084bc879ae8131523e1118850c2f05826174325f818b837f197ab63de8",
+      "response": {
+        "model": "convaiinnovations/laya-typed-decisions",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny_privilege_escalation",
+            "probabilities": {
+              "egress_profile": 0.1448,
+              "deny_privilege_escalation": 0.2583,
+              "restrict_registry": 0.0394,
+              "restrict_api_access": 0.0832,
+              "deny_sa_token_for_agent_sidecars": 0.0617,
+              "deny_agent_mutation_outside_namespace": 0.1463,
+              "require_ticket_on_agent_changes": 0.04,
+              "audit_replica_surge": 0.0465,
+              "process": 0.1364,
+              "not_implementable": 0.0435
+            },
+            "confidence": 0.2583,
+            "answer_confidence": 0.2583,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 339,
+          "output_tokens": 0
+        },
+        "configuration": {
+          "provider": "laya",
+          "local_calibration": "not fitted",
+          "confidence_kind": "answer_confidence when available"
+        }
+      },
+      "choice": "deny_privilege_escalation",
+      "confidence": 0.2583
+    },
+    {
+      "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+      "state_sha256": "7ece408d4dfde0105cd1c6c836db4a9d5797bd79b1c7e1a1daf048f656b95280",
+      "response": {
+        "model": "convaiinnovations/laya-typed-decisions",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny_privilege_escalation",
+            "probabilities": {
+              "egress_profile": 0.1096,
+              "deny_privilege_escalation": 0.2684,
+              "restrict_registry": 0.0341,
+              "restrict_api_access": 0.0828,
+              "deny_sa_token_for_agent_sidecars": 0.0584,
+              "deny_agent_mutation_outside_namespace": 0.1777,
+              "require_ticket_on_agent_changes": 0.0417,
+              "audit_replica_surge": 0.0394,
+              "process": 0.1299,
+              "not_implementable": 0.0579
+            },
+            "confidence": 0.2684,
+            "answer_confidence": 0.2684,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 333,
+          "output_tokens": 0
+        },
+        "configuration": {
+          "provider": "laya",
+          "local_calibration": "not fitted",
+          "confidence_kind": "answer_confidence when available"
+        }
+      },
+      "choice": "deny_privilege_escalation",
+      "confidence": 0.2684
+    },
+    {
+      "about": "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+      "state_sha256": "ca5d542ce22135a5921dda733205098a9df052c1da8ebb5be6ef1bfabe509410",
+      "response": {
+        "model": "convaiinnovations/laya-typed-decisions",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny_privilege_escalation",
+            "probabilities": {
+              "egress_profile": 0.1299,
+              "deny_privilege_escalation": 0.2024,
+              "restrict_registry": 0.0416,
+              "restrict_api_access": 0.0985,
+              "deny_sa_token_for_agent_sidecars": 0.0638,
+              "deny_agent_mutation_outside_namespace": 0.1747,
+              "require_ticket_on_agent_changes": 0.0462,
+              "audit_replica_surge": 0.0442,
+              "process": 0.1398,
+              "not_implementable": 0.0588
+            },
+            "confidence": 0.2024,
+            "answer_confidence": 0.2024,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 334,
+          "output_tokens": 0
+        },
+        "configuration": {
+          "provider": "laya",
+          "local_calibration": "not fitted",
+          "confidence_kind": "answer_confidence when available"
+        }
+      },
+      "choice": "deny_privilege_escalation",
+      "confidence": 0.2024
+    },
+    {
+      "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+      "state_sha256": "cb6cd9f8d5091dae4b492d7f358bf4e5be24490fd4827f78b32cf6a2f60f6811",
+      "response": {
+        "model": "convaiinnovations/laya-typed-decisions",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny_privilege_escalation",
+            "probabilities": {
+              "egress_profile": 0.131,
+              "deny_privilege_escalation": 0.2691,
+              "restrict_registry": 0.0385,
+              "restrict_api_access": 0.0846,
+              "deny_sa_token_for_agent_sidecars": 0.0638,
+              "deny_agent_mutation_outside_namespace": 0.1581,
+              "require_ticket_on_agent_changes": 0.0442,
+              "audit_replica_surge": 0.0374,
+              "process": 0.1255,
+              "not_implementable": 0.0478
+            },
+            "confidence": 0.2691,
+            "answer_confidence": 0.2691,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 340,
+          "output_tokens": 0
+        },
+        "configuration": {
+          "provider": "laya",
+          "local_calibration": "not fitted",
+          "confidence_kind": "answer_confidence when available"
+        }
+      },
+      "choice": "deny_privilege_escalation",
+      "confidence": 0.2691
+    }
+  ]
+}

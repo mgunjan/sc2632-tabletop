@@ -1,0 +1,47 @@
+# Standards: CSF 2.0 RS.MA-02, RS.MA-04, PR.PS-01 (change freeze); PR.AA-05 (identity-checked override). See standards/README.md.
+# Quarantine Mode — Q1 FREEZE
+#
+# Control delta at Q1: no new exceptions may be admitted in the affected namespace
+# unless they carry an owner, an expiry, and an incident-commander override annotation.
+# Nothing running is touched. An on-call platform engineer can self-declare Q1.
+#
+# Apply:   kubectl apply -f quarantine/q1/
+# Lift:    kubectl delete -f quarantine/q1/
+# Exit:    alert triaged benign, OR 4h with no further signal.
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: q1-freeze-deny-new-exceptions
+  labels:
+    trustfall.example/quarantine-level: q1
+  annotations:
+    policies.kyverno.io/title: "Quarantine Q1: freeze new PolicyExceptions"
+    policies.kyverno.io/severity: high
+spec:
+  validationActions:
+    - Deny
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ['policies.kyverno.io']
+        apiVersions: ['v1']
+        operations: [CREATE, UPDATE]
+        resources: [policyexceptions]
+  matchConditions:
+    - name: payments-namespace-only
+      expression: "object.metadata.namespace == 'payments'"
+  variables:
+    - name: ann
+      expression: "object.metadata.?annotations.orValue({})"
+    - name: lbl
+      expression: "object.metadata.?labels.orValue({})"
+    - name: hasExpiry
+      expression: "'cleanup.kyverno.io/ttl' in variables.lbl || 'trustfall.example/expires-at' in variables.ann"
+  validations:
+    - expression: >-
+        'trustfall.example/owner' in variables.ann &&
+        variables.hasExpiry &&
+        variables.ann[?'trustfall.example/quarantine-override'].orValue('') == 'incident-commander' &&
+        request.userInfo.?groups.orValue([]).exists(g, g == 'trustfall:incident-commanders')
+      messageExpression: >-
+        "Quarantine Q1 is active for payments. New PolicyExceptions require trustfall.example/owner, an expiry (cleanup.kyverno.io/ttl label or trustfall.example/expires-at annotation), and trustfall.example/quarantine-override=incident-commander set by a member of trustfall:incident-commanders. Exception '" + object.metadata.name + "' was refused."
+      message: "Quarantine Q1 is active: new PolicyExceptions are frozen in payments."

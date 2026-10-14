@@ -1,0 +1,10 @@
+{
+  "model": "none (spec supplied)",
+  "spec_source": "/Users/milanjali/projects/agentic-k8s-guardrails/generator/spec-a.json",
+  "scenario": "a",
+  "run_id": "a-20261013T223355Z",
+  "kyverno": "Version: 1.19.1",
+  "intent_sha256": "1a4f8aaf22f3dedd734d45ac7959743b9fbde836d6b8bb5c127cd692df94993b",
+  "spec_sha256": "88103e18d023db13fb3da6850f8e051f9d0948360f6310cf1ed168ca95315f44",
+  "fixtures_sha256": "56ececafab97614bebc9a327a782c18890f70e73d6a55382de2e173ba905c6ef"
+}

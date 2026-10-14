@@ -1,0 +1,1 @@
+Prevent the ops agent from mutating workloads outside the agents namespace. Require a ticket reference on any change the agent makes. Do not stop the agent from reading.

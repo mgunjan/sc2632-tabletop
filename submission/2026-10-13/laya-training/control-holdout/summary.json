@@ -1,0 +1,143 @@
+{
+  "candidates": {
+    "tfidf-lr": {
+      "model": null,
+      "device": "CPU",
+      "setup_and_warmup_seconds": 0.0,
+      "fit_seconds": 0.101,
+      "splits": {
+        "synthetic_test_ood": {
+          "n": 60,
+          "accuracy": 0.9,
+          "answered": 60,
+          "unreadable": 0,
+          "answer_coverage": 1.0,
+          "brier": 0.3586,
+          "brier_items": 60,
+          "ece": 0.3985,
+          "correct": 54,
+          "of": 60,
+          "median_ms": 0.53,
+          "routing_at_0_6": {
+            "selected": 20,
+            "correct": 20,
+            "wrong": 0
+          }
+        },
+        "frozen_control_pilot": {
+          "n": 27,
+          "accuracy": 0.7407,
+          "answered": 27,
+          "unreadable": 0,
+          "answer_coverage": 1.0,
+          "brier": 0.4342,
+          "brier_items": 21,
+          "ece": 0.2473,
+          "correct": 20,
+          "of": 27,
+          "median_ms": 0.523,
+          "routing_at_0_6": {
+            "selected": 8,
+            "correct": 8,
+            "wrong": 0
+          }
+        }
+      }
+    },
+    "base": {
+      "model": "/tmp/sc2632-model-cache/hub/models--convaiinnovations--laya-typed-decisions/snapshots/e929ae5cf69bc34259cd2f95c9e91145b818b1f0",
+      "device": "mps",
+      "setup_and_warmup_seconds": 3.241,
+      "fit_seconds": null,
+      "splits": {
+        "synthetic_test_ood": {
+          "n": 60,
+          "accuracy": 0.2667,
+          "answered": 27,
+          "unreadable": 33,
+          "answer_coverage": 0.45,
+          "brier": 0.748,
+          "brier_items": 27,
+          "ece": 0.3763,
+          "correct": 16,
+          "of": 60,
+          "median_ms": 87.316,
+          "routing_at_0_6": {
+            "selected": 0,
+            "correct": 0,
+            "wrong": 0
+          }
+        },
+        "frozen_control_pilot": {
+          "n": 27,
+          "accuracy": 0.1111,
+          "answered": 8,
+          "unreadable": 19,
+          "answer_coverage": 0.2963,
+          "brier": 0.6345,
+          "brier_items": 5,
+          "ece": 0.2939,
+          "correct": 3,
+          "of": 27,
+          "median_ms": 89.612,
+          "routing_at_0_6": {
+            "selected": 0,
+            "correct": 0,
+            "wrong": 0
+          }
+        }
+      }
+    },
+    "trained": {
+      "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+      "device": "mps",
+      "setup_and_warmup_seconds": 2.834,
+      "fit_seconds": null,
+      "splits": {
+        "synthetic_test_ood": {
+          "n": 60,
+          "accuracy": 0.2667,
+          "answered": 29,
+          "unreadable": 31,
+          "answer_coverage": 0.4833,
+          "brier": 0.6206,
+          "brier_items": 29,
+          "ece": 0.2259,
+          "correct": 16,
+          "of": 60,
+          "median_ms": 87.262,
+          "routing_at_0_6": {
+            "selected": 10,
+            "correct": 10,
+            "wrong": 0
+          }
+        },
+        "frozen_control_pilot": {
+          "n": 27,
+          "accuracy": 0.2593,
+          "answered": 12,
+          "unreadable": 15,
+          "answer_coverage": 0.4444,
+          "brier": 0.3715,
+          "brier_items": 9,
+          "ece": 0.3078,
+          "correct": 7,
+          "of": 27,
+          "median_ms": 89.016,
+          "routing_at_0_6": {
+            "selected": 7,
+            "correct": 6,
+            "wrong": 1
+          }
+        }
+      }
+    }
+  },
+  "limitations": "Synthetic templates and author-labelled pilot; no independent enterprise labels. Control pilot is a subset of the 33-decision workflow benchmark. No production qualification.",
+  "data_sha256": {
+    "train.jsonl": "edd9813c6f37a7a52dd75a3faa8226fcebae2114173c8e543f1846cf18777ebb",
+    "test_ood.jsonl": "d8a5341bc14fb6f807934812cbc20db205d490f04607f869ffb9e9adf6589f82",
+    "questions.json": "110800968f8cb5a8856f0e25de16e617954dd21d8f0846a20ecb98ebf7718c97",
+    "MANIFEST.json": "9c6c0bd54df4eeb96571824699a01c70253c14ba47d80e04f7d175cf76791447"
+  }
+}

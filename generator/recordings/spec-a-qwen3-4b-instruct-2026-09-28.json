@@ -1,0 +1,69 @@
+{
+ "clauses": [
+  {
+   "control": "restrict_api_access",
+   "id": 1,
+   "text": "Restrict the compromised workload's access to the Kubernetes API.",
+   "note": "This control requires RBAC changes and cannot be fully implemented by admission policy alone. Admission controls can only restrict API access at the request level, not at the service account or subject level. Therefore, it is not implementable in the admission control layer as a standalone policy. This control is not enabled in the admission policy, and its implementation must be handled outside of admission (e.g., via RBAC). However, it is explicitly requested in the intent, so in_intent=true, "
+  },
+  {
+   "control": "deny_agent_mutation_outside_namespace",
+   "id": 2,
+   "text": "Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+   "note": "This control is implementable via NetworkPolicy. It will deny all east-west traffic from the payments namespace except for known service dependencies (e.g., payments-api → payments-db-proxy). The policy must be configured to allow only specific, known traffic (e.g., via labels or service names). This control is enabled and in_intent=true."
+  },
+  {
+   "control": "not_implementable",
+   "id": 3,
+   "text": "Prevent privilege escalation by workloads in that namespace.",
+   "note": "Privilege escalation prevention is a runtime or application-level concern. Admission policies cannot prevent privilege escalation in running workloads (e.g., via container capabilities, privilege drops, or runtime behavior). This intent is not implementable in the admission control layer. Therefore, it is set to not_implementable."
+  },
+  {
+   "control": "restrict_api_access",
+   "id": 4,
+   "text": "Do not disrupt running workloads; roll out in stages and time-box any exception.",
+   "note": "This is a rollout strategy, not a control. The rollout policy is defined as 'Audit', 'Warn', 'Deny' in stages. This clause does not introduce a new control but specifies the rollout behavior. It is not a control to be enabled, so it is not mapped to a control. Instead, it is handled by the rollout field."
+  }
+ ],
+ "controls": {
+  "restrict_api_access": {
+   "enabled": false,
+   "in_intent": true,
+   "note": "This control requires RBAC changes and cannot be fully implemented by admission policy alone. Admission controls can only restrict API access at the request level, not at the service account or subject level. Therefore, it is not implementable in the admission control layer as a standalone policy. This control is not enabled in the admission policy, and its implementation must be handled outside of admission (e.g., via RBAC)."
+  },
+  "restrict_registry": {
+   "enabled": false,
+   "in_intent": false,
+   "registry": "not"
+  }
+ },
+ "exceptions": [
+  {
+   "control": "deny_agent_mutation_outside_namespace",
+   "owner": "platform-security-team",
+   "reason": "payments-api must communicate with payments-db-proxy for database operations.",
+   "ttl_hours": 72,
+   "workload": "payments-api"
+  },
+  {
+   "control": "deny_agent_mutation_outside_namespace",
+   "owner": "platform-security-team",
+   "reason": "payments-db-proxy must communicate with monitoring-agent for observability.",
+   "ttl_hours": 72,
+   "workload": "payments-db-proxy"
+  },
+  {
+   "control": "deny_agent_mutation_outside_namespace",
+   "owner": "platform-security-team",
+   "reason": "monitoring-agent must communicate with backup-job for backup reporting.",
+   "ttl_hours": 72,
+   "workload": "monitoring-agent"
+  }
+ ],
+ "namespace": "payments",
+ "rollout": [
+  "Audit",
+  "Warn",
+  "Deny"
+ ]
+}

@@ -1,0 +1,4 @@
+pyyaml>=6
+jsonschema>=4.20
+# optional: the independent second model
+# laya

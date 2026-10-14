@@ -1,0 +1,60 @@
+{
+  "seed": 7,
+  "n": 6000,
+  "splits": {
+    "train": {
+      "rows": 4188,
+      "sha256": "7acf84586e678177",
+      "by_task": {
+        "intent": 1407,
+        "exception": 1416,
+        "input": 1365
+      }
+    },
+    "cal": {
+      "rows": 932,
+      "sha256": "f0c718272e4639ab",
+      "by_task": {
+        "intent": 308,
+        "exception": 303,
+        "input": 321
+      }
+    },
+    "test_iid": {
+      "rows": 880,
+      "sha256": "2f85259c396de2aa",
+      "by_task": {
+        "intent": 285,
+        "exception": 281,
+        "input": 314
+      }
+    },
+    "test_ood": {
+      "rows": 999,
+      "sha256": "0615f3cc646258ae",
+      "by_task": {
+        "intent": 333,
+        "exception": 333,
+        "input": 333
+      }
+    },
+    "scenario": {
+      "rows": 9,
+      "sha256": "2a5d5e04413de647",
+      "by_task": {
+        "intent": 3,
+        "exception": 2,
+        "input": 4
+      }
+    },
+    "gold": {
+      "rows": 42,
+      "sha256": "f7b617efbecde9bf",
+      "by_task": {
+        "intent": 15,
+        "exception": 12,
+        "input": 15
+      }
+    }
+  }
+}

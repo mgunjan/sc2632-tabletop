@@ -1,0 +1,23 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "sc2632-expiry-e52caeec",
+    "namespace": "payments",
+    "labels": {
+      "trustfall.example/egress-profile": "storage"
+    }
+  },
+  "spec": {
+    "containers": [
+      {
+        "name": "app",
+        "image": "registry.trustfall.internal/platform/lab-target:1",
+        "securityContext": {
+          "allowPrivilegeEscalation": false,
+          "privileged": false
+        }
+      }
+    ]
+  }
+}

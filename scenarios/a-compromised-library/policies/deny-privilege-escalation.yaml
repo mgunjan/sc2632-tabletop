@@ -1,0 +1,44 @@
+# Intent clause 2: "Prevent privilege escalation by workloads in the payments namespace."
+#
+# How it maps: no privileged containers, and every container must set
+# allowPrivilegeEscalation: false. These are the two Restricted-profile controls from
+# the Kubernetes Pod Security Standards that matter most during a suspected credential
+# compromise. Init containers are checked the same way.
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: deny-privilege-escalation
+  annotations:
+    guardrails.trustfall.example/intent-clause: "2"
+    guardrails.trustfall.example/rollout-stage: enforce
+    policies.kyverno.io/title: Deny privilege escalation in payments
+    policies.kyverno.io/category: Pod Security
+    policies.kyverno.io/severity: high
+spec:
+  validationActions:
+    - Deny
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ['']
+        apiVersions: [v1]
+        # CREATE only: these fields are immutable on a running Pod, and evaluating them on
+        # UPDATE would refuse label changes — including quarantine relabels — on Pods that
+        # predate the policy.
+        operations: [CREATE]
+        resources: [pods]
+  matchConditions:
+    - name: payments-namespace-only
+      expression: "object.metadata.namespace == 'payments'"
+  variables:
+    - name: allContainers
+      expression: "object.spec.containers + object.spec.?initContainers.orValue([])"
+  validations:
+    - expression: >-
+        variables.allContainers.all(c, c.?securityContext.?privileged.orValue(false) == false)
+      message: "Privileged containers are not allowed in payments."
+    - expression: >-
+        variables.allContainers.all(c, c.?securityContext.?allowPrivilegeEscalation.orValue(true) == false)
+      messageExpression: >-
+        "Every container in payments must set securityContext.allowPrivilegeEscalation: false. Offending: " +
+        variables.allContainers.filter(c, c.?securityContext.?allowPrivilegeEscalation.orValue(true) != false).map(c, c.name).join(", ")
+      message: "Every container in payments must set securityContext.allowPrivilegeEscalation: false."

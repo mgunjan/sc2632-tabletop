@@ -1,0 +1,10 @@
+# A human SRE making the same patches. The policies must not match them.
+apiVersion: cli.kyverno.io/v1alpha1
+kind: UserInfo
+metadata:
+  name: human-sre
+userInfo:
+  username: priya.n@trustfall.example
+  groups:
+    - platform-sre
+    - system:authenticated

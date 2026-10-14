@@ -1,0 +1,11 @@
+# The ops agent's ServiceAccount, as the API server presents it in request.userInfo.
+apiVersion: cli.kyverno.io/v1alpha1
+kind: UserInfo
+metadata:
+  name: ops-agent
+userInfo:
+  username: system:serviceaccount:agents:ops-agent
+  groups:
+    - system:serviceaccounts
+    - system:serviceaccounts:agents
+    - system:authenticated

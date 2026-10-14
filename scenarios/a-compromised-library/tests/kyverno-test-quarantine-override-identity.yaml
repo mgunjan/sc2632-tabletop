@@ -1,0 +1,22 @@
+# The override annotation copied by someone who is NOT an incident commander is refused, at Q1 and Q3.
+# Run: kyverno test scenarios/a-compromised-library/tests/ --file-name kyverno-test-quarantine-override-identity.yaml
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: a-quarantine-override-identity
+policies:
+  - ../../../quarantine/q1/deny-new-exceptions.yaml
+  - ../../../quarantine/q3/admission-policies.yaml
+userinfo: userinfo-developer.yaml
+resources:
+  - ../fixtures/q3-override.yaml
+  - ../fixtures/quarantine-q1-exceptions.yaml
+results:
+  - policy: q3-no-new-pods-in-payments
+    kind: Pod
+    resources: [payments/clean-payments-api]
+    result: fail
+  - policy: q1-freeze-deny-new-exceptions
+    kind: PolicyException
+    resources: [payments/ic-approved-backup, payments/quick-fix-backup]
+    result: fail

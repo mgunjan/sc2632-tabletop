@@ -1,0 +1,62 @@
+# Standards: defends against ATT&CK v19 T1685 Disable or Modify Tools (Defense Impairment, TA0112); CSF 2.0 PR.AA-05. See standards/README.md.
+# Guard the guardrail — with a layer that does not depend on it.
+#
+# Found live (scripts/lab-e2e.sh, "Guard the guardrail"): a ServiceAccount with the common
+# "patch/scale Deployments cluster-wide" right scaled kyverno-admission-controller to 0.
+#   - Kyverno's own namespace is excluded from Kyverno's webhooks by default, so no Kyverno
+#     policy can stop that.
+#   - By design, Kyverno DELETES its webhook configurations when its Deployment goes to zero or
+#     is deleted (pkg/utils/runtime, IsGoingDown). That avoids fail-closed outages; it also means
+#     every Kyverno admission rule, including the quarantine levels' admission rules, stops applying
+#     with no error. (NetworkPolicies, RBAC and native admission policies are not affected.)
+#
+# So the guard MUST live where Kyverno does not: native ValidatingAdmissionPolicy, evaluated
+# inside the API server. Kubernetes >= 1.30.
+#
+# Prior art, cited: Kubernetes SIG Security's admission-control threat model covers tampering with
+# webhook configurations and names RBAC as the mitigation (fix 1 here: remove the agent's
+# cluster-wide scale right). Kubernetes 1.36 adds manifest-based admission policies, loaded from
+# files on the API server so they cannot be deleted through the API; on 1.36+ that is the stronger
+# home for this guard. This file is the API-object form, which works from 1.30 (the lab is 1.33).
+#
+# Deliberately self-contained (no paramRef): a paramRef with parameterNotFoundAction: Deny is
+# itself a fail-closed dependency — if the ConfigMap is missing, EVERY matching request is denied.
+# That is the same footgun this session is about, so the allowed identities are inlined. Replace
+# 'trustfall:platform-admins' with your platform-admin group; keep the Kyverno SA prefix.
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: protect-kyverno-control-plane
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+    - apiGroups: [apps]
+      apiVersions: [v1]
+      operations: [UPDATE, DELETE]
+      resources: [deployments, deployments/scale]
+    - apiGroups: [admissionregistration.k8s.io]
+      apiVersions: [v1]
+      operations: [UPDATE, DELETE]
+      resources: [validatingwebhookconfigurations, mutatingwebhookconfigurations]
+  # Only Kyverno's OWN control-plane objects are in scope. A scale/patch/delete of anything else
+  # never reaches the validation below, so ordinary workloads are untouched.
+  matchConditions:
+  - name: kyverno-control-plane-object
+    expression: >-
+      (request.resource.group == 'apps' && request.namespace == 'kyverno' && request.name.startsWith('kyverno-')) ||
+      (request.resource.group == 'admissionregistration.k8s.io' && request.name.startsWith('kyverno-'))
+  validations:
+  - expression: >-
+      request.userInfo.username.startsWith('system:serviceaccount:kyverno:') ||
+      request.userInfo.groups.exists(g, g == 'system:masters' || g == 'trustfall:platform-admins')
+    messageExpression: >-
+      "'" + request.userInfo.username + "' may not change the Kyverno control plane (only Kyverno or a platform admin)"
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: protect-kyverno-control-plane
+spec:
+  policyName: protect-kyverno-control-plane
+  validationActions: [Deny]

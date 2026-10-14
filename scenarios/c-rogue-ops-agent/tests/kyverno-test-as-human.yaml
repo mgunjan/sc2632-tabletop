@@ -1,0 +1,31 @@
+# Scenario C — the SAME patches, made by a human SRE. The agent policies must not fire.
+# Run: kyverno test scenarios/c-rogue-ops-agent/tests/ --file-name kyverno-test-as-human.yaml
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: scenario-c-as-human-sre
+policies:
+  - ../policies/deny-agent-mutation-outside-namespace.yaml
+  - ../policies/require-ticket-on-agent-changes.yaml
+  - ../policies/audit-replica-surge.yaml
+resources:
+  - ../fixtures/deployment-patches.yaml
+userinfo: ../userinfo/human-sre.yaml
+results:
+  - policy: deny-agent-mutation-outside-namespace
+    kind: Deployment
+    resources: [payments/payments-api, hr-sync/hr-sync, agents/ops-agent-tools, agents/ops-agent-cache]
+    result: skip
+  - policy: require-ticket-on-agent-changes
+    kind: Deployment
+    resources: [payments/payments-api, hr-sync/hr-sync, agents/ops-agent-tools, agents/ops-agent-cache]
+    result: skip
+  # The replica audit is requester-agnostic; the human's 12-replica patch is flagged too.
+  - policy: audit-replica-surge
+    kind: Deployment
+    resources: [payments/payments-api]
+    result: fail
+  - policy: audit-replica-surge
+    kind: Deployment
+    resources: [hr-sync/hr-sync, agents/ops-agent-tools, agents/ops-agent-cache]
+    result: pass

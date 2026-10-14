@@ -1,0 +1,222 @@
+[
+  {
+    "ms": 420.8979169779923,
+    "question": {
+      "type": "choice",
+      "instructions": "Which option does `clause` ask for? Read it in the context of `intent`.",
+      "criteria": {
+        "egress_profile": "restrict which workloads, namespaces or destinations a workload may connect to (east-west or outbound traffic)",
+        "deny_privilege_escalation": "stop containers running privileged, gaining more privileges than they start with, or running as root",
+        "restrict_registry": "allow container images only from an approved registry, or block images from public registries",
+        "restrict_api_access": "limit a workload's credentials, secrets or permissions on the Kubernetes API (needs RBAC; admission alone cannot)",
+        "deny_sa_token_for_agent_sidecars": "stop an AI agent or assistant sidecar from using the Pod's Kubernetes identity (its service account token)",
+        "deny_agent_mutation_outside_namespace": "stop an AI agent from changing workloads outside its own namespace",
+        "require_ticket_on_agent_changes": "require a ticket or change reference on changes an AI agent makes",
+        "audit_replica_surge": "flag sudden large increases in a workload's replica count",
+        "process": "how or when to roll out or time-box the change (staging, expiries, not disrupting service), not what to allow",
+        "not_implementable": "something admission control cannot see or enforce: reads, tool calls inside an application, runtime behaviour, people"
+      }
+    },
+    "state": "clause: Deny new east-west communication from the payments namespace while preserving known service dependencies.\nintent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.",
+    "response": {
+      "model": "convaiinnovations/laya-typed-decisions",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "deny_privilege_escalation",
+          "probabilities": {
+            "egress_profile": 0.1448,
+            "deny_privilege_escalation": 0.2583,
+            "restrict_registry": 0.0394,
+            "restrict_api_access": 0.0832,
+            "deny_sa_token_for_agent_sidecars": 0.0617,
+            "deny_agent_mutation_outside_namespace": 0.1463,
+            "require_ticket_on_agent_changes": 0.04,
+            "audit_replica_surge": 0.0465,
+            "process": 0.1364,
+            "not_implementable": 0.0435
+          },
+          "confidence": 0.2583,
+          "answer_confidence": 0.2583,
+          "action": {
+            "act_probability": 1.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 339,
+        "output_tokens": 0
+      },
+      "configuration": {
+        "provider": "laya",
+        "local_calibration": "not fitted",
+        "confidence_kind": "answer_confidence when available"
+      }
+    }
+  },
+  {
+    "ms": 102.51187501125969,
+    "question": {
+      "type": "choice",
+      "instructions": "Which option does `clause` ask for? Read it in the context of `intent`.",
+      "criteria": {
+        "egress_profile": "restrict which workloads, namespaces or destinations a workload may connect to (east-west or outbound traffic)",
+        "deny_privilege_escalation": "stop containers running privileged, gaining more privileges than they start with, or running as root",
+        "restrict_registry": "allow container images only from an approved registry, or block images from public registries",
+        "restrict_api_access": "limit a workload's credentials, secrets or permissions on the Kubernetes API (needs RBAC; admission alone cannot)",
+        "deny_sa_token_for_agent_sidecars": "stop an AI agent or assistant sidecar from using the Pod's Kubernetes identity (its service account token)",
+        "deny_agent_mutation_outside_namespace": "stop an AI agent from changing workloads outside its own namespace",
+        "require_ticket_on_agent_changes": "require a ticket or change reference on changes an AI agent makes",
+        "audit_replica_surge": "flag sudden large increases in a workload's replica count",
+        "process": "how or when to roll out or time-box the change (staging, expiries, not disrupting service), not what to allow",
+        "not_implementable": "something admission control cannot see or enforce: reads, tool calls inside an application, runtime behaviour, people"
+      }
+    },
+    "state": "clause: Prevent privilege escalation by workloads in that namespace.\nintent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.",
+    "response": {
+      "model": "convaiinnovations/laya-typed-decisions",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "deny_privilege_escalation",
+          "probabilities": {
+            "egress_profile": 0.1096,
+            "deny_privilege_escalation": 0.2684,
+            "restrict_registry": 0.0341,
+            "restrict_api_access": 0.0828,
+            "deny_sa_token_for_agent_sidecars": 0.0584,
+            "deny_agent_mutation_outside_namespace": 0.1777,
+            "require_ticket_on_agent_changes": 0.0417,
+            "audit_replica_surge": 0.0394,
+            "process": 0.1299,
+            "not_implementable": 0.0579
+          },
+          "confidence": 0.2684,
+          "answer_confidence": 0.2684,
+          "action": {
+            "act_probability": 1.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 333,
+        "output_tokens": 0
+      },
+      "configuration": {
+        "provider": "laya",
+        "local_calibration": "not fitted",
+        "confidence_kind": "answer_confidence when available"
+      }
+    }
+  },
+  {
+    "ms": 105.10958300437778,
+    "question": {
+      "type": "choice",
+      "instructions": "Which option does `clause` ask for? Read it in the context of `intent`.",
+      "criteria": {
+        "egress_profile": "restrict which workloads, namespaces or destinations a workload may connect to (east-west or outbound traffic)",
+        "deny_privilege_escalation": "stop containers running privileged, gaining more privileges than they start with, or running as root",
+        "restrict_registry": "allow container images only from an approved registry, or block images from public registries",
+        "restrict_api_access": "limit a workload's credentials, secrets or permissions on the Kubernetes API (needs RBAC; admission alone cannot)",
+        "deny_sa_token_for_agent_sidecars": "stop an AI agent or assistant sidecar from using the Pod's Kubernetes identity (its service account token)",
+        "deny_agent_mutation_outside_namespace": "stop an AI agent from changing workloads outside its own namespace",
+        "require_ticket_on_agent_changes": "require a ticket or change reference on changes an AI agent makes",
+        "audit_replica_surge": "flag sudden large increases in a workload's replica count",
+        "process": "how or when to roll out or time-box the change (staging, expiries, not disrupting service), not what to allow",
+        "not_implementable": "something admission control cannot see or enforce: reads, tool calls inside an application, runtime behaviour, people"
+      }
+    },
+    "state": "clause: Restrict the compromised workload's access to the Kubernetes API.\nintent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.",
+    "response": {
+      "model": "convaiinnovations/laya-typed-decisions",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "deny_privilege_escalation",
+          "probabilities": {
+            "egress_profile": 0.1299,
+            "deny_privilege_escalation": 0.2024,
+            "restrict_registry": 0.0416,
+            "restrict_api_access": 0.0985,
+            "deny_sa_token_for_agent_sidecars": 0.0638,
+            "deny_agent_mutation_outside_namespace": 0.1747,
+            "require_ticket_on_agent_changes": 0.0462,
+            "audit_replica_surge": 0.0442,
+            "process": 0.1398,
+            "not_implementable": 0.0588
+          },
+          "confidence": 0.2024,
+          "answer_confidence": 0.2024,
+          "action": {
+            "act_probability": 1.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 334,
+        "output_tokens": 0
+      },
+      "configuration": {
+        "provider": "laya",
+        "local_calibration": "not fitted",
+        "confidence_kind": "answer_confidence when available"
+      }
+    }
+  },
+  {
+    "ms": 106.57170799095184,
+    "question": {
+      "type": "choice",
+      "instructions": "Which option does `clause` ask for? Read it in the context of `intent`.",
+      "criteria": {
+        "egress_profile": "restrict which workloads, namespaces or destinations a workload may connect to (east-west or outbound traffic)",
+        "deny_privilege_escalation": "stop containers running privileged, gaining more privileges than they start with, or running as root",
+        "restrict_registry": "allow container images only from an approved registry, or block images from public registries",
+        "restrict_api_access": "limit a workload's credentials, secrets or permissions on the Kubernetes API (needs RBAC; admission alone cannot)",
+        "deny_sa_token_for_agent_sidecars": "stop an AI agent or assistant sidecar from using the Pod's Kubernetes identity (its service account token)",
+        "deny_agent_mutation_outside_namespace": "stop an AI agent from changing workloads outside its own namespace",
+        "require_ticket_on_agent_changes": "require a ticket or change reference on changes an AI agent makes",
+        "audit_replica_surge": "flag sudden large increases in a workload's replica count",
+        "process": "how or when to roll out or time-box the change (staging, expiries, not disrupting service), not what to allow",
+        "not_implementable": "something admission control cannot see or enforce: reads, tool calls inside an application, runtime behaviour, people"
+      }
+    },
+    "state": "clause: Do not disrupt running workloads; roll out in stages and time-box any exception.\nintent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.",
+    "response": {
+      "model": "convaiinnovations/laya-typed-decisions",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "deny_privilege_escalation",
+          "probabilities": {
+            "egress_profile": 0.131,
+            "deny_privilege_escalation": 0.2691,
+            "restrict_registry": 0.0385,
+            "restrict_api_access": 0.0846,
+            "deny_sa_token_for_agent_sidecars": 0.0638,
+            "deny_agent_mutation_outside_namespace": 0.1581,
+            "require_ticket_on_agent_changes": 0.0442,
+            "audit_replica_surge": 0.0374,
+            "process": 0.1255,
+            "not_implementable": 0.0478
+          },
+          "confidence": 0.2691,
+          "answer_confidence": 0.2691,
+          "action": {
+            "act_probability": 1.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 340,
+        "output_tokens": 0
+      },
+      "configuration": {
+        "provider": "laya",
+        "local_calibration": "not fitted",
+        "confidence_kind": "answer_confidence when available"
+      }
+    }
+  }
+]

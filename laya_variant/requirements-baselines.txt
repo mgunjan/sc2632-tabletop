@@ -1,0 +1,4 @@
+# Versions already measured in the October 13 Python 3.12 local runs.
+# Small CPU baselines; no model download or torch dependency.
+numpy==2.5.4
+scikit-learn==1.9.1

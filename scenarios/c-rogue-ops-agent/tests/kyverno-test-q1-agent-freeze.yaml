@@ -1,0 +1,17 @@
+# Q1 is declared. The ops agent's patches are all refused, even inside its own namespace;
+# the same patches by a human SRE are not matched at all.
+# Run: kyverno test scenarios/c-rogue-ops-agent/tests/ --file-name kyverno-test-q1-agent-freeze.yaml
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: q1-freeze-agent-changes
+policies:
+  - ../../../quarantine/q1/freeze-agent-changes.yaml
+resources:
+  - ../fixtures/deployment-patches.yaml
+userinfo: ../userinfo/ops-agent.yaml
+results:
+  - policy: q1-freeze-agent-changes
+    kind: Deployment
+    resources: [payments/payments-api, hr-sync/hr-sync, agents/ops-agent-tools, agents/ops-agent-cache]
+    result: fail

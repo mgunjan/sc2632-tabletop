@@ -1,0 +1,79 @@
+{
+  "context": "k3d-sc2632-rehearsal-20261013",
+  "scope": "PolicyException cleanup and new Pod admission only",
+  "source_sha256": "87e03c92ba2feada325cd2110f073efc7b87afe59b10011bfd1966e7c85eb60b",
+  "started_at": "2026-10-13T22:22:59.628498+00:00",
+  "status": "FAIL",
+  "steps": [
+    {
+      "step": "remove q3",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "step": "remove q2",
+      "returncode": 0,
+      "stdout": "validatingpolicy.policies.kyverno.io \"q2-restrict-image-registry-enforce\" deleted\nvalidatingpolicy.policies.kyverno.io \"q2-ephemeral-containers-approved-registry\" deleted\nnetworkpolicy.networking.k8s.io \"q2-default-deny-ingress\" deleted from payments namespace\nnetworkpolicy.networking.k8s.io \"q2-allow-ingress-from-gateway\" deleted from payments namespace\nnetworkpolicy.networking.k8s.io \"q2-suspect-dns-only\" deleted from payments namespace\nvalidatingadmissionpolicy.admissionregistration.k8s.io \"q2-protect-quarantine-labels\" deleted\nvalidatingadmissionpolicybinding.admissionregistration.k8s.io \"q2-protect-quarantine-labels\" deleted",
+      "stderr": ""
+    },
+    {
+      "step": "remove q1",
+      "returncode": 0,
+      "stdout": "validatingpolicy.policies.kyverno.io \"q1-freeze-deny-new-exceptions\" deleted",
+      "stderr": ""
+    },
+    {
+      "step": "restore baseline admission",
+      "returncode": 0,
+      "stdout": "validatingpolicy.policies.kyverno.io/deny-privilege-escalation unchanged\nvalidatingpolicy.policies.kyverno.io/restrict-egress-profile unchanged\nvalidatingpolicy.policies.kyverno.io/restrict-image-registry unchanged",
+      "stderr": ""
+    },
+    {
+      "step": "restore baseline network",
+      "returncode": 0,
+      "stdout": "networkpolicy.networking.k8s.io/default-deny-egress unchanged\nnetworkpolicy.networking.k8s.io/allow-egress-profile-db unchanged\nnetworkpolicy.networking.k8s.io/allow-egress-profile-monitoring unchanged\nnetworkpolicy.networking.k8s.io/allow-egress-profile-none unchanged",
+      "stderr": ""
+    },
+    {
+      "step": "ensure unchanged expiry controller policy",
+      "returncode": 0,
+      "stdout": "deletingpolicy.policies.kyverno.io/expire-policy-exceptions unchanged",
+      "stderr": ""
+    },
+    {
+      "step": "read expiry policy",
+      "returncode": 0,
+      "stdout": "{\n    \"apiVersion\": \"policies.kyverno.io/v1\",\n    \"kind\": \"DeletingPolicy\",\n    \"metadata\": {\n        \"annotations\": {\n            \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"policies.kyverno.io/v1\\\",\\\"kind\\\":\\\"DeletingPolicy\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"policies.kyverno.io/description\\\":\\\"Deletes PolicyException resources whose trustfall.example/expires-at annotation is earlier than now. This is how \\\\\\\"time-boxed exception\\\\\\\" is implemented.\\\",\\\"policies.kyverno.io/title\\\":\\\"Expire time-boxed PolicyExceptions\\\"},\\\"name\\\":\\\"expire-policy-exceptions\\\"},\\\"spec\\\":{\\\"conditions\\\":[{\\\"expression\\\":\\\"has(object.metadata.annotations) \\\\u0026\\\\u0026 'trustfall.example/expires-at' in object.metadata.annotations\\\",\\\"name\\\":\\\"has-expiry\\\"},{\\\"expression\\\":\\\"timestamp(object.metadata.annotations['trustfall.example/expires-at']) \\\\u003c time.now()\\\",\\\"name\\\":\\\"is-expired\\\"}],\\\"matchConstraints\\\":{\\\"objectSelector\\\":{\\\"matchLabels\\\":{\\\"trustfall.example/expiring\\\":\\\"true\\\"}},\\\"resourceRules\\\":[{\\\"apiGroups\\\":[\\\"policies.kyverno.io\\\"],\\\"apiVersions\\\":[\\\"v1\\\"],\\\"operations\\\":[\\\"*\\\"],\\\"resources\\\":[\\\"policyexceptions\\\"],\\\"scope\\\":\\\"Namespaced\\\"}]},\\\"schedule\\\":\\\"*/5 * * * *\\\"}}\\n\",\n            \"policies.kyverno.io/description\": \"Deletes PolicyException resources whose trustfall.example/expires-at annotation is earlier than now. This is how \\\"time-boxed exception\\\" is implemented.\",\n            \"policies.kyverno.io/title\": \"Expire time-boxed PolicyExceptions\"\n        },\n        \"creationTimestamp\": \"2026-10-13T21:47:50Z\",\n        \"generation\": 1,\n        \"name\": \"expire-policy-exceptions\",\n        \"resourceVersion\": \"8710\",\n        \"uid\": \"a916e813-3902-4592-b20b-90a566fc5007\"\n    },\n    \"spec\": {\n        \"conditions\": [\n            {\n                \"expression\": \"has(object.metadata.annotations) \\u0026\\u0026 'trustfall.example/expires-at' in object.metadata.annotations\",\n                \"name\": \"has-expiry\"\n            },\n            {\n                \"expression\": \"timestamp(object.metadata.annotations['trustfall.example/expires-at']) \\u003c time.now()\",\n                \"name\": \"is-expired\"\n            }\n        ],\n        \"matchConstraints\": {\n            \"objectSelector\": {\n                \"matchLabels\": {\n                    \"trustfall.example/expiring\": \"true\"\n                }\n            },\n            \"resourceRules\": [\n                {\n                    \"apiGroups\": [\n                        \"policies.kyverno.io\"\n                    ],\n                    \"apiVersions\": [\n                        \"v1\"\n                    ],\n                    \"operations\": [\n                        \"*\"\n                    ],\n                    \"resources\": [\n                        \"policyexceptions\"\n                    ],\n                    \"scope\": \"Namespaced\"\n                }\n            ]\n        },\n        \"schedule\": \"*/5 * * * *\"\n    },\n    \"status\": {\n        \"conditionStatus\": {\n            \"message\": \"\"\n        },\n        \"lastExecutionTime\": \"2026-10-13T22:20:00Z\"\n    }\n}",
+      "stderr": ""
+    },
+    {
+      "step": "admission deny",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Error from server: error when creating \"STDIN\": admission webhook \"vpol.validate.kyverno.svc-fail-finegrained-restrict-egress-profile\" denied the request: Policy restrict-egress-profile failed: Pod sc2632-expiry-e52caeec in payments must carry label trustfall.example/egress-profile with one of db, monitoring, none. Found: 'storage'. Need another profile? Open a PolicyException with an owner and trustfall.example/expires-at."
+    },
+    {
+      "step": "create exact scoped exception",
+      "returncode": 0,
+      "stdout": "policyexception.policies.kyverno.io/sc2632-expiry-e52caeec created",
+      "stderr": ""
+    },
+    {
+      "step": "admission admit",
+      "returncode": 0,
+      "stdout": "pod/sc2632-expiry-e52caeec",
+      "stderr": ""
+    },
+    {
+      "step": "final cleanup",
+      "returncode": 0,
+      "stdout": "policyexception.policies.kyverno.io \"sc2632-expiry-e52caeec\" deleted from payments namespace",
+      "stderr": ""
+    }
+  ],
+  "cleanup_schedule": "*/5 * * * *",
+  "expires_at": "2026-10-13T22:23:45.378565Z",
+  "error": "Timed out waiting for actual scheduled deletion",
+  "finished_at": "2026-10-13T22:30:03.890325+00:00"
+}

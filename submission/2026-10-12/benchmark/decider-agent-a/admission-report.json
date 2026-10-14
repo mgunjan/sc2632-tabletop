@@ -1,0 +1,39 @@
+{
+  "without_exceptions": [
+    {
+      "workload": "payments/backup-job",
+      "policy": "restrict-egress-profile",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/monitoring-agent",
+      "policy": "restrict-egress-profile",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/payments-api",
+      "policy": "restrict-egress-profile",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/payments-db-proxy",
+      "policy": "restrict-egress-profile",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/report-runner",
+      "policy": "restrict-egress-profile",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    }
+  ]
+}

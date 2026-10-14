@@ -1,0 +1,32 @@
+{
+  "scope": "Presenter-authored review contract for prepared intents A/B/C; not production authorization",
+  "a": {
+    "intent_sha256": "1a4f8aaf22f3dedd734d45ac7959743b9fbde836d6b8bb5c127cd692df94993b",
+    "namespace": "payments",
+    "requirements": [
+      {"id": 1, "controls": ["egress_profile"], "layer": "admission + network", "review": "Validate the dependency allowlist and actual CNI connectivity; a label policy does not isolate traffic."},
+      {"id": 2, "controls": ["deny_privilege_escalation"], "layer": "admission", "review": "Confirm workload scope and negative privilege tests; existing Pods need a separate response."},
+      {"id": 3, "controls": ["restrict_api_access"], "layer": "RBAC + identity", "review": "Review effective permissions and exposed credentials. Removing token automount alone is incomplete."},
+      {"id": 4, "controls": ["process", "not_implementable"], "layer": "operations", "review": "Approve availability floor, rollout criteria, exception authority and verified expiry."}
+    ]
+  },
+  "b": {
+    "intent_sha256": "70b66392a25dff1eae248bfaa9b534a2a5d4ea22940a710fd09f248a88cc87fd",
+    "namespace": "payments",
+    "requirements": [
+      {"id": 1, "controls": ["egress_profile"], "layer": "admission + network", "review": "Validate actual network allowances and shared Pod networking."},
+      {"id": 2, "controls": ["deny_sa_token_for_agent_sidecars", "restrict_api_access"], "layer": "identity + RBAC", "review": "Check shared identity, explicit projected tokens and effective authorization."},
+      {"id": 3, "controls": ["not_implementable"], "layer": "application tool authorization", "review": "Supply an independent tool allowlist test; admission cannot inspect tool calls."},
+      {"id": 4, "controls": ["process", "not_implementable"], "layer": "operations", "review": "Verify safe replacement and approve scoped exceptions and expiry."}
+    ]
+  },
+  "c": {
+    "intent_sha256": "d8379bc9f88a37e7cb56812dce18daf2ba8d54d9a27546ca39c85341a008c115",
+    "namespace": "agents",
+    "requirements": [
+      {"id": 1, "controls": ["deny_agent_mutation_outside_namespace"], "layer": "admission + RBAC", "review": "Validate requester identity, narrow standing RBAC and protect policy-engine permissions."},
+      {"id": 2, "controls": ["require_ticket_on_agent_changes"], "layer": "admission + approval", "review": "Verify approval provenance; a ticket annotation does not prove approval."},
+      {"id": 3, "controls": ["not_implementable", "process"], "layer": "RBAC reads", "review": "Independently verify required reads and audit them; admission never sees get/list."}
+    ]
+  }
+}

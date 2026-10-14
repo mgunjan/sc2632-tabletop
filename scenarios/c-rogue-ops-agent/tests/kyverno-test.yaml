@@ -1,0 +1,41 @@
+# Scenario C — the agent's patches, evaluated as the agent.
+# Run: kyverno test scenarios/c-rogue-ops-agent/tests/
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: scenario-c-as-ops-agent
+policies:
+  - ../policies/deny-agent-mutation-outside-namespace.yaml
+  - ../policies/require-ticket-on-agent-changes.yaml
+  - ../policies/audit-replica-surge.yaml
+resources:
+  - ../fixtures/deployment-patches.yaml
+userinfo: ../userinfo/ops-agent.yaml
+results:
+  # Clause 1: outside agents → blocked. Inside agents → allowed.
+  - policy: deny-agent-mutation-outside-namespace
+    kind: Deployment
+    resources: [payments/payments-api, hr-sync/hr-sync]
+    result: fail
+  - policy: deny-agent-mutation-outside-namespace
+    kind: Deployment
+    resources: [agents/ops-agent-tools, agents/ops-agent-cache]
+    result: pass
+  # Clause 2 (Warn): three of four patches have no ticket.
+  - policy: require-ticket-on-agent-changes
+    kind: Deployment
+    resources: [payments/payments-api, hr-sync/hr-sync, agents/ops-agent-cache]
+    result: fail
+  - policy: require-ticket-on-agent-changes
+    kind: Deployment
+    resources: [agents/ops-agent-tools]
+    result: pass
+  # Unasked control (Audit): only the 12-replica payroll API trips it.
+  - policy: audit-replica-surge
+    kind: Deployment
+    resources: [payments/payments-api]
+    result: fail
+  - policy: audit-replica-surge
+    kind: Deployment
+    resources: [hr-sync/hr-sync, agents/ops-agent-tools, agents/ops-agent-cache]
+    result: pass

@@ -1,0 +1,44 @@
+# payments-api as the Deployment it really is: 3 replicas, PodDisruptionBudget minAvailable 2.
+# This is the shape behind "the PDB gotcha" (quarantine/quarantine-mode.md) — with two replicas
+# flagged suspect, evicting both is refused by the API server. lab-e2e.sh shows it live.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api
+  namespace: payments
+spec:
+  replicas: 3
+  selector:
+    matchLabels: {app: payments-api, tier: api}
+  template:
+    metadata:
+      # trustfall.example/in-rotation is what the Service selects, and nothing else does. Containment sets it
+      # to "false": the Pod leaves the Service's endpoints but stays owned by its ReplicaSet (no
+      # replacement is spawned) and keeps running as evidence.
+      labels: {app: payments-api, tier: api, trustfall.example/egress-profile: db, trustfall.example/in-rotation: "true"}
+    spec:
+      serviceAccountName: payments-api
+      containers:
+        - name: api
+          image: registry.trustfall.internal/payments/api:2.14.3
+          env: [{name: PORT, value: "8443"}]   # the port the gateway allow in quarantine/q2/ opens
+          securityContext: {allowPrivilegeEscalation: false, privileged: false, runAsNonRoot: true}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payments-api
+  namespace: payments
+spec:
+  selector: {app: payments-api, tier: api, trustfall.example/in-rotation: "true"}
+  ports: [{name: https, port: 8443, targetPort: 8443}]
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: payments-api
+  namespace: payments
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels: {app: payments-api, tier: api}

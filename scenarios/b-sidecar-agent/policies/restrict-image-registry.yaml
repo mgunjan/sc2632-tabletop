@@ -1,0 +1,43 @@
+# NOT IN THE INTENT.
+#
+# The intent said nothing about image registries. The generator added this control on
+# its own, and flagged it (intent-clause: none) and emitted it in Audit mode so it only
+# reports. Whether it stays is the reviewer's decision — that is the point of the review.
+#
+# Tabletop note: this is the "agent overreach" teaching moment in Round 1. A table that
+# maps policies back to intent clauses will find that this one has no clause.
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: restrict-image-registry
+  annotations:
+    guardrails.trustfall.example/intent-clause: "none"
+    guardrails.trustfall.example/rollout-stage: audit
+    guardrails.trustfall.example/generator-note: "Added beyond stated intent. Reviewer must accept or remove."
+    policies.kyverno.io/title: Restrict image registry in payments
+    policies.kyverno.io/category: Supply Chain
+    policies.kyverno.io/severity: medium
+spec:
+  validationActions:
+    - Audit
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ['']
+        apiVersions: [v1]
+        operations: [CREATE, UPDATE]
+        resources: [pods]
+  matchConditions:
+    - name: payments-namespace-only
+      expression: "object.metadata.namespace == 'payments'"
+    # Re-check on UPDATE only if an image changed (kubectl set image on a Pod). A label change —
+    # e.g. a quarantine relabel — must not be refused because of an image chosen long ago.
+    - name: create-or-image-changed
+      expression: "request.operation == 'CREATE' || oldObject == null || object.spec.containers.map(c, c.image) != oldObject.spec.containers.map(c, c.image)"
+  validations:
+    - expression: >-
+        object.spec.containers.all(c, c.image.startsWith('registry.trustfall.internal/'))
+      messageExpression: >-
+        "Image not from registry.trustfall.internal: " +
+        object.spec.containers.filter(c, !c.image.startsWith('registry.trustfall.internal/')).map(c, c.image).join(", ") +
+        " (Audit only — this control was not in the intent.)"
+      message: "Images in payments should come from registry.trustfall.internal (Audit only)."

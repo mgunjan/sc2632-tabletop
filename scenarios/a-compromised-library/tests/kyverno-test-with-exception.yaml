@@ -1,0 +1,26 @@
+# Same policy, same fixtures, plus the approved time-boxed exception for backup-job.
+# Run:  kyverno test tests/ --file-name kyverno-test-with-exception.yaml
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: payments-guardrails-with-backup-exception
+policies:
+  - ../policies/restrict-egress-profile.yaml
+resources:
+  - ../fixtures/payments-workloads.yaml
+exceptions:
+  - ../exceptions/backup-job-egress-storage.yaml
+results:
+  - policy: restrict-egress-profile
+    kind: Pod
+    resources:
+      - payments/payments-api
+      - payments/payments-db-proxy
+      - payments/monitoring-agent
+      - payments/report-runner
+    result: pass
+  - policy: restrict-egress-profile
+    kind: Pod
+    resources:
+      - payments/backup-job
+    result: skip

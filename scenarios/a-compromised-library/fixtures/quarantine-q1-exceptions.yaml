@@ -1,0 +1,35 @@
+# Two PolicyExceptions someone tries to create while Quarantine Q1 is active.
+---
+# A well-meaning engineer, 20 minutes into the incident, tries to unblock the backup
+# job with a quick exception. No owner, no expiry, no override. Q1 refuses it.
+apiVersion: policies.kyverno.io/v1
+kind: PolicyException
+metadata:
+  name: quick-fix-backup
+  namespace: payments
+spec:
+  policyRefs:
+    - name: restrict-egress-profile
+      kind: ValidatingPolicy
+  matchConditions:
+    - name: backup
+      expression: "object.metadata.name.startsWith('backup-job')"
+---
+# The incident commander grants a scoped, time-boxed exception with the override.
+apiVersion: policies.kyverno.io/v1
+kind: PolicyException
+metadata:
+  name: ic-approved-backup
+  namespace: payments
+  labels:
+    cleanup.kyverno.io/ttl: 4h
+  annotations:
+    trustfall.example/owner: incident-commander@trustfall.example
+    trustfall.example/quarantine-override: incident-commander
+spec:
+  policyRefs:
+    - name: restrict-egress-profile
+      kind: ValidatingPolicy
+  matchConditions:
+    - name: backup
+      expression: "object.metadata.name.startsWith('backup-job')"

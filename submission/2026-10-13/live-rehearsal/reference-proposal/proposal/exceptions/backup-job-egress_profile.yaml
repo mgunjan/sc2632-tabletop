@@ -1,0 +1,17 @@
+apiVersion: policies.kyverno.io/v1
+kind: PolicyException
+metadata:
+  name: backup-job-egress-profile
+  namespace: payments
+  labels:
+    cleanup.kyverno.io/ttl: 24h
+  annotations:
+    trustfall.example/owner: platform-ops@trustfall.example
+    trustfall.example/reason: Nightly backup needs egress to the storage namespace until the backup target is moved behind the db profile.
+spec:
+  policyRefs:
+  - name: restrict-egress-profile
+    kind: ValidatingPolicy
+  matchConditions:
+  - name: backup-job-only
+    expression: object.metadata.namespace == 'payments' && object.metadata.name.startsWith('backup-job')

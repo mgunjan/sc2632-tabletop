@@ -1,0 +1,9 @@
+{
+  "machine": "arm64",
+  "os": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.14",
+  "runtime_source_commit": "0ac22a97e584f3ccf87cc9b8cc5fdbad57cdf534",
+  "model_hub_snapshot": "216d1ccb46a9e9b036eb9187b248db98480f77d4",
+  "project_commit": "d7b11e23850b1ced066433170f669f002c92276c",
+  "inference_order": "Decider pilot, then Qwen pilot, then pre-registered Decider gate. Sequential inference, not simultaneous."
+}

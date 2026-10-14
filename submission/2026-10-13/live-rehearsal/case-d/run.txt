@@ -1,0 +1,67 @@
+PASS baseline copied token LIST in sc2632-d-inventory-662ff0ad
+PASS baseline reads only this run's synthetic target
+PASS baseline copied token GET in sc2632-d-inventory-662ff0ad
+PASS baseline reads only this run's synthetic target
+PASS baseline copied token LIST in sc2632-d-database-662ff0ad
+PASS baseline reads only this run's synthetic target
+PASS baseline copied token GET in sc2632-d-database-662ff0ad
+PASS baseline reads only this run's synthetic target
+PASS baseline access review is authenticated
+PASS baseline cluster-wide Secret LIST authorization
+PASS baseline required ConfigMap GET
+PASS baseline required named in-namespace Secret GET
+PASS baseline collector reaches API TCP endpoint
+PASS baseline positive control reaches API TCP endpoint
+PASS baseline stand-in health remains available
+PASS quarantined collector cannot open new API TCP connection
+PASS unquarantined positive control still reaches API TCP endpoint
+PASS stand-in health remains available under quarantine
+PASS after network quarantine copied token LIST in sc2632-d-inventory-662ff0ad
+PASS after network quarantine reads only this run's synthetic target
+PASS after network quarantine copied token GET in sc2632-d-inventory-662ff0ad
+PASS after network quarantine reads only this run's synthetic target
+PASS after network quarantine copied token LIST in sc2632-d-database-662ff0ad
+PASS after network quarantine reads only this run's synthetic target
+PASS after network quarantine copied token GET in sc2632-d-database-662ff0ad
+PASS after network quarantine reads only this run's synthetic target
+PASS after quarantine required named in-namespace Secret GET
+PASS after RBAC narrowing copied token LIST in sc2632-d-inventory-662ff0ad
+PASS after RBAC narrowing copied token GET in sc2632-d-inventory-662ff0ad
+PASS after RBAC narrowing copied token LIST in sc2632-d-database-662ff0ad
+PASS after RBAC narrowing copied token GET in sc2632-d-database-662ff0ad
+PASS after RBAC narrowing access review is authenticated
+PASS after RBAC narrowing cluster-wide Secret LIST authorization
+PASS same old token retains required ConfigMap GET
+PASS same old token retains only required named in-namespace Secret GET
+PASS same old token cannot LIST in-namespace Secrets
+PASS stand-in health remains available after RBAC narrowing
+PASS replacement credential retains required ConfigMap GET
+PASS replacement credential retains required named Secret GET
+PASS clean replacement opens its required API TCP connection
+PASS old credential remains far from natural expiry
+PASS replacement stand-in remains available while revocation propagates
+WAIT bound-token invalidation
+PASS replacement stand-in remains available while revocation propagates
+WAIT bound-token invalidation
+PASS replacement stand-in remains available while revocation propagates
+WAIT bound-token invalidation
+PASS replacement stand-in remains available while revocation propagates
+WAIT bound-token invalidation
+PASS replacement stand-in remains available while revocation propagates
+WAIT bound-token invalidation
+PASS replacement stand-in remains available while revocation propagates
+WAIT bound-token invalidation
+PASS replacement stand-in remains available while revocation propagates
+WAIT bound-token invalidation
+PASS replacement stand-in remains available while revocation propagates
+WAIT bound-token invalidation
+PASS old bound credential is rejected by authentication
+PASS replacement credential remains authenticated after old-token revocation
+PASS replacement named Secret access remains available
+PASS replacement credential cannot LIST in-namespace Secrets
+PASS replacement credential copied token LIST in sc2632-d-inventory-662ff0ad
+PASS replacement credential copied token GET in sc2632-d-inventory-662ff0ad
+PASS replacement credential copied token LIST in sc2632-d-database-662ff0ad
+PASS replacement credential copied token GET in sc2632-d-database-662ff0ad
+PASS replacement stand-in health remains available
+CASE D PASS; 58 checks

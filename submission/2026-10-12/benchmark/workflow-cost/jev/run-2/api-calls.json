@@ -1,0 +1,346 @@
+[
+  {
+    "ms": 191.42004201421514,
+    "question": {
+      "type": "choice",
+      "instructions": "Which option does `clause` ask for? Read it in the context of `intent`.",
+      "criteria": {
+        "egress_profile": "restrict which workloads, namespaces or destinations a workload may connect to (east-west or outbound traffic)",
+        "deny_privilege_escalation": "stop containers running privileged, gaining more privileges than they start with, or running as root",
+        "restrict_registry": "allow container images only from an approved registry, or block images from public registries",
+        "restrict_api_access": "limit a workload's credentials, secrets or permissions on the Kubernetes API (needs RBAC; admission alone cannot)",
+        "deny_sa_token_for_agent_sidecars": "stop an AI agent or assistant sidecar from using the Pod's Kubernetes identity (its service account token)",
+        "deny_agent_mutation_outside_namespace": "stop an AI agent from changing workloads outside its own namespace",
+        "require_ticket_on_agent_changes": "require a ticket or change reference on changes an AI agent makes",
+        "audit_replica_surge": "flag sudden large increases in a workload's replica count",
+        "process": "how or when to roll out or time-box the change (staging, expiries, not disrupting service), not what to allow",
+        "not_implementable": "something admission control cannot see or enforce: reads, tool calls inside an application, runtime behaviour, people"
+      }
+    },
+    "state": "clause: Deny new east-west communication from the payments namespace while preserving known service dependencies.\nintent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.",
+    "response": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "egress_profile",
+          "confidence": 1.0,
+          "probabilities": {
+            "egress_profile": 1.0,
+            "deny_privilege_escalation": 0.0,
+            "restrict_registry": 0.0,
+            "restrict_api_access": 0.0,
+            "deny_sa_token_for_agent_sidecars": 0.0,
+            "deny_agent_mutation_outside_namespace": 0.0,
+            "require_ticket_on_agent_changes": 0.0,
+            "audit_replica_surge": 0.0,
+            "process": 0.0,
+            "not_implementable": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 699,
+        "output_tokens": 125
+      },
+      "configuration": {
+        "provider": "jev",
+        "requested_model": "jev-1.13.0",
+        "confidence_kind": "provider distribution-derived score"
+      }
+    }
+  },
+  {
+    "ms": 224.66366601292975,
+    "question": {
+      "type": "choice",
+      "instructions": "Which option does `clause` ask for? Read it in the context of `intent`.",
+      "criteria": {
+        "egress_profile": "restrict which workloads, namespaces or destinations a workload may connect to (east-west or outbound traffic)",
+        "deny_privilege_escalation": "stop containers running privileged, gaining more privileges than they start with, or running as root",
+        "restrict_registry": "allow container images only from an approved registry, or block images from public registries",
+        "restrict_api_access": "limit a workload's credentials, secrets or permissions on the Kubernetes API (needs RBAC; admission alone cannot)",
+        "deny_sa_token_for_agent_sidecars": "stop an AI agent or assistant sidecar from using the Pod's Kubernetes identity (its service account token)",
+        "deny_agent_mutation_outside_namespace": "stop an AI agent from changing workloads outside its own namespace",
+        "require_ticket_on_agent_changes": "require a ticket or change reference on changes an AI agent makes",
+        "audit_replica_surge": "flag sudden large increases in a workload's replica count",
+        "process": "how or when to roll out or time-box the change (staging, expiries, not disrupting service), not what to allow",
+        "not_implementable": "something admission control cannot see or enforce: reads, tool calls inside an application, runtime behaviour, people"
+      }
+    },
+    "state": "clause: Prevent privilege escalation by workloads in that namespace.\nintent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.",
+    "response": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "deny_privilege_escalation",
+          "confidence": 0.74,
+          "probabilities": {
+            "egress_profile": 0.21,
+            "deny_privilege_escalation": 0.77,
+            "restrict_registry": 0.0,
+            "restrict_api_access": 0.02,
+            "deny_sa_token_for_agent_sidecars": 0.0,
+            "deny_agent_mutation_outside_namespace": 0.0,
+            "require_ticket_on_agent_changes": 0.0,
+            "audit_replica_surge": 0.0,
+            "process": 0.0,
+            "not_implementable": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 694,
+        "output_tokens": 129
+      },
+      "configuration": {
+        "provider": "jev",
+        "requested_model": "jev-1.13.0",
+        "confidence_kind": "provider distribution-derived score"
+      }
+    }
+  },
+  {
+    "ms": 163.08037500130013,
+    "question": {
+      "type": "choice",
+      "instructions": "Which option does `clause` ask for? Read it in the context of `intent`.",
+      "criteria": {
+        "egress_profile": "restrict which workloads, namespaces or destinations a workload may connect to (east-west or outbound traffic)",
+        "deny_privilege_escalation": "stop containers running privileged, gaining more privileges than they start with, or running as root",
+        "restrict_registry": "allow container images only from an approved registry, or block images from public registries",
+        "restrict_api_access": "limit a workload's credentials, secrets or permissions on the Kubernetes API (needs RBAC; admission alone cannot)",
+        "deny_sa_token_for_agent_sidecars": "stop an AI agent or assistant sidecar from using the Pod's Kubernetes identity (its service account token)",
+        "deny_agent_mutation_outside_namespace": "stop an AI agent from changing workloads outside its own namespace",
+        "require_ticket_on_agent_changes": "require a ticket or change reference on changes an AI agent makes",
+        "audit_replica_surge": "flag sudden large increases in a workload's replica count",
+        "process": "how or when to roll out or time-box the change (staging, expiries, not disrupting service), not what to allow",
+        "not_implementable": "something admission control cannot see or enforce: reads, tool calls inside an application, runtime behaviour, people"
+      }
+    },
+    "state": "clause: Restrict the compromised workload's access to the Kubernetes API.\nintent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.",
+    "response": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "restrict_api_access",
+          "confidence": 0.99,
+          "probabilities": {
+            "egress_profile": 0.01,
+            "deny_privilege_escalation": 0.0,
+            "restrict_registry": 0.0,
+            "restrict_api_access": 0.99,
+            "deny_sa_token_for_agent_sidecars": 0.0,
+            "deny_agent_mutation_outside_namespace": 0.0,
+            "require_ticket_on_agent_changes": 0.0,
+            "audit_replica_surge": 0.0,
+            "process": 0.0,
+            "not_implementable": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 695,
+        "output_tokens": 125
+      },
+      "configuration": {
+        "provider": "jev",
+        "requested_model": "jev-1.13.0",
+        "confidence_kind": "provider distribution-derived score"
+      }
+    }
+  },
+  {
+    "ms": 179.061458009528,
+    "question": {
+      "type": "choice",
+      "instructions": "Which option does `clause` ask for? Read it in the context of `intent`.",
+      "criteria": {
+        "egress_profile": "restrict which workloads, namespaces or destinations a workload may connect to (east-west or outbound traffic)",
+        "deny_privilege_escalation": "stop containers running privileged, gaining more privileges than they start with, or running as root",
+        "restrict_registry": "allow container images only from an approved registry, or block images from public registries",
+        "restrict_api_access": "limit a workload's credentials, secrets or permissions on the Kubernetes API (needs RBAC; admission alone cannot)",
+        "deny_sa_token_for_agent_sidecars": "stop an AI agent or assistant sidecar from using the Pod's Kubernetes identity (its service account token)",
+        "deny_agent_mutation_outside_namespace": "stop an AI agent from changing workloads outside its own namespace",
+        "require_ticket_on_agent_changes": "require a ticket or change reference on changes an AI agent makes",
+        "audit_replica_surge": "flag sudden large increases in a workload's replica count",
+        "process": "how or when to roll out or time-box the change (staging, expiries, not disrupting service), not what to allow",
+        "not_implementable": "something admission control cannot see or enforce: reads, tool calls inside an application, runtime behaviour, people"
+      }
+    },
+    "state": "clause: Do not disrupt running workloads; roll out in stages and time-box any exception.\nintent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.",
+    "response": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "process",
+          "confidence": 0.81,
+          "probabilities": {
+            "egress_profile": 0.16,
+            "deny_privilege_escalation": 0.0,
+            "restrict_registry": 0.0,
+            "restrict_api_access": 0.01,
+            "deny_sa_token_for_agent_sidecars": 0.0,
+            "deny_agent_mutation_outside_namespace": 0.0,
+            "require_ticket_on_agent_changes": 0.0,
+            "audit_replica_surge": 0.0,
+            "process": 0.83,
+            "not_implementable": 0.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 701,
+        "output_tokens": 123
+      },
+      "configuration": {
+        "provider": "jev",
+        "requested_model": "jev-1.13.0",
+        "confidence_kind": "provider distribution-derived score"
+      }
+    }
+  },
+  {
+    "ms": 156.68195800390095,
+    "question": {
+      "type": "choice",
+      "instructions": "The intent is in `intent`. `profile` is an egress profile that workloads in the namespace use today, and `used_by` lists them. Should the new egress policy keep allowing this profile?",
+      "criteria": {
+        "preserve": "keep allowing it: it is one of the namespace's known service dependencies",
+        "deny": "stop allowing it: it is east-west traffic the intent asks to deny"
+      }
+    },
+    "state": "intent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.\nprofile: db\nused_by: payments-api, payments-db-proxy",
+    "response": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "preserve",
+          "confidence": 0.32,
+          "probabilities": {
+            "preserve": 0.66,
+            "deny": 0.34
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 444,
+        "output_tokens": 33
+      },
+      "configuration": {
+        "provider": "jev",
+        "requested_model": "jev-1.13.0",
+        "confidence_kind": "provider distribution-derived score"
+      }
+    }
+  },
+  {
+    "ms": 195.66525000846013,
+    "question": {
+      "type": "choice",
+      "instructions": "The intent is in `intent`. `profile` is an egress profile that workloads in the namespace use today, and `used_by` lists them. Should the new egress policy keep allowing this profile?",
+      "criteria": {
+        "preserve": "keep allowing it: it is one of the namespace's known service dependencies",
+        "deny": "stop allowing it: it is east-west traffic the intent asks to deny"
+      }
+    },
+    "state": "intent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.\nprofile: monitoring\nused_by: monitoring-agent",
+    "response": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "preserve",
+          "confidence": 0.54,
+          "probabilities": {
+            "preserve": 0.77,
+            "deny": 0.23
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 439,
+        "output_tokens": 33
+      },
+      "configuration": {
+        "provider": "jev",
+        "requested_model": "jev-1.13.0",
+        "confidence_kind": "provider distribution-derived score"
+      }
+    }
+  },
+  {
+    "ms": 168.61291701206937,
+    "question": {
+      "type": "choice",
+      "instructions": "The intent is in `intent`. `profile` is an egress profile that workloads in the namespace use today, and `used_by` lists them. Should the new egress policy keep allowing this profile?",
+      "criteria": {
+        "preserve": "keep allowing it: it is one of the namespace's known service dependencies",
+        "deny": "stop allowing it: it is east-west traffic the intent asks to deny"
+      }
+    },
+    "state": "intent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.\nprofile: none\nused_by: report-runner",
+    "response": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "preserve",
+          "confidence": 0.32,
+          "probabilities": {
+            "preserve": 0.66,
+            "deny": 0.34
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 441,
+        "output_tokens": 33
+      },
+      "configuration": {
+        "provider": "jev",
+        "requested_model": "jev-1.13.0",
+        "confidence_kind": "provider distribution-derived score"
+      }
+    }
+  },
+  {
+    "ms": 238.44245800864883,
+    "question": {
+      "type": "choice",
+      "instructions": "The intent is in `intent`. `profile` is an egress profile that workloads in the namespace use today, and `used_by` lists them. Should the new egress policy keep allowing this profile?",
+      "criteria": {
+        "preserve": "keep allowing it: it is one of the namespace's known service dependencies",
+        "deny": "stop allowing it: it is east-west traffic the intent asks to deny"
+      }
+    },
+    "state": "intent: Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception.\nprofile: storage\nused_by: backup-job",
+    "response": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "q": {
+          "type": "choice",
+          "choice": "preserve",
+          "confidence": 0.4,
+          "probabilities": {
+            "preserve": 0.7,
+            "deny": 0.3
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 439,
+        "output_tokens": 33
+      },
+      "configuration": {
+        "provider": "jev",
+        "requested_model": "jev-1.13.0",
+        "confidence_kind": "provider distribution-derived score"
+      }
+    }
+  }
+]

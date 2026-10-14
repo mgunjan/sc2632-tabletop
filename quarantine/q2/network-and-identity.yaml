@@ -1,0 +1,92 @@
+# Standards: CSF 2.0 RS.MI-01 after RS.AN-07; D3FEND Isolate: Network Isolation (D3-NI), DNS Allowlisting (D3-DNSAL), Executable Allowlisting (D3-EAL). See standards/README.md.
+# Quarantine Mode — Q2 CONSTRAIN
+#
+# ORDER MATTERS. Before applying anything in this directory:
+#   1. Capture evidence:  ./quarantine/capture-evidence.sh payments <suspect-pod>
+#   2. Then: kubectl apply -f quarantine/q2/
+# Containment that destroys evidence is a second incident.
+#
+# Control delta at Q2 (cumulative with Q1):
+#   - Ingress default-deny added to payments (Q0 only denied egress). Existing approved
+#     egress profiles keep working, so payments-api still reaches its database.
+#   - Any Pod carrying trustfall.example/suspect=true loses ALL egress except DNS, regardless
+#     of its egress profile. Label the suspect; don't kill it yet.
+#   - Privileged operations are already denied (policies/deny-privilege-escalation.yaml);
+#     Q2 raises restrict-image-registry from Audit to Deny for the namespace.
+#   - Rotate the suspect ServiceAccount token: kubectl delete secret / restart is NOT
+#     the move here — see quarantine/quarantine-mode.md for the bound-token approach.
+#
+# Declares: incident commander.   Lifts: two-person.
+# Exit: root cause identified; IOCs cleared from scope; evidence secured off-cluster.
+# Availability: approved flows continue. If the allow-list is right, users see nothing.
+# Network part of Q2. See quarantine/quarantine-mode.md.
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: q2-default-deny-ingress
+  namespace: payments
+  labels:
+    trustfall.example/quarantine-level: q2
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: q2-allow-ingress-from-gateway
+  namespace: payments
+  labels:
+    trustfall.example/quarantine-level: q2
+spec:
+  # Suspects are excluded: a DNS-only suspect that still receives gateway traffic fails those
+  # requests (it can no longer reach the database). Found live; see quarantine-mode.md.
+  podSelector:
+    matchLabels:
+      app: payments-api
+    matchExpressions:
+    - key: trustfall.example/suspect
+      operator: DoesNotExist
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: gateway
+    ports:
+    - protocol: TCP
+      port: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: q2-suspect-dns-only
+  namespace: payments
+  labels:
+    trustfall.example/quarantine-level: q2
+spec:
+  # NetworkPolicies only ever ADD allows. If this stayed selected at Q3, the Q3 "deny-all" policy
+  # could not take DNS away and the suspect would keep a DNS channel out. Q3 labels suspects
+  # trustfall.example/isolated=true, which drops them out of this allow. Found live on k3s.
+  podSelector:
+    matchLabels:
+      trustfall.example/egress-profile: quarantined
+    matchExpressions:
+    - key: trustfall.example/isolated
+      operator: DoesNotExist
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53

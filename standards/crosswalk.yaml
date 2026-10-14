@@ -1,0 +1,131 @@
+# How SC2632 maps to the standards a security audience already uses.
+#
+# Single source for: standards/README.md, the deck, the situation display, the table packet, and the
+# lab's e2e headings. Edit here, then run `python3 standards/render.py`.
+#
+# Honesty rules for this file:
+#   - "maps to", never "compliant with". Nothing here is certified against anything.
+#   - The mapping is the session author's judgement. Every ID was checked against its source on
+#     2026-09-26 (ATT&CK v19, released 2026-04-28, split Defense Evasion into Stealth (TA0005) and
+#     Defense Impairment (TA0112) and revoked T1562 Impair Defenses into T1685).
+#   - NIST's AI-agent work is in progress: cited as direction, not as requirements.
+
+checked: "2026-09-26"
+
+sources:
+  sp800-61r3: {title: "NIST SP 800-61 Rev. 3, Incident Response Recommendations and Considerations for Cybersecurity Risk Management: A CSF 2.0 Community Profile", date: "2025-04", url: "https://csrc.nist.gov/pubs/sp/800/61/r3/final"}
+  csf2: {title: "NIST Cybersecurity Framework (CSF) 2.0", date: "2024-02", url: "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf"}
+  attack: {title: "MITRE ATT&CK v19 (Enterprise, incl. the Containers matrix)", date: "2026-04-28", url: "https://attack.mitre.org/resources/updates/updates-april-2026/"}
+  d3fend: {title: "MITRE D3FEND (tactics: Model, Harden, Detect, Isolate, Deceive, Evict, Restore)", date: "current", url: "https://d3fend.mitre.org/"}
+  atlas: {title: "MITRE ATLAS", date: "current", url: "https://atlas.mitre.org/"}
+  owasp-asi: {title: "OWASP Top 10 for Agentic Applications 2026", date: "2025-12-09", url: "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/"}
+  nccoe-agent-id: {title: "NCCoE concept paper: Accelerating the Adoption of Software and AI Agent Identity and Authorization (comment period closed)", date: "2026-02-05", url: "https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd"}
+  caisi: {title: "NIST CAISI AI Agent Standards Initiative (via CSA research note); COSAiS SP 800-53 overlays for agent systems in development", date: "2026-02-17", url: "https://labs.cloudsecurityalliance.org/research/csa-research-note-nist-ai-agent-standards-initiative-2026040/"}
+  k8s-pss: {title: "Kubernetes Pod Security Standards (Baseline, Restricted)", date: "current", url: "https://kubernetes.io/docs/concepts/security/pod-security-standards/"}
+  k8s-admission-tm: {title: "Kubernetes SIG Security: Admission Control Threat Model", date: "2022", url: "https://github.com/kubernetes/sig-security/blob/main/sig-security-docs/papers/admission-control/kubernetes-admission-control-threat-model.md"}
+  k8s-136: {title: "Kubernetes v1.36: manifest-based admission policies that can't be deleted through the API", date: "2026-05-04", url: "https://kubernetes.io/blog/2026/05/04/kubernetes-v1-36-manifest-based-admission-control/"}
+
+# CSF 2.0 subcategories used below, with their exact text.
+csf_text:
+  PR.AA-05: "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties"
+  PR.PS-01: "Configuration management practices are established and applied"
+  RS.MA-02: "Incident reports are triaged and validated"
+  RS.MA-04: "Incidents are escalated or elevated as needed"
+  RS.MA-05: "The criteria for initiating incident recovery are applied"
+  RS.AN-06: "Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved"
+  RS.AN-07: "Incident data and metadata are collected, and their integrity and provenance are preserved"
+  RS.MI-01: "Incidents are contained"
+  RS.MI-02: "Incidents are eradicated"
+
+levels:
+  - id: Q0
+    name: Normal
+    csf: [PR.PS-01, PR.AA-05]
+    d3fend: ["Harden: Platform Hardening (D3-PH)"]
+    note: "The guardrails themselves: policy-as-code admission, least-privilege identities."
+  - id: Q1
+    name: Freeze
+    csf: [RS.MA-02, RS.MA-04, PR.PS-01]
+    d3fend: []
+    note: "Change freeze: no new exceptions, and no changes by agent identities (enforced at admission), while the alert is triaged. D3FEND has no direct analog; it models countermeasures against the attacker, not a freeze on your own automation."
+  - id: Q2
+    name: Constrain
+    csf: [RS.AN-07, RS.MI-01, RS.MA-04]
+    d3fend: ["Isolate: Network Isolation (D3-NI)", "Isolate: DNS Allowlisting (D3-DNSAL; partial: DNS-only egress, tunnelling over DNS still open at Q2)", "Isolate: Executable Allowlisting (D3-EAL)", "Harden: Credential Rotation (D3-CRO)"]
+    note: "Evidence first (RS.AN-07), then contain (RS.MI-01): suspect DNS-only and out of Service rotation; approved images only."
+  - id: Q3
+    name: Isolate
+    csf: [RS.MI-01, RS.MA-04, PR.AA-05]
+    d3fend: ["Isolate: Network Isolation (D3-NI)", "Evict: Credential Revocation (D3-CR)"]
+    note: "Deliberately isolate, not evict: Process Termination (D3-PT) would destroy the evidence. Override needs the IC's identity (PR.AA-05)."
+  - id: exit
+    name: "Staged descent"
+    csf: [RS.MA-05, RS.AN-06]
+    d3fend: ["Restore"]
+    note: "Exit criteria per level; every declaration and lift recorded (RS.AN-06)."
+
+findings:
+  - id: dns
+    title: "Q3's deny-all left DNS open"
+    attack: ["T1071.004 Application Layer Protocol: DNS"]
+    d3fend: ["Isolate: Network Isolation (D3-NI)", "Isolate: DNS Allowlisting (D3-DNSAL; partial: DNS-only egress, tunnelling over DNS still open at Q2)"]
+    csf: [RS.MI-01]
+    short: "ATT&CK T1071.004 · D3FEND Network Isolation · CSF RS.MI-01"
+    lesson: "Containment you haven't tested as a union of policies isn't containment."
+  - id: evict
+    title: "Evicting suspects under Q3 deadlocks"
+    attack: []
+    d3fend: ["Evict vs Isolate: Process Termination (D3-PT) destroys evidence"]
+    csf: [RS.AN-07, RS.MI-01]
+    short: "D3FEND Isolate, not Evict · CSF RS.AN-07 before RS.MI-01"
+    lesson: "D3FEND lists Evict as a tactic; under a containment freeze it destroys evidence and can deadlock against the PDB."
+  - id: debug
+    title: "kubectl debug went around Q2"
+    attack: ["T1609 Container Administration Command"]
+    d3fend: ["Isolate: Executable Allowlisting (D3-EAL)"]
+    csf: [PR.PS-01]
+    short: "ATT&CK T1609 · D3FEND Executable Allowlisting · CSF PR.PS-01"
+    lesson: "An image allowlist must cover every API path that can start code, pods/ephemeralcontainers included."
+  - id: guard
+    title: "The agent's ServiceAccount could scale the policy engine to zero"
+    attack: ["T1685 Disable or Modify Tools (Defense Impairment, TA0112; was T1562.001 before v19)"]
+    d3fend: ["Harden: Platform Hardening (D3-PH)"]
+    csf: [PR.AA-05]
+    owasp: ["ASI03 Identity and Privilege Abuse"]
+    also: ["k8s-admission-tm", "k8s-136", "nccoe-agent-id"]
+    short: "ATT&CK T1685 · OWASP ASI03 · CSF PR.AA-05"
+    lesson: "Who can scale your policy engine to zero is a least-privilege question (PR.AA-05) before it is a policy question."
+
+  - id: host
+    title: "The agent's privilege policy missed host mounts"
+    attack: ["T1610 Deploy Container", "T1611 Escape to Host"]
+    d3fend: ["Harden: Platform Hardening (D3-PH)"]
+    csf: [PR.PS-01]
+    also: ["k8s-pss"]
+    short: "ATT&CK T1610 · T1611 · PSS Baseline · CSF PR.PS-01"
+    lesson: "hostPath and hostNetwork are in the Pod Security Standards Baseline; the tests passed because no fixture tried them. The July 2026 incident's missing control."
+scenarios:
+  - id: a
+    name: "The quiet library"
+    attack: ["T1195.001 Compromise Software Dependencies and Development Tools", "T1610 Deploy Container (D2)", "T1611 Escape to Host (D2)"]
+    owasp: []
+    atlas: []
+    also: ["k8s-pss"]
+    short: "ATT&CK T1195.001 · T1610 · T1611 · PSS Baseline"
+  - id: b
+    name: "The obedient assistant"
+    attack: ["T1528 Steal Application Access Token"]
+    owasp: ["ASI01 Agent Goal Hijack", "ASI02 Tool Misuse and Exploitation"]
+    atlas: ["AML.T0051.001 LLM Prompt Injection: Indirect"]
+    short: "OWASP ASI01 · ASI02 · ATLAS AML.T0051.001"
+  - id: c
+    name: "The helpful ops agent"
+    attack: ["T1098 Account Manipulation", "T1496 Resource Hijacking"]
+    owasp: ["ASI01 Agent Goal Hijack", "ASI03 Identity and Privilege Abuse", "ASI09 Human-Agent Trust Exploitation"]
+    atlas: []
+    also: ["nccoe-agent-id"]
+    short: "OWASP ASI03 · ASI09 · ATT&CK T1098"
+
+anchor:
+  attack: ["T1610 Deploy Container", "T1611 Escape to Host"]
+  short: "ATT&CK T1610 · T1611"

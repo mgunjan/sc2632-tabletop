@@ -1,0 +1,272 @@
+{
+  "recorded_at": "2026-10-13T21:19:48+00:00",
+  "scenario": "a",
+  "intent_sha256": "1a4f8aaf22f3dedd734d45ac7959743b9fbde836d6b8bb5c127cd692df94993b",
+  "questions_sha256": "15018cd8574e1318abf1a490fdf6e15b1b7dbf301fff390a17f257e26137ca8e",
+  "threshold": 0.6,
+  "model": [
+    "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2"
+  ],
+  "tested_against": "scenario fixtures",
+  "trace": [
+    {
+      "step": 1,
+      "what": "map the intent",
+      "detail": "4 sentences -> deny_privilege_escalation, deny_privilege_escalation, ?, deny_privilege_escalation"
+    },
+    {
+      "step": 2,
+      "what": "look at what's running",
+      "detail": "5 workloads in payments (scenario fixtures)"
+    },
+    {
+      "step": 3,
+      "what": "write policies",
+      "detail": "deny-privilege-escalation"
+    },
+    {
+      "step": 4,
+      "what": "test on running pods",
+      "detail": "nothing would be blocked"
+    },
+    {
+      "step": 5,
+      "what": "write local review proposal",
+      "detail": "run-3/PR.md: 0 exception request(s), 1 item(s) for a human"
+    }
+  ],
+  "requests": [],
+  "escalations": [
+    {
+      "about": "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+      "best_guess": "deny_privilege_escalation",
+      "confidence": 0.5895
+    }
+  ],
+  "accepted_blocks": [],
+  "calls": [
+    {
+      "about": "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+      "state_sha256": "4a5ea3084bc879ae8131523e1118850c2f05826174325f818b837f197ab63de8",
+      "response": {
+        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny_privilege_escalation",
+            "probabilities": {
+              "egress_profile": 0.0344,
+              "deny_privilege_escalation": 0.8986,
+              "restrict_registry": 0.0004,
+              "restrict_api_access": 0.003,
+              "deny_sa_token_for_agent_sidecars": 0.0013,
+              "deny_agent_mutation_outside_namespace": 0.0355,
+              "require_ticket_on_agent_changes": 0.0004,
+              "audit_replica_surge": 0.0005,
+              "process": 0.0255,
+              "not_implementable": 0.0005
+            },
+            "confidence": 0.8986,
+            "answer_confidence": 0.8986,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 339,
+          "output_tokens": 0
+        },
+        "configuration": {
+          "provider": "laya",
+          "local_calibration": "not fitted",
+          "confidence_kind": "answer_confidence when available"
+        }
+      },
+      "choice": "deny_privilege_escalation",
+      "confidence": 0.8986
+    },
+    {
+      "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+      "state_sha256": "7ece408d4dfde0105cd1c6c836db4a9d5797bd79b1c7e1a1daf048f656b95280",
+      "response": {
+        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny_privilege_escalation",
+            "probabilities": {
+              "egress_profile": 0.0074,
+              "deny_privilege_escalation": 0.8574,
+              "restrict_registry": 0.0002,
+              "restrict_api_access": 0.0024,
+              "deny_sa_token_for_agent_sidecars": 0.0008,
+              "deny_agent_mutation_outside_namespace": 0.1139,
+              "require_ticket_on_agent_changes": 0.0003,
+              "audit_replica_surge": 0.0002,
+              "process": 0.0167,
+              "not_implementable": 0.0007
+            },
+            "confidence": 0.8574,
+            "answer_confidence": 0.8574,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 333,
+          "output_tokens": 0
+        },
+        "configuration": {
+          "provider": "laya",
+          "local_calibration": "not fitted",
+          "confidence_kind": "answer_confidence when available"
+        }
+      },
+      "choice": "deny_privilege_escalation",
+      "confidence": 0.8574
+    },
+    {
+      "about": "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+      "state_sha256": "ca5d542ce22135a5921dda733205098a9df052c1da8ebb5be6ef1bfabe509410",
+      "response": {
+        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny_privilege_escalation",
+            "probabilities": {
+              "egress_profile": 0.0437,
+              "deny_privilege_escalation": 0.5895,
+              "restrict_registry": 0.0006,
+              "restrict_api_access": 0.0095,
+              "deny_sa_token_for_agent_sidecars": 0.0022,
+              "deny_agent_mutation_outside_namespace": 0.2892,
+              "require_ticket_on_agent_changes": 0.0009,
+              "audit_replica_surge": 0.0006,
+              "process": 0.0619,
+              "not_implementable": 0.0019
+            },
+            "confidence": 0.5895,
+            "answer_confidence": 0.5895,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 334,
+          "output_tokens": 0
+        },
+        "configuration": {
+          "provider": "laya",
+          "local_calibration": "not fitted",
+          "confidence_kind": "answer_confidence when available"
+        }
+      },
+      "choice": "deny_privilege_escalation",
+      "confidence": 0.5895
+    },
+    {
+      "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+      "state_sha256": "cb6cd9f8d5091dae4b492d7f358bf4e5be24490fd4827f78b32cf6a2f60f6811",
+      "response": {
+        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny_privilege_escalation",
+            "probabilities": {
+              "egress_profile": 0.0182,
+              "deny_privilege_escalation": 0.9107,
+              "restrict_registry": 0.0003,
+              "restrict_api_access": 0.0028,
+              "deny_sa_token_for_agent_sidecars": 0.001,
+              "deny_agent_mutation_outside_namespace": 0.0514,
+              "require_ticket_on_agent_changes": 0.0003,
+              "audit_replica_surge": 0.0003,
+              "process": 0.0146,
+              "not_implementable": 0.0005
+            },
+            "confidence": 0.9107,
+            "answer_confidence": 0.9107,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 340,
+          "output_tokens": 0
+        },
+        "configuration": {
+          "provider": "laya",
+          "local_calibration": "not fitted",
+          "confidence_kind": "answer_confidence when available"
+        }
+      },
+      "choice": "deny_privilege_escalation",
+      "confidence": 0.9107
+    }
+  ],
+  "readiness": {
+    "status": "INCOMPLETE_PROPOSAL",
+    "promotion_allowed": false,
+    "contract_bound": true,
+    "requirements_contract_sha256": "2a92a6b6923d83ec116ea1a16ed8b3209271f1ed5146e71e1313d0c1e431b352",
+    "requirements": [
+      {
+        "id": 1,
+        "controls": [
+          "egress_profile"
+        ],
+        "layer": "admission + network",
+        "review": "Validate the dependency allowlist and actual CNI connectivity; a label policy does not isolate traffic.",
+        "selected_control": "deny_privilege_escalation",
+        "status": "UNEXPECTED_CONTROL_MAPPING",
+        "disposition": null
+      },
+      {
+        "id": 2,
+        "controls": [
+          "deny_privilege_escalation"
+        ],
+        "layer": "admission",
+        "review": "Confirm workload scope and negative privilege tests; existing Pods need a separate response.",
+        "selected_control": "deny_privilege_escalation",
+        "status": "POLICY_GENERATED_REVIEW_REQUIRED",
+        "disposition": null
+      },
+      {
+        "id": 3,
+        "controls": [
+          "restrict_api_access"
+        ],
+        "layer": "RBAC + identity",
+        "review": "Review effective permissions and exposed credentials. Removing token automount alone is incomplete.",
+        "selected_control": "not_implementable",
+        "status": "MODEL_ABSTAINED",
+        "disposition": null
+      },
+      {
+        "id": 4,
+        "controls": [
+          "process",
+          "not_implementable"
+        ],
+        "layer": "operations",
+        "review": "Approve availability floor, rollout criteria, exception authority and verified expiry.",
+        "selected_control": "deny_privilege_escalation",
+        "status": "UNEXPECTED_CONTROL_MAPPING",
+        "disposition": null
+      }
+    ],
+    "independent_behavior": {
+      "status": "PASS",
+      "passed": true,
+      "scope": "six fixed Pod CREATE privilege expectations"
+    },
+    "reason": "A human must resolve each requirement, dependency allowance and exception request; no deployment authority is granted."
+  }
+}

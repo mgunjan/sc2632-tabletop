@@ -1,0 +1,27 @@
+# The two human groups the quarantine override distinguishes. The lab impersonates them
+# (kubectl --as=... --as-group=...) so the Q1/Q3 identity check is exercised, not assumed.
+#   trustfall:incident-commanders  may set the Q1/Q3 override
+#   trustfall:developers           ordinary write access; copying the override annotation is refused
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata: {name: humans-edit, namespace: payments}
+roleRef: {apiGroup: rbac.authorization.k8s.io, kind: ClusterRole, name: edit}
+subjects:
+- {apiGroup: rbac.authorization.k8s.io, kind: Group, name: "trustfall:incident-commanders"}
+- {apiGroup: rbac.authorization.k8s.io, kind: Group, name: "trustfall:developers"}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata: {name: policy-exceptions-write, namespace: payments}
+rules:
+- apiGroups: [policies.kyverno.io]
+  resources: [policyexceptions]
+  verbs: [get, list, watch, create, update, patch, delete]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata: {name: humans-policy-exceptions, namespace: payments}
+roleRef: {apiGroup: rbac.authorization.k8s.io, kind: Role, name: policy-exceptions-write}
+subjects:
+- {apiGroup: rbac.authorization.k8s.io, kind: Group, name: "trustfall:incident-commanders"}
+- {apiGroup: rbac.authorization.k8s.io, kind: Group, name: "trustfall:developers"}

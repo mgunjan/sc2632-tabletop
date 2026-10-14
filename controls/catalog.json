@@ -1,0 +1,124 @@
+{
+  "version": "0.1.0",
+  "status": "reference",
+  "scope": "Kubernetes incident guardrails; enterprise qualification required per platform",
+  "controls": {
+    "egress_profile": {
+      "id": "ACG-NET-001", "owner_role": "network-security", "approver_role": "incident-commander",
+      "objective": "Constrain new workload connections while preserving approved dependencies.",
+      "implementation": "t_egress", "policy": "restrict-egress-profile", "layer": "admission + CNI",
+      "coverage": "Checks the Pod egress-profile label on CREATE/UPDATE.",
+      "limits": ["A label check does not enforce connectivity.", "Changing network policy can affect existing connections differently across CNIs."],
+      "dependencies": ["CNI enforces namespace and workload NetworkPolicies", "Approved DNS, database and observability paths are documented"],
+      "tests": ["scenarios/a-compromised-library/tests/kyverno-test.yaml"],
+      "platform_evidence": ["Allowed and denied connection probes on the target CNI", "Availability floor and evidence collection remain healthy"],
+      "exception_max_hours": 24, "rollback": "Restore the approved network and admission revision; rerun connectivity and availability probes.",
+      "references": ["https://kubernetes.io/docs/concepts/services-networking/network-policies/"]
+    },
+    "deny_privilege_escalation": {
+      "id": "ACG-POD-001", "owner_role": "platform-security", "approver_role": "security-engineering",
+      "objective": "Reject newly created privileged containers and containers permitting privilege escalation.",
+      "implementation": "t_privesc", "policy": "deny-privilege-escalation", "layer": "admission",
+      "coverage": "Regular and init containers on Pod CREATE; privileged=false and explicit allowPrivilegeEscalation=false.",
+      "limits": ["Does not evict existing Pods.", "Does not implement the full Restricted Pod Security Standard, runAsNonRoot, capabilities, seccomp or ephemeral-container controls."],
+      "dependencies": ["Explicit Linux workload applicability", "Admission-controller availability and failure policy reviewed"],
+      "tests": ["generator/contracts/privilege-test.yaml", "generator/contracts/privilege-resources.yaml"],
+      "platform_evidence": ["Positive and negative CREATE requests on the target API server", "Existing-workload response and debug-subresource restrictions reviewed"],
+      "exception_max_hours": 4, "rollback": "Move this control to Audit or restore its previous revision; assess each workload before replacement.",
+      "references": ["https://kubernetes.io/docs/concepts/security/pod-security-standards/"]
+    },
+    "restrict_registry": {
+      "id": "ACG-SUP-001", "owner_role": "supply-chain-security", "approver_role": "security-engineering",
+      "objective": "Limit image sources for newly created or changed regular containers.",
+      "implementation": "t_registry", "policy": "restrict-image-registry", "layer": "admission",
+      "coverage": "Registry prefix on regular-container images on Pod CREATE and image-changing UPDATE.",
+      "limits": ["Registry allowlisting does not verify signatures or provenance.", "Init and ephemeral container images are not covered by this template.", "Mutable tags and existing image compromise need separate controls."],
+      "dependencies": ["Registry reachability, authentication and mirror availability"],
+      "tests": ["scenarios/a-compromised-library/tests/kyverno-test.yaml"],
+      "platform_evidence": ["Approved and unapproved image admissions", "Init/ephemeral coverage, digest pinning and signature verification disposition"],
+      "exception_max_hours": 4, "rollback": "Restore the approved registry list or previous policy revision after reviewing image provenance.",
+      "references": ["https://github.com/kyverno/policies"]
+    },
+    "restrict_api_access": {
+      "id": "ACG-IAM-001", "owner_role": "identity-security", "approver_role": "security-engineering",
+      "objective": "Reduce the compromised identity's effective Kubernetes API permissions.",
+      "implementation": null, "policy": null, "layer": "RBAC + credential response",
+      "coverage": "Review-only requirement; this compiler does not render RBAC changes.",
+      "limits": ["Token automount settings do not revoke already exposed credentials.", "Admission does not observe get/list/watch operations."],
+      "dependencies": ["Identity and effective RoleBinding/ClusterRoleBinding inventory"],
+      "tests": [], "platform_evidence": ["Positive and negative authorization tests for the actual principal", "Credential revocation or rotation evidence"],
+      "exception_max_hours": 1, "rollback": "Restore only reviewed minimum permissions and verify intended reads and denied writes.",
+      "references": ["https://kubernetes.io/docs/concepts/security/rbac-good-practices/"]
+    },
+    "deny_sa_token_for_agent_sidecars": {
+      "id": "ACG-IAM-002", "owner_role": "identity-security", "approver_role": "security-engineering",
+      "objective": "Disable automatic Kubernetes token mounting in Pods marked as containing an agent sidecar.",
+      "implementation": "t_sa_token", "policy": "deny-sa-token-for-agent-sidecars", "layer": "admission + identity",
+      "coverage": "Marked Pod CREATE requests must set automountServiceAccountToken=false.",
+      "limits": ["Explicitly projected token volumes are not prohibited.", "A sidecar shares the Pod identity and may access other mounted credentials.", "Unmarked Pods and existing Pods are not covered."],
+      "dependencies": ["Trusted sidecar classification and inventory", "Independent agent identity where isolation is required"],
+      "tests": ["scenarios/b-sidecar-agent/tests/kyverno-test.yaml"],
+      "platform_evidence": ["Token-file access and projected-volume checks", "Existing workload replacement and availability checks"],
+      "exception_max_hours": 4, "rollback": "Review identity dependencies before restoring token mounting; rotate exposed credentials.",
+      "references": ["https://kubernetes.io/docs/concepts/security/service-accounts/"]
+    },
+    "deny_agent_mutation_outside_namespace": {
+      "id": "ACG-AGT-001", "owner_role": "platform-security", "approver_role": "security-engineering",
+      "objective": "Backstop agent writes to supported workloads outside its home namespace.",
+      "implementation": "t_agent_mutation", "policy": "deny-agent-mutation-outside-namespace", "layer": "admission + RBAC",
+      "coverage": "Named requester on deployment/statefulset/daemonset CREATE/UPDATE plus supported scale subresources.",
+      "limits": ["Does not restrict reads, DELETE, arbitrary resource types or impersonated principals.", "Requires standing RBAC reduction and protected policy-engine permissions."],
+      "dependencies": ["Authenticated principal bound to the agent", "Policy and exception writers cannot be controlled by the agent"],
+      "tests": ["scenarios/c-rogue-ops-agent/tests/kyverno-test.yaml", "scenarios/c-rogue-ops-agent/tests/kyverno-test-as-human.yaml"],
+      "platform_evidence": ["Agent denial and human access checks including scale subresources", "Effective RBAC and impersonation review"],
+      "exception_max_hours": 1, "rollback": "Restore reviewed principal scope and policy revision; verify cross-namespace writes remain denied by RBAC.",
+      "references": ["https://kubernetes.io/docs/concepts/security/rbac-good-practices/"]
+    },
+    "require_ticket_on_agent_changes": {
+      "id": "ACG-AGT-002", "owner_role": "change-management", "approver_role": "change-authority",
+      "objective": "Require a change reference on supported agent workload mutations.",
+      "implementation": "t_ticket", "policy": "require-ticket-on-agent-changes", "layer": "admission + approval verification",
+      "coverage": "Nonempty annotation on supported CREATE/UPDATE requests by the named agent; Deny stage remains Warn in this compiler.",
+      "limits": ["A nonempty ticket string does not prove valid approval or approval scope.", "Scale subresources and other resources need separate coverage."],
+      "dependencies": ["Authoritative approval lookup bound to principal, request and expiry"],
+      "tests": ["scenarios/c-rogue-ops-agent/tests/kyverno-test.yaml"],
+      "platform_evidence": ["Missing, forged, expired and scope-mismatched approval tests", "Ticket service failure and authorization handling"],
+      "exception_max_hours": 1, "rollback": "Return to Audit while preserving change audit records and independent approval requirements.",
+      "references": ["https://github.com/kyverno/policies"]
+    },
+    "audit_replica_surge": {
+      "id": "ACG-OPS-001", "owner_role": "platform-operations", "approver_role": "service-owner",
+      "objective": "Observe deployments and scale updates exceeding an approved replica threshold.",
+      "implementation": "t_replica_surge", "policy": "audit-replica-surge", "layer": "admission + operations",
+      "coverage": "Deployment CREATE/UPDATE and deployment/scale; this compiler has no namespace filter on this control.",
+      "limits": ["This is a capacity signal, not proof of compromise.", "The current template can match deployments cluster-wide; review scope before use.", "Autoscaling and incident load require operational context."],
+      "dependencies": ["Service capacity and autoscaling baseline", "Explicit policy scope review"],
+      "tests": ["scenarios/c-rogue-ops-agent/tests/kyverno-test.yaml"],
+      "platform_evidence": ["Boundary replica and scale-subresource tests", "Namespace scope and HPA availability review"],
+      "exception_max_hours": 24, "rollback": "Restore the previous threshold and Audit action after service-owner review.",
+      "references": ["https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/"]
+    },
+    "process": {
+      "id": "ACG-GOV-001", "owner_role": "incident-management", "approver_role": "incident-commander",
+      "objective": "Govern staged rollout, evidence preservation and bounded exceptions.",
+      "implementation": null, "policy": null, "layer": "operations",
+      "coverage": "Human disposition; no admission policy is generated for this decision.",
+      "limits": ["Owner and TTL metadata do not prove expiry enforcement.", "Quarantine levels require observable triggers and rollback criteria."],
+      "dependencies": ["Evidence custodian", "Exception approval and expiry controllers"], "tests": [],
+      "platform_evidence": ["Exception expires and access is denied after expiry", "Rollback rehearsal and availability/evidence checkpoints"],
+      "exception_max_hours": 24, "rollback": "Follow incident commander criteria; record restored controls and remaining risks.",
+      "references": ["https://github.com/kyverno/policies"]
+    },
+    "not_implementable": {
+      "id": "ACG-GOV-002", "owner_role": "security-architecture", "approver_role": "security-engineering",
+      "objective": "Route requirements beyond this admission compiler to their actual enforcement owner.",
+      "implementation": null, "policy": null, "layer": "application / runtime / human review",
+      "coverage": "Explicit unsupported requirement; no policy or security success is inferred.",
+      "limits": ["Reads, tool calls, evidence capture and existing processes require other enforcement layers."],
+      "dependencies": ["Named requirement owner and enforcement component"], "tests": [],
+      "platform_evidence": ["Requirement-specific positive and negative runtime or application test"],
+      "exception_max_hours": 1, "rollback": "Restore the reviewed enforcement component according to its own playbook.",
+      "references": ["https://kubernetes.io/docs/concepts/security/"]
+    }
+  }
+}

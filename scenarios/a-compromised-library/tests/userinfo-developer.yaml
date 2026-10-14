@@ -1,0 +1,8 @@
+# Who is asking: an ordinary developer (or a compromised ServiceAccount) who copied the annotation.
+apiVersion: cli.kyverno.io/v1alpha1
+kind: UserInfo
+metadata:
+  name: developer
+userInfo:
+  username: dev@trustfall.example
+  groups: [trustfall:developers, system:authenticated]

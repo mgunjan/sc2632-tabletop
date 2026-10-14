@@ -1,0 +1,14 @@
+{
+  "model": "qwen3:4b-instruct",
+  "answers": {
+    "q": {
+      "choice": "restrict_registry",
+      "confidence": 0.99
+    }
+  },
+  "usage": {
+    "input_tokens": 359,
+    "output_tokens": 17
+  },
+  "ollama_total_duration_ns": 9316688708
+}

@@ -1,0 +1,18 @@
+{
+  "python": "3.12.14",
+  "system": "Darwin",
+  "machine": "arm64",
+  "device": "MPS",
+  "packages": {
+    "laya": "0.3.12",
+    "torch": "2.14.1",
+    "transformers": "5.19.0",
+    "safetensors": "0.8.0",
+    "huggingface-hub": "2.2.0",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1"
+  },
+  "weights_in_git": false,
+  "base_snapshot": "e929ae5cf69bc34259cd2f95c9e91145b818b1f0",
+  "checkpoint_sha256": "ee95f0fadc55e3d65850b8cef2543c3c2f8c97e2544a13b1dded0750a929737f"
+}

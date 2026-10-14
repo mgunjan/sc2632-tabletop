@@ -1,0 +1,22 @@
+# REGRESSION: marking a suspect must never be refused by our own guardrails.
+# capture-evidence.sh relabels the suspect Pod (an UPDATE). Every policy must admit it.
+# Run: kyverno test scenarios/a-compromised-library/tests/ --file-name kyverno-test-quarantine-relabel.yaml
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: a-quarantine-relabel-is-admitted
+policies:
+  - ../policies/restrict-egress-profile.yaml
+  - ../policies/deny-privilege-escalation.yaml
+  - ../policies/restrict-image-registry.yaml
+  - ../../../quarantine/q2/admission-policies.yaml
+resources:
+  - ../fixtures/quarantine-relabel.yaml
+variables: values-update.yaml
+results:
+  - {policy: restrict-egress-profile, kind: Pod, resources: [payments/payments-api, payments/report-runner], result: pass}
+  - {policy: deny-privilege-escalation, kind: Pod, resources: [payments/payments-api, payments/report-runner], result: skip}
+  # Label-only UPDATE: images unchanged, so the image rules don't re-evaluate — even for
+  # report-runner, whose docker.io image would be refused on CREATE under Q2.
+  - {policy: restrict-image-registry, kind: Pod, resources: [payments/payments-api, payments/report-runner], result: skip}
+  - {policy: q2-restrict-image-registry-enforce, kind: Pod, resources: [payments/payments-api, payments/report-runner], result: skip}

@@ -1,0 +1,5 @@
+# Hosted clients, fixture-based agent harness and offline adapter tests.
+# Local model runtimes are optional and recorded separately in ENVIRONMENT.json.
+PyYAML==6.0.3
+jsonschema==4.26.0
+python-dotenv==1.2.4

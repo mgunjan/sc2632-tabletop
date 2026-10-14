@@ -1,0 +1,151 @@
+{
+  "candidates": {
+    "tfidf-lr": {
+      "model": null,
+      "device": "CPU",
+      "setup_and_warmup_seconds": 0.0,
+      "fit_seconds": 0.101,
+      "splits": {
+        "synthetic_test_ood": {
+          "n": 60,
+          "accuracy": 0.9,
+          "answered": 60,
+          "unreadable": 0,
+          "answer_coverage": 1.0,
+          "brier": 0.3586,
+          "brier_items": 60,
+          "ece": 0.3985,
+          "correct": 54,
+          "of": 60,
+          "median_ms": 0.53,
+          "routing_at_0_6": {
+            "selected": 20,
+            "correct": 20,
+            "wrong": 0
+          }
+        },
+        "frozen_control_pilot": {
+          "n": 27,
+          "accuracy": 0.7407,
+          "answered": 27,
+          "unreadable": 0,
+          "answer_coverage": 1.0,
+          "brier": 0.4342,
+          "brier_items": 21,
+          "ece": 0.2473,
+          "correct": 20,
+          "of": 27,
+          "median_ms": 0.523,
+          "routing_at_0_6": {
+            "selected": 8,
+            "correct": 8,
+            "wrong": 0
+          }
+        }
+      }
+    },
+    "base": {
+      "model": "/tmp/sc2632-model-cache/hub/models--convaiinnovations--laya-typed-decisions/snapshots/e929ae5cf69bc34259cd2f95c9e91145b818b1f0",
+      "device": "mps",
+      "setup_and_warmup_seconds": 3.241,
+      "fit_seconds": null,
+      "splits": {
+        "synthetic_test_ood": {
+          "n": 60,
+          "accuracy": 0.6,
+          "answered": 60,
+          "unreadable": 0,
+          "answer_coverage": 1.0,
+          "brier": 0.747,
+          "brier_items": 60,
+          "ece": 0.3784,
+          "correct": 36,
+          "of": 60,
+          "median_ms": 87.316,
+          "routing_at_0_6": {
+            "selected": 0,
+            "correct": 0,
+            "wrong": 0
+          }
+        },
+        "frozen_control_pilot": {
+          "n": 27,
+          "accuracy": 0.4444,
+          "answered": 27,
+          "unreadable": 0,
+          "answer_coverage": 1.0,
+          "brier": 0.6583,
+          "brier_items": 21,
+          "ece": 0.2858,
+          "correct": 12,
+          "of": 27,
+          "median_ms": 89.612,
+          "routing_at_0_6": {
+            "selected": 2,
+            "correct": 2,
+            "wrong": 0
+          }
+        }
+      }
+    },
+    "trained": {
+      "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+      "device": "mps",
+      "setup_and_warmup_seconds": 2.834,
+      "fit_seconds": null,
+      "splits": {
+        "synthetic_test_ood": {
+          "n": 60,
+          "accuracy": 0.6167,
+          "answered": 60,
+          "unreadable": 0,
+          "answer_coverage": 1.0,
+          "brier": 0.5362,
+          "brier_items": 60,
+          "ece": 0.2195,
+          "correct": 37,
+          "of": 60,
+          "median_ms": 87.262,
+          "routing_at_0_6": {
+            "selected": 24,
+            "correct": 24,
+            "wrong": 0
+          }
+        },
+        "frozen_control_pilot": {
+          "n": 27,
+          "accuracy": 0.4444,
+          "answered": 27,
+          "unreadable": 0,
+          "answer_coverage": 1.0,
+          "brier": 0.5974,
+          "brier_items": 21,
+          "ece": 0.3466,
+          "correct": 12,
+          "of": 27,
+          "median_ms": 89.016,
+          "routing_at_0_6": {
+            "selected": 16,
+            "correct": 11,
+            "wrong": 5
+          }
+        }
+      }
+    }
+  },
+  "limitations": "Synthetic templates and author-labelled pilot; no independent enterprise labels. Control pilot is a subset of the 33-decision workflow benchmark. No production qualification.",
+  "data_sha256": {
+    "train.jsonl": "edd9813c6f37a7a52dd75a3faa8226fcebae2114173c8e543f1846cf18777ebb",
+    "test_ood.jsonl": "d8a5341bc14fb6f807934812cbc20db205d490f04607f869ffb9e9adf6589f82",
+    "questions.json": "110800968f8cb5a8856f0e25de16e617954dd21d8f0846a20ecb98ebf7718c97",
+    "MANIFEST.json": "9c6c0bd54df4eeb96571824699a01c70253c14ba47d80e04f7d175cf76791447"
+  },
+  "rescored_without_inference": true,
+  "reason": "Laya serializes probabilities to four decimals; validate the maximum rounding drift instead of rejecting legitimate distributions.",
+  "recording_sha256": "87802e73f1e95ccdd391d7d574e4cbe48976ea4d757d5f73fa846d123b488604",
+  "scoring_source_sha256": {
+    "baselines.py": "77e69da32df042e7e52c46dec1017b80fc65be0e2dd49385d8c3962cad5f4515",
+    "evaluate.py": "25f040347aa08206df4789090e86df7c40bafd4ef023453a9c4c33e5b353f7aa",
+    "rescore_control.py": "66484cfd6a2e006809460a67a3057268d51504cefe296a120c528abec9461c35"
+  }
+}

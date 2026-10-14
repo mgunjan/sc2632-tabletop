@@ -1,0 +1,35 @@
+{
+  "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v1",
+  "answers": {
+    "q": {
+      "type": "choice",
+      "choice": "restrict_registry",
+      "probabilities": {
+        "egress_profile": 0.0008,
+        "deny_privilege_escalation": 0.0006,
+        "restrict_registry": 0.9872,
+        "restrict_api_access": 0.0005,
+        "deny_sa_token_for_agent_sidecars": 0.0005,
+        "deny_agent_mutation_outside_namespace": 0.0063,
+        "require_ticket_on_agent_changes": 0.0014,
+        "audit_replica_surge": 0.0004,
+        "process": 0.0019,
+        "not_implementable": 0.0003
+      },
+      "confidence": 0.9872,
+      "answer_confidence": 0.9872,
+      "action": {
+        "act_probability": 1.0
+      }
+    }
+  },
+  "usage": {
+    "input_tokens": 274,
+    "output_tokens": 0
+  },
+  "configuration": {
+    "provider": "laya",
+    "local_calibration": "not fitted",
+    "confidence_kind": "answer_confidence when available"
+  }
+}

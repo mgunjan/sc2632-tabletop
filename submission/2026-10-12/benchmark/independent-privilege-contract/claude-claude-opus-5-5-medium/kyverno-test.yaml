@@ -1,0 +1,39 @@
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: independent-privilege-behavior
+policies:
+- ../../expanded/claude-claude-opus-5-5-medium/agent-a/policies/deny-privilege-escalation.yaml
+resources:
+- ../resources.yaml
+results:
+- policy: deny-privilege-escalation
+  kind: Pod
+  resources:
+  - payments/safe
+  result: pass
+- policy: deny-privilege-escalation
+  kind: Pod
+  resources:
+  - payments/privileged
+  result: fail
+- policy: deny-privilege-escalation
+  kind: Pod
+  resources:
+  - payments/escalation
+  result: fail
+- policy: deny-privilege-escalation
+  kind: Pod
+  resources:
+  - payments/missing-setting
+  result: fail
+- policy: deny-privilege-escalation
+  kind: Pod
+  resources:
+  - payments/privileged-init
+  result: fail
+- policy: deny-privilege-escalation
+  kind: Pod
+  resources:
+  - other/outside-scope
+  result: skip

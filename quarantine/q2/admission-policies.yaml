@@ -1,0 +1,36 @@
+# Standards: CSF 2.0 RS.MI-01 after RS.AN-07; D3FEND Isolate: Network Isolation (D3-NI), DNS Allowlisting (D3-DNSAL), Executable Allowlisting (D3-EAL). See standards/README.md.
+# Quarantine Q2 — admission policies. Apply with the rest of quarantine/q2/ AFTER capture-evidence.sh.
+---
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: q2-restrict-image-registry-enforce
+  labels:
+    trustfall.example/quarantine-level: q2
+spec:
+  validationActions:
+  - Deny
+  matchConstraints:
+    resourceRules:
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      operations:
+      - CREATE
+      - UPDATE
+      resources:
+      - pods
+  matchConditions:
+  - name: payments-namespace-only
+    expression: object.metadata.namespace == 'payments'
+  - name: create-or-image-changed
+    expression: >-
+      request.operation == 'CREATE' || oldObject == null ||
+      (object.spec.containers + object.spec.?initContainers.orValue([])).map(c, c.image) !=
+      (oldObject.spec.containers + oldObject.spec.?initContainers.orValue([])).map(c, c.image)
+  validations:
+  # containers AND initContainers: a native sidecar is an initContainer (restartPolicy: Always) and runs
+  # for the Pod's whole life. The first version checked containers only; review found the gap (Sep 28).
+  - expression: (object.spec.containers + object.spec.?initContainers.orValue([])).all(c, c.image.startsWith('registry.trustfall.internal/'))
+    message: 'Quarantine Q2 is active: only images from registry.trustfall.internal may start in payments.'

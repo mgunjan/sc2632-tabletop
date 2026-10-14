@@ -1,0 +1,33 @@
+# Makes every exception time-boxed.
+#
+# Any PolicyException labeled trustfall.example/expiring=true is deleted once its
+# trustfall.example/expires-at annotation is in the past. Runs every 5 minutes.
+# An exception without the annotation is left alone by this policy — which is why the
+# Q1 Freeze policy (quarantine/q1/) refuses to admit
+# exceptions that lack an owner and an expiry in the first place.
+apiVersion: policies.kyverno.io/v1
+kind: DeletingPolicy
+metadata:
+  name: expire-policy-exceptions
+  annotations:
+    policies.kyverno.io/title: Expire time-boxed PolicyExceptions
+    policies.kyverno.io/description: >-
+      Deletes PolicyException resources whose trustfall.example/expires-at annotation
+      is earlier than now. This is how "time-boxed exception" is implemented.
+spec:
+  schedule: "*/5 * * * *"
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ['policies.kyverno.io']
+        apiVersions: ['v1']
+        operations: ['*']
+        resources: ['policyexceptions']
+        scope: Namespaced
+    objectSelector:
+      matchLabels:
+        trustfall.example/expiring: "true"
+  conditions:
+    - name: has-expiry
+      expression: "has(object.metadata.annotations) && 'trustfall.example/expires-at' in object.metadata.annotations"
+    - name: is-expired
+      expression: "timestamp(object.metadata.annotations['trustfall.example/expires-at']) < time.now()"

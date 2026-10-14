@@ -1,0 +1,1 @@
+Prevent privilege escalation by workloads in the payments namespace.

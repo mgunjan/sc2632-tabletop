@@ -1,0 +1,116 @@
+# Falco rules — syscall source. Runtime signals for Quarantine Mode, scenarios A and B.
+#
+# These DETECT. They do not act. A human declares the level (quarantine/quarantine-mode.md).
+# Q1 is the only level it's defensible to automate (it touches nothing running).
+#
+# Self-contained: no dependency on Falco's default ruleset macros. Load alongside it or alone:
+#   falco -r runtime/falco-rules-syscall.yaml
+# Validate:  falco --validate runtime/falco-rules-syscall.yaml   (CI does this; see .github/)
+#
+# What syscalls can and can't see — the honest limits:
+#   - Falco sees the SOURCE Pod's metadata (k8s.ns.name, k8s.pod.name, container.name) and the
+#     destination IP/port. It does NOT know the destination's namespace. Allow-lists are CIDRs.
+#     Fill trustfall_*_nets with your Service/Pod CIDRs for each namespace.
+#   - A tool call inside a running agent process is not a syscall event. "Called a tool
+#     outside its manifest" has to come from the tool server's own audit log (Scenario B).
+#     What syscalls DO show for an agent: it read the ServiceAccount token, and it opened a
+#     connection it shouldn't.
+
+- required_engine_version: 0.31.0
+
+# ---------------------------------------------------------------------------- lists
+
+# Destinations payments workloads may reach (CIDRs of the database, observability, and
+# kube-dns Services/Pods). Example values for a k3d lab — REPLACE for your cluster.
+- list: trustfall_payments_allowed_nets
+  items: ['"10.43.0.10/32"', '"10.42.1.0/24"', '"10.42.2.0/24"']
+
+# Kubernetes API server addresses (the `kubernetes.default` Service IP and the control plane).
+- list: trustfall_apiserver_nets
+  items: ['"10.43.0.1/32"']
+
+- list: trustfall_shells
+  items: [sh, bash, ash, dash, zsh, ksh, busybox]
+
+- list: trustfall_app_binaries
+  items: [payments-api, node, java, python, python3, tool-runner]
+
+# ---------------------------------------------------------------------------- macros
+
+- macro: trustfall_payments
+  condition: (k8s.ns.name = "payments")
+
+- macro: trustfall_outbound
+  condition: >
+    (evt.type in (connect) and evt.dir = < and fd.typechar = 4
+     and (fd.l4proto = tcp or fd.l4proto = udp)
+     and not fd.snet in ("127.0.0.0/8"))
+
+- macro: trustfall_spawned_process
+  condition: (evt.type in (execve, execveat) and evt.dir = <)
+
+- macro: trustfall_open_read
+  condition: (evt.type in (open, openat, openat2) and evt.is_open_read = true and fd.typechar = f)
+
+# ---------------------------------------------------------------------------- Q1
+
+- rule: Trustfall Financial payments workload connects outside its allow-list
+  desc: >
+    A container in payments opened a connection to an address outside the approved
+    destinations. One occurrence is a Q1 trigger (Freeze). Scenario A's first alert.
+  condition: >
+    trustfall_outbound and trustfall_payments
+    and not fd.snet in (trustfall_payments_allowed_nets)
+  output: >
+    Q1 TRIGGER outbound outside allow-list
+    (ns=%k8s.ns.name pod=%k8s.pod.name container=%container.name
+     dst=%fd.sip:%fd.sport proc=%proc.name user=%user.name)
+  priority: WARNING
+  tags: [network, lateral-movement, trustfall, quarantine-q1]
+
+# ---------------------------------------------------------------------------- Q2
+
+- rule: Trustfall Financial payments workload contacts the Kubernetes API
+  desc: >
+    A container in payments connected to the API server. Application workloads in payments
+    have no reason to. Credential misuse indicator: Q2 trigger (Constrain).
+  condition: >
+    trustfall_outbound and trustfall_payments
+    and fd.snet in (trustfall_apiserver_nets)
+  output: >
+    Q2 TRIGGER payments workload -> API server
+    (pod=%k8s.pod.name container=%container.name proc=%proc.name cmdline=%proc.cmdline dst=%fd.sip:%fd.sport)
+  priority: ERROR
+  tags: [credential-access, trustfall, quarantine-q2]
+
+- rule: Trustfall Financial agent sidecar reads the ServiceAccount token
+  desc: >
+    Scenario B. The support-assistant sidecar has no reason to read the Pod's projected
+    ServiceAccount token. If it does, the agent is about to use the workload's Kubernetes
+    identity. Q2 trigger. (The fix is automountServiceAccountToken: false — which is exactly
+    the policy the generator proposed and the exception request tried to defer.)
+  condition: >
+    trustfall_open_read and trustfall_payments
+    and container.name = "support-agent"
+    and fd.name startswith /var/run/secrets/kubernetes.io/serviceaccount/
+  output: >
+    Q2 TRIGGER agent sidecar read SA token
+    (pod=%k8s.pod.name container=%container.name file=%fd.name proc=%proc.name cmdline=%proc.cmdline)
+  priority: ERROR
+  tags: [agent, credential-access, trustfall, quarantine-q2]
+
+# ---------------------------------------------------------------------------- Q3
+
+- rule: Trustfall Financial shell spawned by an application in payments
+  desc: >
+    A shell started as a child of the application or agent binary. Code execution inside the
+    workload: Q3 trigger (Isolate).
+  condition: >
+    trustfall_spawned_process and trustfall_payments
+    and proc.name in (trustfall_shells)
+    and proc.pname in (trustfall_app_binaries)
+  output: >
+    Q3 TRIGGER shell under application
+    (pod=%k8s.pod.name container=%container.name proc=%proc.name parent=%proc.pname cmdline=%proc.cmdline user=%user.name)
+  priority: CRITICAL
+  tags: [execution, trustfall, quarantine-q3]

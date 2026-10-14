@@ -1,0 +1,311 @@
+{
+  "recorded_at": "2026-10-12T10:10:32+00:00",
+  "scenario": "a",
+  "intent_sha256": "1a4f8aaf22f3dedd734d45ac7959743b9fbde836d6b8bb5c127cd692df94993b",
+  "questions_sha256": "15018cd8574e1318abf1a490fdf6e15b1b7dbf301fff390a17f257e26137ca8e",
+  "threshold": 0.6,
+  "model": [
+    "strands-decider-2B-qwen3.5-v1-2610"
+  ],
+  "tested_against": "scenario fixtures",
+  "trace": [
+    {
+      "step": 1,
+      "what": "map the intent",
+      "detail": "4 sentences -> egress_profile, ?, restrict_api_access, ?"
+    },
+    {
+      "step": 2,
+      "what": "look at what's running",
+      "detail": "5 workloads in payments (scenario fixtures)"
+    },
+    {
+      "step": 3,
+      "what": "decide dependencies",
+      "detail": "db ASK A HUMAN 0.15 \u00b7 monitoring ASK A HUMAN 0.35 \u00b7 none ASK A HUMAN 0.26 \u00b7 storage ASK A HUMAN 0.24"
+    },
+    {
+      "step": 4,
+      "what": "write policies",
+      "detail": "restrict-egress-profile"
+    },
+    {
+      "step": 5,
+      "what": "test on running pods",
+      "detail": "nothing would be blocked"
+    },
+    {
+      "step": 6,
+      "what": "open pull request",
+      "detail": "decider-agent-a/PR.md: 0 exception request(s), 6 item(s) for a human"
+    }
+  ],
+  "requests": [],
+  "escalations": [
+    {
+      "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+      "best_guess": "egress_profile",
+      "confidence": 0.5761
+    },
+    {
+      "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+      "best_guess": "process",
+      "confidence": 0.3882
+    },
+    {
+      "about": "egress profile db",
+      "best_guess": "deny",
+      "confidence": 0.1456
+    },
+    {
+      "about": "egress profile monitoring",
+      "best_guess": "deny",
+      "confidence": 0.3465
+    },
+    {
+      "about": "egress profile none",
+      "best_guess": "deny",
+      "confidence": 0.256
+    },
+    {
+      "about": "egress profile storage",
+      "best_guess": "deny",
+      "confidence": 0.2383
+    }
+  ],
+  "accepted_blocks": [],
+  "calls": [
+    {
+      "about": "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+      "state_sha256": "4a5ea3084bc879ae8131523e1118850c2f05826174325f818b837f197ab63de8",
+      "response": {
+        "model": "strands-decider-2B-qwen3.5-v1-2610",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "egress_profile",
+            "probabilities": {
+              "egress_profile": 0.8996,
+              "deny_privilege_escalation": 0.021,
+              "restrict_registry": 0.0018,
+              "restrict_api_access": 0.0302,
+              "deny_sa_token_for_agent_sidecars": 0.0031,
+              "deny_agent_mutation_outside_namespace": 0.0101,
+              "require_ticket_on_agent_changes": 0.0014,
+              "audit_replica_surge": 0.0008,
+              "process": 0.0307,
+              "not_implementable": 0.0013
+            },
+            "confidence": 0.8884
+          }
+        },
+        "usage": {
+          "input_tokens": 393,
+          "output_tokens": 1
+        },
+        "latency_ms": 497.28
+      },
+      "choice": "egress_profile",
+      "confidence": 0.8884
+    },
+    {
+      "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+      "state_sha256": "7ece408d4dfde0105cd1c6c836db4a9d5797bd79b1c7e1a1daf048f656b95280",
+      "response": {
+        "model": "strands-decider-2B-qwen3.5-v1-2610",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "egress_profile",
+            "probabilities": {
+              "egress_profile": 0.6185,
+              "deny_privilege_escalation": 0.1877,
+              "restrict_registry": 0.0018,
+              "restrict_api_access": 0.1307,
+              "deny_sa_token_for_agent_sidecars": 0.0052,
+              "deny_agent_mutation_outside_namespace": 0.013,
+              "require_ticket_on_agent_changes": 0.0015,
+              "audit_replica_surge": 0.0009,
+              "process": 0.0391,
+              "not_implementable": 0.0016
+            },
+            "confidence": 0.5761
+          }
+        },
+        "usage": {
+          "input_tokens": 387,
+          "output_tokens": 1
+        },
+        "latency_ms": 487.37
+      },
+      "choice": "egress_profile",
+      "confidence": 0.5761
+    },
+    {
+      "about": "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+      "state_sha256": "ca5d542ce22135a5921dda733205098a9df052c1da8ebb5be6ef1bfabe509410",
+      "response": {
+        "model": "strands-decider-2B-qwen3.5-v1-2610",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "restrict_api_access",
+            "probabilities": {
+              "egress_profile": 0.2896,
+              "deny_privilege_escalation": 0.0161,
+              "restrict_registry": 0.0011,
+              "restrict_api_access": 0.667,
+              "deny_sa_token_for_agent_sidecars": 0.0023,
+              "deny_agent_mutation_outside_namespace": 0.0061,
+              "require_ticket_on_agent_changes": 0.0008,
+              "audit_replica_surge": 0.0005,
+              "process": 0.0158,
+              "not_implementable": 0.0008
+            },
+            "confidence": 0.63
+          }
+        },
+        "usage": {
+          "input_tokens": 389,
+          "output_tokens": 1
+        },
+        "latency_ms": 487.94
+      },
+      "choice": "restrict_api_access",
+      "confidence": 0.63
+    },
+    {
+      "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+      "state_sha256": "cb6cd9f8d5091dae4b492d7f358bf4e5be24490fd4827f78b32cf6a2f60f6811",
+      "response": {
+        "model": "strands-decider-2B-qwen3.5-v1-2610",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "process",
+            "probabilities": {
+              "egress_profile": 0.3871,
+              "deny_privilege_escalation": 0.034,
+              "restrict_registry": 0.0023,
+              "restrict_api_access": 0.0979,
+              "deny_sa_token_for_agent_sidecars": 0.0047,
+              "deny_agent_mutation_outside_namespace": 0.017,
+              "require_ticket_on_agent_changes": 0.0031,
+              "audit_replica_surge": 0.0021,
+              "process": 0.4494,
+              "not_implementable": 0.0025
+            },
+            "confidence": 0.3882
+          }
+        },
+        "usage": {
+          "input_tokens": 394,
+          "output_tokens": 1
+        },
+        "latency_ms": 497.74
+      },
+      "choice": "process",
+      "confidence": 0.3882
+    },
+    {
+      "about": "egress profile db",
+      "state_sha256": "b27bf9de4e6b8cd264cff03cf24823d5d2ba5f2e50e3a0e55e65f153f2a7bcd2",
+      "response": {
+        "model": "strands-decider-2B-qwen3.5-v1-2610",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny",
+            "probabilities": {
+              "preserve": 0.4272,
+              "deny": 0.5728
+            },
+            "confidence": 0.1456
+          }
+        },
+        "usage": {
+          "input_tokens": 190,
+          "output_tokens": 1
+        },
+        "latency_ms": 256.33
+      },
+      "choice": "deny",
+      "confidence": 0.1456
+    },
+    {
+      "about": "egress profile monitoring",
+      "state_sha256": "ad38645a96db0a6ed846e1a2bf9053dec509d57883f667cea5ff3572d56a7597",
+      "response": {
+        "model": "strands-decider-2B-qwen3.5-v1-2610",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny",
+            "probabilities": {
+              "preserve": 0.3267,
+              "deny": 0.6733
+            },
+            "confidence": 0.3465
+          }
+        },
+        "usage": {
+          "input_tokens": 186,
+          "output_tokens": 1
+        },
+        "latency_ms": 259.89
+      },
+      "choice": "deny",
+      "confidence": 0.3465
+    },
+    {
+      "about": "egress profile none",
+      "state_sha256": "de20fc515026c6e5821b490101e40d7a40b65e7dd15cfb9559e7cb18a085c3a7",
+      "response": {
+        "model": "strands-decider-2B-qwen3.5-v1-2610",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny",
+            "probabilities": {
+              "preserve": 0.372,
+              "deny": 0.628
+            },
+            "confidence": 0.256
+          }
+        },
+        "usage": {
+          "input_tokens": 186,
+          "output_tokens": 1
+        },
+        "latency_ms": 247.66
+      },
+      "choice": "deny",
+      "confidence": 0.256
+    },
+    {
+      "about": "egress profile storage",
+      "state_sha256": "9542a8cf2c4f84a7e4ac7baedaf08cbacfaaf47b60fb7622b16147a9cb822ab9",
+      "response": {
+        "model": "strands-decider-2B-qwen3.5-v1-2610",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny",
+            "probabilities": {
+              "preserve": 0.3809,
+              "deny": 0.6191
+            },
+            "confidence": 0.2383
+          }
+        },
+        "usage": {
+          "input_tokens": 186,
+          "output_tokens": 1
+        },
+        "latency_ms": 247.59
+      },
+      "choice": "deny",
+      "confidence": 0.2383
+    }
+  ]
+}

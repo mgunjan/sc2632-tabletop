@@ -1,0 +1,52 @@
+{
+  "provider": "laya",
+  "model": "convaiinnovations/laya-typed-decisions",
+  "runs": [
+    {
+      "run": 1,
+      "elapsed_seconds": 1.281012000021292,
+      "api_seconds": 1.2769844589638524,
+      "api_calls": 0,
+      "decision_calls": 4,
+      "input_tokens": null,
+      "output_tokens": null,
+      "estimated_usd": null,
+      "escalations": 4,
+      "exception_requests": 0,
+      "privilege_policy_present": false
+    },
+    {
+      "run": 2,
+      "elapsed_seconds": 1.2063291660160758,
+      "api_seconds": 1.2030637499992736,
+      "api_calls": 0,
+      "decision_calls": 4,
+      "input_tokens": null,
+      "output_tokens": null,
+      "estimated_usd": null,
+      "escalations": 4,
+      "exception_requests": 0,
+      "privilege_policy_present": false
+    },
+    {
+      "run": 3,
+      "elapsed_seconds": 1.1345892079989426,
+      "api_seconds": 1.1308738329971675,
+      "api_calls": 0,
+      "decision_calls": 4,
+      "input_tokens": null,
+      "output_tokens": null,
+      "estimated_usd": null,
+      "escalations": 4,
+      "exception_requests": 0,
+      "privilege_policy_present": false
+    }
+  ],
+  "median_elapsed_seconds": 1.2063291660160758,
+  "median_estimated_usd": null,
+  "local_api_charge_usd": 0,
+  "model_load_seconds": 5.166249000001699,
+  "scope": "Scenario A fixtures: API decisions, compilation, Kyverno simulation and local proposal files; no human review, deployment or cluster observation",
+  "cost_basis": "List-price estimate on 2026-10-12, not invoice; no human or operations cost",
+  "reasoning_effort": null
+}

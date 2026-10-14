@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-10-13T22:58:16.026234+00:00",
+  "resources": [
+    {
+      "kind": "clusterrolebinding",
+      "name": "sc2632-d-secret-reader-662ff0ad",
+      "absent": true
+    },
+    {
+      "kind": "clusterrole",
+      "name": "sc2632-d-secret-reader-662ff0ad",
+      "absent": true
+    },
+    {
+      "kind": "namespace",
+      "name": "sc2632-d-observe-662ff0ad",
+      "absent": true
+    },
+    {
+      "kind": "namespace",
+      "name": "sc2632-d-inventory-662ff0ad",
+      "absent": true
+    },
+    {
+      "kind": "namespace",
+      "name": "sc2632-d-database-662ff0ad",
+      "absent": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "run": 2,
+  "elapsed_seconds": 24.179462500003865,
+  "api_seconds": 23.84916399899521,
+  "api_calls": 9,
+  "input_tokens": 7222,
+  "output_tokens": 931,
+  "estimated_usd": 0.047508,
+  "escalations": 1,
+  "exception_requests": 1,
+  "privilege_policy_present": true
+}

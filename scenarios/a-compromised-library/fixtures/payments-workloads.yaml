@@ -1,0 +1,97 @@
+# Five representative workloads from the payments namespace at Trustfall Financial (fictional).
+# These are the fixtures `kyverno test` evaluates the generated policies against.
+# Each is a Pod as the admission controller would see it (the Deployment/CronJob
+# has already been expanded by the controller manager).
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: payments-api
+  namespace: payments
+  labels:
+    app: payments-api
+    trustfall.example/egress-profile: db
+spec:
+  serviceAccountName: payments-api
+  containers:
+    - name: api
+      image: registry.trustfall.internal/payments/api:2.14.3
+      securityContext:
+        allowPrivilegeEscalation: false
+        privileged: false
+        runAsNonRoot: true
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: payments-db-proxy
+  namespace: payments
+  labels:
+    app: payments-db-proxy
+    trustfall.example/egress-profile: db
+spec:
+  serviceAccountName: payments-db-proxy
+  containers:
+    - name: proxy
+      image: registry.trustfall.internal/platform/pgbouncer:1.22
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: monitoring-agent
+  namespace: payments
+  labels:
+    app: monitoring-agent
+    trustfall.example/egress-profile: monitoring
+spec:
+  serviceAccountName: monitoring-agent
+  containers:
+    - name: agent
+      image: registry.trustfall.internal/observability/agent:5.1.0
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+---
+# The nightly backup. It needs egress to the storage namespace, which is not one of
+# the approved profiles. Under the new policy it WOULD BE BLOCKED at its next run.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backup-job
+  namespace: payments
+  labels:
+    app: backup-job
+    trustfall.example/egress-profile: storage
+spec:
+  serviceAccountName: backup-job
+  restartPolicy: OnFailure
+  containers:
+    - name: backup
+      image: registry.trustfall.internal/platform/pg-backup:3.4
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+---
+# A legacy reporting job that pulls its image from a public registry.
+# The intent said nothing about registries; the agent added a registry policy anyway,
+# in Audit mode. This fixture shows what that policy would flag.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: report-runner
+  namespace: payments
+  labels:
+    app: report-runner
+    trustfall.example/egress-profile: none
+spec:
+  serviceAccountName: report-runner
+  restartPolicy: OnFailure
+  containers:
+    - name: runner
+      image: docker.io/trustfall/report-runner:0.9.7
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true

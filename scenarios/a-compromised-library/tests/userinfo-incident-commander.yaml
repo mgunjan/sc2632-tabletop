@@ -1,0 +1,9 @@
+# Who is asking: a member of the incident-commander group. The Q1/Q3 override needs the annotation
+# AND this identity; an annotation alone can be set by anyone who can create the object.
+apiVersion: cli.kyverno.io/v1alpha1
+kind: UserInfo
+metadata:
+  name: incident-commander
+userInfo:
+  username: ic@trustfall.example
+  groups: [trustfall:incident-commanders, system:authenticated]

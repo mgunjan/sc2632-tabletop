@@ -1,0 +1,34 @@
+# Standards: CSF 2.0 RS.MI-01, PR.AA-05; D3FEND Isolate: Network Isolation (D3-NI), not Evict. See standards/README.md.
+# Quarantine Q3 — admission policies. Apply with the rest of quarantine/q3/.
+---
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: q3-no-new-pods-in-payments
+  labels:
+    trustfall.example/quarantine-level: q3
+spec:
+  validationActions:
+  - Deny
+  matchConstraints:
+    resourceRules:
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      operations:
+      - CREATE
+      resources:
+      - pods
+  matchConditions:
+  - name: payments-namespace-only
+    expression: object.metadata.namespace == 'payments'
+  validations:
+  # The override is an annotation AND an identity. An annotation alone can be set by anyone who can
+  # create Pods here, including a compromised ServiceAccount, so the requester must also be in the
+  # incident-commander group. (The ReplicaSet controller is not, so Q3 still refuses replacements.)
+  - expression: >-
+      object.metadata.?annotations[?'trustfall.example/quarantine-override'].orValue('') == 'incident-commander' &&
+      request.userInfo.?groups.orValue([]).exists(g, g == 'trustfall:incident-commanders')
+    message: 'Quarantine Q3 is active: no new Pods in payments without an override from the incident commander
+      (annotation trustfall.example/quarantine-override=incident-commander, requested by a member of trustfall:incident-commanders).'

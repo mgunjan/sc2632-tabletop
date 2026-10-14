@@ -1,0 +1,62 @@
+# Standards: CSF 2.0 RS.MI-01, PR.AA-05 (least privilege). See standards/README.md.
+# Quarantine Q2/Q3: the containment is a set of labels on the suspect Pod. Protect them.
+#
+# Q2 and Q3 work by labels: suspect=true, egress-profile=quarantined, in-rotation=false and, at Q3,
+# isolated=true. Anyone with ordinary `edit` rights in payments could remove them and put the suspect
+# back on the network and back into Service rotation with one `kubectl label` (review, Sep 28).
+# This native policy (evaluated in the API server, so it holds even with Kyverno down) refuses any
+# change that LOOSENS a suspect Pod's containment unless an incident commander or a cluster admin
+# makes it. Tightening is always allowed, and so is the staged way back when the IC does it.
+# Not covered: deleting the suspect Pod (an ordinary delete or a Deployment rollout). See quarantine-mode.md.
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: q2-protect-quarantine-labels
+  labels:
+    trustfall.example/quarantine-level: q2
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+    - apiGroups: [""]
+      apiVersions: [v1]
+      operations: [UPDATE]
+      resources: [pods]
+  matchConditions:
+  - name: payments-only
+    expression: "has(request.namespace) && request.namespace == 'payments'"
+  - name: was-a-suspect
+    expression: "has(oldObject.metadata.labels) && 'trustfall.example/suspect' in oldObject.metadata.labels && oldObject.metadata.labels['trustfall.example/suspect'] == 'true'"
+  - name: not-an-incident-commander-or-admin
+    expression: >-
+      !request.userInfo.groups.exists(g, g == 'trustfall:incident-commanders' || g == 'system:masters' || g == 'trustfall:platform-admins')
+  variables:
+  - name: old
+    expression: "oldObject.metadata.labels"
+  - name: new
+    expression: "has(object.metadata.labels) ? object.metadata.labels : {}"
+  validations:
+  - expression: "'trustfall.example/suspect' in variables.new && variables.new['trustfall.example/suspect'] == 'true'"
+    message: "Quarantine: only an incident commander may clear a Pod's suspect label."
+  - expression: >-
+      !('trustfall.example/egress-profile' in variables.old && variables.old['trustfall.example/egress-profile'] == 'quarantined') ||
+      ('trustfall.example/egress-profile' in variables.new && variables.new['trustfall.example/egress-profile'] == 'quarantined')
+    message: "Quarantine: only an incident commander may change a suspect Pod's quarantined egress profile."
+  - expression: >-
+      !('trustfall.example/in-rotation' in variables.old && variables.old['trustfall.example/in-rotation'] == 'false') ||
+      ('trustfall.example/in-rotation' in variables.new && variables.new['trustfall.example/in-rotation'] == 'false')
+    message: "Quarantine: only an incident commander may put a suspect Pod back into Service rotation."
+  - expression: >-
+      !('trustfall.example/isolated' in variables.old && variables.old['trustfall.example/isolated'] == 'true') ||
+      ('trustfall.example/isolated' in variables.new && variables.new['trustfall.example/isolated'] == 'true')
+    message: "Quarantine: only an incident commander may lift a suspect Pod's isolation."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: q2-protect-quarantine-labels
+  labels:
+    trustfall.example/quarantine-level: q2
+spec:
+  policyName: q2-protect-quarantine-labels
+  validationActions: [Deny]

@@ -1,0 +1,8 @@
+# Simulate an UPDATE admission request (a label change on a running Pod), which is what
+# quarantine/capture-evidence.sh does when it marks a suspect.
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Value
+metadata:
+  name: update
+globalValues:
+  request.operation: UPDATE

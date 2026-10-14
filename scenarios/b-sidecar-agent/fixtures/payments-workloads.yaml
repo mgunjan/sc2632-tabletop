@@ -1,0 +1,108 @@
+# Scenario B fixtures. Same payments namespace as Scenario A, with one difference:
+# payments-api ships a support-assistant sidecar — an LLM agent with an MCP tool server
+# that can read the database and open tickets, so it can answer "where is my refund?".
+# It shares the Pod's network identity and, today, the Pod's ServiceAccount token.
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: payments-api
+  namespace: payments
+  labels:
+    app: payments-api
+    trustfall.example/egress-profile: db
+    trustfall.example/agent-sidecar: "true"
+spec:
+  serviceAccountName: payments-api
+  # automountServiceAccountToken is unset → defaults to true. The sidecar can read the token.
+  containers:
+    - name: api
+      image: registry.trustfall.internal/payments/api:2.14.3
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+    - name: support-agent
+      image: registry.trustfall.internal/ai/support-agent:1.3.0
+      env:
+        - name: TOOL_MANIFEST
+          value: /etc/agent/tools.yaml
+        - name: TICKET_API
+          value: https://tickets.trustfall.internal
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: payments-db-proxy
+  namespace: payments
+  labels:
+    app: payments-db-proxy
+    trustfall.example/egress-profile: db
+spec:
+  serviceAccountName: payments-db-proxy
+  automountServiceAccountToken: false
+  containers:
+    - name: proxy
+      image: registry.trustfall.internal/platform/pgbouncer:1.22
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: monitoring-agent
+  namespace: payments
+  labels:
+    app: monitoring-agent
+    trustfall.example/egress-profile: monitoring
+spec:
+  serviceAccountName: monitoring-agent
+  containers:
+    - name: agent
+      image: registry.trustfall.internal/observability/agent:5.1.0
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+---
+# In Scenario B the backup job already has an approved profile. The block lands on
+# payments-api itself — the compromised workload — which makes Round 2's exception
+# debate sharper: you are being asked to except the thing that is compromised.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backup-job
+  namespace: payments
+  labels:
+    app: backup-job
+    trustfall.example/egress-profile: db
+spec:
+  serviceAccountName: backup-job
+  automountServiceAccountToken: false
+  restartPolicy: OnFailure
+  containers:
+    - name: backup
+      image: registry.trustfall.internal/platform/pg-backup:3.4
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: report-runner
+  namespace: payments
+  labels:
+    app: report-runner
+    trustfall.example/egress-profile: none
+spec:
+  serviceAccountName: report-runner
+  restartPolicy: OnFailure
+  containers:
+    - name: runner
+      image: docker.io/trustfall/report-runner:0.9.7
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true

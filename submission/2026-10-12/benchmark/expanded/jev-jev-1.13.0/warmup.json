@@ -1,0 +1,31 @@
+{
+  "model": "jev-1.13.0",
+  "answers": {
+    "q": {
+      "type": "choice",
+      "choice": "restrict_registry",
+      "confidence": 1.0,
+      "probabilities": {
+        "egress_profile": 0.0,
+        "deny_privilege_escalation": 0.0,
+        "restrict_registry": 1.0,
+        "restrict_api_access": 0.0,
+        "deny_sa_token_for_agent_sidecars": 0.0,
+        "deny_agent_mutation_outside_namespace": 0.0,
+        "require_ticket_on_agent_changes": 0.0,
+        "audit_replica_surge": 0.0,
+        "process": 0.0,
+        "not_implementable": 0.0
+      }
+    }
+  },
+  "usage": {
+    "input_tokens": 636,
+    "output_tokens": 124
+  },
+  "configuration": {
+    "provider": "jev",
+    "requested_model": "jev-1.13.0",
+    "confidence_kind": "provider distribution-derived score"
+  }
+}

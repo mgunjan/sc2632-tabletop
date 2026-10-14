@@ -1,0 +1,30 @@
+output/*
+!output/frozen-*/
+evidence/
+__pycache__/
+tabletop/deck/proof/
+runs/
+.venv-decider/
+lab/.decider.log
+lab/.decider.pid
+lab/.decider-cached
+
+# Local API keys
+.env.jev
+.env.openai
+.env.claude
+
+# Local credentials and reproducible-build scratch files
+.env*
+!.env.example
+.session-build/
+node_modules
+submission/2026-10-12/archive/
+submission/2026-10-12/*KIT*.zip
+submission/2026-10-13/*KIT*.zip
+
+.venv-session/
+.DS_Store
+
+# Office's temporary lock files are not presentation artifacts.
+~$*

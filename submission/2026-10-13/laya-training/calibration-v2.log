@@ -1,0 +1,20 @@
+{
+  "mode": "labels_ab",
+  "cal_rows": 60,
+  "per_type": {
+    "choice": {
+      "n": 60,
+      "T": 0.8381,
+      "nll_before": 1.1881,
+      "nll_after": 1.1705
+    }
+  },
+  "per_bucket": {
+    "choice:6-10": {
+      "n": 60,
+      "T": 0.8381,
+      "nll_before": 1.1881,
+      "nll_after": 1.1705
+    }
+  }
+}

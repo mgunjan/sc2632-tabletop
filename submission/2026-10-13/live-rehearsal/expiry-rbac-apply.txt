@@ -1,0 +1,2 @@
+role.rbac.authorization.k8s.io/expire-policy-exceptions created
+rolebinding.rbac.authorization.k8s.io/expire-policy-exceptions created

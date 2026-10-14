@@ -1,0 +1,9 @@
+{
+  "status": "COMPLETE_REVIEW_PROPOSAL",
+  "mode": "reference",
+  "scenario": "a",
+  "elapsed_seconds": 1.304,
+  "deadline_seconds": 15,
+  "deployment_performed": false,
+  "api_calls_possible": false
+}

@@ -1,0 +1,20 @@
+# Scenario C's ops agent, with the permissions it "historically" had: patch any Deployment,
+# cluster-wide, including the scale subresource. Common in real clusters, and the reason the
+# guardrail needs a guard (guard/protect-the-guardrail.yaml).
+apiVersion: v1
+kind: ServiceAccount
+metadata: {name: ops-agent, namespace: agents}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata: {name: ops-agent-legacy}
+rules:
+- apiGroups: [apps]
+  resources: [deployments, deployments/scale]
+  verbs: [get, list, watch, patch, update]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata: {name: ops-agent-legacy}
+roleRef: {apiGroup: rbac.authorization.k8s.io, kind: ClusterRole, name: ops-agent-legacy}
+subjects: [{kind: ServiceAccount, name: ops-agent, namespace: agents}]

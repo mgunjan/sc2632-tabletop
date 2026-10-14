@@ -1,0 +1,25 @@
+# payments-api (with its support-agent sidecar) AFTER capture-evidence.sh relabels it.
+# automountServiceAccountToken is still unset — the Pod was created before the policy existed.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: payments-api
+  namespace: payments
+  labels:
+    app: payments-api
+    trustfall.example/egress-profile: quarantined
+    trustfall.example/suspect: "true"
+    trustfall.example/agent-sidecar: "true"
+spec:
+  serviceAccountName: payments-api
+  containers:
+    - name: api
+      image: registry.trustfall.internal/payments/api:2.14.3
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+    - name: support-agent
+      image: registry.trustfall.internal/ai/support-agent:1.3.0
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true

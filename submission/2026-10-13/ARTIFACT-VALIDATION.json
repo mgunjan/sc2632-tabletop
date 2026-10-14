@@ -1,0 +1,46 @@
+{
+  "pptx_sha256": "67a9148477c833053641b57f23a14454439516062d83a0c20b9e13813474c109",
+  "slide_count": 35,
+  "main_slides": 29,
+  "hidden_backup_slides": 6,
+  "native_tables": 11,
+  "package_findings": 0,
+  "layout_findings": 0,
+  "font_policy_passed": true,
+  "first_party_import_passed": true,
+  "native_powerpoint_verified": false,
+  "projector_verified": false,
+  "visually_inspected_changed_slides": [
+    23,
+    32
+  ],
+  "whole_deck_montage_inspected": true,
+  "pdf_35_pages_pixel_match_rendered_deck": true,
+  "handout_pages_visually_inspected": {
+    "CONTROL-REVIEW.pdf": 2,
+    "REVIEW-SCORECARD.pdf": 1,
+    "PARTICIPANT-PACK.pdf": {
+      "pages": 8,
+      "changed_pages": [
+        1,
+        5,
+        8
+      ]
+    }
+  },
+  "file_sha256": {
+    "SC2632-session-control-review.pptx": "3c6518cef73e97f550e2abcfba7fd56f7918ae51248efda929382a4da2bdeb6b",
+    "SC2632-session-control-review.pdf": "8eef47176b83d47f2acef0ae90563d389f0f10ba13c47f121e4cfef5519f7c4c",
+    "CONTROL-REVIEW.pdf": "74703651038316cd4c2419af850ff3b24041e52b2074b1e13eddc3d27cfeb238",
+    "REVIEW-SCORECARD.pdf": "f1d2eba63255c41f86cbcd6a2adb2fe0eab0ba2ed15d3c306952fc58e3f873c1",
+    "SC2632-session-four-cases.pptx": "67a9148477c833053641b57f23a14454439516062d83a0c20b9e13813474c109",
+    "SC2632-session-four-cases.pdf": "e8bc73de111519aa373c22f9fe832d3d09f88435c000a999dbe4fc31a75ded21",
+    "PARTICIPANT-PACK.pdf": "c2061eeec7049e89cdbb72bb2b443b35422d3490a7959bcab0477bc1ff5d3ab0"
+  },
+  "previous_revision": {
+    "pptx_sha256": "3c6518cef73e97f550e2abcfba7fd56f7918ae51248efda929382a4da2bdeb6b",
+    "native_tables": 10
+  },
+  "case_d_evidence": "live-rehearsal/case-d/result.json",
+  "case_d_source_sha256_matches": true
+}

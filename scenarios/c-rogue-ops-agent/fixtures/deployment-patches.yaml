@@ -1,0 +1,94 @@
+# Scenario C fixtures: Deployments as the API server sees them AFTER the ops agent's
+# patch. Evaluated with userinfo/ops-agent.yaml (the agent's ServiceAccount) and, in a
+# second run, userinfo/human-sre.yaml (a human). Same objects, different requester.
+---
+# The agent scaled payroll's API 3 → 12 with no ticket. Outside its namespace.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api
+  namespace: payments
+  labels:
+    app: payments-api
+spec:
+  replicas: 12
+  selector:
+    matchLabels:
+      app: payments-api
+  template:
+    metadata:
+      labels:
+        app: payments-api
+        trustfall.example/egress-profile: db
+    spec:
+      containers:
+        - name: api
+          image: registry.trustfall.internal/payments/api:2.14.3
+---
+# Two minutes later it patched hr-sync too. Also no ticket, also outside its namespace.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hr-sync
+  namespace: hr-sync
+  labels:
+    app: hr-sync
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: hr-sync
+  template:
+    metadata:
+      labels:
+        app: hr-sync
+    spec:
+      containers:
+        - name: sync
+          image: registry.trustfall.internal/hr/sync:0.8.2
+---
+# The agent scaling its OWN tool server, with a ticket. This is what it is for.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ops-agent-tools
+  namespace: agents
+  labels:
+    app: ops-agent-tools
+  annotations:
+    trustfall.example/ticket: OPS-2291
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ops-agent-tools
+  template:
+    metadata:
+      labels:
+        app: ops-agent-tools
+    spec:
+      containers:
+        - name: tools
+          image: registry.trustfall.internal/ai/ops-agent-tools:2.0.1
+---
+# The agent scaling its own namespace WITHOUT a ticket. Allowed by clause 1, caught by clause 2.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ops-agent-cache
+  namespace: agents
+  labels:
+    app: ops-agent-cache
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: ops-agent-cache
+  template:
+    metadata:
+      labels:
+        app: ops-agent-cache
+    spec:
+      containers:
+        - name: cache
+          image: registry.trustfall.internal/platform/redis:7.2

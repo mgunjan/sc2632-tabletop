@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["version", "status", "scope", "controls"],
+  "properties": {
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "status": {"const": "reference"}, "scope": {"type": "string", "minLength": 1},
+    "controls": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/control"}}
+  },
+  "$defs": {
+    "texts": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "control": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "owner_role", "approver_role", "objective", "implementation", "policy", "layer", "coverage", "limits", "dependencies", "tests", "platform_evidence", "exception_max_hours", "rollback", "references"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^ACG-[A-Z]{3}-[0-9]{3}$"},
+        "owner_role": {"type": "string", "minLength": 1}, "approver_role": {"type": "string", "minLength": 1},
+        "objective": {"type": "string", "minLength": 1}, "implementation": {"type": ["string", "null"]},
+        "policy": {"type": ["string", "null"]}, "layer": {"type": "string", "minLength": 1},
+        "coverage": {"type": "string", "minLength": 1}, "limits": {"$ref": "#/$defs/texts"},
+        "dependencies": {"$ref": "#/$defs/texts"}, "tests": {"$ref": "#/$defs/texts"},
+        "platform_evidence": {"$ref": "#/$defs/texts"}, "exception_max_hours": {"type": "integer", "minimum": 1, "maximum": 24},
+        "rollback": {"type": "string", "minLength": 1}, "references": {"$ref": "#/$defs/texts"}
+      }
+    }
+  }
+}

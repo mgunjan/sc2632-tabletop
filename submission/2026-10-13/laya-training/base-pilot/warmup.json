@@ -1,0 +1,35 @@
+{
+  "model": "/tmp/sc2632-model-cache/hub/models--convaiinnovations--laya-typed-decisions/snapshots/e929ae5cf69bc34259cd2f95c9e91145b818b1f0",
+  "answers": {
+    "q": {
+      "type": "choice",
+      "choice": "restrict_registry",
+      "probabilities": {
+        "egress_profile": 0.0417,
+        "deny_privilege_escalation": 0.0358,
+        "restrict_registry": 0.6273,
+        "restrict_api_access": 0.0309,
+        "deny_sa_token_for_agent_sidecars": 0.0298,
+        "deny_agent_mutation_outside_namespace": 0.0777,
+        "require_ticket_on_agent_changes": 0.0532,
+        "audit_replica_surge": 0.0274,
+        "process": 0.0554,
+        "not_implementable": 0.0209
+      },
+      "confidence": 0.6273,
+      "answer_confidence": 0.6273,
+      "action": {
+        "act_probability": 1.0
+      }
+    }
+  },
+  "usage": {
+    "input_tokens": 274,
+    "output_tokens": 0
+  },
+  "configuration": {
+    "provider": "laya",
+    "local_calibration": "not fitted",
+    "confidence_kind": "answer_confidence when available"
+  }
+}

@@ -1,0 +1,19 @@
+# REGRESSION: marking a suspect must never be refused by our own guardrails.
+# In Scenario B the suspect Pod predates the SA-token policy and doesn't comply with it.
+# The relabel (an UPDATE) must still be admitted.
+# Run: kyverno test scenarios/b-sidecar-agent/tests/ --file-name kyverno-test-quarantine-relabel.yaml
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: b-quarantine-relabel-is-admitted
+policies:
+  - ../policies/restrict-egress-profile.yaml
+  - ../policies/deny-sa-token-for-agent-sidecars.yaml
+  - ../policies/restrict-image-registry.yaml
+resources:
+  - ../fixtures/quarantine-relabel.yaml
+variables: values-update.yaml
+results:
+  - {policy: restrict-egress-profile, kind: Pod, resources: [payments/payments-api], result: pass}
+  - {policy: deny-sa-token-for-agent-sidecars, kind: Pod, resources: [payments/payments-api], result: skip}
+  - {policy: restrict-image-registry, kind: Pod, resources: [payments/payments-api], result: skip}

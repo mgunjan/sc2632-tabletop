@@ -1,0 +1,22 @@
+# Quarantine Q1 is active. Two people try to create exceptions.
+# Run:  kyverno test tests/ --file-name kyverno-test-quarantine-q1.yaml
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: quarantine-q1-freeze
+policies:
+  - ../../../quarantine/q1/deny-new-exceptions.yaml
+userinfo: userinfo-incident-commander.yaml
+resources:
+  - ../fixtures/quarantine-q1-exceptions.yaml
+results:
+  - policy: q1-freeze-deny-new-exceptions
+    kind: PolicyException
+    resources:
+      - payments/quick-fix-backup
+    result: fail
+  - policy: q1-freeze-deny-new-exceptions
+    kind: PolicyException
+    resources:
+      - payments/ic-approved-backup
+    result: pass

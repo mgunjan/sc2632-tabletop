@@ -1,0 +1,41 @@
+# Intent clause 1 (Scenario C): "Prevent the ops agent from mutating workloads outside
+# the agents namespace."
+#
+# How it maps: admission denies any Deployment create/update where the requester is the
+# agent's ServiceAccount and the namespace is not `agents`.
+#
+# Honesty note: this is AUTHORIZATION expressed as ADMISSION. The right fix is RBAC —
+# the agent's ClusterRole should never have had cluster-wide patch on deployments.
+# Admission is the backstop that holds while RBAC is fixed, and it produces an audit
+# trail RBAC denials don't. The PR body says this; the reviewer should ask why RBAC was
+# cluster-wide in the first place.
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: deny-agent-mutation-outside-namespace
+  annotations:
+    guardrails.trustfall.example/intent-clause: "1"
+    guardrails.trustfall.example/rollout-stage: enforce
+    guardrails.trustfall.example/generator-note: "Authorization expressed as admission. Backstop for an RBAC fix, not a replacement."
+    policies.kyverno.io/title: Ops agent may not mutate workloads outside agents
+    policies.kyverno.io/category: Agent Governance
+    policies.kyverno.io/severity: high
+spec:
+  validationActions:
+    - Deny
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ['apps']
+        apiVersions: [v1]
+        operations: [CREATE, UPDATE]
+        # `kubectl scale` writes deployments/scale, a subresource a rule on `deployments` never
+        # sees. Found live: the agent's scale-up went straight through when done that way.
+        resources: [deployments, statefulsets, daemonsets, deployments/scale, statefulsets/scale]
+  matchConditions:
+    - name: requester-is-ops-agent
+      expression: "request.?userInfo.?username.orValue('') == 'system:serviceaccount:agents:ops-agent'"
+  validations:
+    - expression: "object.metadata.namespace == 'agents'"
+      messageExpression: >-
+        "ops-agent may not modify " + object.kind + " " + object.metadata.namespace + "/" + object.metadata.name + ": outside the agents namespace. Open a ticket for a human to apply this change."
+      message: "The ops agent may only mutate workloads in the agents namespace."

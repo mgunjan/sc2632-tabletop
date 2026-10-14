@@ -1,0 +1,90 @@
+{
+  "encoder": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v1/encoder",
+  "head_layers": 2,
+  "max_len": 1024,
+  "head_max_len": 256,
+  "max_prefixes": 6,
+  "act_costs": {
+    "escalate": 0.5
+  },
+  "cost_wrong_act": 3.0,
+  "amp_dtype": "bf16",
+  "model_name": "laya-typed-decisions",
+  "temperature": [
+    1.0445,
+    1.0,
+    1.0
+  ],
+  "training": {
+    "updates": 7313,
+    "epochs_completed": 1,
+    "hours": 1.96,
+    "world_size": 1,
+    "fine_tuned_from_checkpoint": true
+  },
+  "gradient_checkpointing": true,
+  "max_tokens_per_batch": 4096,
+  "fine_tuned": true,
+  "trustfall_variant": {
+    "base": "/tmp/sc2632-model-cache/hub/models--convaiinnovations--laya-typed-decisions/snapshots/e929ae5cf69bc34259cd2f95c9e91145b818b1f0",
+    "subfolder": null,
+    "mode": "labels_ab",
+    "tasks": [
+      "policy_control"
+    ],
+    "freeze_encoder": true,
+    "lr": 0.0001,
+    "epochs": 1,
+    "seed": 13,
+    "repo_sha": "a426d9d",
+    "question_set": "d8a96c64675becbb",
+    "data_manifest_sha": "b8dbcf354a443bb6",
+    "calibrated": true,
+    "selection_split": "dev",
+    "question_definitions_sha256": "63a9f90d7cd98bfb9e723de886552939b02484e67c576860e9032c6ab14e5eb0",
+    "data_sha256": {
+      "train": "edd9813c6f37a7a52dd75a3faa8226fcebae2114173c8e543f1846cf18777ebb",
+      "dev": "4c7473b138a03e24aca69316e6a6c7efda775b19e5301ad2e31007d9e209dadc"
+    },
+    "training_source_sha256": "5a099b79f928215b6f8d5de59f0dd6e41a79c0cd9c03af16a47dbc575b026757",
+    "selected_epoch": 1,
+    "history": [
+      {
+        "step": 0,
+        "cal_loss": 1.4298266649246216,
+        "cal_acc": 0.5
+      },
+      {
+        "step": 120,
+        "epoch": 1,
+        "cal_loss": 0.9701553622881571,
+        "cal_acc": 0.5
+      }
+    ],
+    "completed_steps": 120,
+    "training_loop_seconds": 60.713,
+    "calibration": {
+      "mode": "labels_ab",
+      "cal_rows": 60,
+      "per_type": {
+        "choice": {
+          "n": 60,
+          "T": 1.0445,
+          "nll_before": 1.5141,
+          "nll_after": 1.5132
+        }
+      },
+      "per_bucket": {
+        "choice:6-10": {
+          "n": 60,
+          "T": 1.0445,
+          "nll_before": 1.5141,
+          "nll_after": 1.5132
+        }
+      }
+    }
+  },
+  "temperature_by_options": {
+    "choice:6-10": 1.0445
+  }
+}

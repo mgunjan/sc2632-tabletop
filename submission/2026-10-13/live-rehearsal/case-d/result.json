@@ -1,0 +1,577 @@
+{
+  "status": "PASS",
+  "started_at": "2026-10-13T22:54:00.784582+00:00",
+  "context": "k3d-sc2632-rehearsal-20261013",
+  "namespaces": [
+    "sc2632-d-observe-662ff0ad",
+    "sc2632-d-inventory-662ff0ad",
+    "sc2632-d-database-662ff0ad"
+  ],
+  "source_sha256": "589b079e2b58f9ca94db9bc2b4083a9adbc56d31a332bebb378da41695b98b42",
+  "scope": "Synthetic Secret reads in two fresh namespaces; real bearer-token authentication and CNI/RBAC changes",
+  "limits": [
+    "Stand-in HTTP health is not real monitoring delivery.",
+    "No external application credential is revoked.",
+    "No audit-server export is collected.",
+    "No generator scenario d or model-generated RBAC is claimed."
+  ],
+  "checks": [
+    {
+      "description": "baseline copied token LIST in sc2632-d-inventory-662ff0ad",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-inventory-662ff0ad/secrets"
+    },
+    {
+      "description": "baseline reads only this run's synthetic target",
+      "passed": true
+    },
+    {
+      "description": "baseline copied token GET in sc2632-d-inventory-662ff0ad",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-inventory-662ff0ad/secrets/synthetic-application-key"
+    },
+    {
+      "description": "baseline reads only this run's synthetic target",
+      "passed": true
+    },
+    {
+      "description": "baseline copied token LIST in sc2632-d-database-662ff0ad",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-database-662ff0ad/secrets"
+    },
+    {
+      "description": "baseline reads only this run's synthetic target",
+      "passed": true
+    },
+    {
+      "description": "baseline copied token GET in sc2632-d-database-662ff0ad",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-database-662ff0ad/secrets/synthetic-application-key"
+    },
+    {
+      "description": "baseline reads only this run's synthetic target",
+      "passed": true
+    },
+    {
+      "description": "baseline access review is authenticated",
+      "passed": true,
+      "http_status": 201,
+      "expected": 201,
+      "path": "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews"
+    },
+    {
+      "description": "baseline cluster-wide Secret LIST authorization",
+      "passed": true,
+      "allowed": true
+    },
+    {
+      "description": "baseline required ConfigMap GET",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/configmaps/metrics-targets"
+    },
+    {
+      "description": "baseline required named in-namespace Secret GET",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/secrets/monitoring-client-key"
+    },
+    {
+      "description": "baseline collector reaches API TCP endpoint",
+      "passed": true
+    },
+    {
+      "description": "baseline positive control reaches API TCP endpoint",
+      "passed": true
+    },
+    {
+      "description": "baseline stand-in health remains available",
+      "passed": true
+    },
+    {
+      "description": "quarantined collector cannot open new API TCP connection",
+      "passed": true
+    },
+    {
+      "description": "unquarantined positive control still reaches API TCP endpoint",
+      "passed": true
+    },
+    {
+      "description": "stand-in health remains available under quarantine",
+      "passed": true
+    },
+    {
+      "description": "after network quarantine copied token LIST in sc2632-d-inventory-662ff0ad",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-inventory-662ff0ad/secrets"
+    },
+    {
+      "description": "after network quarantine reads only this run's synthetic target",
+      "passed": true
+    },
+    {
+      "description": "after network quarantine copied token GET in sc2632-d-inventory-662ff0ad",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-inventory-662ff0ad/secrets/synthetic-application-key"
+    },
+    {
+      "description": "after network quarantine reads only this run's synthetic target",
+      "passed": true
+    },
+    {
+      "description": "after network quarantine copied token LIST in sc2632-d-database-662ff0ad",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-database-662ff0ad/secrets"
+    },
+    {
+      "description": "after network quarantine reads only this run's synthetic target",
+      "passed": true
+    },
+    {
+      "description": "after network quarantine copied token GET in sc2632-d-database-662ff0ad",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-database-662ff0ad/secrets/synthetic-application-key"
+    },
+    {
+      "description": "after network quarantine reads only this run's synthetic target",
+      "passed": true
+    },
+    {
+      "description": "after quarantine required named in-namespace Secret GET",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/secrets/monitoring-client-key"
+    },
+    {
+      "description": "after RBAC narrowing copied token LIST in sc2632-d-inventory-662ff0ad",
+      "passed": true,
+      "http_status": 403,
+      "expected": 403,
+      "path": "/api/v1/namespaces/sc2632-d-inventory-662ff0ad/secrets"
+    },
+    {
+      "description": "after RBAC narrowing copied token GET in sc2632-d-inventory-662ff0ad",
+      "passed": true,
+      "http_status": 403,
+      "expected": 403,
+      "path": "/api/v1/namespaces/sc2632-d-inventory-662ff0ad/secrets/synthetic-application-key"
+    },
+    {
+      "description": "after RBAC narrowing copied token LIST in sc2632-d-database-662ff0ad",
+      "passed": true,
+      "http_status": 403,
+      "expected": 403,
+      "path": "/api/v1/namespaces/sc2632-d-database-662ff0ad/secrets"
+    },
+    {
+      "description": "after RBAC narrowing copied token GET in sc2632-d-database-662ff0ad",
+      "passed": true,
+      "http_status": 403,
+      "expected": 403,
+      "path": "/api/v1/namespaces/sc2632-d-database-662ff0ad/secrets/synthetic-application-key"
+    },
+    {
+      "description": "after RBAC narrowing access review is authenticated",
+      "passed": true,
+      "http_status": 201,
+      "expected": 201,
+      "path": "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews"
+    },
+    {
+      "description": "after RBAC narrowing cluster-wide Secret LIST authorization",
+      "passed": true,
+      "allowed": false
+    },
+    {
+      "description": "same old token retains required ConfigMap GET",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/configmaps/metrics-targets"
+    },
+    {
+      "description": "same old token retains only required named in-namespace Secret GET",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/secrets/monitoring-client-key"
+    },
+    {
+      "description": "same old token cannot LIST in-namespace Secrets",
+      "passed": true,
+      "http_status": 403,
+      "expected": 403,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/secrets"
+    },
+    {
+      "description": "stand-in health remains available after RBAC narrowing",
+      "passed": true
+    },
+    {
+      "description": "replacement credential retains required ConfigMap GET",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/configmaps/metrics-targets"
+    },
+    {
+      "description": "replacement credential retains required named Secret GET",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/secrets/monitoring-client-key"
+    },
+    {
+      "description": "clean replacement opens its required API TCP connection",
+      "passed": true
+    },
+    {
+      "description": "old credential remains far from natural expiry",
+      "passed": true,
+      "remaining_seconds": 595.8
+    },
+    {
+      "description": "replacement stand-in remains available while revocation propagates",
+      "passed": true
+    },
+    {
+      "description": "replacement stand-in remains available while revocation propagates",
+      "passed": true
+    },
+    {
+      "description": "replacement stand-in remains available while revocation propagates",
+      "passed": true
+    },
+    {
+      "description": "replacement stand-in remains available while revocation propagates",
+      "passed": true
+    },
+    {
+      "description": "replacement stand-in remains available while revocation propagates",
+      "passed": true
+    },
+    {
+      "description": "replacement stand-in remains available while revocation propagates",
+      "passed": true
+    },
+    {
+      "description": "replacement stand-in remains available while revocation propagates",
+      "passed": true
+    },
+    {
+      "description": "replacement stand-in remains available while revocation propagates",
+      "passed": true
+    },
+    {
+      "description": "old bound credential is rejected by authentication",
+      "passed": true,
+      "http_status": 401,
+      "observed_seconds_after_delete": 41.2
+    },
+    {
+      "description": "replacement credential remains authenticated after old-token revocation",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/configmaps/metrics-targets"
+    },
+    {
+      "description": "replacement named Secret access remains available",
+      "passed": true,
+      "http_status": 200,
+      "expected": 200,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/secrets/monitoring-client-key"
+    },
+    {
+      "description": "replacement credential cannot LIST in-namespace Secrets",
+      "passed": true,
+      "http_status": 403,
+      "expected": 403,
+      "path": "/api/v1/namespaces/sc2632-d-observe-662ff0ad/secrets"
+    },
+    {
+      "description": "replacement credential copied token LIST in sc2632-d-inventory-662ff0ad",
+      "passed": true,
+      "http_status": 403,
+      "expected": 403,
+      "path": "/api/v1/namespaces/sc2632-d-inventory-662ff0ad/secrets"
+    },
+    {
+      "description": "replacement credential copied token GET in sc2632-d-inventory-662ff0ad",
+      "passed": true,
+      "http_status": 403,
+      "expected": 403,
+      "path": "/api/v1/namespaces/sc2632-d-inventory-662ff0ad/secrets/synthetic-application-key"
+    },
+    {
+      "description": "replacement credential copied token LIST in sc2632-d-database-662ff0ad",
+      "passed": true,
+      "http_status": 403,
+      "expected": 403,
+      "path": "/api/v1/namespaces/sc2632-d-database-662ff0ad/secrets"
+    },
+    {
+      "description": "replacement credential copied token GET in sc2632-d-database-662ff0ad",
+      "passed": true,
+      "http_status": 403,
+      "expected": 403,
+      "path": "/api/v1/namespaces/sc2632-d-database-662ff0ad/secrets/synthetic-application-key"
+    },
+    {
+      "description": "replacement stand-in health remains available",
+      "passed": true
+    }
+  ],
+  "operations": [
+    {
+      "description": "create Namespace/sc2632-d-observe-662ff0ad",
+      "returncode": 0,
+      "stdout": "namespace/sc2632-d-observe-662ff0ad created",
+      "stderr": ""
+    },
+    {
+      "description": "create Namespace/sc2632-d-inventory-662ff0ad",
+      "returncode": 0,
+      "stdout": "namespace/sc2632-d-inventory-662ff0ad created",
+      "stderr": ""
+    },
+    {
+      "description": "create Namespace/sc2632-d-database-662ff0ad",
+      "returncode": 0,
+      "stdout": "namespace/sc2632-d-database-662ff0ad created",
+      "stderr": ""
+    },
+    {
+      "description": "create ServiceAccount/collector",
+      "returncode": 0,
+      "stdout": "serviceaccount/collector created",
+      "stderr": ""
+    },
+    {
+      "description": "create ConfigMap/metrics-targets",
+      "returncode": 0,
+      "stdout": "configmap/metrics-targets created",
+      "stderr": ""
+    },
+    {
+      "description": "create Secret/monitoring-client-key",
+      "returncode": 0,
+      "stdout": "secret/monitoring-client-key created",
+      "stderr": ""
+    },
+    {
+      "description": "create Secret/synthetic-application-key",
+      "returncode": 0,
+      "stdout": "secret/synthetic-application-key created",
+      "stderr": ""
+    },
+    {
+      "description": "create Secret/synthetic-application-key",
+      "returncode": 0,
+      "stdout": "secret/synthetic-application-key created",
+      "stderr": ""
+    },
+    {
+      "description": "create Pod/collector-old",
+      "returncode": 0,
+      "stdout": "pod/collector-old created",
+      "stderr": ""
+    },
+    {
+      "description": "create Pod/positive-control",
+      "returncode": 0,
+      "stdout": "pod/positive-control created",
+      "stderr": ""
+    },
+    {
+      "description": "create Service/collector",
+      "returncode": 0,
+      "stdout": "service/collector created",
+      "stderr": ""
+    },
+    {
+      "description": "create Role/metrics-config-reader",
+      "returncode": 0,
+      "stdout": "role.rbac.authorization.k8s.io/metrics-config-reader created",
+      "stderr": ""
+    },
+    {
+      "description": "create RoleBinding/metrics-config-reader",
+      "returncode": 0,
+      "stdout": "rolebinding.rbac.authorization.k8s.io/metrics-config-reader created",
+      "stderr": ""
+    },
+    {
+      "description": "create ClusterRole/sc2632-d-secret-reader-662ff0ad",
+      "returncode": 0,
+      "stdout": "clusterrole.rbac.authorization.k8s.io/sc2632-d-secret-reader-662ff0ad created",
+      "stderr": ""
+    },
+    {
+      "description": "create ClusterRoleBinding/sc2632-d-secret-reader-662ff0ad",
+      "returncode": 0,
+      "stdout": "clusterrolebinding.rbac.authorization.k8s.io/sc2632-d-secret-reader-662ff0ad created",
+      "stderr": ""
+    },
+    {
+      "description": "wait for stand-in and positive control",
+      "returncode": 0,
+      "stdout": "pod/collector-old condition met\npod/positive-control condition met",
+      "stderr": ""
+    },
+    {
+      "description": "read API Service IP for DNS-independent probes",
+      "returncode": 0,
+      "stdout": "10.43.0.1",
+      "stderr": ""
+    },
+    {
+      "description": "read bound Pod UID",
+      "returncode": 0,
+      "stdout": "ba56a9f6-a07f-4874-bd38-afe6e1296bc9",
+      "stderr": ""
+    },
+    {
+      "description": "issue memory-only Pod-bound token",
+      "returncode": 0
+    },
+    {
+      "description": "apply collector egress quarantine",
+      "returncode": 0,
+      "stdout": "networkpolicy.networking.k8s.io/collector-no-egress created",
+      "stderr": ""
+    },
+    {
+      "description": "remove the excess cluster-wide binding",
+      "returncode": 0,
+      "stdout": "clusterrolebinding.rbac.authorization.k8s.io \"sc2632-d-secret-reader-662ff0ad\" deleted",
+      "stderr": ""
+    },
+    {
+      "description": "create replacement collector before revocation",
+      "returncode": 0,
+      "stdout": "pod/collector-new created",
+      "stderr": ""
+    },
+    {
+      "description": "wait for replacement health",
+      "returncode": 0,
+      "stdout": "pod/collector-new condition met",
+      "stderr": ""
+    },
+    {
+      "description": "read bound Pod UID",
+      "returncode": 0,
+      "stdout": "d489119d-09d2-4df1-830c-6458ae1d731b",
+      "stderr": ""
+    },
+    {
+      "description": "issue memory-only Pod-bound token",
+      "returncode": 0
+    },
+    {
+      "description": "delete only the old bound Pod",
+      "returncode": 0,
+      "stdout": "pod \"collector-old\" deleted from sc2632-d-observe-662ff0ad namespace",
+      "stderr": ""
+    },
+    {
+      "description": "observe old credential after bound-Pod deletion",
+      "http_status": 200
+    },
+    {
+      "description": "observe old credential after bound-Pod deletion",
+      "http_status": 200
+    },
+    {
+      "description": "observe old credential after bound-Pod deletion",
+      "http_status": 200
+    },
+    {
+      "description": "observe old credential after bound-Pod deletion",
+      "http_status": 200
+    },
+    {
+      "description": "observe old credential after bound-Pod deletion",
+      "http_status": 200
+    },
+    {
+      "description": "observe old credential after bound-Pod deletion",
+      "http_status": 200
+    },
+    {
+      "description": "observe old credential after bound-Pod deletion",
+      "http_status": 200
+    },
+    {
+      "description": "observe old credential after bound-Pod deletion",
+      "http_status": 200
+    },
+    {
+      "description": "observe old credential after bound-Pod deletion",
+      "http_status": 401
+    }
+  ],
+  "tokens": [
+    {
+      "pod": "collector-old",
+      "pod_uid": "ba56a9f6-a07f-4874-bd38-afe6e1296bc9",
+      "expires_at": "2026-10-13T23:04:02Z",
+      "stored": false
+    },
+    {
+      "pod": "collector-new",
+      "pod_uid": "d489119d-09d2-4df1-830c-6458ae1d731b",
+      "expires_at": "2026-10-13T23:04:06Z",
+      "stored": false
+    }
+  ],
+  "cleanup": [
+    {
+      "kind": "clusterrolebinding",
+      "name": "sc2632-d-secret-reader-662ff0ad",
+      "returncode": 0
+    },
+    {
+      "kind": "clusterrole",
+      "name": "sc2632-d-secret-reader-662ff0ad",
+      "returncode": 0
+    },
+    {
+      "kind": "namespace",
+      "name": "sc2632-d-observe-662ff0ad",
+      "returncode": 0
+    },
+    {
+      "kind": "namespace",
+      "name": "sc2632-d-inventory-662ff0ad",
+      "returncode": 0
+    },
+    {
+      "kind": "namespace",
+      "name": "sc2632-d-database-662ff0ad",
+      "returncode": 0
+    }
+  ],
+  "finished_at": "2026-10-13T22:54:47.817301+00:00",
+  "passed_checks": 58
+}

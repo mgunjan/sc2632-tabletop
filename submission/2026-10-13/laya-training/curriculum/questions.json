@@ -1,0 +1,20 @@
+{
+  "policy_control": {
+    "q": {
+      "type": "choice",
+      "instructions": "Which option does `clause` ask for? Read it in the context of `intent`.",
+      "criteria": {
+        "egress_profile": "restrict which workloads, namespaces or destinations a workload may connect to (east-west or outbound traffic)",
+        "deny_privilege_escalation": "stop containers running privileged, gaining more privileges than they start with, or running as root",
+        "restrict_registry": "allow container images only from an approved registry, or block images from public registries",
+        "restrict_api_access": "limit a workload's credentials, secrets or permissions on the Kubernetes API (needs RBAC; admission alone cannot)",
+        "deny_sa_token_for_agent_sidecars": "stop an AI agent or assistant sidecar from using the Pod's Kubernetes identity (its service account token)",
+        "deny_agent_mutation_outside_namespace": "stop an AI agent from changing workloads outside its own namespace",
+        "require_ticket_on_agent_changes": "require a ticket or change reference on changes an AI agent makes",
+        "audit_replica_surge": "flag sudden large increases in a workload's replica count",
+        "process": "how or when to roll out or time-box the change (staging, expiries, not disrupting service), not what to allow",
+        "not_implementable": "something admission control cannot see or enforce: reads, tool calls inside an application, runtime behaviour, people"
+      }
+    }
+  }
+}

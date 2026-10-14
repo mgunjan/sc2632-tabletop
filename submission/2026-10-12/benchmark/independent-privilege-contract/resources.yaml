@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: safe
+  namespace: payments
+spec:
+  containers:
+  - name: app
+    image: registry.example/app:v1
+    securityContext:
+      allowPrivilegeEscalation: false
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: privileged
+  namespace: payments
+spec:
+  containers:
+  - name: app
+    image: registry.example/app:v1
+    securityContext:
+      privileged: true
+      allowPrivilegeEscalation: false
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: escalation
+  namespace: payments
+spec:
+  containers:
+  - name: app
+    image: registry.example/app:v1
+    securityContext:
+      allowPrivilegeEscalation: true
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: missing-setting
+  namespace: payments
+spec:
+  containers:
+  - name: app
+    image: registry.example/app:v1
+    securityContext: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: privileged-init
+  namespace: payments
+spec:
+  containers:
+  - name: app
+    image: registry.example/app:v1
+    securityContext:
+      allowPrivilegeEscalation: false
+  initContainers:
+  - name: init
+    image: registry.example/init:v1
+    securityContext:
+      privileged: true
+      allowPrivilegeEscalation: false
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: outside-scope
+  namespace: other
+spec:
+  containers:
+  - name: app
+    image: registry.example/app:v1
+    securityContext:
+      privileged: true

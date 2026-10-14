@@ -1,0 +1,42 @@
+# Q2 and Q3 admission policies on CREATE: what they refuse, and what the IC override admits.
+# Run: kyverno test scenarios/a-compromised-library/tests/ --file-name kyverno-test-quarantine-q2-q3.yaml
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: a-quarantine-q2-q3
+policies:
+  - ../../../quarantine/q2/admission-policies.yaml
+  - ../../../quarantine/q3/admission-policies.yaml
+userinfo: userinfo-incident-commander.yaml
+resources:
+  - ../fixtures/payments-workloads.yaml
+  - ../fixtures/q3-override.yaml
+  - ../fixtures/q2-init-containers.yaml
+results:
+  # Q2: a new Pod from a non-internal registry is refused; internal images start.
+  - policy: q2-restrict-image-registry-enforce
+    kind: Pod
+    resources: [payments/report-runner]
+    result: fail
+  - policy: q2-restrict-image-registry-enforce
+    kind: Pod
+    resources: [payments/payments-api, payments/payments-db-proxy, payments/monitoring-agent, payments/backup-job, payments/clean-payments-api]
+    result: pass
+  # ...and every container the Pod starts: init containers and native sidecars too.
+  - policy: q2-restrict-image-registry-enforce
+    kind: Pod
+    resources: [payments/init-from-docker-hub, payments/native-sidecar-from-docker-hub]
+    result: fail
+  - policy: q2-restrict-image-registry-enforce
+    kind: Pod
+    resources: [payments/init-from-internal-registry]
+    result: pass
+  # Q3: no new Pods in payments at all — unless the incident commander overrides.
+  - policy: q3-no-new-pods-in-payments
+    kind: Pod
+    resources: [payments/payments-api, payments/payments-db-proxy, payments/monitoring-agent, payments/backup-job, payments/report-runner]
+    result: fail
+  - policy: q3-no-new-pods-in-payments
+    kind: Pod
+    resources: [payments/clean-payments-api]
+    result: pass

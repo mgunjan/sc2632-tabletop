@@ -1,0 +1,342 @@
+{
+  "recorded_at": "2026-10-12T11:26:24+00:00",
+  "scenario": "a",
+  "intent_sha256": "1a4f8aaf22f3dedd734d45ac7959743b9fbde836d6b8bb5c127cd692df94993b",
+  "questions_sha256": "15018cd8574e1318abf1a490fdf6e15b1b7dbf301fff390a17f257e26137ca8e",
+  "threshold": 0.6,
+  "model": [
+    "claude-opus-5-5"
+  ],
+  "tested_against": "scenario fixtures",
+  "trace": [
+    {
+      "step": 1,
+      "what": "map the intent",
+      "detail": "4 sentences -> egress_profile, deny_privilege_escalation, restrict_api_access, process"
+    },
+    {
+      "step": 2,
+      "what": "look at what's running",
+      "detail": "5 workloads in payments (scenario fixtures)"
+    },
+    {
+      "step": 3,
+      "what": "decide dependencies",
+      "detail": "db preserve 0.85 \u00b7 monitoring preserve 0.82 \u00b7 none ASK A HUMAN 0.55 \u00b7 storage preserve 0.82"
+    },
+    {
+      "step": 4,
+      "what": "write policies",
+      "detail": "deny-privilege-escalation, restrict-egress-profile"
+    },
+    {
+      "step": 5,
+      "what": "test on running pods",
+      "detail": "nothing would be blocked"
+    },
+    {
+      "step": 6,
+      "what": "open pull request",
+      "detail": "run-3/PR.md: 0 exception request(s), 1 item(s) for a human"
+    }
+  ],
+  "requests": [],
+  "escalations": [
+    {
+      "about": "egress profile none",
+      "best_guess": "deny",
+      "confidence": 0.55
+    }
+  ],
+  "accepted_blocks": [],
+  "calls": [
+    {
+      "about": "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+      "state_sha256": "4a5ea3084bc879ae8131523e1118850c2f05826174325f818b837f197ab63de8",
+      "response": {
+        "model": "claude-opus-5-5",
+        "answers": {
+          "q": {
+            "choice": "egress_profile",
+            "confidence": 0.95
+          }
+        },
+        "usage": {
+          "input_tokens": 1032,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 22,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "service_tier": "standard",
+          "inference_geo": "global"
+        },
+        "response_id": "msg_011CfxG61LZ8QAx7M8cfM6tr",
+        "configuration": {
+          "provider": "claude",
+          "reasoning_effort": "medium",
+          "confidence_kind": "generated self-rating"
+        }
+      },
+      "choice": "egress_profile",
+      "confidence": 0.95
+    },
+    {
+      "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+      "state_sha256": "7ece408d4dfde0105cd1c6c836db4a9d5797bd79b1c7e1a1daf048f656b95280",
+      "response": {
+        "model": "claude-opus-5-5",
+        "answers": {
+          "q": {
+            "choice": "deny_privilege_escalation",
+            "confidence": 0.97
+          }
+        },
+        "usage": {
+          "input_tokens": 1025,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 27,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "service_tier": "standard",
+          "inference_geo": "global"
+        },
+        "response_id": "msg_011CfxG6Bt4Uon8UxHLiLRzu",
+        "configuration": {
+          "provider": "claude",
+          "reasoning_effort": "medium",
+          "confidence_kind": "generated self-rating"
+        }
+      },
+      "choice": "deny_privilege_escalation",
+      "confidence": 0.97
+    },
+    {
+      "about": "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+      "state_sha256": "ca5d542ce22135a5921dda733205098a9df052c1da8ebb5be6ef1bfabe509410",
+      "response": {
+        "model": "claude-opus-5-5",
+        "answers": {
+          "q": {
+            "choice": "restrict_api_access",
+            "confidence": 0.95
+          }
+        },
+        "usage": {
+          "input_tokens": 1027,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 24,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "service_tier": "standard",
+          "inference_geo": "global"
+        },
+        "response_id": "msg_011CfxG6M3EcPKSnhPfzqpUo",
+        "configuration": {
+          "provider": "claude",
+          "reasoning_effort": "medium",
+          "confidence_kind": "generated self-rating"
+        }
+      },
+      "choice": "restrict_api_access",
+      "confidence": 0.95
+    },
+    {
+      "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+      "state_sha256": "cb6cd9f8d5091dae4b492d7f358bf4e5be24490fd4827f78b32cf6a2f60f6811",
+      "response": {
+        "model": "claude-opus-5-5",
+        "answers": {
+          "q": {
+            "choice": "process",
+            "confidence": 0.95
+          }
+        },
+        "usage": {
+          "input_tokens": 1031,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 18,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "service_tier": "standard",
+          "inference_geo": "global"
+        },
+        "response_id": "msg_011CfxG6TSCJQyXZo8A9c7cr",
+        "configuration": {
+          "provider": "claude",
+          "reasoning_effort": "medium",
+          "confidence_kind": "generated self-rating"
+        }
+      },
+      "choice": "process",
+      "confidence": 0.95
+    },
+    {
+      "about": "egress profile db",
+      "state_sha256": "b27bf9de4e6b8cd264cff03cf24823d5d2ba5f2e50e3a0e55e65f153f2a7bcd2",
+      "response": {
+        "model": "claude-opus-5-5",
+        "answers": {
+          "q": {
+            "choice": "preserve",
+            "confidence": 0.85
+          }
+        },
+        "usage": {
+          "input_tokens": 597,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "service_tier": "standard",
+          "inference_geo": "global"
+        },
+        "response_id": "msg_011CfxG6bYc4yga7Jk5VLckP",
+        "configuration": {
+          "provider": "claude",
+          "reasoning_effort": "medium",
+          "confidence_kind": "generated self-rating"
+        }
+      },
+      "choice": "preserve",
+      "confidence": 0.85
+    },
+    {
+      "about": "egress profile monitoring",
+      "state_sha256": "ad38645a96db0a6ed846e1a2bf9053dec509d57883f667cea5ff3572d56a7597",
+      "response": {
+        "model": "claude-opus-5-5",
+        "answers": {
+          "q": {
+            "choice": "preserve",
+            "confidence": 0.82
+          }
+        },
+        "usage": {
+          "input_tokens": 594,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 102,
+          "output_tokens_details": {
+            "thinking_tokens": 82
+          },
+          "service_tier": "standard",
+          "inference_geo": "global"
+        },
+        "response_id": "msg_011CfxG72mQP6s1GHgM3RetW",
+        "configuration": {
+          "provider": "claude",
+          "reasoning_effort": "medium",
+          "confidence_kind": "generated self-rating"
+        }
+      },
+      "choice": "preserve",
+      "confidence": 0.82
+    },
+    {
+      "about": "egress profile none",
+      "state_sha256": "de20fc515026c6e5821b490101e40d7a40b65e7dd15cfb9559e7cb18a085c3a7",
+      "response": {
+        "model": "claude-opus-5-5",
+        "answers": {
+          "q": {
+            "choice": "deny",
+            "confidence": 0.55
+          }
+        },
+        "usage": {
+          "input_tokens": 588,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 296,
+          "output_tokens_details": {
+            "thinking_tokens": 277
+          },
+          "service_tier": "standard",
+          "inference_geo": "global"
+        },
+        "response_id": "msg_011CfxG7K1UPjzNMYSnqRpFf",
+        "configuration": {
+          "provider": "claude",
+          "reasoning_effort": "medium",
+          "confidence_kind": "generated self-rating"
+        }
+      },
+      "choice": "deny",
+      "confidence": 0.55
+    },
+    {
+      "about": "egress profile storage",
+      "state_sha256": "9542a8cf2c4f84a7e4ac7baedaf08cbacfaaf47b60fb7622b16147a9cb822ab9",
+      "response": {
+        "model": "claude-opus-5-5",
+        "answers": {
+          "q": {
+            "choice": "preserve",
+            "confidence": 0.82
+          }
+        },
+        "usage": {
+          "input_tokens": 589,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 92,
+          "output_tokens_details": {
+            "thinking_tokens": 72
+          },
+          "service_tier": "standard",
+          "inference_geo": "global"
+        },
+        "response_id": "msg_011CfxG7tFxmeaiXqB1zorhf",
+        "configuration": {
+          "provider": "claude",
+          "reasoning_effort": "medium",
+          "confidence_kind": "generated self-rating"
+        }
+      },
+      "choice": "preserve",
+      "confidence": 0.82
+    }
+  ]
+}

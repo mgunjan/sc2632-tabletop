@@ -1,0 +1,15 @@
+# Q1 is declared. A human SRE makes the same patches: the agent freeze does not apply.
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: q1-freeze-agent-changes-human
+policies:
+  - ../../../quarantine/q1/freeze-agent-changes.yaml
+resources:
+  - ../fixtures/deployment-patches.yaml
+userinfo: ../userinfo/human-sre.yaml
+results:
+  - policy: q1-freeze-agent-changes
+    kind: Deployment
+    resources: [payments/payments-api, hr-sync/hr-sync, agents/ops-agent-tools, agents/ops-agent-cache]
+    result: skip

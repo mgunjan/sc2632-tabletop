@@ -1,0 +1,34 @@
+# NOT IN THE INTENT (Scenario C).
+#
+# The generator added a replica-surge check on its own: any Deployment with more than
+# 8 replicas gets an Audit entry, regardless of who made the change. The intent said
+# nothing about replica counts. It is emitted in Audit mode and flagged, and the
+# reviewer decides whether it stays.
+#
+# In this scenario the unasked control happens to be the one that would have caught
+# the 3 → 12 scale-up first. Overreach, or foresight? Same question as Scenario A.
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: audit-replica-surge
+  annotations:
+    guardrails.trustfall.example/intent-clause: "none"
+    guardrails.trustfall.example/rollout-stage: audit
+    guardrails.trustfall.example/generator-note: "Added beyond stated intent. Reviewer must accept or remove."
+    policies.kyverno.io/title: Audit replica counts above 8
+    policies.kyverno.io/category: Capacity
+    policies.kyverno.io/severity: low
+spec:
+  validationActions:
+    - Audit
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ['apps']
+        apiVersions: [v1]
+        operations: [CREATE, UPDATE]
+        resources: [deployments, deployments/scale]   # kubectl scale writes the subresource, which a 'deployments' rule never sees
+  validations:
+    - expression: "object.spec.?replicas.orValue(1) <= 8"
+      messageExpression: >-
+        object.metadata.namespace + "/" + object.metadata.name + " has " + string(object.spec.replicas) + " replicas (audit threshold 8). Not in the intent."
+      message: "Deployment replica count exceeds the audit threshold of 8."

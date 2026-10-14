@@ -1,0 +1,47 @@
+# Standards: CSF 2.0 RS.MI-01 after RS.AN-07; D3FEND Isolate: Network Isolation (D3-NI), DNS Allowlisting (D3-DNSAL), Executable Allowlisting (D3-EAL). See standards/README.md.
+# Quarantine Q2 — close the `kubectl debug` path.
+#
+# Admission policies that match `pods` do not see `pods/ephemeralcontainers`, the subresource
+# `kubectl debug` writes. On the live lab a docker.io image entered a running payments Pod under
+# Q2's registry Deny that way (scripts/lab-e2e.sh). This policy covers the subresource with the
+# same rule. Consequence you must plan for: evidence capture's debug container now needs an
+# image from the approved registry too:
+#   DEBUG_IMAGE=registry.trustfall.internal/platform/debug:1 ./quarantine/capture-evidence.sh ...
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: q2-ephemeral-containers-approved-registry
+  labels:
+    trustfall.example/quarantine-level: q2
+spec:
+  # oldObject and the added-container delta exist only during admission. Background
+  # reporting cannot list/watch this subresource; keep the admission webhook enabled.
+  evaluation:
+    background:
+      enabled: false
+  validationActions:
+  - Deny
+  matchConstraints:
+    resourceRules:
+    - apiGroups: ['']
+      apiVersions: [v1]
+      operations: [UPDATE]
+      resources: [pods/ephemeralcontainers]
+  matchConditions:
+  - name: payments-namespace-only
+    expression: object.metadata.namespace == 'payments'
+  variables:
+  # Only the containers this request ADDS. Ephemeral containers can never be removed, so a rule
+  # over all of them would make a Pod that was ever debugged with another image undebuggable
+  # forever, including by incident response. (First version did exactly that on the live lab.)
+  - name: added
+    expression: >-
+      object.spec.?ephemeralContainers.orValue([]).filter(c,
+        !oldObject.spec.?ephemeralContainers.orValue([]).exists(o, o.name == c.name))
+  validations:
+  - expression: variables.added.all(c, c.image.startsWith('registry.trustfall.internal/'))
+    message: 'Quarantine Q2 is active: debug containers in payments must use an image from registry.trustfall.internal.'
+  # --profile=sysadmin makes the debug container privileged: a root shell on the node, inside the suspect.
+  # The evidence step uses --profile=general (SYS_PTRACE only), which this still admits.
+  - expression: variables.added.all(c, !c.?securityContext.?privileged.orValue(false))
+    message: 'Quarantine Q2 is active: privileged debug containers are refused in payments (use --profile=general).'

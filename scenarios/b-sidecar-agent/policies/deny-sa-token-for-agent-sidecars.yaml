@@ -1,0 +1,42 @@
+# Intent clause 3 (Scenario B): "The support agent must not be able to use the Pod's
+# Kubernetes identity."
+#
+# How it maps: any Pod carrying trustfall.example/agent-sidecar=true must set
+# automountServiceAccountToken: false. A sidecar shares the Pod's filesystem view of the
+# projected token; the only admission-time control is to not mount it at all. The app
+# container does not need the API server either.
+#
+# This is the policy that WOULD BLOCK payments-api at its next admission. That is the
+# point: the correct fix and the availability floor collide during payroll.
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: deny-sa-token-for-agent-sidecars
+  annotations:
+    guardrails.trustfall.example/intent-clause: "3"
+    guardrails.trustfall.example/rollout-stage: enforce
+    policies.kyverno.io/title: Agent sidecars may not mount the ServiceAccount token
+    policies.kyverno.io/category: Identity
+    policies.kyverno.io/severity: high
+spec:
+  validationActions:
+    - Deny
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ['']
+        apiVersions: [v1]
+        # CREATE only: these fields are immutable on a running Pod, and evaluating them on
+        # UPDATE would refuse label changes — including quarantine relabels — on Pods that
+        # predate the policy.
+        operations: [CREATE]
+        resources: [pods]
+  matchConditions:
+    - name: payments-namespace-only
+      expression: "object.metadata.namespace == 'payments'"
+    - name: has-agent-sidecar
+      expression: "object.metadata.?labels[?'trustfall.example/agent-sidecar'].orValue('false') == 'true'"
+  validations:
+    - expression: "object.spec.?automountServiceAccountToken.orValue(true) == false"
+      messageExpression: >-
+        "Pod " + object.metadata.name + " runs an agent sidecar and must set spec.automountServiceAccountToken: false. The sidecar can otherwise read the Pod's ServiceAccount token."
+      message: "Pods with an agent sidecar must set automountServiceAccountToken: false."

@@ -1,0 +1,27 @@
+{
+  "model": "strands-decider-2B-qwen3.5-v1-2610",
+  "answers": {
+    "q": {
+      "type": "choice",
+      "choice": "restrict_registry",
+      "probabilities": {
+        "egress_profile": 0.0053,
+        "deny_privilege_escalation": 0.0021,
+        "restrict_registry": 0.9741,
+        "restrict_api_access": 0.0056,
+        "deny_sa_token_for_agent_sidecars": 0.001,
+        "deny_agent_mutation_outside_namespace": 0.0019,
+        "require_ticket_on_agent_changes": 0.0021,
+        "audit_replica_surge": 0.001,
+        "process": 0.0056,
+        "not_implementable": 0.0013
+      },
+      "confidence": 0.9712
+    }
+  },
+  "usage": {
+    "input_tokens": 332,
+    "output_tokens": 1
+  },
+  "latency_ms": 3648.53
+}

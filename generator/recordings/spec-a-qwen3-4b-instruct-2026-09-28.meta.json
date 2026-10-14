@@ -1,0 +1,18 @@
+{
+ "model": "qwen3:4b-instruct",
+ "ollama_version": "0.34.2",
+ "host": "presenter's Mac",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 8192
+ },
+ "prompt_sha256_prefix": "a4441ba59c1d5979",
+ "canonical_spec_sha256": "7d9e4aa1a6d39dd0ec9d25c0acf3305c8115b8fd29f5722c29878cc87f4a81ac",
+ "ms": 21733,
+ "prompt_eval_count": 583,
+ "eval_count": 880,
+ "total_duration_ns": 21705561708,
+ "run": "2026-09-28T05:12:56Z",
+ "note": "exact request generate.py call_ollama() sends (system prompt, user message, schema) verified by hash in the browser before the call"
+}

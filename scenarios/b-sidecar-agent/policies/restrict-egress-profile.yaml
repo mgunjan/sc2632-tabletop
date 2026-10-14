@@ -1,0 +1,46 @@
+# Intent clause 1: "Deny new east-west communication from the payments namespace
+#                   while preserving known service dependencies."
+#
+# How it maps: every Pod in payments must declare an approved egress profile label.
+# The label selects one of the baseline NetworkPolicies in
+# network/payments-baseline-networkpolicies.yaml. Under default-deny, a Pod with an
+# unapproved profile would have no egress at all, so admission rejects it instead and
+# points the owner at the exception process.
+#
+# Rollout: this file is the ENFORCE stage. The generator emits the same policy with
+# validationActions [Audit] and [Warn] for the phased rollout (see output/rollout/).
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: restrict-egress-profile
+  annotations:
+    guardrails.trustfall.example/intent-clause: "1"
+    guardrails.trustfall.example/rollout-stage: enforce
+    policies.kyverno.io/title: Restrict egress profile in payments
+    policies.kyverno.io/category: Network
+    policies.kyverno.io/severity: high
+spec:
+  validationActions:
+    - Deny
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ['']
+        apiVersions: [v1]
+        operations: [CREATE, UPDATE]
+        resources: [pods]
+  matchConditions:
+    - name: payments-namespace-only
+      expression: "object.metadata.namespace == 'payments'"
+  variables:
+    - name: profile
+      expression: "object.metadata.?labels[?'trustfall.example/egress-profile'].orValue('missing')"
+    - name: approved
+      expression: "['db', 'monitoring', 'none']"
+  validations:
+    # 'quarantined' is always admitted: it is set by quarantine/capture-evidence.sh and is
+    # strictly more restrictive than any approved profile (Q0 default-deny gives it no egress;
+    # Q2 gives it DNS only). Refusing it would let this guardrail block its own containment.
+    - expression: "variables.profile in variables.approved || variables.profile == 'quarantined'"
+      messageExpression: >-
+        "Pod " + object.metadata.name + " in payments must carry label trustfall.example/egress-profile with one of db, monitoring, none. Found: '" + variables.profile + "'. Need another profile? Open a PolicyException with an owner and trustfall.example/expires-at."
+      message: "Pod in payments must carry an approved trustfall.example/egress-profile label."

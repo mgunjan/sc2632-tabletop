@@ -1,0 +1,63 @@
+# Standards: CSF 2.0 PR.PS-01 (change freeze), RS.MA-04; OWASP Agentic ASI03. See standards/README.md.
+# Quarantine Mode — Q1 FREEZE, part 2: agents stop changing things.
+#
+# Why: a freeze that is only an instruction to an agent does not hold. In the Replit / SaaStr
+# incident (July 2025) an AI agent ran destructive commands during a declared code freeze.
+# Here the freeze is enforced by the platform: while Q1 is declared, every WRITE by an identity
+# in the `agents` namespace is refused (create, update, delete, connect; every resource and
+# subresource: scale, exec, eviction, ephemeral containers, tokens, custom resources). Reads
+# still work. Humans are not affected.
+#
+# Why a NATIVE policy and not Kyverno: Kyverno does not check its own namespace, and Kyverno
+# deletes its webhooks when scaled to zero (Finding 4). A freeze written as a Kyverno policy would
+# fall the moment the agent switched Kyverno off. This one is evaluated inside the API server.
+#
+# Scope, honestly:
+#   - Identities in the `agents` namespace only. An agent that runs under another workload's
+#     ServiceAccount (Scenario B's sidecar shares payments-api's) is not frozen by this; give each
+#     agent its own ServiceAccount.
+#   - Only changes that go through the Kubernetes API. An agent holding database or cloud
+#     credentials can still act there (Replit's agent deleted a database): freeze those layers
+#     too, or revoke the credentials at Q2.
+#   - Changes made by GitOps controllers arrive under the controller's identity, not the agent's.
+#   - The policy and its binding must be protected by RBAC: only incident commanders and platform
+#     admins may create or delete them.
+#
+# Apply:   kubectl apply -f quarantine/q1/      (with deny-new-exceptions.yaml)
+# Lift:    kubectl delete -f quarantine/q1/
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: q1-freeze-agent-changes
+  labels:
+    trustfall.example/quarantine-level: q1
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+    - apiGroups: ["*"]
+      apiVersions: ["*"]
+      operations: [CREATE, UPDATE, DELETE, CONNECT]
+      resources: ["*/*"]   # all resources and all their subresources (the API server rejects "*" alongside "*/*")
+  matchConditions:
+  - name: requester-is-an-agent
+    expression: "request.userInfo.username.startsWith('system:serviceaccount:agents:')"
+  validations:
+  - expression: "false"
+    messageExpression: >-
+      "Quarantine Q1 is declared: agents are frozen. " + request.userInfo.username + " may not " +
+      request.operation + " " + request.resource.resource +
+      (has(request.subResource) && request.subResource != '' ? "/" + request.subResource : "") + " " +
+      (has(request.namespace) && request.namespace != '' ? request.namespace + "/" : "") +
+      (has(request.name) ? request.name : "") + ". A human can make this change, or lift Q1."
+    message: "Quarantine Q1 is declared: agents are frozen. A human can make this change, or lift Q1."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: q1-freeze-agent-changes
+  labels:
+    trustfall.example/quarantine-level: q1
+spec:
+  policyName: q1-freeze-agent-changes
+  validationActions: [Deny]

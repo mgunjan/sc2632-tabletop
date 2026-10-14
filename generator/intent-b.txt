@@ -1,0 +1,1 @@
+Deny new east-west communication from the payments namespace while preserving known service dependencies. The support-assistant sidecar must not be able to use the Pod's Kubernetes identity. The sidecar may only call tools listed in its approved tool manifest. Keep the assistant running; roll out in stages and time-box any exception.

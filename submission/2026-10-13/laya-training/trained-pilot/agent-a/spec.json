@@ -1,0 +1,38 @@
+{
+  "namespace": "payments",
+  "clauses": [
+    {
+      "id": 1,
+      "text": "Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+      "control": "deny_privilege_escalation"
+    },
+    {
+      "id": 2,
+      "text": "Prevent privilege escalation by workloads in that namespace.",
+      "control": "deny_privilege_escalation"
+    },
+    {
+      "id": 3,
+      "text": "Restrict the compromised workload's access to the Kubernetes API.",
+      "control": "not_implementable",
+      "note": "ESCALATED to a human: the model was not confident enough (best guess deny_privilege_escalation, 0.41)."
+    },
+    {
+      "id": 4,
+      "text": "Do not disrupt running workloads; roll out in stages and time-box any exception.",
+      "control": "deny_privilege_escalation"
+    }
+  ],
+  "controls": {
+    "deny_privilege_escalation": {
+      "enabled": true,
+      "in_intent": true
+    }
+  },
+  "exceptions": [],
+  "rollout": [
+    "Audit",
+    "Warn",
+    "Deny"
+  ]
+}

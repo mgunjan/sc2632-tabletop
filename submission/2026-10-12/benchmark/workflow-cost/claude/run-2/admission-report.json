@@ -1,0 +1,74 @@
+{
+  "without_exceptions": [
+    {
+      "workload": "payments/backup-job",
+      "policy": "deny-privilege-escalation",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/backup-job",
+      "policy": "restrict-egress-profile",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/monitoring-agent",
+      "policy": "deny-privilege-escalation",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/monitoring-agent",
+      "policy": "restrict-egress-profile",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/payments-api",
+      "policy": "deny-privilege-escalation",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/payments-api",
+      "policy": "restrict-egress-profile",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/payments-db-proxy",
+      "policy": "deny-privilege-escalation",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/payments-db-proxy",
+      "policy": "restrict-egress-profile",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/report-runner",
+      "policy": "deny-privilege-escalation",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "payments/report-runner",
+      "policy": "restrict-egress-profile",
+      "action": "Deny",
+      "result": "WOULD BLOCK",
+      "message": "Pod report-runner in payments must carry label trustfall.example/egress-profile with one of db, monitoring, storage. Found: 'none'. Need another profile? Open a PolicyException with an owner and a TTL."
+    }
+  ]
+}

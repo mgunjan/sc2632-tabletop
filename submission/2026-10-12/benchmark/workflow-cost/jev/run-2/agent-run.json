@@ -1,0 +1,333 @@
+{
+  "recorded_at": "2026-10-12T11:25:13+00:00",
+  "scenario": "a",
+  "intent_sha256": "1a4f8aaf22f3dedd734d45ac7959743b9fbde836d6b8bb5c127cd692df94993b",
+  "questions_sha256": "15018cd8574e1318abf1a490fdf6e15b1b7dbf301fff390a17f257e26137ca8e",
+  "threshold": 0.6,
+  "model": [
+    "jev-1.13.0"
+  ],
+  "tested_against": "scenario fixtures",
+  "trace": [
+    {
+      "step": 1,
+      "what": "map the intent",
+      "detail": "4 sentences -> egress_profile, deny_privilege_escalation, restrict_api_access, process"
+    },
+    {
+      "step": 2,
+      "what": "look at what's running",
+      "detail": "5 workloads in payments (scenario fixtures)"
+    },
+    {
+      "step": 3,
+      "what": "decide dependencies",
+      "detail": "db ASK A HUMAN 0.32 \u00b7 monitoring ASK A HUMAN 0.54 \u00b7 none ASK A HUMAN 0.32 \u00b7 storage ASK A HUMAN 0.40"
+    },
+    {
+      "step": 4,
+      "what": "write policies",
+      "detail": "deny-privilege-escalation, restrict-egress-profile"
+    },
+    {
+      "step": 5,
+      "what": "test on running pods",
+      "detail": "nothing would be blocked"
+    },
+    {
+      "step": 6,
+      "what": "open pull request",
+      "detail": "run-2/PR.md: 0 exception request(s), 4 item(s) for a human"
+    }
+  ],
+  "requests": [],
+  "escalations": [
+    {
+      "about": "egress profile db",
+      "best_guess": "preserve",
+      "confidence": 0.32
+    },
+    {
+      "about": "egress profile monitoring",
+      "best_guess": "preserve",
+      "confidence": 0.54
+    },
+    {
+      "about": "egress profile none",
+      "best_guess": "preserve",
+      "confidence": 0.32
+    },
+    {
+      "about": "egress profile storage",
+      "best_guess": "preserve",
+      "confidence": 0.4
+    }
+  ],
+  "accepted_blocks": [],
+  "calls": [
+    {
+      "about": "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+      "state_sha256": "4a5ea3084bc879ae8131523e1118850c2f05826174325f818b837f197ab63de8",
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "egress_profile",
+            "confidence": 1.0,
+            "probabilities": {
+              "egress_profile": 1.0,
+              "deny_privilege_escalation": 0.0,
+              "restrict_registry": 0.0,
+              "restrict_api_access": 0.0,
+              "deny_sa_token_for_agent_sidecars": 0.0,
+              "deny_agent_mutation_outside_namespace": 0.0,
+              "require_ticket_on_agent_changes": 0.0,
+              "audit_replica_surge": 0.0,
+              "process": 0.0,
+              "not_implementable": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 699,
+          "output_tokens": 125
+        },
+        "configuration": {
+          "provider": "jev",
+          "requested_model": "jev-1.13.0",
+          "confidence_kind": "provider distribution-derived score"
+        }
+      },
+      "choice": "egress_profile",
+      "confidence": 1.0
+    },
+    {
+      "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+      "state_sha256": "7ece408d4dfde0105cd1c6c836db4a9d5797bd79b1c7e1a1daf048f656b95280",
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "deny_privilege_escalation",
+            "confidence": 0.74,
+            "probabilities": {
+              "egress_profile": 0.21,
+              "deny_privilege_escalation": 0.77,
+              "restrict_registry": 0.0,
+              "restrict_api_access": 0.02,
+              "deny_sa_token_for_agent_sidecars": 0.0,
+              "deny_agent_mutation_outside_namespace": 0.0,
+              "require_ticket_on_agent_changes": 0.0,
+              "audit_replica_surge": 0.0,
+              "process": 0.0,
+              "not_implementable": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 694,
+          "output_tokens": 129
+        },
+        "configuration": {
+          "provider": "jev",
+          "requested_model": "jev-1.13.0",
+          "confidence_kind": "provider distribution-derived score"
+        }
+      },
+      "choice": "deny_privilege_escalation",
+      "confidence": 0.74
+    },
+    {
+      "about": "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+      "state_sha256": "ca5d542ce22135a5921dda733205098a9df052c1da8ebb5be6ef1bfabe509410",
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "restrict_api_access",
+            "confidence": 0.99,
+            "probabilities": {
+              "egress_profile": 0.01,
+              "deny_privilege_escalation": 0.0,
+              "restrict_registry": 0.0,
+              "restrict_api_access": 0.99,
+              "deny_sa_token_for_agent_sidecars": 0.0,
+              "deny_agent_mutation_outside_namespace": 0.0,
+              "require_ticket_on_agent_changes": 0.0,
+              "audit_replica_surge": 0.0,
+              "process": 0.0,
+              "not_implementable": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 695,
+          "output_tokens": 125
+        },
+        "configuration": {
+          "provider": "jev",
+          "requested_model": "jev-1.13.0",
+          "confidence_kind": "provider distribution-derived score"
+        }
+      },
+      "choice": "restrict_api_access",
+      "confidence": 0.99
+    },
+    {
+      "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+      "state_sha256": "cb6cd9f8d5091dae4b492d7f358bf4e5be24490fd4827f78b32cf6a2f60f6811",
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "process",
+            "confidence": 0.81,
+            "probabilities": {
+              "egress_profile": 0.16,
+              "deny_privilege_escalation": 0.0,
+              "restrict_registry": 0.0,
+              "restrict_api_access": 0.01,
+              "deny_sa_token_for_agent_sidecars": 0.0,
+              "deny_agent_mutation_outside_namespace": 0.0,
+              "require_ticket_on_agent_changes": 0.0,
+              "audit_replica_surge": 0.0,
+              "process": 0.83,
+              "not_implementable": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 701,
+          "output_tokens": 123
+        },
+        "configuration": {
+          "provider": "jev",
+          "requested_model": "jev-1.13.0",
+          "confidence_kind": "provider distribution-derived score"
+        }
+      },
+      "choice": "process",
+      "confidence": 0.81
+    },
+    {
+      "about": "egress profile db",
+      "state_sha256": "b27bf9de4e6b8cd264cff03cf24823d5d2ba5f2e50e3a0e55e65f153f2a7bcd2",
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "preserve",
+            "confidence": 0.32,
+            "probabilities": {
+              "preserve": 0.66,
+              "deny": 0.34
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 444,
+          "output_tokens": 33
+        },
+        "configuration": {
+          "provider": "jev",
+          "requested_model": "jev-1.13.0",
+          "confidence_kind": "provider distribution-derived score"
+        }
+      },
+      "choice": "preserve",
+      "confidence": 0.32
+    },
+    {
+      "about": "egress profile monitoring",
+      "state_sha256": "ad38645a96db0a6ed846e1a2bf9053dec509d57883f667cea5ff3572d56a7597",
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "preserve",
+            "confidence": 0.54,
+            "probabilities": {
+              "preserve": 0.77,
+              "deny": 0.23
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 439,
+          "output_tokens": 33
+        },
+        "configuration": {
+          "provider": "jev",
+          "requested_model": "jev-1.13.0",
+          "confidence_kind": "provider distribution-derived score"
+        }
+      },
+      "choice": "preserve",
+      "confidence": 0.54
+    },
+    {
+      "about": "egress profile none",
+      "state_sha256": "de20fc515026c6e5821b490101e40d7a40b65e7dd15cfb9559e7cb18a085c3a7",
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "preserve",
+            "confidence": 0.32,
+            "probabilities": {
+              "preserve": 0.66,
+              "deny": 0.34
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 441,
+          "output_tokens": 33
+        },
+        "configuration": {
+          "provider": "jev",
+          "requested_model": "jev-1.13.0",
+          "confidence_kind": "provider distribution-derived score"
+        }
+      },
+      "choice": "preserve",
+      "confidence": 0.32
+    },
+    {
+      "about": "egress profile storage",
+      "state_sha256": "9542a8cf2c4f84a7e4ac7baedaf08cbacfaaf47b60fb7622b16147a9cb822ab9",
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "q": {
+            "type": "choice",
+            "choice": "preserve",
+            "confidence": 0.4,
+            "probabilities": {
+              "preserve": 0.7,
+              "deny": 0.3
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 439,
+          "output_tokens": 33
+        },
+        "configuration": {
+          "provider": "jev",
+          "requested_model": "jev-1.13.0",
+          "confidence_kind": "provider distribution-derived score"
+        }
+      },
+      "choice": "preserve",
+      "confidence": 0.4
+    }
+  ]
+}

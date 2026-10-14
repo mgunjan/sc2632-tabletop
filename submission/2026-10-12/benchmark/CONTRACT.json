@@ -1,0 +1,15 @@
+{
+  "cases_sha256": "e1f61778c0318a4e48e1c4736688772a39381a116668a49dde8b5bf429e92209",
+  "source_eval_sha256": "4533aaa75fee0299a3106088b986acc7cf5516d9586e8c348d9aa7b0b2edfbe6",
+  "scored_items": 33,
+  "hostile_report_only": 4,
+  "routing_threshold": 0.6,
+  "matched_coverage": [
+    0.5,
+    0.75,
+    1.0
+  ],
+  "claim_limit": "Author-labelled paired pilot on one Mac, two differently sized/quantized models and runtimes. No universal model-class superiority claim.",
+  "success_rule": "Prefer a candidate only if it reduces confident wrong choices and preserves required control coverage. Assess latency only alongside decision quality.",
+  "fairness": "Same state, instructions, options, fixtures, template compiler and agent harness. LLM gets a constrained choice schema, temperature 0, fixed seed, thinking disabled. No test-set fine-tuning or post-result label changes."
+}

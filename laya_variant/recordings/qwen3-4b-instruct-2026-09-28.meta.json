@@ -1,0 +1,15 @@
+{
+ "model": "qwen3:4b-instruct",
+ "ollama_version": "0.34.2",
+ "host": "presenter's Mac (Ollama, reached from the desktop app's browser pane)",
+ "options": {
+  "temperature": 0,
+  "num_ctx": 8192
+ },
+ "workers": 2,
+ "started": "2026-09-28T05:06:15.563Z",
+ "finished": "2026-09-28T05:10:06.242Z",
+ "prompt_sha256": "6342d6064509b1e3e015abd3245c3578006de98940340622daccc7e5eb05fe77",
+ "schema_sha256": "8aead189b13d950565bd39afa91d5378641b24437b1b48edd0356b2f38fab90b",
+ "answers_sha256": "79733cfc8b25c33becb94cba23f5fe52d526d7a81808a36e4c93c1a22541b9f8"
+}

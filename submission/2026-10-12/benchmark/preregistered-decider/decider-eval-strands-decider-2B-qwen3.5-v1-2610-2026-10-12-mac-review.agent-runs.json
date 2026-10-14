@@ -1,0 +1,442 @@
+[
+  {
+    "repeat": 0,
+    "finished": true,
+    "privilege_policy": false,
+    "trace": [
+      "map the intent: 4 sentences -> egress_profile, ?, restrict_api_access, ?",
+      "look at what's running: 5 workloads in payments (scenario fixtures)",
+      "decide dependencies: db ASK A HUMAN 0.15 \u00b7 monitoring ASK A HUMAN 0.35 \u00b7 none ASK A HUMAN 0.26 \u00b7 storage ASK A HUMAN 0.24",
+      "write policies: restrict-egress-profile",
+      "test on running pods: nothing would be blocked",
+      "open pull request: pr/PR.md: 0 exception request(s), 6 item(s) for a human"
+    ],
+    "decisions": [
+      [
+        "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+        "egress_profile",
+        0.8884
+      ],
+      [
+        "sentence: Prevent privilege escalation by workloads in that namespace.",
+        "egress_profile",
+        0.5761
+      ],
+      [
+        "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+        "restrict_api_access",
+        0.63
+      ],
+      [
+        "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+        "process",
+        0.3882
+      ],
+      [
+        "egress profile db",
+        "deny",
+        0.1456
+      ],
+      [
+        "egress profile monitoring",
+        "deny",
+        0.3465
+      ],
+      [
+        "egress profile none",
+        "deny",
+        0.256
+      ],
+      [
+        "egress profile storage",
+        "deny",
+        0.2383
+      ]
+    ],
+    "requests": [],
+    "escalations": [
+      {
+        "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+        "best_guess": "egress_profile",
+        "confidence": 0.5761
+      },
+      {
+        "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+        "best_guess": "process",
+        "confidence": 0.3882
+      },
+      {
+        "about": "egress profile db",
+        "best_guess": "deny",
+        "confidence": 0.1456
+      },
+      {
+        "about": "egress profile monitoring",
+        "best_guess": "deny",
+        "confidence": 0.3465
+      },
+      {
+        "about": "egress profile none",
+        "best_guess": "deny",
+        "confidence": 0.256
+      },
+      {
+        "about": "egress profile storage",
+        "best_guess": "deny",
+        "confidence": 0.2383
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "finished": true,
+    "privilege_policy": false,
+    "trace": [
+      "map the intent: 4 sentences -> egress_profile, ?, restrict_api_access, ?",
+      "look at what's running: 5 workloads in payments (scenario fixtures)",
+      "decide dependencies: db ASK A HUMAN 0.15 \u00b7 monitoring ASK A HUMAN 0.35 \u00b7 none ASK A HUMAN 0.26 \u00b7 storage ASK A HUMAN 0.24",
+      "write policies: restrict-egress-profile",
+      "test on running pods: nothing would be blocked",
+      "open pull request: pr/PR.md: 0 exception request(s), 6 item(s) for a human"
+    ],
+    "decisions": [
+      [
+        "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+        "egress_profile",
+        0.8884
+      ],
+      [
+        "sentence: Prevent privilege escalation by workloads in that namespace.",
+        "egress_profile",
+        0.5761
+      ],
+      [
+        "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+        "restrict_api_access",
+        0.63
+      ],
+      [
+        "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+        "process",
+        0.3882
+      ],
+      [
+        "egress profile db",
+        "deny",
+        0.1456
+      ],
+      [
+        "egress profile monitoring",
+        "deny",
+        0.3465
+      ],
+      [
+        "egress profile none",
+        "deny",
+        0.256
+      ],
+      [
+        "egress profile storage",
+        "deny",
+        0.2383
+      ]
+    ],
+    "requests": [],
+    "escalations": [
+      {
+        "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+        "best_guess": "egress_profile",
+        "confidence": 0.5761
+      },
+      {
+        "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+        "best_guess": "process",
+        "confidence": 0.3882
+      },
+      {
+        "about": "egress profile db",
+        "best_guess": "deny",
+        "confidence": 0.1456
+      },
+      {
+        "about": "egress profile monitoring",
+        "best_guess": "deny",
+        "confidence": 0.3465
+      },
+      {
+        "about": "egress profile none",
+        "best_guess": "deny",
+        "confidence": 0.256
+      },
+      {
+        "about": "egress profile storage",
+        "best_guess": "deny",
+        "confidence": 0.2383
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "finished": true,
+    "privilege_policy": false,
+    "trace": [
+      "map the intent: 4 sentences -> egress_profile, ?, restrict_api_access, ?",
+      "look at what's running: 5 workloads in payments (scenario fixtures)",
+      "decide dependencies: db ASK A HUMAN 0.15 \u00b7 monitoring ASK A HUMAN 0.35 \u00b7 none ASK A HUMAN 0.26 \u00b7 storage ASK A HUMAN 0.24",
+      "write policies: restrict-egress-profile",
+      "test on running pods: nothing would be blocked",
+      "open pull request: pr/PR.md: 0 exception request(s), 6 item(s) for a human"
+    ],
+    "decisions": [
+      [
+        "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+        "egress_profile",
+        0.8884
+      ],
+      [
+        "sentence: Prevent privilege escalation by workloads in that namespace.",
+        "egress_profile",
+        0.5761
+      ],
+      [
+        "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+        "restrict_api_access",
+        0.63
+      ],
+      [
+        "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+        "process",
+        0.3882
+      ],
+      [
+        "egress profile db",
+        "deny",
+        0.1456
+      ],
+      [
+        "egress profile monitoring",
+        "deny",
+        0.3465
+      ],
+      [
+        "egress profile none",
+        "deny",
+        0.256
+      ],
+      [
+        "egress profile storage",
+        "deny",
+        0.2383
+      ]
+    ],
+    "requests": [],
+    "escalations": [
+      {
+        "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+        "best_guess": "egress_profile",
+        "confidence": 0.5761
+      },
+      {
+        "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+        "best_guess": "process",
+        "confidence": 0.3882
+      },
+      {
+        "about": "egress profile db",
+        "best_guess": "deny",
+        "confidence": 0.1456
+      },
+      {
+        "about": "egress profile monitoring",
+        "best_guess": "deny",
+        "confidence": 0.3465
+      },
+      {
+        "about": "egress profile none",
+        "best_guess": "deny",
+        "confidence": 0.256
+      },
+      {
+        "about": "egress profile storage",
+        "best_guess": "deny",
+        "confidence": 0.2383
+      }
+    ]
+  },
+  {
+    "repeat": 3,
+    "finished": true,
+    "privilege_policy": false,
+    "trace": [
+      "map the intent: 4 sentences -> egress_profile, ?, restrict_api_access, ?",
+      "look at what's running: 5 workloads in payments (scenario fixtures)",
+      "decide dependencies: db ASK A HUMAN 0.15 \u00b7 monitoring ASK A HUMAN 0.35 \u00b7 none ASK A HUMAN 0.26 \u00b7 storage ASK A HUMAN 0.24",
+      "write policies: restrict-egress-profile",
+      "test on running pods: nothing would be blocked",
+      "open pull request: pr/PR.md: 0 exception request(s), 6 item(s) for a human"
+    ],
+    "decisions": [
+      [
+        "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+        "egress_profile",
+        0.8884
+      ],
+      [
+        "sentence: Prevent privilege escalation by workloads in that namespace.",
+        "egress_profile",
+        0.5761
+      ],
+      [
+        "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+        "restrict_api_access",
+        0.63
+      ],
+      [
+        "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+        "process",
+        0.3882
+      ],
+      [
+        "egress profile db",
+        "deny",
+        0.1456
+      ],
+      [
+        "egress profile monitoring",
+        "deny",
+        0.3465
+      ],
+      [
+        "egress profile none",
+        "deny",
+        0.256
+      ],
+      [
+        "egress profile storage",
+        "deny",
+        0.2383
+      ]
+    ],
+    "requests": [],
+    "escalations": [
+      {
+        "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+        "best_guess": "egress_profile",
+        "confidence": 0.5761
+      },
+      {
+        "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+        "best_guess": "process",
+        "confidence": 0.3882
+      },
+      {
+        "about": "egress profile db",
+        "best_guess": "deny",
+        "confidence": 0.1456
+      },
+      {
+        "about": "egress profile monitoring",
+        "best_guess": "deny",
+        "confidence": 0.3465
+      },
+      {
+        "about": "egress profile none",
+        "best_guess": "deny",
+        "confidence": 0.256
+      },
+      {
+        "about": "egress profile storage",
+        "best_guess": "deny",
+        "confidence": 0.2383
+      }
+    ]
+  },
+  {
+    "repeat": 4,
+    "finished": true,
+    "privilege_policy": false,
+    "trace": [
+      "map the intent: 4 sentences -> egress_profile, ?, restrict_api_access, ?",
+      "look at what's running: 5 workloads in payments (scenario fixtures)",
+      "decide dependencies: db ASK A HUMAN 0.15 \u00b7 monitoring ASK A HUMAN 0.35 \u00b7 none ASK A HUMAN 0.26 \u00b7 storage ASK A HUMAN 0.24",
+      "write policies: restrict-egress-profile",
+      "test on running pods: nothing would be blocked",
+      "open pull request: pr/PR.md: 0 exception request(s), 6 item(s) for a human"
+    ],
+    "decisions": [
+      [
+        "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+        "egress_profile",
+        0.8884
+      ],
+      [
+        "sentence: Prevent privilege escalation by workloads in that namespace.",
+        "egress_profile",
+        0.5761
+      ],
+      [
+        "sentence: Restrict the compromised workload's access to the Kubernetes API.",
+        "restrict_api_access",
+        0.63
+      ],
+      [
+        "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+        "process",
+        0.3882
+      ],
+      [
+        "egress profile db",
+        "deny",
+        0.1456
+      ],
+      [
+        "egress profile monitoring",
+        "deny",
+        0.3465
+      ],
+      [
+        "egress profile none",
+        "deny",
+        0.256
+      ],
+      [
+        "egress profile storage",
+        "deny",
+        0.2383
+      ]
+    ],
+    "requests": [],
+    "escalations": [
+      {
+        "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
+        "best_guess": "egress_profile",
+        "confidence": 0.5761
+      },
+      {
+        "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
+        "best_guess": "process",
+        "confidence": 0.3882
+      },
+      {
+        "about": "egress profile db",
+        "best_guess": "deny",
+        "confidence": 0.1456
+      },
+      {
+        "about": "egress profile monitoring",
+        "best_guess": "deny",
+        "confidence": 0.3465
+      },
+      {
+        "about": "egress profile none",
+        "best_guess": "deny",
+        "confidence": 0.256
+      },
+      {
+        "about": "egress profile storage",
+        "best_guess": "deny",
+        "confidence": 0.2383
+      }
+    ]
+  }
+]

@@ -1,0 +1,87 @@
+commit 70b87bb +uncommitted changes · Server Version: v1.33.4+k3s1 · Version: 1.19.1
+Resetting to Q0...
+
+Q0 baseline — admission   [CSF PR.PS-01 · PSS Baseline]
+  PASS payments-api (profile db) is admitted
+  PASS monitoring-agent (profile monitoring) is admitted
+  PASS backup-job (profile storage) is REFUSED
+  PASS report-runner (docker.io image) admitted — registry rule is Audit
+  PASS payments-api Deployment (3 replicas) + PDB minAvailable 2
+  PASS all 3 replicas Ready
+
+Q0 baseline — NetworkPolicy is enforced (real CNI, real Pods)
+  PASS positive control: an unrestricted Pod reaches hr-sync, inventory, the API server and the database
+  PASS profile db reaches database:5432
+command terminated with exit code 1
+  PASS profile db cannot reach hr-sync
+command terminated with exit code 1
+  PASS profile db cannot reach inventory
+command terminated with exit code 1
+  PASS profile db cannot reach the API server
+
+Exception — time-boxed, and only from payments
+  PASS an exception created outside payments is ignored: backup-job still REFUSED
+  PASS exception for backup-job is created
+  PASS backup-job is now admitted under the exception
+  PASS exception carries cleanup TTL (24h)
+
+Q1 Freeze   [CSF RS.MA-02 · RS.MA-04 · PR.AA-05: the override is identity-checked]
+  PASS declare Q1
+  PASS quick-fix exception (no owner/TTL/override) is REFUSED by the Q1 exception freeze
+  PASS a developer who copies the IC override annotation is REFUSED (identity, not just annotation)
+  PASS incident commander's exception is admitted
+  PASS Q1: the ops agent is REFUSED by the freeze itself (its RBAC would allow it)
+  PASS Q1: a human's change still goes through during the freeze
+
+Evidence before containment — capture-evidence.sh against a real kubelet   [CSF RS.AN-07]
+  PASS capture completed (exit 0)
+  PASS live process list captured via ephemeral debug container
+  PASS container logs captured
+  PASS SHA256SUMS verifies
+  GAP  no memory checkpoint: Error from server (InternalError): an error on the server ("checkpointing of payments/payments-api-6665cfc464-clfc7/api failed (rpc error: code = Unknown desc =
+  PASS suspect relabelled LAST
+  PASS the debug container is recorded permanently in the Pod spec (the evidence footprint)
+
+Q2 Constrain   [CSF RS.MI-01 · D3FEND Network Isolation, DNS Allowlisting, Executable Allowlisting]
+  PASS declare Q2 (admission + network)
+  PASS suspect is DNS-only: database unreachable
+  PASS suspect still resolves DNS (Q2 allows it)
+  PASS clean replica still reaches the database (payroll continues)
+  PASS gateway reaches a clean replica on 8443
+  PASS gateway ingress to the suspect is closed
+  PASS suspect is out of the Service endpoints (in-rotation=false), and still running
+  PASS clean replica is still a Service endpoint
+  PASS the ReplicaSet still owns the suspect: no replacement spawned
+  PASS a docker.io INIT container is REFUSED under Q2 (every container the Pod starts is checked)
+  PASS a docker.io NATIVE SIDECAR (initContainer, restartPolicy Always) is REFUSED under Q2
+  PASS a developer removing the suspect label is REFUSED (the containment is labels; they are protected)
+  PASS a developer putting the suspect back into Service rotation is REFUSED
+  PASS the incident commander can lift it (the staged way back)
+  PASS a developer can still tighten (add a label) on the suspect
+  PASS a new docker.io Pod is REFUSED under Q2
+  PASS relabel report-runner (non-compliant image) under Q2's Deny
+  PASS kubectl debug with a docker.io image is REFUSED under Q2 (subresource covered)
+  PASS a PRIVILEGED debug container (--profile=sysadmin) is REFUSED, even with the approved image
+  PASS kubectl debug with the approved debug image is admitted, even on a Pod that already has an old debug container
+
+Q3 Isolate — the network step needs a label, and the PDB turns eviction into a deadlock   [CSF RS.MI-01 · D3FEND Isolate, not Evict]
+  PASS declare Q3
+  PASS Q3: the override annotation from a developer is REFUSED
+  PASS Q3: the same Pod from the incident commander is admitted
+  PASS Q3 applied but suspect not yet labelled isolated: DNS still works (NetworkPolicies only add allows)
+  PASS isolated suspect loses DNS too — Q3 deny-all now actually holds
+  PASS evidence captured on suspect 2 under Q3 with the approved debug image
+  PASS evict suspect 1: allowed by the PDB (3 → 2)
+  PASS replacement Pod REFUSED by Q3 — the ReplicaSet cannot restore capacity
+  PASS evict suspect 2: REFUSED by the PDB (2 = minAvailable), and it stays stuck while Q3 holds
+  PASS …and evicting suspect 1 is destroying it — only the evidence captured beforehand survives
+
+Guard the guardrail — the agent, the scale subresource, and the policy engine itself   [ATT&CK v19 T1685 · CSF PR.AA-05]
+  PASS Q1 declared, guard removed: the native freeze still stops the agent switching Kyverno off
+  PASS the agent's PATCH of payments-api outside its namespace is REFUSED
+  PASS agent uses kubectl scale (deployments/scale subresource) — now covered
+  GAP  Kyverno skips kube-system: the agent's legacy role can change coredns and Scenario C's rule never sees it (RBAC is the control)
+  GAP  without a guard: the agent scaled Kyverno to 0, Kyverno removed its own webhooks (       7 ->        2), and a docker.io Pod was admitted into payments. Every Kyverno admission rule was gone (NetworkPolicies still held), with no error or refusal
+  PASS with the in-API-server guard: the agent can no longer scale Kyverno to 0
+
+LAB E2E: ALL PASSED (3 documented gaps confirmed)

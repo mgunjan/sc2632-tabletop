@@ -1,0 +1,41 @@
+# Time-boxed exception, requested by the generator, decided by the reviewer.
+#
+# How expiry actually works (honesty note): Kyverno's PolicyException has no expiry
+# field. Time-boxing uses one of two documented mechanisms, both included here:
+#
+#   1. cleanup.kyverno.io/ttl label — Kyverno's cleanup controller deletes any
+#      resource carrying this label once the duration has elapsed since creation.
+#      This is what `kyverno apply --generate-exceptions` itself emits. RELATIVE expiry.
+#   2. trustfall.example/expires-at annotation + exceptions/expire-policy-exceptions.yaml
+#      (a DeletingPolicy). ABSOLUTE expiry: "23:00 UTC tonight", not "24h from
+#      whenever someone applied it". Regulated profiles tend to want this one.
+#
+# Reviewer questions (Round 2 of the tabletop):
+#   - Is 24 hours the right window during an active compromise?
+#   - Relative or absolute expiry? Who is awake when it fires?
+#   - Is "backup-job*" the right scope, or should it be the exact Pod name?
+#   - Who is platform-ops, and are they on call tonight?
+apiVersion: policies.kyverno.io/v1
+kind: PolicyException
+metadata:
+  name: backup-job-egress-storage
+  namespace: payments
+  labels:
+    cleanup.kyverno.io/ttl: 24h
+    trustfall.example/expiring: "true"
+  annotations:
+    trustfall.example/owner: platform-ops@trustfall.example
+    trustfall.example/ticket: PLAT-4412
+    trustfall.example/expires-at: "2026-10-27T23:00:00Z"
+    trustfall.example/reason: >-
+      Nightly backup needs egress to the storage namespace until the backup target
+      is moved behind the db profile.
+spec:
+  policyRefs:
+    - name: restrict-egress-profile
+      kind: ValidatingPolicy
+  matchConditions:
+    - name: backup-job-pods-only
+      expression: >-
+        object.metadata.namespace == 'payments' &&
+        object.metadata.name.startsWith('backup-job')

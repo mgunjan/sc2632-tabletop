@@ -1,0 +1,119 @@
+# Q0 NORMAL — baseline NetworkPolicies for the payments namespace.
+#
+# Default-deny egress, then one allow policy per approved egress profile. The
+# trustfall.example/egress-profile label on each Pod (enforced at admission by
+# policies/restrict-egress-profile.yaml) selects which allow policy applies.
+#
+# Cloud-agnostic: standard networking.k8s.io/v1. Requires a CNI that enforces
+# NetworkPolicy (Calico, Cilium, k3s's built-in controller). kind's default CNI
+# (kindnet) does NOT enforce NetworkPolicy — see lab/README.md.
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-egress
+  namespace: payments
+  labels:
+    trustfall.example/quarantine-level: q0
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
+---
+# Profile "db": reach the database namespace on 5432, and DNS.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-profile-db
+  namespace: payments
+  labels:
+    trustfall.example/quarantine-level: q0
+spec:
+  podSelector:
+    matchLabels:
+      trustfall.example/egress-profile: db
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: database
+      ports:
+        - protocol: TCP
+          port: 5432
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+---
+# Profile "monitoring": reach the observability namespace, and DNS.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-profile-monitoring
+  namespace: payments
+  labels:
+    trustfall.example/quarantine-level: q0
+spec:
+  podSelector:
+    matchLabels:
+      trustfall.example/egress-profile: monitoring
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: observability
+      ports:
+        - protocol: TCP
+          port: 4317
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+---
+# Profile "none": DNS only. (Egress is otherwise denied by default-deny-egress.)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-profile-none
+  namespace: payments
+  labels:
+    trustfall.example/quarantine-level: q0
+spec:
+  podSelector:
+    matchLabels:
+      trustfall.example/egress-profile: none
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53

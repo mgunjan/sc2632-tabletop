@@ -1,0 +1,47 @@
+# Standards: CSF 2.0 RS.MI-01, PR.AA-05; D3FEND Isolate: Network Isolation (D3-NI), not Evict. See standards/README.md.
+# Quarantine Mode — Q3 ISOLATE
+#
+# Evidence must already be captured (Q2 step 1). If you skipped Q2, run
+# ./quarantine/capture-evidence.sh first anyway.
+#
+# Control delta at Q3 (cumulative with Q1 + Q2):
+#   - Suspect pods: deny-all, both directions. Not even DNS. Takes TWO steps, because
+#     NetworkPolicies are allow-lists that only add up — a deny-all cannot cancel Q2's DNS allow:
+#       kubectl apply -f quarantine/q3/
+#       kubectl -n payments label pod <suspect> trustfall.example/isolated=true   # leaves Q2's DNS allow
+#     Verified on k3s: without the label the "deny-all" suspect still resolves names.
+#   - No new Pods may be admitted in payments unless the incident commander overrides.
+#   - Node cordon for the suspect's node — ONLY after checking PodDisruptionBudgets.
+#     A PDB with minAvailable that the remaining replicas cannot satisfy will make
+#     `kubectl drain` hang or refuse. Cordon first (stops new scheduling, touches
+#     nothing), drain only after the PDB check. See quarantine-mode.md, "The PDB gotcha".
+#   - Remove RBAC bindings for the suspect ServiceAccount (see rbac section below).
+#
+# Declares: incident commander + security lead.   Lifts: same, plus evidence confirmed.
+# Exit: explicit rollback criteria met; staged descent Q3 → Q2 → Q1 → Q0.
+# Availability: DEGRADED. Continuity comes from clean replicas on a different node
+# pool / namespace. The table's constraint card says what "acceptable" means here.
+# Network and RBAC part of Q3. See quarantine/quarantine-mode.md.
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: q3-suspect-deny-all
+  namespace: payments
+  labels:
+    trustfall.example/quarantine-level: q3
+spec:
+  podSelector:
+    matchLabels:
+      trustfall.example/suspect: 'true'
+  policyTypes:
+  - Ingress
+  - Egress
+# Identity step: a RUNBOOK step, not a manifest. (An earlier version shipped a RoleBinding here with empty
+# subjects pointing at a Role that does not exist: it revoked nothing. Review, Sep 28.)
+#   kubectl -n payments get rolebindings -o wide | grep payments-api        # what the suspect's identity can do
+#   kubectl -n payments delete rolebinding <each one bound to payments-api>
+#   kubectl auth can-i --list -n payments --as=system:serviceaccount:payments:payments-api   # verify
+# Two facts to decide on at the level, not discover during it:
+#   - every payments-api replica shares that ServiceAccount, so this also cuts the clean replicas' access;
+#   - tokens already issued stay valid until they expire (bound tokens cannot be revoked in place).

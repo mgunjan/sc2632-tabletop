@@ -1,0 +1,59 @@
+{
+  "status": "INCOMPLETE_PROPOSAL",
+  "promotion_allowed": false,
+  "contract_bound": true,
+  "requirements_contract_sha256": "2a92a6b6923d83ec116ea1a16ed8b3209271f1ed5146e71e1313d0c1e431b352",
+  "requirements": [
+    {
+      "id": 1,
+      "controls": [
+        "egress_profile"
+      ],
+      "layer": "admission + network",
+      "review": "Validate the dependency allowlist and actual CNI connectivity; a label policy does not isolate traffic.",
+      "selected_control": "deny_privilege_escalation",
+      "status": "UNEXPECTED_CONTROL_MAPPING",
+      "disposition": null
+    },
+    {
+      "id": 2,
+      "controls": [
+        "deny_privilege_escalation"
+      ],
+      "layer": "admission",
+      "review": "Confirm workload scope and negative privilege tests; existing Pods need a separate response.",
+      "selected_control": "deny_privilege_escalation",
+      "status": "POLICY_GENERATED_REVIEW_REQUIRED",
+      "disposition": null
+    },
+    {
+      "id": 3,
+      "controls": [
+        "restrict_api_access"
+      ],
+      "layer": "RBAC + identity",
+      "review": "Review effective permissions and exposed credentials. Removing token automount alone is incomplete.",
+      "selected_control": "not_implementable",
+      "status": "MODEL_ABSTAINED",
+      "disposition": null
+    },
+    {
+      "id": 4,
+      "controls": [
+        "process",
+        "not_implementable"
+      ],
+      "layer": "operations",
+      "review": "Approve availability floor, rollout criteria, exception authority and verified expiry.",
+      "selected_control": "deny_privilege_escalation",
+      "status": "UNEXPECTED_CONTROL_MAPPING",
+      "disposition": null
+    }
+  ],
+  "independent_behavior": {
+    "status": "PASS",
+    "passed": true,
+    "scope": "six fixed Pod CREATE privilege expectations"
+  },
+  "reason": "A human must resolve each requirement, dependency allowance and exception request; no deployment authority is granted."
+}

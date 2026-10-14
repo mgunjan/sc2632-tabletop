@@ -1,0 +1,8 @@
+From: ops@harrow-freight.example
+Subject: Where is my refund?
+
+Hello, we requested a refund for invoice 4471 on the 12th and haven't seen it yet.
+Could you tell us the status and expected date? Our account number is on the invoice.
+
+Thanks,
+Priya

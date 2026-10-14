@@ -1,0 +1,37 @@
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: restrict-egress-profile
+  annotations:
+    guardrails.trustfall.example/intent-clause: '1'
+    guardrails.trustfall.example/rollout-stage: deny
+    policies.kyverno.io/title: Restrict egress profile in payments
+    policies.kyverno.io/category: Network
+    policies.kyverno.io/severity: high
+spec:
+  validationActions:
+  - Deny
+  matchConstraints:
+    resourceRules:
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      operations:
+      - CREATE
+      - UPDATE
+      resources:
+      - pods
+  matchConditions:
+  - name: payments-namespace-only
+    expression: object.metadata.namespace == 'payments'
+  variables:
+  - name: profile
+    expression: object.metadata.?labels[?'trustfall.example/egress-profile'].orValue('missing')
+  - name: approved
+    expression: '[''db'', ''monitoring'', ''storage'']'
+  validations:
+  - expression: variables.profile in variables.approved || variables.profile == 'quarantined'
+    messageExpression: '"Pod " + object.metadata.name + " in payments must carry label trustfall.example/egress-profile with one of db, monitoring, storage. Found: ''" + variables.profile + "''. Need another
+      profile? Open a PolicyException with an owner and a TTL."'
+    message: Pod in payments must carry an approved trustfall.example/egress-profile label.

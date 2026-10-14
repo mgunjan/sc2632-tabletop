@@ -1,0 +1,15 @@
+{
+  "namespace": "agents",
+  "clauses": [
+    { "id": 1, "text": "Prevent the ops agent from mutating workloads outside the agents namespace", "control": "deny_agent_mutation_outside_namespace", "note": "Authorization expressed as admission; the durable fix is scoping the agent's RBAC. Admission is the backstop." },
+    { "id": 2, "text": "Require a ticket reference on any change the agent makes", "control": "require_ticket_on_agent_changes", "note": "Starts at Warn: the agent's tool server cannot add the annotation until it is updated." },
+    { "id": 3, "text": "Do not stop the agent from reading", "control": "not_implementable", "note": "Admission never sees reads. Nothing to generate; RBAC keeps get/list untouched." }
+  ],
+  "controls": {
+    "deny_agent_mutation_outside_namespace": { "enabled": true, "in_intent": true, "agent_serviceaccount": "system:serviceaccount:agents:ops-agent", "home_namespace": "agents" },
+    "require_ticket_on_agent_changes": { "enabled": true, "in_intent": true, "agent_serviceaccount": "system:serviceaccount:agents:ops-agent" },
+    "audit_replica_surge": { "enabled": true, "in_intent": false, "threshold": 8 }
+  },
+  "exceptions": [],
+  "rollout": ["Audit", "Warn", "Deny"]
+}

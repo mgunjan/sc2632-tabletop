@@ -1,0 +1,20 @@
+PASS admission deny
+PASS admission admit
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+WAIT scheduled cleanup; exception still exists
+PASS exception deleted after expiry; lag 196.9 seconds
+PASS admission deny

@@ -1,0 +1,32 @@
+# Intent clause 2 (Scenario C): "Require a ticket reference on any change the agent makes."
+#
+# How it maps: when the requester is the agent's ServiceAccount, the object must carry
+# trustfall.example/ticket. Rolls out at Warn first — the agent has no way to add the
+# annotation until its tool server is updated — then Deny.
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: require-ticket-on-agent-changes
+  annotations:
+    guardrails.trustfall.example/intent-clause: "2"
+    guardrails.trustfall.example/rollout-stage: warn
+    policies.kyverno.io/title: Agent changes must reference a ticket
+    policies.kyverno.io/category: Agent Governance
+    policies.kyverno.io/severity: medium
+spec:
+  validationActions:
+    - Warn
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ['apps']
+        apiVersions: [v1]
+        operations: [CREATE, UPDATE]
+        resources: [deployments, statefulsets, daemonsets]
+  matchConditions:
+    - name: requester-is-ops-agent
+      expression: "request.?userInfo.?username.orValue('') == 'system:serviceaccount:agents:ops-agent'"
+  validations:
+    - expression: "object.metadata.?annotations[?'trustfall.example/ticket'].orValue('') != ''"
+      messageExpression: >-
+        "ops-agent changed " + object.metadata.namespace + "/" + object.metadata.name + " without a trustfall.example/ticket annotation."
+      message: "Changes made by the ops agent must carry a trustfall.example/ticket annotation."

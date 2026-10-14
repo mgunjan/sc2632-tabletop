@@ -1,0 +1,16 @@
+{
+  "agent": "generator/policy_agent.py",
+  "model": [
+    "/tmp/sc2632-model-cache/hub/models--convaiinnovations--laya-typed-decisions/snapshots/e929ae5cf69bc34259cd2f95c9e91145b818b1f0"
+  ],
+  "threshold": 0.6,
+  "questions_sha256": "15018cd8574e1318abf1a490fdf6e15b1b7dbf301fff390a17f257e26137ca8e",
+  "intent_sha256": "1a4f8aaf22f3dedd734d45ac7959743b9fbde836d6b8bb5c127cd692df94993b",
+  "tested_against": "scenario fixtures",
+  "source_kind": "fixtures",
+  "steps": 4,
+  "model_calls": 4,
+  "spec_sha256": "f6ba9d94427399763e1b46a08d246f5378b6e82f60164d884d833211cf7c298c",
+  "review_status": "INCOMPLETE_PROPOSAL",
+  "promotion_allowed": false
+}

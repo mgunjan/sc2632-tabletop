@@ -1,0 +1,33 @@
+# Scenario B — simulated admission. Run: kyverno test scenarios/b-sidecar-agent/tests/
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: scenario-b-sidecar-agent
+policies:
+  - ../policies/restrict-egress-profile.yaml
+  - ../policies/deny-sa-token-for-agent-sidecars.yaml
+  - ../policies/restrict-image-registry.yaml
+resources:
+  - ../fixtures/payments-workloads.yaml
+results:
+  - policy: restrict-egress-profile
+    kind: Pod
+    resources: [payments/payments-api, payments/payments-db-proxy, payments/monitoring-agent, payments/backup-job, payments/report-runner]
+    result: pass
+  # Only payments-api carries the agent-sidecar label, so only it is evaluated — and it fails.
+  - policy: deny-sa-token-for-agent-sidecars
+    kind: Pod
+    resources: [payments/payments-api]
+    result: fail
+  - policy: deny-sa-token-for-agent-sidecars
+    kind: Pod
+    resources: [payments/payments-db-proxy, payments/monitoring-agent, payments/backup-job, payments/report-runner]
+    result: skip
+  - policy: restrict-image-registry
+    kind: Pod
+    resources: [payments/payments-api, payments/payments-db-proxy, payments/monitoring-agent, payments/backup-job]
+    result: pass
+  - policy: restrict-image-registry
+    kind: Pod
+    resources: [payments/report-runner]
+    result: fail

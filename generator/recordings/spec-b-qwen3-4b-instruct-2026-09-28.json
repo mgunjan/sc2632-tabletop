@@ -1,0 +1,64 @@
+{
+ "clauses": [
+  {
+   "control": "restrict_api_access",
+   "id": 1,
+   "text": "Deny new east-west communication from the payments namespace while preserving known service dependencies.",
+   "note": "This control is not fully implementable via Kubernetes admission control. East-west communication policies require network policy enforcement, which is outside the scope of API-level admission controls. It must be implemented via NetworkPolicy (e.g., Calico or Cilium) and cannot be enforced at the admission webhook level. Therefore, this control is not implementable in the admission context, and its enforcement must be delegated to a separate network policy layer. As such, it is marked as not_im"
+  },
+  {
+   "control": "restrict_api_access",
+   "id": 2,
+   "text": "The support-assistant sidecar must not be able to use the Pod's Kubernetes identity.",
+   "note": "This requirement is enforceable via admission control by restricting the sidecar container's ability to use the Pod's service account token. However, the sidecar container is typically a sidecar pod that shares the same Pod identity. To prevent it from using the Pod's Kubernetes identity, we must ensure that the sidecar does not mount the service account token volume. This can be enforced via a Pod Security Policy (PSP) or Pod Security Admission (PSA) rule. Since PSP is deprecated and PSA is not"
+  },
+  {
+   "control": "restrict_api_access",
+   "id": 3,
+   "text": "The sidecar may only call tools listed in its approved tool manifest.",
+   "note": "This is an application-layer restriction and cannot be enforced by Kubernetes admission control. The sidecar's tool calls are evaluated at runtime, not at admission. Therefore, this clause is not implementable in the admission context. It must be enforced by application logic or a tool runtime policy. As such, it is marked as not_implementable."
+  },
+  {
+   "control": "restrict_api_access",
+   "id": 4,
+   "text": "Keep the assistant running; roll out in stages and time-box any exception.",
+   "note": "This is a rollout strategy and not a security control. It does not map to any admission control. Rollout is managed via deployment strategies and must be handled by the operator. This clause does not require a security control and is not implementable as a policy rule in admission. It is not a security control and is therefore not implementable."
+  }
+ ],
+ "controls": {
+  "restrict_api_access": {
+   "enabled": false,
+   "in_intent": true,
+   "note": "This control is not fully implementable via Kubernetes admission control. East-west communication policies require network policy enforcement, which is outside the scope of API-level admission controls. It must be implemented via NetworkPolicy (e.g., Calico or Cilium) and cannot be enforced at the admission webhook level. As such, it is not implementable in the admission context. The sidecar identity restriction and tool manifest enforcement are also not implementable at the admission level. Therefore, this control is disabled in the admission policy and must be enforced via other mechanisms (e.g., network policies, sidecar configuration, runtime tool validation)."
+  }
+ },
+ "exceptions": [
+  {
+   "control": "restrict_registry",
+   "owner": "platform-security-team",
+   "reason": "The monitoring-agent pod requires access to external monitoring endpoints to function.",
+   "ttl_hours": 72,
+   "workload": "monitoring-agent"
+  },
+  {
+   "control": "restrict_registry",
+   "owner": "platform-security-team",
+   "reason": "The backup-job pod requires access to the database to perform scheduled backups.",
+   "ttl_hours": 72,
+   "workload": "backup-job"
+  },
+  {
+   "control": "restrict_registry",
+   "owner": "platform-security-team",
+   "reason": "The report-runner pod requires access to internal reporting endpoints to generate reports.",
+   "ttl_hours": 72,
+   "workload": "report-runner"
+  }
+ ],
+ "namespace": "payments",
+ "rollout": [
+  "Audit",
+  "Warn",
+  "Deny"
+ ]
+}

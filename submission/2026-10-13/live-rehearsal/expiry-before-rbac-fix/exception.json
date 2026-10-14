@@ -1,0 +1,30 @@
+{
+  "apiVersion": "policies.kyverno.io/v1",
+  "kind": "PolicyException",
+  "metadata": {
+    "name": "sc2632-expiry-e52caeec",
+    "namespace": "payments",
+    "labels": {
+      "trustfall.example/expiring": "true"
+    },
+    "annotations": {
+      "trustfall.example/owner": "sc2632-rehearsal",
+      "trustfall.example/reason": "Disposable expiry proof for one exact Pod CREATE request",
+      "trustfall.example/expires-at": "2026-10-13T22:23:45.378565Z"
+    }
+  },
+  "spec": {
+    "policyRefs": [
+      {
+        "name": "restrict-egress-profile",
+        "kind": "ValidatingPolicy"
+      }
+    ],
+    "matchConditions": [
+      {
+        "name": "exact-rehearsal-pod",
+        "expression": "object.metadata.namespace == 'payments' && object.metadata.name == 'sc2632-expiry-e52caeec'"
+      }
+    ]
+  }
+}

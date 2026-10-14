@@ -1,0 +1,53 @@
+# Simulated admission: the three generated policies against five payments workloads.
+# Run:  kyverno test tests/
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: payments-guardrails-simulated-admission
+policies:
+  - ../policies/restrict-egress-profile.yaml
+  - ../policies/deny-privilege-escalation.yaml
+  - ../policies/restrict-image-registry.yaml
+resources:
+  - ../fixtures/payments-workloads.yaml
+results:
+  # ---- restrict-egress-profile (intent clause 1, Deny) ----
+  - policy: restrict-egress-profile
+    kind: Pod
+    resources:
+      - payments/payments-api
+      - payments/payments-db-proxy
+      - payments/monitoring-agent
+      - payments/report-runner
+    result: pass
+  - policy: restrict-egress-profile
+    kind: Pod
+    resources:
+      - payments/backup-job
+    result: fail
+
+  # ---- deny-privilege-escalation (intent clause 2, Deny) ----
+  - policy: deny-privilege-escalation
+    kind: Pod
+    resources:
+      - payments/payments-api
+      - payments/payments-db-proxy
+      - payments/monitoring-agent
+      - payments/backup-job
+      - payments/report-runner
+    result: pass
+
+  # ---- restrict-image-registry (NOT in the intent, Audit) ----
+  - policy: restrict-image-registry
+    kind: Pod
+    resources:
+      - payments/payments-api
+      - payments/payments-db-proxy
+      - payments/monitoring-agent
+      - payments/backup-job
+    result: pass
+  - policy: restrict-image-registry
+    kind: Pod
+    resources:
+      - payments/report-runner
+    result: fail
