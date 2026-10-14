@@ -12,6 +12,25 @@ The platform and incident context are fictional. Workload and namespace names su
 
 ## Participant assignment and materials
 
+### Environment and policy vocabulary
+
+| Term | Meaning in this exercise |
+|---|---|
+| Cluster | The shared Kubernetes platform running the applications and agents. |
+| Namespace | A named resource group such as `payments` or `agents`. It does not create network isolation automatically. |
+| Pod | A running unit containing one or more containers. Replicas are copies of a workload. |
+| ServiceAccount | A workload's identity for Kubernetes API requests. |
+| Admission | A checkpoint before a covered resource-change request takes effect. |
+| Kyverno | The policy engine that validates those proposed changes in the demonstrated workflow. In Deny mode, it refuses a covered policy violation. |
+| NetworkPolicy | A network traffic rule, enforced by a supporting network implementation. |
+| RBAC | API permissions assigned to an identity, including permission to read a Kubernetes Secret. |
+
+For example, a reviewed rule requires new `payments` Pods to disallow privilege escalation. Kyverno can refuse a covered create request that violates that rule. The admission check does not stop an already running Pod or revoke a credential copied elsewhere. Existing-workload response, network restrictions, API permissions and application tool controls need their own owners and evidence.
+
+The production incident is fictional. Recorded enforcement comes from a separate disposable local k3s/Kyverno lab with synthetic stand-in applications. The reference compiler demonstrates policy generation and fixture admission simulation; it does not automatically deploy attendees' prose.
+
+Definitions follow the [Kubernetes Pod documentation](https://kubernetes.io/docs/concepts/workloads/pods/), [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), [ServiceAccounts](https://kubernetes.io/docs/concepts/security/service-accounts/), [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) and [Kyverno ValidatingPolicy](https://kyverno.io/docs/policy-types/validating-policy/) documentation. The concrete enforcement boundaries and local lab are recorded in `lab/README.md` and `submission/2026-10-13/live-rehearsal/`.
+
 Your table is the incident review team. Decide what may proceed, what you hold and what evidence must come before enforcement. Use one shared decision record on participant pack page 6. It captures your intent, proposal disposition, exception/rollout conditions, containment order and recovery criteria. No laptops or YAML authoring are required.
 
 Before Round 1, choose a case on pages 2–5, choose a primary operational constraint, assign an incident lead, recorder, analyst and independent reviewer, and write a measurable minimum service. The lead states the decision, the recorder documents it, the analyst checks claims against the evidence, and the reviewer raises a concern before the decision. Combine roles if the table has fewer than four people.

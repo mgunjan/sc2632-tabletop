@@ -16,21 +16,27 @@ The opening must establish the incident and the participants' task before explai
 
 | Minutes | Lead and visible slide | What attendees do |
 |---|---|---|
-| 00–00:45 | Milind, slide 1: session and co-presenters | Find a table and the participant pack. |
-| 00:45–01:30 | Milind, slide 2: incident briefing | Understand that services are operating, exposure is uncertain and containment can disrupt dependencies. |
-| 01:30–02:15 | Vivek, slide 3: participant assignment | Locate the shared decision record on page 6 and understand the decisions they will own. |
-| 02:15–03:00 | Vivek, slide 4: materials and round sequence | Identify case pages 2–5, the worksheet and the sealed incident updates/review findings. |
+| 00–00:20 | Milind, slide 1: session and co-presenters | Find a table and the participant pack. |
+| 00:20–01:10 | Milind, slide 2: environment and incident | Learn cluster, namespace, Pod and workload identity; understand the still-operating service and uncertain exposure. |
+| 01:10–02:00 | Vivek, slide 3: Kyverno and control boundaries | Follow one request/rule/denial example and distinguish future admission from existing-workload containment. |
+| 02:00–03:00 | Vivek, slide 4: assignment, materials and rounds | Locate page 6, understand the written decisions and identify the sealed findings. |
 | 03:00–04:15 | Vivek, slide 5: case selection | Choose one case and read its opening alert. Both co-presenters support different tables. |
 | 04:15–05:00 | Milind, slide 6: operating constraint | Choose a primary constraint and record a measurable minimum service. |
 | 05:00–06:00 | Both, slide 7: team setup | Assign roles and record the table, case, constraint and service floor on page 6. |
 
 **Milind's context statement:** “Your organisation runs customer services and automated agents on a shared Kubernetes platform. An alert shows activity outside an expected boundary. Services are still operating. You do not yet know the extent of exposure. Broad isolation could break dependencies. Delay could expose other workloads. Your selected case provides the observations available so far.”
 
+**Milind's environment explanation:** “Kubernetes runs our applications and agents. The cluster is their shared platform. A namespace groups named resources. A Pod is a running unit with one or more containers, and replicas are copies. A ServiceAccount is the identity a workload uses when it calls the Kubernetes API. The incident describes a fictional production platform. Our recorded enforcement uses a separate disposable local lab, with synthetic stand-in applications.”
+
+**Vivek's Kyverno explanation:** “Kyverno checks a proposed Kubernetes change against policy before the request takes effect. For example, a new Pod requests privilege escalation, but our rule disallows it. In Deny mode, Kyverno refuses that covered request. An existing Pod keeps running. Network controls, API permissions and application tool controls handle different parts of containment. The model proposes a rule; human review authorizes enforcement.”
+
+Use “admission” only after defining it as that request checkpoint. Ask: “Does denying the new Pod stop the one already running?” Accept “no, it needs a separate response” without YAML or product-specific syntax. Kyverno also has other capabilities; the example describes its validation role in this exercise. An unfamiliar participant can still judge scope, legitimate access, exceptions and recovery evidence.
+
 **Vivek's assignment statement:** “Your table is the incident review team. Decide what may proceed, what you hold and what evidence must come before enforcement. Write your security intent, review the proposal and exception conditions, then order containment and define recovery. Use one shared record on page 6. Discuss, write before the reveal, hear the new evidence, and revise beside your first answer.”
 
 Hold up the actual materials while identifying them. Keep pages 7 and 8 covered and the independent review findings sealed. Tell participants that the model proposes controls and the team retains review authority. The compiler demonstration uses a supplied reference specification; audience prose does not automatically deploy. Both co-presenters lead discussion, demonstrate evidence and debrief. These opening leads do not make either co-presenter an assistant.
 
-**Setup check before Round 1:** Each table can identify its case, primary constraint, recorder, decision worksheet and minimum service. An attendee can explain the assignment without needing Kubernetes YAML. Keep the score explanation to one sentence and leave detailed scoring on the printed scorecard.
+**Setup check before Round 1:** Each table can identify its case, primary constraint, recorder, decision worksheet and minimum service. An attendee can explain the assignment and why refusing a new request does not terminate an existing workload, without Kubernetes YAML. Keep the score explanation to one sentence and leave detailed scoring on the printed scorecard.
 
 ## 06–10: Intent
 

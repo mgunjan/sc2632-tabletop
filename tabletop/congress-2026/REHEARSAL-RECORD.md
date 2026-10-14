@@ -22,6 +22,8 @@ Date/time: __________  Participants: __________  Display/room: __________
 
 Before Round 1, ask a general security participant to explain the assignment without presenter help: which case the table chose, which record it must complete, what it decides, and what stays sealed. Their answer and any correction: __________
 
+Ask someone unfamiliar with Kyverno: “If the policy refuses a new Pod, what happens to the already running Pod?” Record their explanation of the environment and the need for a separate response: __________
+
 Record at least one concern stated by the independent reviewer: __________
 
 Record one differing decision defended by another table: __________

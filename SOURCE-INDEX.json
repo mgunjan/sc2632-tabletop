@@ -1099,8 +1099,8 @@
     },
     {
       "path": "submission/2026-10-12/SESSION-RUNBOOK.md",
-      "bytes": 16203,
-      "sha256": "0ca27e3cf9136a920a71c499b7f82f7cd7b5d1877594c7bd9d326b5f5f381e55"
+      "bytes": 16421,
+      "sha256": "6c92df51e41e65d4d4b19024986369326237b406efeba14acf2330d484eb167c"
     },
     {
       "path": "submission/2026-10-12/benchmark/CONTRACT.json",
@@ -1844,8 +1844,8 @@
     },
     {
       "path": "submission/2026-10-13/ARTIFACT-VALIDATION.json",
-      "bytes": 2909,
-      "sha256": "228891ad91fb979a75a758c7cb24f8b0a441d521db7209b18be9f728ff9ed2cf"
+      "bytes": 3436,
+      "sha256": "569adf229a503ea69f7e802ca21d13bea5edea1f0821608815025abd947f3b60"
     },
     {
       "path": "submission/2026-10-13/CONTROL-REVIEW-EXERCISE.md",
@@ -1859,8 +1859,8 @@
     },
     {
       "path": "submission/2026-10-13/PARTICIPANT-PACK.pdf",
-      "bytes": 16733,
-      "sha256": "0015e154d6b2c3d1fdcdc19170a2d7b052611c7a69f4efb70a50f0400ccb6504"
+      "bytes": 16933,
+      "sha256": "08f2b3fe227d614c4aa42e1354b4a1d46b03fcd24c1b46104062d54a68ec41ba"
     },
     {
       "path": "submission/2026-10-13/PUBLIC-RELEASE.md",
@@ -1869,8 +1869,8 @@
     },
     {
       "path": "submission/2026-10-13/README.md",
-      "bytes": 4788,
-      "sha256": "99ce5c4fbf33923f46ceb75f6597b69ddfb2382b1663415e48a2965d566b7ef4"
+      "bytes": 4843,
+      "sha256": "5344f384b1c76424d271e62039eaddee62f25e5e2fb27ad2ce1afb6ce1523821"
     },
     {
       "path": "submission/2026-10-13/REVIEW-SCORECARD.pdf",
@@ -1884,13 +1884,13 @@
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pdf",
-      "bytes": 8603828,
-      "sha256": "6420eeb91bad9893c1ed14ba531afcfee10b6feee7b9d8fc115cf29a3b5474bf"
+      "bytes": 8624260,
+      "sha256": "1e07f7e73ac9e4813747a5f7ca3610f22475743ec773c8c649ae68d7018e72aa"
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pptx",
-      "bytes": 7121781,
-      "sha256": "a0b34702347ceb9db2451bf9d64e7d0bf2078d8d355cf80151200bb75166edd4"
+      "bytes": 7122579,
+      "sha256": "70c27cea0a617795c2a591896022e782defa88aa4cd3eda71232467254ad7f7b"
     },
     {
       "path": "submission/2026-10-13/TRAINING-PROTOCOL.md",
@@ -1899,8 +1899,8 @@
     },
     {
       "path": "submission/2026-10-13/VALIDATION.md",
-      "bytes": 9471,
-      "sha256": "bf115258c93703dffd783458929f5decf5aae45d5ca851c3fe53a49ed4917d16"
+      "bytes": 10818,
+      "sha256": "e4763e558dee7018ee62073ee185197abf5de0ce173bd8d07dd08518e9c87c98"
     },
     {
       "path": "submission/2026-10-13/classical-verification-final/REPORT.md",
@@ -2774,18 +2774,18 @@
     },
     {
       "path": "tabletop/congress-2026/CO-PRESENTER-CARDS.md",
-      "bytes": 14595,
-      "sha256": "7dea891c204f9b9b9e76efedd8c7c03c35c1731882c8e993a6d22834ccac54ae"
+      "bytes": 16071,
+      "sha256": "eb8d3e260376b74138f9e39b6a61db05a664382ec3b1340cfb8b910726063646"
     },
     {
       "path": "tabletop/congress-2026/INCIDENT-BRIEF.md",
-      "bytes": 5947,
-      "sha256": "c3be321a665fc1fd54f4b747c4bac986014f9dd1be3feb6aaf12ee1c832b3d6f"
+      "bytes": 8106,
+      "sha256": "4f9529bdd1bfb870e9aad9e429aaf6bbccf6531d89604a7d9c35ea4d49e1a6ab"
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL-RECORD.md",
-      "bytes": 3089,
-      "sha256": "db4b999c357052db2a70f9bd777a8534d9a226999a2ca10dd2436f67913d6d48"
+      "bytes": 3300,
+      "sha256": "f2f78e9595d5d77a65b8bf8a3581ff69deccb141efe66bb4a6fb5195c79ac4d2"
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL.md",
@@ -2809,13 +2809,13 @@
     },
     {
       "path": "START-HERE.md",
-      "bytes": 4634,
-      "sha256": "d91f3404ee562a010764ca0715aa8466e311f15c79d66d76a1ae4b451b487423"
+      "bytes": 5255,
+      "sha256": "ad313f6455e807bd18e5ac8644f4de420927849ccd4074371ce2f6a1fb65340d"
     },
     {
       "path": "README.md",
-      "bytes": 4634,
-      "sha256": "d91f3404ee562a010764ca0715aa8466e311f15c79d66d76a1ae4b451b487423"
+      "bytes": 5255,
+      "sha256": "ad313f6455e807bd18e5ac8644f4de420927849ccd4074371ce2f6a1fb65340d"
     }
   ]
 }

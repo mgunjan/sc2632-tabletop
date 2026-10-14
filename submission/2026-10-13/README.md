@@ -2,7 +2,7 @@
 
 Co-presenters: **Milind Gunjan and Vivek Mayuranathan**. October 26, 2026, 4:30–5:30 PM Mountain Time. Four selectable incident cases, timed decisions, sealed evidence and a written containment review.
 
-The opening now establishes the fictional incident and assigns each table the incident review role before introducing controls. Attendees see their mission, materials, round sequence and co-presenter responsibilities. Slides 5–7 let tables choose their case/constraint, assign roles and open the shared page 6 decision record. Participant page 1 carries the same instructions, and page 6 includes all four role names and a rollback-condition field. The setup remains six minutes; detailed scoring stays on the printed scorecard.
+The opening explains the fictional environment in plain language, then introduces Kyverno with one proposed request, one rule and a denial. It distinguishes refusing a new change from containing an existing workload. Attendees then receive their incident review assignment, materials and round sequence. Slides 5–7 preserve case/constraint selection, role assignment and the shared page 6 record. Participant page 1 includes the environment/Kyverno primer; page 6 has all four role names and a rollback-condition field. The setup remains six minutes; detailed scoring stays on paper.
 
 | Material | Use |
 |---|---|
