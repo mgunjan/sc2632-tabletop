@@ -1099,8 +1099,8 @@
     },
     {
       "path": "submission/2026-10-12/SESSION-RUNBOOK.md",
-      "bytes": 16421,
-      "sha256": "6c92df51e41e65d4d4b19024986369326237b406efeba14acf2330d484eb167c"
+      "bytes": 16896,
+      "sha256": "120877ddc1dfcf7a01ceb68f19e44de839921791e1f9d6f73110754199614719"
     },
     {
       "path": "submission/2026-10-12/benchmark/CONTRACT.json",
@@ -1844,8 +1844,8 @@
     },
     {
       "path": "submission/2026-10-13/ARTIFACT-VALIDATION.json",
-      "bytes": 3436,
-      "sha256": "569adf229a503ea69f7e802ca21d13bea5edea1f0821608815025abd947f3b60"
+      "bytes": 4067,
+      "sha256": "977763f55e3d4becb3fef3bd4cdf2ba0982f5ae60eaeb8cbf80b5fbc5b8f94a7"
     },
     {
       "path": "submission/2026-10-13/CONTROL-REVIEW-EXERCISE.md",
@@ -1859,8 +1859,8 @@
     },
     {
       "path": "submission/2026-10-13/PARTICIPANT-PACK.pdf",
-      "bytes": 16933,
-      "sha256": "08f2b3fe227d614c4aa42e1354b4a1d46b03fcd24c1b46104062d54a68ec41ba"
+      "bytes": 16821,
+      "sha256": "43a65e9acfa69389fbfb6b5508a3151b2c5f113c3c98967b398e99d7a465a95e"
     },
     {
       "path": "submission/2026-10-13/PUBLIC-RELEASE.md",
@@ -1869,8 +1869,8 @@
     },
     {
       "path": "submission/2026-10-13/README.md",
-      "bytes": 4843,
-      "sha256": "5344f384b1c76424d271e62039eaddee62f25e5e2fb27ad2ce1afb6ce1523821"
+      "bytes": 5311,
+      "sha256": "ce14807c6318617a69bcd8cbb90d574b71df20eb022a27947597f421f44fce1a"
     },
     {
       "path": "submission/2026-10-13/REVIEW-SCORECARD.pdf",
@@ -1884,13 +1884,13 @@
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pdf",
-      "bytes": 8624260,
-      "sha256": "1e07f7e73ac9e4813747a5f7ca3610f22475743ec773c8c649ae68d7018e72aa"
+      "bytes": 8644550,
+      "sha256": "b49c019a9864851c71f1705a08bb4e925ccda3a4f9c0ad0c5dabb140bef6781a"
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pptx",
-      "bytes": 7122579,
-      "sha256": "70c27cea0a617795c2a591896022e782defa88aa4cd3eda71232467254ad7f7b"
+      "bytes": 7123109,
+      "sha256": "d7b33ca45769bde241280c3ddffb6fc84b42b28c1b537be58447a88a0f3a1ff1"
     },
     {
       "path": "submission/2026-10-13/TRAINING-PROTOCOL.md",
@@ -1899,8 +1899,8 @@
     },
     {
       "path": "submission/2026-10-13/VALIDATION.md",
-      "bytes": 10818,
-      "sha256": "e4763e558dee7018ee62073ee185197abf5de0ce173bd8d07dd08518e9c87c98"
+      "bytes": 12140,
+      "sha256": "b0af391e2125d76676a2edbf926da4262a57f21bc4ce697a312090b0ef975c22"
     },
     {
       "path": "submission/2026-10-13/classical-verification-final/REPORT.md",
@@ -2774,18 +2774,18 @@
     },
     {
       "path": "tabletop/congress-2026/CO-PRESENTER-CARDS.md",
-      "bytes": 16071,
-      "sha256": "eb8d3e260376b74138f9e39b6a61db05a664382ec3b1340cfb8b910726063646"
+      "bytes": 17087,
+      "sha256": "8c8c9266856e194a953f8b8e54a91aff95c7036bf6da14d49e898ed0083ff939"
     },
     {
       "path": "tabletop/congress-2026/INCIDENT-BRIEF.md",
-      "bytes": 8106,
-      "sha256": "4f9529bdd1bfb870e9aad9e429aaf6bbccf6531d89604a7d9c35ea4d49e1a6ab"
+      "bytes": 9375,
+      "sha256": "1d951640042c6c716d0e1895ab38802b314723950a70e686621217abc0d4a013"
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL-RECORD.md",
-      "bytes": 3300,
-      "sha256": "f2f78e9595d5d77a65b8bf8a3581ff69deccb141efe66bb4a6fb5195c79ac4d2"
+      "bytes": 3549,
+      "sha256": "dbdf6964202310363e3de878deac315c10fba3633f9a38d04cb958fd428b0afb"
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL.md",
@@ -2794,8 +2794,8 @@
     },
     {
       "path": "tabletop/congress-2026/SCORING-ANCHORS.md",
-      "bytes": 6728,
-      "sha256": "7f17cb521e41fd1c429bf6317d4ea2b1d9e7748806cce38ec64cfd5ab3b7372a"
+      "bytes": 7226,
+      "sha256": "81b9a944a45733e0d0849fefa640f0656e7d2b656cbc394a03206635aac2b0a9"
     },
     {
       "path": "tabletop/congress-2026/demo-requirements.txt",
@@ -2809,13 +2809,13 @@
     },
     {
       "path": "START-HERE.md",
-      "bytes": 5255,
-      "sha256": "ad313f6455e807bd18e5ac8644f4de420927849ccd4074371ce2f6a1fb65340d"
+      "bytes": 5650,
+      "sha256": "dc5c3d6f980ec5a20406e602ed588667f4eb743c97486b75935a58d682ad47bf"
     },
     {
       "path": "README.md",
-      "bytes": 5255,
-      "sha256": "ad313f6455e807bd18e5ac8644f4de420927849ccd4074371ce2f6a1fb65340d"
+      "bytes": 5650,
+      "sha256": "dc5c3d6f980ec5a20406e602ed588667f4eb743c97486b75935a58d682ad47bf"
     }
   ]
 }

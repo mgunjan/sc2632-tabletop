@@ -44,6 +44,8 @@ Slide 2 defines the shared cluster, namespace, Pod and workload identity in plai
 
 Milind leads the environment/incident briefing and operating-constraint explanation. Vivek explains Kyverno, then leads the assignment/materials and case selection. Both check table readiness before Round 1. The cover takes twenty seconds, the environment and Kyverno examples fifty seconds each, and the assignment one minute, preserving the first three minutes and the six-minute setup. Keep detailed scoring on paper. A ready table can name its case, constraint, recorder, worksheet and minimum service, and explain why denying a new request does not stop an existing workload. Keep incident pages 7/8 and independent-review findings sealed. The proposal review develops the enforcement layers after this short primer.
 
+Assume some attendees have no Kubernetes experience. Start with the platform's job and familiar functions, then give the technical term: application copies/replicas, resource groups/namespaces, workload identity/ServiceAccount. Define the management API, admission and voluntary removal before using them in a question. Accept behavioral security requirements without product names. The existing score is for justified decisions and evidence, not syntax or glossary recall.
+
 ## The independent proposal review
 
 Use ../2026-10-13/CONTROL-REVIEW.pdf. Vivek opens the task; Milind displays the recorded proposal. Give tables three minutes to record a disposition, outstanding requirement/owner, acceptance evidence and rollback condition. A team may justify a reviewed, bounded subset while escalating the remaining exposure. Keep page 2 sealed until choices are recorded.

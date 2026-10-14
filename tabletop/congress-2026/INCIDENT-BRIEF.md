@@ -14,6 +14,8 @@ The platform and incident context are fictional. Workload and namespace names su
 
 ### Environment and policy vocabulary
 
+Kubernetes is the platform managing application packages, called containers, across machines. The applications and automated agents in this exercise share that platform. Explain what each component does before naming its Kubernetes type. Participants can state the prohibited behavior, legitimate access, evidence and minimum service in plain language; prior Kubernetes or Kyverno knowledge is unnecessary for the written decisions.
+
 | Term | Meaning in this exercise |
 |---|---|
 | Cluster | The shared Kubernetes platform running the applications and agents. |
@@ -24,6 +26,12 @@ The platform and incident context are fictional. Workload and namespace names su
 | Kyverno | The policy engine that validates those proposed changes in the demonstrated workflow. In Deny mode, it refuses a covered policy violation. |
 | NetworkPolicy | A network traffic rule, enforced by a supporting network implementation. |
 | RBAC | API permissions assigned to an identity, including permission to read a Kubernetes Secret. |
+| Sidecar | An additional container in the same Pod, sharing its network and potentially its credentials. |
+| Secret | A platform record that can hold credentials. An observed listing does not by itself establish application-key use. |
+| Eviction | A voluntary request to remove a running application copy. |
+| PodDisruptionBudget | An availability rule limiting voluntary removals. It does not prevent every cause of service failure. |
+
+Use “application copies” before replicas, “resource groups” before namespaces and “API permissions” before RBAC. Score the stated behavior and acceptance evidence, not recall of these names. The Kubernetes [overview](https://kubernetes.io/docs/concepts/overview/) and [container documentation](https://kubernetes.io/docs/concepts/containers/) provide the platform/package definitions.
 
 For example, a reviewed rule requires new `payments` Pods to disallow privilege escalation. Kyverno can refuse a covered create request that violates that rule. The admission check does not stop an already running Pod or revoke a credential copied elsewhere. Existing-workload response, network restrictions, API permissions and application tool controls need their own owners and evidence.
 

@@ -13,6 +13,8 @@ Award each core criterion once, at most 12 points. Award the three independent-r
 
 Require the reviewer to state one concern before the lead commits. Do not penalize revising a plan or holding an original plan that already accounts for new evidence. Missing data should produce a named information request and a bounded hold, never an invented fact.
 
+Accept equivalent plain-language requirements from participants unfamiliar with Kubernetes. “Deny this identity access to another team's credential records” can state the read-authorization boundary without naming RBAC. Credit a specified refused action and a preserved legitimate action; do not award or withhold points for Kubernetes vocabulary, YAML syntax or naming a product. A co-presenter can translate the control names during the debrief without supplying the participant's decision.
+
 ## Case A: library update
 
 A defensible plan preserves logs and relevant workload/image evidence, determines which replicas share the affected image, and establishes clean serving capacity before disruptive containment. It distinguishes new admission from the response to existing Pods. A CNI owner must test a denied suspect path and a required allowed dependency; a profile-label policy alone does not establish traffic isolation.

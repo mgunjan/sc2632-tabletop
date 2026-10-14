@@ -24,6 +24,8 @@ Before Round 1, ask a general security participant to explain the assignment wit
 
 Ask someone unfamiliar with Kyverno: “If the policy refuses a new Pod, what happens to the already running Pod?” Record their explanation of the environment and the need for a separate response: __________
 
+Ask someone unfamiliar with Kubernetes to explain the platform's job, what an application copy is, and their team's task in ordinary security language. Record one intent and its acceptance evidence without requiring product terminology: __________
+
 Record at least one concern stated by the independent reviewer: __________
 
 Record one differing decision defended by another table: __________

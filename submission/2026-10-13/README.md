@@ -4,6 +4,8 @@ Co-presenters: **Milind Gunjan and Vivek Mayuranathan**. October 26, 2026, 4:30â
 
 The opening explains the fictional environment in plain language, then introduces Kyverno with one proposed request, one rule and a denial. It distinguishes refusing a new change from containing an existing workload. Attendees then receive their incident review assignment, materials and round sequence. Slides 5â€“7 preserve case/constraint selection, role assignment and the shared page 6 record. Participant page 1 includes the environment/Kyverno primer; page 6 has all four role names and a rollback-condition field. The setup remains six minutes; detailed scoring stays on paper.
 
+The session also supports attendees new to Kubernetes. The opening explains the shared application platform and familiar functions before naming Pods, replicas, namespaces and workload identities. Scenario choices, availability and the recorded-removal question use plain-language equivalents. Participants can state observable security behavior and acceptance evidence without naming products or writing code. Scoring assesses the decision, not platform vocabulary.
+
 | Material | Use |
 |---|---|
 | [SC2632-session-four-cases.pptx](SC2632-session-four-cases.pptx) | Current editable deck: 29 main slides and six hidden backups |

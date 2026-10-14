@@ -10,6 +10,8 @@ The opening slides and participant page 1 explain roles, supplied materials and 
 
 The opening also explains the environment for attendees unfamiliar with Kubernetes or Kyverno. A cluster runs workloads, namespaces group resources, Pods run containers and ServiceAccounts provide API identities. Kyverno checks a proposed resource change against policy. A denied create request does not terminate an existing Pod. Network traffic, API permissions and agent tool actions require their own controls. The [incident brief](tabletop/congress-2026/INCIDENT-BRIEF.md) gives the definitions and official documentation links. The incident is fictional; recorded enforcement uses a separate disposable local lab.
 
+For participants new to Kubernetes, the opening starts with the shared application platform and familiar functions before technical names. Application copies are replicas, resource groups are namespaces, and workload identities make management requests. State the required security behavior in your own words. Scores assess the decision and evidence, rather than Kubernetes vocabulary or code.
+
 ## Reproduce a reviewable proposal
 
 Use Python 3.10 or newer and Kyverno CLI **1.19.1**. Obtain the CLI for your operating system from the [official Kyverno release](https://github.com/kyverno/kyverno/releases/tag/v1.19.1). Clone the public source or extract the source ZIP, then run from its root:
