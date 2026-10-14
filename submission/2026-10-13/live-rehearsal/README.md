@@ -35,6 +35,6 @@ The [executed synthetic case](case-d/README.md) has 58 passing observations (45 
 
 The [fresh reference proposal](reference-proposal/demo-run.json) completed in 1.304 seconds, with no possible hosted API call and no deployment. Its [requirement ledger](reference-proposal/proposal/readiness.json) remains REVIEW_REQUIRED despite passing six privilege tests. It retains the RBAC and operations handoffs. This is a compiler/review check, separate from live containment.
 
-The current slide/PDF/handout checks are in [ARTIFACT-VALIDATION.json](../ARTIFACT-VALIDATION.json). Native PowerPoint/projector inspection, full human co-presenter rehearsal and authorized attendee distribution remain pending. The [Case D record](case-d/README.md) now verifies read authorization and Pod-bound credential response separately. None of this evidence promotes catalog 0.1.0 as enterprise qualified.
+The current slide/PDF/handout checks are in [ARTIFACT-VALIDATION.json](../ARTIFACT-VALIDATION.json). Native PowerPoint/projector inspection, and full human co-presenter rehearsal remain pending. The curated source is public at https://github.com/mgunjan/sc2632-tabletop after explicit authorization. The [Case D record](case-d/README.md) now verifies read authorization and Pod-bound credential response separately. None of this evidence promotes catalog 0.1.0 as enterprise qualified.
 
 Text exports remove terminal color escapes and trailing whitespace. The original local outputs are retained in ignored build storage; policy, verifier and bound proposal source files remain unchanged.

@@ -1,0 +1,36 @@
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: deny-agent-mutation-outside-namespace
+  annotations:
+    guardrails.trustfall.example/intent-clause: '1'
+    guardrails.trustfall.example/rollout-stage: deny
+    policies.kyverno.io/title: Agent may not mutate workloads outside agents
+    policies.kyverno.io/category: Agent Governance
+    policies.kyverno.io/severity: high
+    guardrails.trustfall.example/generator-note: Authorization expressed as admission. Backstop for an RBAC fix, not a replacement.
+spec:
+  validationActions:
+  - Deny
+  matchConstraints:
+    resourceRules:
+    - apiGroups:
+      - apps
+      apiVersions:
+      - v1
+      operations:
+      - CREATE
+      - UPDATE
+      resources:
+      - deployments
+      - statefulsets
+      - daemonsets
+      - deployments/scale
+      - statefulsets/scale
+  matchConditions:
+  - name: requester-is-agent
+    expression: request.?userInfo.?username.orValue('') == 'system:serviceaccount:agents:ops-agent'
+  validations:
+  - expression: object.metadata.namespace == 'agents'
+    messageExpression: '"ops-agent may not modify " + object.kind + " " + object.metadata.namespace + "/" + object.metadata.name + ": outside the agents namespace."'
+    message: The agent may only mutate workloads in agents.

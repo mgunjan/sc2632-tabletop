@@ -1,0 +1,11 @@
+# Public SC2632 exercise source
+
+The curated source is available at **https://github.com/mgunjan/sc2632-tabletop**, under Apache-2.0. Milind explicitly authorized this separate public repository on October 13, 2026. The existing project repository retains its private visibility.
+
+The public snapshot includes the four cases, current deck and worksheets, reference compiler, controls, tests, replay provenance and bounded lab evidence. It excludes project history, API-key files, Kubernetes credentials, model weights, caches and the earlier room-assignment kit. The published source was scanned for configured credentials, recognizable provider keys and bearer JWTs before upload.
+
+Start with the repository README. The reference and recorded-answer demos require Python and Kyverno CLI 1.19.1, with no account, model download or cluster. Proposals remain subject to human review. Catalog 0.1.0 requires platform qualification; the measured model pilot does not establish a production winner.
+
+The resource slide and all eight participant-handout pages name the public address. During the exercise, preserve the timing of sealed evidence; the full public materials include the later findings and answers.
+
+Native PowerPoint/projector inspection and the full 60-minute co-presenter rehearsal remain pending. Publication does not clear those release requirements.

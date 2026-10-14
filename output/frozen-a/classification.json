@@ -1,0 +1,20 @@
+{
+  "engine": {
+    "model": "convaiinnovations/laya",
+    "loaded": false,
+    "error": "ProxyError: 403 Forbidden"
+  },
+  "intent": {
+    "status": "not run",
+    "reason": "ProxyError: 403 Forbidden"
+  },
+  "exception": {
+    "status": "not run",
+    "reason": "ProxyError: 403 Forbidden"
+  },
+  "input": {
+    "status": "ok",
+    "inputs": [],
+    "note": "no agent inputs in this scenario"
+  }
+}

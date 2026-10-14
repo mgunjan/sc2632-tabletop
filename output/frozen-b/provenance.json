@@ -1,0 +1,10 @@
+{
+  "model": "none (spec supplied)",
+  "spec_source": "output/frozen-b/spec.json",
+  "scenario": "b",
+  "run_id": "b-20260927T163742Z",
+  "kyverno": "Version: 1.19.1",
+  "intent_sha256": "70b66392a25dff1eae248bfaa9b534a2a5d4ea22940a710fd09f248a88cc87fd",
+  "spec_sha256": "083bfa033086145ef70bee2a35b0ba42868a2ffd17c1ee123ce92655b6d66359",
+  "fixtures_sha256": "d89ddd91589e39c6d862a80a8311101729a88060edd36072f50330049d6b6be3"
+}

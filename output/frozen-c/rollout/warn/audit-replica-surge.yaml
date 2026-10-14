@@ -1,0 +1,29 @@
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: audit-replica-surge
+  annotations:
+    guardrails.trustfall.example/intent-clause: none
+    guardrails.trustfall.example/rollout-stage: audit
+    policies.kyverno.io/title: Audit replica counts above 8
+    policies.kyverno.io/category: Capacity
+    policies.kyverno.io/severity: low
+    guardrails.trustfall.example/generator-note: Added beyond stated intent. Reviewer must accept or remove.
+spec:
+  validationActions:
+  - Audit
+  matchConstraints:
+    resourceRules:
+    - apiGroups:
+      - apps
+      apiVersions:
+      - v1
+      operations:
+      - CREATE
+      - UPDATE
+      resources:
+      - deployments
+  validations:
+  - expression: object.spec.?replicas.orValue(1) <= 8
+    messageExpression: object.metadata.namespace + "/" + object.metadata.name + " has " + string(object.spec.replicas) + " replicas (audit threshold 8)."
+    message: Deployment replica count exceeds the audit threshold of 8.

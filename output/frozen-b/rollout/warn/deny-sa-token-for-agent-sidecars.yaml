@@ -1,0 +1,32 @@
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: deny-sa-token-for-agent-sidecars
+  annotations:
+    guardrails.trustfall.example/intent-clause: '2'
+    guardrails.trustfall.example/rollout-stage: warn
+    policies.kyverno.io/title: Agent sidecars may not mount the ServiceAccount token
+    policies.kyverno.io/category: Identity
+    policies.kyverno.io/severity: high
+spec:
+  validationActions:
+  - Warn
+  matchConstraints:
+    resourceRules:
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      operations:
+      - CREATE
+      resources:
+      - pods
+  matchConditions:
+  - name: payments-namespace-only
+    expression: object.metadata.namespace == 'payments'
+  - name: has-agent-sidecar
+    expression: object.metadata.?labels[?'trustfall.example/agent-sidecar'].orValue('false') == 'true'
+  validations:
+  - expression: object.spec.?automountServiceAccountToken.orValue(true) == false
+    messageExpression: '"Pod " + object.metadata.name + " runs an agent sidecar and must set spec.automountServiceAccountToken: false."'
+    message: 'Pods with an agent sidecar must set automountServiceAccountToken: false.'

@@ -1,0 +1,34 @@
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: deny-privilege-escalation
+  annotations:
+    guardrails.trustfall.example/intent-clause: '2'
+    guardrails.trustfall.example/rollout-stage: audit
+    policies.kyverno.io/title: Deny privilege escalation in payments
+    policies.kyverno.io/category: Pod Security
+    policies.kyverno.io/severity: high
+spec:
+  validationActions:
+  - Audit
+  matchConstraints:
+    resourceRules:
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      operations:
+      - CREATE
+      resources:
+      - pods
+  matchConditions:
+  - name: payments-namespace-only
+    expression: object.metadata.namespace == 'payments'
+  variables:
+  - name: allContainers
+    expression: object.spec.containers + object.spec.?initContainers.orValue([])
+  validations:
+  - expression: variables.allContainers.all(c, c.?securityContext.?privileged.orValue(false) == false)
+    message: Privileged containers are not allowed.
+  - expression: variables.allContainers.all(c, c.?securityContext.?allowPrivilegeEscalation.orValue(true) == false)
+    message: 'Every container must set securityContext.allowPrivilegeEscalation: false.'

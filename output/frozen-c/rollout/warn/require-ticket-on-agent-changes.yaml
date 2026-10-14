@@ -1,0 +1,33 @@
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: require-ticket-on-agent-changes
+  annotations:
+    guardrails.trustfall.example/intent-clause: '2'
+    guardrails.trustfall.example/rollout-stage: warn
+    policies.kyverno.io/title: Agent changes must reference a ticket
+    policies.kyverno.io/category: Agent Governance
+    policies.kyverno.io/severity: medium
+spec:
+  validationActions:
+  - Warn
+  matchConstraints:
+    resourceRules:
+    - apiGroups:
+      - apps
+      apiVersions:
+      - v1
+      operations:
+      - CREATE
+      - UPDATE
+      resources:
+      - deployments
+      - statefulsets
+      - daemonsets
+  matchConditions:
+  - name: requester-is-agent
+    expression: request.?userInfo.?username.orValue('') == 'system:serviceaccount:agents:ops-agent'
+  validations:
+  - expression: object.metadata.?annotations[?'trustfall.example/ticket'].orValue('') != ''
+    messageExpression: '"agent changed " + object.metadata.namespace + "/" + object.metadata.name + " without a trustfall.example/ticket annotation."'
+    message: Changes made by the agent must carry a trustfall.example/ticket annotation.

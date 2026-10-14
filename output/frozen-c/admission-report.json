@@ -1,0 +1,174 @@
+{
+  "without_exceptions": [
+    {
+      "workload": "agents/ops-agent-cache",
+      "policy": "audit-replica-surge",
+      "action": "Audit",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "agents/ops-agent-cache",
+      "policy": "deny-agent-mutation-outside-namespace",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "agents/ops-agent-cache",
+      "policy": "require-ticket-on-agent-changes",
+      "action": "Warn",
+      "result": "WARN (admitted with warning)",
+      "message": "agent changed agents/ops-agent-cache without a trustfall.example/ticket annotation."
+    },
+    {
+      "workload": "agents/ops-agent-tools",
+      "policy": "audit-replica-surge",
+      "action": "Audit",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "agents/ops-agent-tools",
+      "policy": "deny-agent-mutation-outside-namespace",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "agents/ops-agent-tools",
+      "policy": "require-ticket-on-agent-changes",
+      "action": "Warn",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "hr-sync/hr-sync",
+      "policy": "audit-replica-surge",
+      "action": "Audit",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "hr-sync/hr-sync",
+      "policy": "deny-agent-mutation-outside-namespace",
+      "action": "Deny",
+      "result": "WOULD BLOCK",
+      "message": "ops-agent may not modify Deployment hr-sync/hr-sync: outside the agents namespace."
+    },
+    {
+      "workload": "hr-sync/hr-sync",
+      "policy": "require-ticket-on-agent-changes",
+      "action": "Warn",
+      "result": "WARN (admitted with warning)",
+      "message": "agent changed hr-sync/hr-sync without a trustfall.example/ticket annotation."
+    },
+    {
+      "workload": "payments/payments-api",
+      "policy": "audit-replica-surge",
+      "action": "Audit",
+      "result": "AUDIT (admitted, reported)",
+      "message": "payments/payments-api has 12 replicas (audit threshold 8)."
+    },
+    {
+      "workload": "payments/payments-api",
+      "policy": "deny-agent-mutation-outside-namespace",
+      "action": "Deny",
+      "result": "WOULD BLOCK",
+      "message": "ops-agent may not modify Deployment payments/payments-api: outside the agents namespace."
+    },
+    {
+      "workload": "payments/payments-api",
+      "policy": "require-ticket-on-agent-changes",
+      "action": "Warn",
+      "result": "WARN (admitted with warning)",
+      "message": "agent changed payments/payments-api without a trustfall.example/ticket annotation."
+    }
+  ],
+  "with_exceptions": [
+    {
+      "workload": "agents/ops-agent-cache",
+      "policy": "audit-replica-surge",
+      "action": "Audit",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "agents/ops-agent-cache",
+      "policy": "deny-agent-mutation-outside-namespace",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "agents/ops-agent-cache",
+      "policy": "require-ticket-on-agent-changes",
+      "action": "Warn",
+      "result": "WARN (admitted with warning)",
+      "message": "agent changed agents/ops-agent-cache without a trustfall.example/ticket annotation."
+    },
+    {
+      "workload": "agents/ops-agent-tools",
+      "policy": "audit-replica-surge",
+      "action": "Audit",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "agents/ops-agent-tools",
+      "policy": "deny-agent-mutation-outside-namespace",
+      "action": "Deny",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "agents/ops-agent-tools",
+      "policy": "require-ticket-on-agent-changes",
+      "action": "Warn",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "hr-sync/hr-sync",
+      "policy": "audit-replica-surge",
+      "action": "Audit",
+      "result": "PASS",
+      "message": ""
+    },
+    {
+      "workload": "hr-sync/hr-sync",
+      "policy": "deny-agent-mutation-outside-namespace",
+      "action": "Deny",
+      "result": "WOULD BLOCK",
+      "message": "ops-agent may not modify Deployment hr-sync/hr-sync: outside the agents namespace."
+    },
+    {
+      "workload": "hr-sync/hr-sync",
+      "policy": "require-ticket-on-agent-changes",
+      "action": "Warn",
+      "result": "WARN (admitted with warning)",
+      "message": "agent changed hr-sync/hr-sync without a trustfall.example/ticket annotation."
+    },
+    {
+      "workload": "payments/payments-api",
+      "policy": "audit-replica-surge",
+      "action": "Audit",
+      "result": "AUDIT (admitted, reported)",
+      "message": "payments/payments-api has 12 replicas (audit threshold 8)."
+    },
+    {
+      "workload": "payments/payments-api",
+      "policy": "deny-agent-mutation-outside-namespace",
+      "action": "Deny",
+      "result": "WOULD BLOCK",
+      "message": "ops-agent may not modify Deployment payments/payments-api: outside the agents namespace."
+    },
+    {
+      "workload": "payments/payments-api",
+      "policy": "require-ticket-on-agent-changes",
+      "action": "Warn",
+      "result": "WARN (admitted with warning)",
+      "message": "agent changed payments/payments-api without a trustfall.example/ticket annotation."
+    }
+  ]
+}

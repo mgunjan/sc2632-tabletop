@@ -22,9 +22,9 @@
 
 - required_plugin_versions:
     - name: k8saudit
-      version: 0.7.0
+      version: 0.18.0
     - name: json
-      version: 0.7.0
+      version: 0.7.4
 
 - list: trustfall_agent_serviceaccounts
   items: ['"system:serviceaccount:agents:ops-agent"']
@@ -72,7 +72,7 @@
   condition: >
     trustfall_write_verb
     and ka.target.resource in (trustfall_rbac_binding_resources)
-    and (ka.target.name contains "ops-agent" or ka.req.binding.subjects contains "ops-agent")
+    and (ka.target.name contains "ops-agent" or ka.req.binding.subjects.serviceaccount_ns_names intersects ("agents:ops-agent"))
   output: >
     Q2 TRIGGER RBAC binding changed for the ops agent
     (by=%ka.user.name verb=%ka.verb resource=%ka.target.resource name=%ka.target.name

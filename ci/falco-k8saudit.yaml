@@ -1,0 +1,10 @@
+# Minimal Falco config used by CI to validate runtime/falco-rules-k8saudit.yaml.
+load_plugins: [k8saudit, json]
+plugins:
+  - name: k8saudit
+    library_path: libk8saudit.so
+    init_config: ""
+    open_params: "http://:9765/k8s-audit"
+  - name: json
+    library_path: libjson.so
+rules_files: []

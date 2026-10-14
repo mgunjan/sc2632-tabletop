@@ -4,9 +4,11 @@ This package accompanies SC2632, presented by Milind Gunjan and Vivek Mayuranath
 
 ## Reproduce a reviewable proposal
 
-Use Python 3.10 or newer and Kyverno CLI **1.19.1**. Obtain the CLI for your operating system from the [official Kyverno release](https://github.com/kyverno/kyverno/releases/tag/v1.19.1). Run from the extracted package root:
+Use Python 3.10 or newer and Kyverno CLI **1.19.1**. Obtain the CLI for your operating system from the [official Kyverno release](https://github.com/kyverno/kyverno/releases/tag/v1.19.1). Clone the public source or extract the source ZIP, then run from its root:
 
 ```bash
+git clone https://github.com/mgunjan/sc2632-tabletop.git
+cd sc2632-tabletop
 python3 -m venv .venv-session
 .venv-session/bin/pip install -r tabletop/congress-2026/demo-requirements.txt
 .venv-session/bin/python tabletop/congress-2026/demo.py --check

@@ -1,0 +1,61 @@
+{
+  "namespace": "payments",
+  "clauses": [
+    {
+      "id": 1,
+      "text": "Deny new east-west communication from the payments namespace while preserving known service dependencies",
+      "control": "egress_profile"
+    },
+    {
+      "id": 2,
+      "text": "The support-assistant sidecar must not be able to use the Pod's Kubernetes identity",
+      "control": "deny_sa_token_for_agent_sidecars"
+    },
+    {
+      "id": 3,
+      "text": "The sidecar may only call tools listed in its approved tool manifest",
+      "control": "not_implementable",
+      "note": "Tool-call allow-listing happens inside the agent's tool server, not at Kubernetes admission. Nothing generated."
+    },
+    {
+      "id": 4,
+      "text": "Keep the assistant running; roll out in stages and time-box any exception",
+      "control": "not_implementable",
+      "note": "Process constraint. Expressed as the rollout plan and exception TTLs."
+    }
+  ],
+  "controls": {
+    "egress_profile": {
+      "enabled": true,
+      "approved_profiles": [
+        "db",
+        "monitoring",
+        "none"
+      ],
+      "in_intent": true
+    },
+    "deny_sa_token_for_agent_sidecars": {
+      "enabled": true,
+      "in_intent": true
+    },
+    "restrict_registry": {
+      "enabled": true,
+      "registry": "registry.trustfall.internal",
+      "in_intent": false
+    }
+  },
+  "exceptions": [
+    {
+      "workload": "payments-api",
+      "control": "deny_sa_token_for_agent_sidecars",
+      "owner": "platform-ops@trustfall.example",
+      "ttl_hours": 24,
+      "reason": "Setting automountServiceAccountToken=false rolls every payments-api replica. Requesting 24h to schedule the rollout after the 10:00 payroll batch."
+    }
+  ],
+  "rollout": [
+    "Audit",
+    "Warn",
+    "Deny"
+  ]
+}

@@ -18,6 +18,11 @@
       "sha256": "759cd434b6265c2cfb407304f76b516616275e1bf6b0e3ae8fe8a2cb62531d98"
     },
     {
+      "path": "ci/falco-k8saudit.yaml",
+      "bytes": 295,
+      "sha256": "8867eb59fea2149224cf13df4786330f78787cd428cf4becaf0c0d50ba03a4b9"
+    },
+    {
       "path": "controls/ENTERPRISE-QUALIFICATION.md",
       "bytes": 7306,
       "sha256": "485e4b3b9a667cb04c2a3081d944434b786b02337121c8d2ce603f67e804f1b9"
@@ -483,6 +488,271 @@
       "sha256": "68ffb7c1d7731c6501bd569f2c85d7e6e038de1bb564efd9adf81ac286b0a82b"
     },
     {
+      "path": "output/frozen-a/PR.md",
+      "bytes": 4824,
+      "sha256": "ef2aeaa6ceeebe01a94eee2bc0ed9521ab9386ad9af4856b1687986b5ea59584"
+    },
+    {
+      "path": "output/frozen-a/admission-report.json",
+      "bytes": 5536,
+      "sha256": "ed98554702f6ed7c8195c5c0b0852fcec2de109acf3ad076d61e45f405798df1"
+    },
+    {
+      "path": "output/frozen-a/classification.json",
+      "bytes": 401,
+      "sha256": "2e1d7b8926e17442795bf75a67331cb781bbf18e50b7ef13f324483b94f82ed1"
+    },
+    {
+      "path": "output/frozen-a/exceptions/backup-job-egress_profile.yaml",
+      "bytes": 610,
+      "sha256": "26e25a09a1c09b04cacdd7285956d31d89344c67b8c2c9144c5ee2e09fd29e97"
+    },
+    {
+      "path": "output/frozen-a/policies/deny-privilege-escalation.yaml",
+      "bytes": 1175,
+      "sha256": "97b9d322f27b29ca76308744bf4cdc314f126bdd91edb61fa3f9bfd828b832fe"
+    },
+    {
+      "path": "output/frozen-a/policies/restrict-egress-profile.yaml",
+      "bytes": 1358,
+      "sha256": "9b6d6c2af240d653e25ee95deed910aa667ddf703194b108e1b6c3c1407ab3c8"
+    },
+    {
+      "path": "output/frozen-a/policies/restrict-image-registry.yaml",
+      "bytes": 1184,
+      "sha256": "98bd8541587d9586376fc903f91228cf1c8fad3ed6c48c43ac3d2b07aebd4d52"
+    },
+    {
+      "path": "output/frozen-a/provenance.json",
+      "bytes": 430,
+      "sha256": "bb9f5043b10fe6d5773651be42a020f47f078225ab5195d268058f6a22524c1d"
+    },
+    {
+      "path": "output/frozen-a/rollout/audit/deny-privilege-escalation.yaml",
+      "bytes": 1177,
+      "sha256": "e77172cd2989acff78b5379af130e70fb30108689fa4cf55fd62fb7c907356f8"
+    },
+    {
+      "path": "output/frozen-a/rollout/audit/restrict-egress-profile.yaml",
+      "bytes": 1360,
+      "sha256": "549376d907e35247823b4de54691b0f38b7061f7d031215c0a56dadb7b282e64"
+    },
+    {
+      "path": "output/frozen-a/rollout/audit/restrict-image-registry.yaml",
+      "bytes": 1184,
+      "sha256": "98bd8541587d9586376fc903f91228cf1c8fad3ed6c48c43ac3d2b07aebd4d52"
+    },
+    {
+      "path": "output/frozen-a/rollout/deny/deny-privilege-escalation.yaml",
+      "bytes": 1175,
+      "sha256": "97b9d322f27b29ca76308744bf4cdc314f126bdd91edb61fa3f9bfd828b832fe"
+    },
+    {
+      "path": "output/frozen-a/rollout/deny/restrict-egress-profile.yaml",
+      "bytes": 1358,
+      "sha256": "9b6d6c2af240d653e25ee95deed910aa667ddf703194b108e1b6c3c1407ab3c8"
+    },
+    {
+      "path": "output/frozen-a/rollout/deny/restrict-image-registry.yaml",
+      "bytes": 1184,
+      "sha256": "98bd8541587d9586376fc903f91228cf1c8fad3ed6c48c43ac3d2b07aebd4d52"
+    },
+    {
+      "path": "output/frozen-a/rollout/warn/deny-privilege-escalation.yaml",
+      "bytes": 1175,
+      "sha256": "bf06c77c126013b9ba3e0909061c5ea056eaa429b951b55947ec7d85daed7761"
+    },
+    {
+      "path": "output/frozen-a/rollout/warn/restrict-egress-profile.yaml",
+      "bytes": 1358,
+      "sha256": "561de9bbbeff2880a875db084a7c468ca184574054f91a254457f4bcef7a4961"
+    },
+    {
+      "path": "output/frozen-a/rollout/warn/restrict-image-registry.yaml",
+      "bytes": 1184,
+      "sha256": "98bd8541587d9586376fc903f91228cf1c8fad3ed6c48c43ac3d2b07aebd4d52"
+    },
+    {
+      "path": "output/frozen-a/spec.json",
+      "bytes": 1868,
+      "sha256": "0aa2bd7d9c1ef1eb48cc3f9b941cb83f9019992ece3b3747fbefa3b07cca4d6e"
+    },
+    {
+      "path": "output/frozen-b/PR.md",
+      "bytes": 5418,
+      "sha256": "4b6a746b97fd30c94b91dcdd6cb8f70d17e7c60bdd978230691d0aec65805a31"
+    },
+    {
+      "path": "output/frozen-b/admission-report.json",
+      "bytes": 5645,
+      "sha256": "8455be28929f8b87f9b55985fd4b0fed4abef30ec9fc0344e7d45d62cafa2fc2"
+    },
+    {
+      "path": "output/frozen-b/classification.json",
+      "bytes": 383,
+      "sha256": "ddfd0645fe42064ed7303bc18551ba03b31ee981513aba93cbde70ac67561aba"
+    },
+    {
+      "path": "output/frozen-b/exceptions/payments-api-deny_sa_token_for_agent_sidecars.yaml",
+      "bytes": 681,
+      "sha256": "1efa73901bf008d82c4dd6dd686bb3ce067d48f2f5fa942d087ab8b7bd7ed2ff"
+    },
+    {
+      "path": "output/frozen-b/policies/deny-sa-token-for-agent-sidecars.yaml",
+      "bytes": 1153,
+      "sha256": "3a9a5609f2d0e0919be5b34a8db30c39abb807c5aa381c59fd5951ef81a1cb8c"
+    },
+    {
+      "path": "output/frozen-b/policies/restrict-egress-profile.yaml",
+      "bytes": 1358,
+      "sha256": "9b6d6c2af240d653e25ee95deed910aa667ddf703194b108e1b6c3c1407ab3c8"
+    },
+    {
+      "path": "output/frozen-b/policies/restrict-image-registry.yaml",
+      "bytes": 1184,
+      "sha256": "98bd8541587d9586376fc903f91228cf1c8fad3ed6c48c43ac3d2b07aebd4d52"
+    },
+    {
+      "path": "output/frozen-b/provenance.json",
+      "bytes": 430,
+      "sha256": "4bac4a83f128ae39c8423b500ea9c1c85aa01336605ad7423553946d7a50b524"
+    },
+    {
+      "path": "output/frozen-b/rollout/audit/deny-sa-token-for-agent-sidecars.yaml",
+      "bytes": 1155,
+      "sha256": "31fecf45f0d94385115061222fec412f4f71ce4d95617a66b05b8a39fcc2e104"
+    },
+    {
+      "path": "output/frozen-b/rollout/audit/restrict-egress-profile.yaml",
+      "bytes": 1360,
+      "sha256": "549376d907e35247823b4de54691b0f38b7061f7d031215c0a56dadb7b282e64"
+    },
+    {
+      "path": "output/frozen-b/rollout/audit/restrict-image-registry.yaml",
+      "bytes": 1184,
+      "sha256": "98bd8541587d9586376fc903f91228cf1c8fad3ed6c48c43ac3d2b07aebd4d52"
+    },
+    {
+      "path": "output/frozen-b/rollout/deny/deny-sa-token-for-agent-sidecars.yaml",
+      "bytes": 1153,
+      "sha256": "3a9a5609f2d0e0919be5b34a8db30c39abb807c5aa381c59fd5951ef81a1cb8c"
+    },
+    {
+      "path": "output/frozen-b/rollout/deny/restrict-egress-profile.yaml",
+      "bytes": 1358,
+      "sha256": "9b6d6c2af240d653e25ee95deed910aa667ddf703194b108e1b6c3c1407ab3c8"
+    },
+    {
+      "path": "output/frozen-b/rollout/deny/restrict-image-registry.yaml",
+      "bytes": 1184,
+      "sha256": "98bd8541587d9586376fc903f91228cf1c8fad3ed6c48c43ac3d2b07aebd4d52"
+    },
+    {
+      "path": "output/frozen-b/rollout/warn/deny-sa-token-for-agent-sidecars.yaml",
+      "bytes": 1153,
+      "sha256": "0d173cd4f020a267dc7b8ff5a4b54caaef88407542b17f5d6399f61e8847b101"
+    },
+    {
+      "path": "output/frozen-b/rollout/warn/restrict-egress-profile.yaml",
+      "bytes": 1358,
+      "sha256": "561de9bbbeff2880a875db084a7c468ca184574054f91a254457f4bcef7a4961"
+    },
+    {
+      "path": "output/frozen-b/rollout/warn/restrict-image-registry.yaml",
+      "bytes": 1184,
+      "sha256": "98bd8541587d9586376fc903f91228cf1c8fad3ed6c48c43ac3d2b07aebd4d52"
+    },
+    {
+      "path": "output/frozen-b/spec.json",
+      "bytes": 1766,
+      "sha256": "b41f403482055b97d0d8eb30ab8cb933c56b944eb018831aa69b3f748d78d2f5"
+    },
+    {
+      "path": "output/frozen-c/PR.md",
+      "bytes": 3993,
+      "sha256": "88ff0c98b6ddbd4388ca6272d0cc1b75e0b928ad57d9321b26076b3779938a81"
+    },
+    {
+      "path": "output/frozen-c/admission-report.json",
+      "bytes": 5350,
+      "sha256": "e0a64b42158e7f6f967e565e7d6dd52ea99d771281d5b6d035b495d727572466"
+    },
+    {
+      "path": "output/frozen-c/classification.json",
+      "bytes": 396,
+      "sha256": "ef914035a7ceecaffef162fa9a81e0b9b7c242f9a0897e0b068b12a166a4f8ba"
+    },
+    {
+      "path": "output/frozen-c/policies/audit-replica-surge.yaml",
+      "bytes": 984,
+      "sha256": "82d54f9aaa1894176b6eb581fc42d388b5669a619ded980a0727579e2ed7c5fd"
+    },
+    {
+      "path": "output/frozen-c/policies/deny-agent-mutation-outside-namespace.yaml",
+      "bytes": 1289,
+      "sha256": "8bd10bf9caeef760ffae9da75b3bcf3b3c40b812693d3ce22a50191b1ba85888"
+    },
+    {
+      "path": "output/frozen-c/policies/require-ticket-on-agent-changes.yaml",
+      "bytes": 1144,
+      "sha256": "bdfa73b2058efa8856a3bab82ee508ed02b31b288aa505e7b98b8848f3cedca3"
+    },
+    {
+      "path": "output/frozen-c/provenance.json",
+      "bytes": 430,
+      "sha256": "6d07e3c00db7d12097abe636cabf9677ed3a940d822ac006b1044a3c8ef49578"
+    },
+    {
+      "path": "output/frozen-c/rollout/audit/audit-replica-surge.yaml",
+      "bytes": 984,
+      "sha256": "82d54f9aaa1894176b6eb581fc42d388b5669a619ded980a0727579e2ed7c5fd"
+    },
+    {
+      "path": "output/frozen-c/rollout/audit/deny-agent-mutation-outside-namespace.yaml",
+      "bytes": 1291,
+      "sha256": "6f22d0c2b010e521cd6793f85f26cf20d90e7edc16cb1a3b57c66c4516781095"
+    },
+    {
+      "path": "output/frozen-c/rollout/audit/require-ticket-on-agent-changes.yaml",
+      "bytes": 1146,
+      "sha256": "1da861aa4da59fee6d20850ba4a49b01d97eb5e7783bfeb63e0acc7ef1315c3b"
+    },
+    {
+      "path": "output/frozen-c/rollout/deny/audit-replica-surge.yaml",
+      "bytes": 984,
+      "sha256": "82d54f9aaa1894176b6eb581fc42d388b5669a619ded980a0727579e2ed7c5fd"
+    },
+    {
+      "path": "output/frozen-c/rollout/deny/deny-agent-mutation-outside-namespace.yaml",
+      "bytes": 1289,
+      "sha256": "8bd10bf9caeef760ffae9da75b3bcf3b3c40b812693d3ce22a50191b1ba85888"
+    },
+    {
+      "path": "output/frozen-c/rollout/deny/require-ticket-on-agent-changes.yaml",
+      "bytes": 1144,
+      "sha256": "bdfa73b2058efa8856a3bab82ee508ed02b31b288aa505e7b98b8848f3cedca3"
+    },
+    {
+      "path": "output/frozen-c/rollout/warn/audit-replica-surge.yaml",
+      "bytes": 984,
+      "sha256": "82d54f9aaa1894176b6eb581fc42d388b5669a619ded980a0727579e2ed7c5fd"
+    },
+    {
+      "path": "output/frozen-c/rollout/warn/deny-agent-mutation-outside-namespace.yaml",
+      "bytes": 1289,
+      "sha256": "1ade0ab60f1e338aa6da6f4f333bfed71126bc8ed6c8be48437f3ca37fcb8c28"
+    },
+    {
+      "path": "output/frozen-c/rollout/warn/require-ticket-on-agent-changes.yaml",
+      "bytes": 1144,
+      "sha256": "bdfa73b2058efa8856a3bab82ee508ed02b31b288aa505e7b98b8848f3cedca3"
+    },
+    {
+      "path": "output/frozen-c/spec.json",
+      "bytes": 1398,
+      "sha256": "094f3e4b649ffd924de83f7404a22b2599d7f27fc73966187f100910d3d2cd9e"
+    },
+    {
       "path": "quarantine/capture-evidence.sh",
       "bytes": 7146,
       "sha256": "3fcdb4b920c50007e454233222b95fbc92c0a274995290b7165c8264492cff65"
@@ -544,8 +814,8 @@
     },
     {
       "path": "runtime/falco-rules-k8saudit.yaml",
-      "bytes": 3425,
-      "sha256": "a5b933a98cbbe9c2c58a299e7a1f72a3d78ba67708a54b4b1ce9a0eb49c52339"
+      "bytes": 3461,
+      "sha256": "1faba913cec50fa0d57e8a6a8e1760d884b946cdfe3b3ccea2072fbc201598ab"
     },
     {
       "path": "runtime/falco-rules-syscall.yaml",
@@ -794,8 +1064,8 @@
     },
     {
       "path": "scripts/lint-falco.py",
-      "bytes": 2009,
-      "sha256": "258db296345b66b16906d43438955fe4ea351dda3f2341d4ae7e3a321716a064"
+      "bytes": 2059,
+      "sha256": "b21d098ee96f1af92552f5dafdb3439eb827d34a04942305500fab5e576e79d6"
     },
     {
       "path": "standards/README.md",
@@ -1569,8 +1839,8 @@
     },
     {
       "path": "submission/2026-10-13/ARTIFACT-VALIDATION.json",
-      "bytes": 1721,
-      "sha256": "b8db64d4e46b4fad86b12b76fba5cda3c3ec20ae360090fbd108af2aad418c1f"
+      "bytes": 1881,
+      "sha256": "2769dceb008d02752d03a7a4863e3eb3a3a4fffbe550a342211a873cf903b667"
     },
     {
       "path": "submission/2026-10-13/CONTROL-REVIEW-EXERCISE.md",
@@ -1584,13 +1854,18 @@
     },
     {
       "path": "submission/2026-10-13/PARTICIPANT-PACK.pdf",
-      "bytes": 16662,
-      "sha256": "c2061eeec7049e89cdbb72bb2b443b35422d3490a7959bcab0477bc1ff5d3ab0"
+      "bytes": 16587,
+      "sha256": "fa882a2e3bc2808228d80add32ac0e04e09c713be86bfa6c2df7d8a87daca12e"
+    },
+    {
+      "path": "submission/2026-10-13/PUBLIC-RELEASE.md",
+      "bytes": 1363,
+      "sha256": "3ebcc4d2521b0c15db0859c949c75749c1333c6496d377a58801e1fea073520d"
     },
     {
       "path": "submission/2026-10-13/README.md",
-      "bytes": 3746,
-      "sha256": "5437c4cb2c710a374702e6de681ada93357f81a20892964be4d0978260d5af8a"
+      "bytes": 3873,
+      "sha256": "e81efdcbc5869403634bd5c54e7af3f2ec193682366108a73afdbdab1a86f8f9"
     },
     {
       "path": "submission/2026-10-13/REVIEW-SCORECARD.pdf",
@@ -1604,13 +1879,13 @@
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pdf",
-      "bytes": 8525665,
-      "sha256": "e8bc73de111519aa373c22f9fe832d3d09f88435c000a999dbe4fc31a75ded21"
+      "bytes": 8523818,
+      "sha256": "3f92f342a87026ea0b9610c99a5bdbd74fdc55817ed7787a7231eb8f6f549173"
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pptx",
-      "bytes": 7120161,
-      "sha256": "67a9148477c833053641b57f23a14454439516062d83a0c20b9e13813474c109"
+      "bytes": 7120246,
+      "sha256": "0e0ac3252a0d75b6b3d4838bd0148fa1cfb7130ffd06d83ead7a8f552d62fe39"
     },
     {
       "path": "submission/2026-10-13/TRAINING-PROTOCOL.md",
@@ -1619,8 +1894,8 @@
     },
     {
       "path": "submission/2026-10-13/VALIDATION.md",
-      "bytes": 5243,
-      "sha256": "34e27fbc78b1133df48f87b0d7d8a0a2f1a768be5939d1435fd42e18831c372c"
+      "bytes": 6373,
+      "sha256": "bd51e95ea79eb4f541c03d82f452eea15629f2694ef57f55fc82bb6999e592f6"
     },
     {
       "path": "submission/2026-10-13/classical-verification-final/REPORT.md",
@@ -2239,8 +2514,8 @@
     },
     {
       "path": "submission/2026-10-13/live-rehearsal/README.md",
-      "bytes": 5476,
-      "sha256": "6abadf0489a26063ea4670ab37b5d1d24008043b7665ea60887e58a7b8f02c4e"
+      "bytes": 5548,
+      "sha256": "7fc82769bd1bf75cd23e3cc80a95ecb07955e3b1c9f12b4248d3ef95dbe01300"
     },
     {
       "path": "submission/2026-10-13/live-rehearsal/SUMMARY.json",
@@ -2504,8 +2779,8 @@
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL.md",
-      "bytes": 8159,
-      "sha256": "96b2eb5bce533327288023e911f54d977ddc303e25a30caf272a4f338a2916be"
+      "bytes": 8252,
+      "sha256": "667592f686f4ff22734c0c97b618ff31ac5d3a5857582e9cbc1c62a1b5a184a0"
     },
     {
       "path": "tabletop/congress-2026/demo-requirements.txt",
@@ -2519,13 +2794,13 @@
     },
     {
       "path": "START-HERE.md",
-      "bytes": 3633,
-      "sha256": "1a0137c589a3b0f14af7a7cce4d4d0845ccd5ecc546f156216191e4b4dd91165"
+      "bytes": 3747,
+      "sha256": "841ed29a3dcab67e3402a974c45d02e2410019883ed424dac57f576c0d1df9e3"
     },
     {
       "path": "README.md",
-      "bytes": 3633,
-      "sha256": "1a0137c589a3b0f14af7a7cce4d4d0845ccd5ecc546f156216191e4b4dd91165"
+      "bytes": 3747,
+      "sha256": "841ed29a3dcab67e3402a974c45d02e2410019883ed424dac57f576c0d1df9e3"
     }
   ]
 }

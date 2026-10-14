@@ -1,0 +1,33 @@
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: restrict-image-registry
+  annotations:
+    guardrails.trustfall.example/intent-clause: none
+    guardrails.trustfall.example/rollout-stage: audit
+    policies.kyverno.io/title: Restrict image registry in payments
+    policies.kyverno.io/category: Supply Chain
+    policies.kyverno.io/severity: medium
+    guardrails.trustfall.example/generator-note: Added beyond stated intent. Reviewer must accept or remove.
+spec:
+  validationActions:
+  - Audit
+  matchConstraints:
+    resourceRules:
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      operations:
+      - CREATE
+      - UPDATE
+      resources:
+      - pods
+  matchConditions:
+  - name: payments-namespace-only
+    expression: object.metadata.namespace == 'payments'
+  - name: create-or-image-changed
+    expression: request.operation == 'CREATE' || oldObject == null || object.spec.containers.map(c, c.image) != oldObject.spec.containers.map(c, c.image)
+  validations:
+  - expression: object.spec.containers.all(c, c.image.startsWith('registry.trustfall.internal/'))
+    message: Images in payments must come from registry.trustfall.internal.

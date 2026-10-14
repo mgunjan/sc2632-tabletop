@@ -1,0 +1,17 @@
+apiVersion: policies.kyverno.io/v1
+kind: PolicyException
+metadata:
+  name: payments-api-deny-sa-token-for-agent-sidecars
+  namespace: payments
+  labels:
+    cleanup.kyverno.io/ttl: 24h
+  annotations:
+    trustfall.example/owner: platform-ops@trustfall.example
+    trustfall.example/reason: Setting automountServiceAccountToken=false rolls every payments-api replica. Requesting 24h to schedule the rollout after the 10:00 payroll batch.
+spec:
+  policyRefs:
+  - name: deny-sa-token-for-agent-sidecars
+    kind: ValidatingPolicy
+  matchConditions:
+  - name: payments-api-only
+    expression: object.metadata.namespace == 'payments' && object.metadata.name.startsWith('payments-api')
