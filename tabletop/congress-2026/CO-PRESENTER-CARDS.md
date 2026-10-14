@@ -8,7 +8,7 @@ Open a round with one question. Give participants quiet time to record a decisio
 
 Alternate the speaking lead by round. During team work, each co-presenter visits different tables and brings back one defended tradeoff. Invite the independent reviewer to speak before the table lead finalizes the decision. Avoid letting the most Kubernetes-fluent person supply every answer.
 
-At most two table reports per round, 20 seconds each. A report has a decision, a boundary and the evidence needed to proceed. Park implementation questions that cannot change the current decision. The score rewards documented reasoning under the chosen constraint, never speed or the most restrictive quarantine level.
+At most two table reports per round, 20 seconds each. A report has a decision, a boundary and the evidence needed to proceed. Park implementation questions that cannot change the current decision. The score rewards documented reasoning under the chosen constraint, never speed or the most restrictive quarantine level. Use SCORING-ANCHORS.md to calibrate a refusal and a bounded approval before the hour. Credit stated verification requirements; a paper plan cannot establish that a live test passed.
 
 ## 06–10: Intent
 
@@ -75,7 +75,7 @@ Use “recorded k3s observation” when identifying the source. The fictional in
 
 **Evidence of learning:** One test a table would add to its own environment, with an owner.
 
-At 44–45 read one D table's locked prediction and compare it with the separate October 13 synthetic lab record, using backup 32 or the status-only transcript within the existing case-comparison minute. Narrowing RBAC preserves a required named Secret GET; copied-token revocation and clean replacement are verified separately. Do not add a fifth live demo. Stand-in health is not real metrics delivery; external application-key rotation remains outstanding.
+If no table chose D, collect a short ungraded prediction before displaying slide 23; name the copied token and the Pod-only network control. Do not imply it was recorded earlier. Otherwise, at 44–45 read one D table's locked prediction and compare it with the separate October 13 synthetic lab record, using backup 32 or the status-only transcript within the existing case-comparison minute. Narrowing RBAC preserves a required named Secret GET; copied-token revocation and clean replacement are verified separately. Do not add a fifth live demo. Stand-in health is not real metrics delivery; external application-key rotation remains outstanding.
 
 ## 45–50: Independent proposal review
 
@@ -99,4 +99,21 @@ Close with two 20-second reports: a decision whose justification changed and a t
 
 ## Time-pressure cuts
 
-Protect participant writing and the final recovery decision. If the demo is over its allotted time, stop it and use the prepared artifact. If five minutes behind, take one table report per remaining round and reveal the four lab findings with brief predictions; retain all four because each tests a different boundary. Show the full model comparison for one minute and move its detailed methodology to the backup slides. Do not spend exercise time troubleshooting installations or provider credentials.
+Protect participant writing and the final recovery decision. If the demo is over its allotted time, stop it and use the prepared artifact. If five minutes behind when starting the scheduled minute-38 section, use the exact recovery schedule below. Keep all four control boundaries, the three-minute independent review and four-minute recovery task. Move extended model methodology to the backup discussion. Do not spend exercise time troubleshooting installations or provider credentials.
+
+## Five-minute recovery schedule
+
+Use this only when the scheduled minute-38 segment begins at actual elapsed minute 43. It recovers five minutes without reducing the independent-review or recovery writing tasks. Suppress extra volunteer reports during the compressed reveals.
+
+| Actual clock | Activity | Bound |
+|---|---|---|
+| 43:00–46:00 | Four recorded lab prediction/reveal pairs | 45 seconds each: short written prediction, evidence, one consequence |
+| 46:00–46:30 | D comparison | Use its earlier prediction, or ask before displaying the answer if nobody chose D |
+| 46:30–49:30 | Independent trained-proposal review | Preserve three minutes of team work |
+| 49:30–50:00 | Reveal incomplete coverage | State the missing control and ownership boundary |
+| 50:00–50:30 | Historical model cost/time comparison | Distinguish latency, API cost and incomplete work |
+| 50:30–54:30 | Recovery | Preserve four minutes for exit tests and lift authority |
+| 54:30–58:30 | Personal action and two short reports | Preserve action, owner and verification; each report at most 20 seconds |
+| 58:30–60:00 | Questions and close | Park unresolved implementation detail in the source package |
+
+Time recovered: three minutes from lab commentary, 30 seconds each from case comparison, findings reveal, model commentary and questions. Practise this as a separate drill; the schedule is planned, not a measured human rehearsal result.

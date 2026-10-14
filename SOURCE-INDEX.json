@@ -1099,8 +1099,8 @@
     },
     {
       "path": "submission/2026-10-12/SESSION-RUNBOOK.md",
-      "bytes": 14648,
-      "sha256": "2cb265ba864a5f6868cd1f15b06f007d971622483da2929dd717e338eb11d78b"
+      "bytes": 15003,
+      "sha256": "aa50c5a59aeed0d536b8879a7fb6c6c42468c4ac781adf068be3afa2003662ee"
     },
     {
       "path": "submission/2026-10-12/benchmark/CONTRACT.json",
@@ -1844,8 +1844,8 @@
     },
     {
       "path": "submission/2026-10-13/ARTIFACT-VALIDATION.json",
-      "bytes": 1881,
-      "sha256": "2769dceb008d02752d03a7a4863e3eb3a3a4fffbe550a342211a873cf903b667"
+      "bytes": 2242,
+      "sha256": "f26ba3a762dbf4ca7d3dd60febe5a2bd1edfc2e14da4e4d57d46705fb83206a7"
     },
     {
       "path": "submission/2026-10-13/CONTROL-REVIEW-EXERCISE.md",
@@ -1869,13 +1869,13 @@
     },
     {
       "path": "submission/2026-10-13/README.md",
-      "bytes": 3873,
-      "sha256": "e81efdcbc5869403634bd5c54e7af3f2ec193682366108a73afdbdab1a86f8f9"
+      "bytes": 4256,
+      "sha256": "da378cc66b96acb3faef9ed9c9ac95bc88367d0861b884e09693d8c2f63aabe4"
     },
     {
       "path": "submission/2026-10-13/REVIEW-SCORECARD.pdf",
-      "bytes": 3060,
-      "sha256": "f1d2eba63255c41f86cbcd6a2adb2fe0eab0ba2ed15d3c306952fc58e3f873c1"
+      "bytes": 3067,
+      "sha256": "fb2afef7d10e4d7087cd27e696c0c65dd2c82f014023017d4d5256e865e8130d"
     },
     {
       "path": "submission/2026-10-13/REVIEW.md",
@@ -1884,13 +1884,13 @@
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pdf",
-      "bytes": 8523818,
-      "sha256": "3f92f342a87026ea0b9610c99a5bdbd74fdc55817ed7787a7231eb8f6f549173"
+      "bytes": 8516101,
+      "sha256": "e7f714acebd24b5f938a69982a3bf5f5cd172a8873916c2290d8636759886adf"
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pptx",
-      "bytes": 7120246,
-      "sha256": "0e0ac3252a0d75b6b3d4838bd0148fa1cfb7130ffd06d83ead7a8f552d62fe39"
+      "bytes": 7120602,
+      "sha256": "8d87bea28281b4df45dc466949949e025d581be09900097fb5f42762520057b4"
     },
     {
       "path": "submission/2026-10-13/TRAINING-PROTOCOL.md",
@@ -1899,8 +1899,8 @@
     },
     {
       "path": "submission/2026-10-13/VALIDATION.md",
-      "bytes": 7501,
-      "sha256": "ef0928c175660294e2d50eaef1e8d3e54cfd981531b14d0c7b12b1c4cf2151a9"
+      "bytes": 8052,
+      "sha256": "a9d148b2ec1bff91fcdc8f94c1271a70c4a3176e5e7337d38cade19aec4d4f4e"
     },
     {
       "path": "submission/2026-10-13/classical-verification-final/REPORT.md",
@@ -2774,8 +2774,8 @@
     },
     {
       "path": "tabletop/congress-2026/CO-PRESENTER-CARDS.md",
-      "bytes": 9937,
-      "sha256": "3fd89e41b9748b818754173e779c1f33be24fc34f49920b6d300f46dd89ccd21"
+      "bytes": 11735,
+      "sha256": "e12956694982845773489ded48e36e27ff39ba99d7e2454d856784fd3449a442"
     },
     {
       "path": "tabletop/congress-2026/INCIDENT-BRIEF.md",
@@ -2783,9 +2783,19 @@
       "sha256": "02e98d711b34f048f5e13709c05a6814178b266f1b8fde4f79931c6b18278561"
     },
     {
+      "path": "tabletop/congress-2026/REHEARSAL-RECORD.md",
+      "bytes": 2811,
+      "sha256": "66520f519886e985e9142bfbeaf7265cbc6590b66968600c787e886356b85499"
+    },
+    {
       "path": "tabletop/congress-2026/REHEARSAL.md",
-      "bytes": 8252,
-      "sha256": "667592f686f4ff22734c0c97b618ff31ac5d3a5857582e9cbc1c62a1b5a184a0"
+      "bytes": 8589,
+      "sha256": "18f3710433c75c189fd6577020777d98e7ebfe9d6c31f55bbc0b43968de34781"
+    },
+    {
+      "path": "tabletop/congress-2026/SCORING-ANCHORS.md",
+      "bytes": 6728,
+      "sha256": "7f17cb521e41fd1c429bf6317d4ea2b1d9e7748806cce38ec64cfd5ab3b7372a"
     },
     {
       "path": "tabletop/congress-2026/demo-requirements.txt",

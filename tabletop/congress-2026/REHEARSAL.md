@@ -73,3 +73,5 @@ Case D is now separately executed on that marked lab. It measures actual out-of-
 | Distribution | Authorized source/package access and working attendee resource | Separate public curated repository authorized and verified; extracted reference/replay checks passed |
 
 During the full rehearsal, one person represents a table with little Kubernetes experience and another challenges every approval. Record where the prompt is ambiguous, where a participant has no decision to make, and where a claimed outcome lacks evidence. Adjust prompts or cut explanation time; do not silently change benchmark labels or convert an untested behavior into a passing result.
+
+Use [REHEARSAL-RECORD.md](REHEARSAL-RECORD.md) to capture actual timestamps, participant decisions, scoring differences and display checks. Use [SCORING-ANCHORS.md](SCORING-ANCHORS.md) to grade a cautious refusal and a bounded approval before delivery. The blank record and scoring examples do not establish human rehearsal completion.
