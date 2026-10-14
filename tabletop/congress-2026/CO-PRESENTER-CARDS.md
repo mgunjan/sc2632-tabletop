@@ -12,17 +12,22 @@ At most two table reports per round, 20 seconds each. A report has a decision, a
 
 ## 00–06: Context, participant assignment and setup
 
-The opening must establish the incident and the participants' task before explaining enforcement layers. Use the visible opening slides, not a spoken explanation over the cover.
+The opening must state what the workshop produces and why it matters before defining the environment or tool names. Use the visible purpose slide, then the primer and participant assignment.
 
 | Minutes | Lead and visible slide | What attendees do |
 |---|---|---|
 | 00–00:20 | Milind, slide 1: session and co-presenters | Find a table and the participant pack. |
-| 00:20–01:10 | Milind, slide 2: environment and incident | Learn cluster, namespace, Pod and workload identity; understand the still-operating service and uncertain exposure. |
-| 01:10–02:00 | Vivek, slide 3: Kyverno and control boundaries | Follow one request/rule/denial example and distinguish future admission from existing-workload containment. |
-| 02:00–03:00 | Vivek, slide 4: assignment, materials and rounds | Locate page 6, understand the written decisions and identify the sealed findings. |
-| 03:00–04:15 | Vivek, slide 5: case selection | Choose one case and read its opening alert. Both co-presenters support different tables. |
-| 04:15–05:00 | Milind, slide 6: operating constraint | Choose a primary constraint and record a measurable minimum service. |
-| 05:00–06:00 | Both, slide 7: team setup | Assign roles and record the table, case, constraint and service floor on page 6. |
+| 00:20–01:10 | Milind, slide 2: what and why | Understand the intended change set and the containment/availability problem. |
+| 01:10–01:50 | Milind, slide 3: environment | Learn the shared application's running units, resource groups and identities. |
+| 01:50–02:30 | Vivek, slide 4: Kyverno and its boundary | Follow a request/rule/denial example and distinguish future admission from existing-workload response. |
+| 02:30–03:15 | Vivek, slide 5: task, record and roles | Locate page 6, understand the decisions, materials and round sequence, and choose table roles. |
+| 03:15–04:30 | Vivek, slide 6: case selection | Choose one case and read its opening alert. Both co-presenters support different tables. |
+| 04:30–05:00 | Milind, slide 7: operating constraint | Understand the four tradeoffs and the required minimum service. |
+| 05:00–06:00 | Both, slide 7 remains visible: setup | Record the case, roles, constraint and minimum service on page 6. |
+
+**Milind's what/why statement:** “What we are building is a change set from a security requirement: policies, behavior tests, exceptions with an expiry and a phased rollout. The agent proposes controls, and your table decides what can proceed. Why this matters: harmful access can spread across shared infrastructure, while broad containment can interrupt essential services. We need evidence of the behavior the change prevents and the legitimate behavior it preserves. Quarantine Mode is the scoped incident posture whose level and recovery conditions you will justify.”
+
+Point to the observable outputs on the purpose slide before using Kubernetes or Kyverno vocabulary. A participant should be able to describe the workshop's output and security purpose after slide 2. Explain that the compiler demonstration uses a supplied reference spec; the room's newly written statements are reviewed records rather than automatically deployed policies. The existing abstract's learning objectives remain the scope: intent-to-change mapping, justified tradeoffs and a Quarantine Mode playbook.
 
 **Milind's context statement:** “Your organisation runs customer services and automated agents on a shared Kubernetes platform. An alert shows activity outside an expected boundary. Services are still operating. You do not yet know the extent of exposure. Broad isolation could break dependencies. Delay could expose other workloads. Your selected case provides the observations available so far.”
 

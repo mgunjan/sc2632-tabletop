@@ -2,6 +2,14 @@
 
 Co-presenters: Milind Gunjan and Vivek Mayuranathan.
 
+## What the workshop produces and why
+
+**What:** a change set prepared from security intent for human review, containing policies, behavior tests, expiring exceptions and a phased rollout. Each table records its approval conditions and a scoped Quarantine Mode response with recovery tests.
+
+**Why:** harmful access can extend beyond the intended workload or identity on shared infrastructure. The response must constrain that access while preserving essential services. A proposed policy or a narrow passing test does not establish that all the required control boundaries are covered. Human reviewers need evidence of the prohibited behavior and the legitimate behavior the change must preserve.
+
+Quarantine Mode is the prebuilt incident posture that tightens selected controls. Teams justify its level, scope, declaring authority, exceptions and exit criteria. The demonstration uses a supplied reference specification and prepared evidence. The audience's newly written intent is a review artifact, not a promise of automatic model translation or deployment.
+
 Your team operates a Kubernetes platform supporting several production services. Unexpected workload activity has been detected. Depending on the selected case, the evidence concerns network connections, assistant tool activity, workload mutation or cross-namespace Secret enumeration. The affected service remains operational, and the extent of compromise is uncertain.
 
 Customer services and automated agents depend on the same platform. Broad isolation may interrupt legitimate dependencies, while delay may expose other workloads. Each table reviews one selected case. The opening alerts are alternatives, not four simultaneous confirmed incidents.

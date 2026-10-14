@@ -20,6 +20,8 @@ Date/time: __________  Participants: __________  Display/room: __________
 
 ## Evidence of participation
 
+After slide 2, ask a reviewer to explain what the workshop produces and why it matters before product terminology is introduced. Record their description of the change set, containment goal and service constraint: __________
+
 Before Round 1, ask a general security participant to explain the assignment without presenter help: which case the table chose, which record it must complete, what it decides, and what stays sealed. Their answer and any correction: __________
 
 Ask someone unfamiliar with Kyverno: “If the policy refuses a new Pod, what happens to the already running Pod?” Record their explanation of the environment and the need for a separate response: __________

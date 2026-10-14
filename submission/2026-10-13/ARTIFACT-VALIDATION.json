@@ -1,5 +1,5 @@
 {
-  "pptx_sha256": "d7b33ca45769bde241280c3ddffb6fc84b42b28c1b537be58447a88a0f3a1ff1",
+  "pptx_sha256": "edc82bab837a924e804395d5970205e8f701b55437c77747ccd8f0d6de73758a",
   "slide_count": 35,
   "main_slides": 29,
   "hidden_backup_slides": 6,
@@ -16,8 +16,7 @@
     4,
     5,
     6,
-    14,
-    20
+    7
   ],
   "whole_deck_montage_inspected": true,
   "pdf_35_pages_pixel_match_rendered_deck": true,
@@ -36,9 +35,9 @@
     "SC2632-session-control-review.pdf": "8eef47176b83d47f2acef0ae90563d389f0f10ba13c47f121e4cfef5519f7c4c",
     "CONTROL-REVIEW.pdf": "74703651038316cd4c2419af850ff3b24041e52b2074b1e13eddc3d27cfeb238",
     "REVIEW-SCORECARD.pdf": "fb2afef7d10e4d7087cd27e696c0c65dd2c82f014023017d4d5256e865e8130d",
-    "SC2632-session-four-cases.pptx": "d7b33ca45769bde241280c3ddffb6fc84b42b28c1b537be58447a88a0f3a1ff1",
-    "SC2632-session-four-cases.pdf": "b49c019a9864851c71f1705a08bb4e925ccda3a4f9c0ad0c5dabb140bef6781a",
-    "PARTICIPANT-PACK.pdf": "43a65e9acfa69389fbfb6b5508a3151b2c5f113c3c98967b398e99d7a465a95e"
+    "SC2632-session-four-cases.pptx": "edc82bab837a924e804395d5970205e8f701b55437c77747ccd8f0d6de73758a",
+    "SC2632-session-four-cases.pdf": "2890223af0ad091afdedc858eb12edd64ceffa4c64d5216891ea6e28bba7e998",
+    "PARTICIPANT-PACK.pdf": "f8ea8ba3670648efc2d735cdb78d81b02d20978caf35a261f7b03f248e9b4092"
   },
   "previous_revision": {
     "pptx_sha256": "3c6518cef73e97f550e2abcfba7fd56f7918ae51248efda929382a4da2bdeb6b",
@@ -47,7 +46,8 @@
     "public_release_pptx_sha256": "0e0ac3252a0d75b6b3d4838bd0148fa1cfb7130ffd06d83ead7a8f552d62fe39",
     "delivery_pptx_sha256": "8d87bea28281b4df45dc466949949e025d581be09900097fb5f42762520057b4",
     "context_opening_pptx_sha256": "a0b34702347ceb9db2451bf9d64e7d0bf2078d8d355cf80151200bb75166edd4",
-    "environment_primer_pptx_sha256": "70c27cea0a617795c2a591896022e782defa88aa4cd3eda71232467254ad7f7b"
+    "environment_primer_pptx_sha256": "70c27cea0a617795c2a591896022e782defa88aa4cd3eda71232467254ad7f7b",
+    "kubernetes_accessibility_pptx_sha256": "d7b33ca45769bde241280c3ddffb6fc84b42b28c1b537be58447a88a0f3a1ff1"
   },
   "case_d_evidence": "live-rehearsal/case-d/result.json",
   "case_d_source_sha256_matches": true,
@@ -118,5 +118,27 @@
     "other_7_pages_content_identical": true,
     "setup_minutes": 6,
     "human_comprehension_test_completed": false
+  },
+  "purpose_revision": {
+    "changed_slides": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "other_29_slide_visuals_identical": true,
+    "what_and_why_before_technology": true,
+    "participant_task_and_roles_combined": true,
+    "exercise_slide_numbers_8_to_35_preserved": true,
+    "handout_changed_pages": [
+      1
+    ],
+    "other_7_pages_content_identical": true,
+    "setup_minutes": 6,
+    "case_choice_seconds": 75,
+    "final_setup_writing_seconds": 60,
+    "human_purpose_comprehension_test_completed": false
   }
 }

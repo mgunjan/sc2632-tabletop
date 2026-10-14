@@ -2,6 +2,10 @@
 
 This package accompanies SC2632, presented by Milind Gunjan and Vivek Mayuranathan. It contains the four incident cases, reference controls, review worksheets and recorded evidence. Share the complete package after the exercise: the control-review handout's second page and the lab records contain answers intended for a later reveal.
 
+**What the workshop builds:** a reviewed change set from security intent, with policies, tests, expiring exceptions and phased rollout, plus a scoped Quarantine Mode response and recovery criteria.
+
+**Why:** contain harmful access on shared infrastructure while essential services keep running. The proposal and its tests must show both the forbidden behavior and the legitimate access they preserve. This purpose precedes the Kubernetes/Kyverno primer in the opening deck.
+
 ## Your task in the workshop
 
 Your table acts as the incident review team for a shared production Kubernetes platform. Services are operating, suspicious activity is under investigation and the extent of exposure is uncertain. Decide what may proceed, what you hold and what evidence must precede enforcement. Choose one case and an operational constraint, then record intent, proposal decisions, exception conditions, ordered containment and recovery criteria on participant pack page 6.
