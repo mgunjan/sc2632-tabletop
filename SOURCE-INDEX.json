@@ -18,16 +18,6 @@
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
     },
     {
-      "path": "README.md",
-      "bytes": 3747,
-      "sha256": "841ed29a3dcab67e3402a974c45d02e2410019883ed424dac57f576c0d1df9e3"
-    },
-    {
-      "path": "START-HERE.md",
-      "bytes": 3747,
-      "sha256": "841ed29a3dcab67e3402a974c45d02e2410019883ed424dac57f576c0d1df9e3"
-    },
-    {
       "path": "ci/crds/policies.kyverno.io_policyexceptions.yaml",
       "bytes": 20530,
       "sha256": "759cd434b6265c2cfb407304f76b516616275e1bf6b0e3ae8fe8a2cb62531d98"
@@ -1663,101 +1653,6 @@
       "sha256": "bdcb90b4ffbdc2a2e9dd6582f68a4027077a67e45e41fe759c3adc2a4fc6721d"
     },
     {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/PR.md",
-      "bytes": 4041,
-      "sha256": "13432e274f21343045da14d2016c758cd6a6c64327007b6400c45b26b43537ae"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/admission-report.json",
-      "bytes": 31,
-      "sha256": "e19bce57b0993de2b9aa73dd2cccd62cca69ca1edfa92bba0185dc7a2dfaf383"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/agent-run.json",
-      "bytes": 7576,
-      "sha256": "60861162d0cc0e14d0ce09b8a9e7441fcc1ba3929e9fa7e6c14564810b2e62f0"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/api-calls.json",
-      "bytes": 12197,
-      "sha256": "d5c7d055c57c6314c92e7930606fd3448e2c6bf9a2cd5432d9b656f1e72825c2"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/measurement.json",
-      "bytes": 292,
-      "sha256": "a3366a4e164a7ef1ba634d1119e75fdaa0e8a5a553a8734711db02ce7c97f51a"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/spec.json",
-      "bytes": 1265,
-      "sha256": "6616b07a7db3ea7d5860cd2809b32bf74d9f99298b7c472640244f524a6a690b"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/PR.md",
-      "bytes": 4041,
-      "sha256": "9da9a09ffe1d208d2e17d85a4b477086abd4846dba947edf1e57206fc7581a15"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/admission-report.json",
-      "bytes": 31,
-      "sha256": "e19bce57b0993de2b9aa73dd2cccd62cca69ca1edfa92bba0185dc7a2dfaf383"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/agent-run.json",
-      "bytes": 7576,
-      "sha256": "c2e1b85005f3767cdb56706f41bf82f9c08ad7e505034b6dcbb7c7d2957b62f0"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/api-calls.json",
-      "bytes": 12196,
-      "sha256": "ad3c8f6a51fcf972c16dd57678fd414cbe2028bf85c54ff20eb87101137b59ec"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/measurement.json",
-      "bytes": 291,
-      "sha256": "b0dabe65ac7ae6626866744245a5d5cce25c2e071091c516201e97e28aae0371"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/spec.json",
-      "bytes": 1265,
-      "sha256": "6616b07a7db3ea7d5860cd2809b32bf74d9f99298b7c472640244f524a6a690b"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/PR.md",
-      "bytes": 4041,
-      "sha256": "82ccd8fb9ac62562441db1e83311c55b54ac896d38870f56656ad2ec7efbebce"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/admission-report.json",
-      "bytes": 31,
-      "sha256": "e19bce57b0993de2b9aa73dd2cccd62cca69ca1edfa92bba0185dc7a2dfaf383"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/agent-run.json",
-      "bytes": 7576,
-      "sha256": "243cec41c4017765c809063228b620af5e82f456390dae8da3c02ef125debad6"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/api-calls.json",
-      "bytes": 12194,
-      "sha256": "bba0e84b28176f4cb34d0755312f7a91733113af2aea6e2fc985586bbd705cce"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/measurement.json",
-      "bytes": 293,
-      "sha256": "f95055b3621b2a4f3a1b2d995965b7359977b4b610e092c3b980d407e358a697"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/spec.json",
-      "bytes": 1265,
-      "sha256": "6616b07a7db3ea7d5860cd2809b32bf74d9f99298b7c472640244f524a6a690b"
-    },
-    {
-      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/summary.json",
-      "bytes": 1583,
-      "sha256": "185eb7e6259bc0490997e655a93800db7a44cf78a1bbd3db5616f6170704335a"
-    },
-    {
       "path": "submission/2026-10-12/benchmark/workflow-cost/laya/run-1/PR.md",
       "bytes": 4041,
       "sha256": "13432e274f21343045da14d2016c758cd6a6c64327007b6400c45b26b43537ae"
@@ -1853,6 +1748,101 @@
       "sha256": "5e0f6227357152287c695aef8731472573f9e9286abc9b363c1fe02e04ae7e44"
     },
     {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/PR.md",
+      "bytes": 4041,
+      "sha256": "13432e274f21343045da14d2016c758cd6a6c64327007b6400c45b26b43537ae"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/admission-report.json",
+      "bytes": 31,
+      "sha256": "e19bce57b0993de2b9aa73dd2cccd62cca69ca1edfa92bba0185dc7a2dfaf383"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/agent-run.json",
+      "bytes": 7576,
+      "sha256": "60861162d0cc0e14d0ce09b8a9e7441fcc1ba3929e9fa7e6c14564810b2e62f0"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/api-calls.json",
+      "bytes": 12197,
+      "sha256": "d5c7d055c57c6314c92e7930606fd3448e2c6bf9a2cd5432d9b656f1e72825c2"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/measurement.json",
+      "bytes": 292,
+      "sha256": "a3366a4e164a7ef1ba634d1119e75fdaa0e8a5a553a8734711db02ce7c97f51a"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-1/spec.json",
+      "bytes": 1265,
+      "sha256": "6616b07a7db3ea7d5860cd2809b32bf74d9f99298b7c472640244f524a6a690b"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/PR.md",
+      "bytes": 4041,
+      "sha256": "9da9a09ffe1d208d2e17d85a4b477086abd4846dba947edf1e57206fc7581a15"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/admission-report.json",
+      "bytes": 31,
+      "sha256": "e19bce57b0993de2b9aa73dd2cccd62cca69ca1edfa92bba0185dc7a2dfaf383"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/agent-run.json",
+      "bytes": 7576,
+      "sha256": "c2e1b85005f3767cdb56706f41bf82f9c08ad7e505034b6dcbb7c7d2957b62f0"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/api-calls.json",
+      "bytes": 12196,
+      "sha256": "ad3c8f6a51fcf972c16dd57678fd414cbe2028bf85c54ff20eb87101137b59ec"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/measurement.json",
+      "bytes": 291,
+      "sha256": "b0dabe65ac7ae6626866744245a5d5cce25c2e071091c516201e97e28aae0371"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-2/spec.json",
+      "bytes": 1265,
+      "sha256": "6616b07a7db3ea7d5860cd2809b32bf74d9f99298b7c472640244f524a6a690b"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/PR.md",
+      "bytes": 4041,
+      "sha256": "82ccd8fb9ac62562441db1e83311c55b54ac896d38870f56656ad2ec7efbebce"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/admission-report.json",
+      "bytes": 31,
+      "sha256": "e19bce57b0993de2b9aa73dd2cccd62cca69ca1edfa92bba0185dc7a2dfaf383"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/agent-run.json",
+      "bytes": 7576,
+      "sha256": "243cec41c4017765c809063228b620af5e82f456390dae8da3c02ef125debad6"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/api-calls.json",
+      "bytes": 12194,
+      "sha256": "bba0e84b28176f4cb34d0755312f7a91733113af2aea6e2fc985586bbd705cce"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/measurement.json",
+      "bytes": 293,
+      "sha256": "f95055b3621b2a4f3a1b2d995965b7359977b4b610e092c3b980d407e358a697"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/run-3/spec.json",
+      "bytes": 1265,
+      "sha256": "6616b07a7db3ea7d5860cd2809b32bf74d9f99298b7c472640244f524a6a690b"
+    },
+    {
+      "path": "submission/2026-10-12/benchmark/workflow-cost/laya-mps/summary.json",
+      "bytes": 1583,
+      "sha256": "185eb7e6259bc0490997e655a93800db7a44cf78a1bbd3db5616f6170704335a"
+    },
+    {
       "path": "submission/2026-10-13/ARTIFACT-VALIDATION.json",
       "bytes": 1881,
       "sha256": "2769dceb008d02752d03a7a4863e3eb3a3a4fffbe550a342211a873cf903b667"
@@ -1909,8 +1899,8 @@
     },
     {
       "path": "submission/2026-10-13/VALIDATION.md",
-      "bytes": 6373,
-      "sha256": "bd51e95ea79eb4f541c03d82f452eea15629f2694ef57f55fc82bb6999e592f6"
+      "bytes": 7501,
+      "sha256": "ef0928c175660294e2d50eaef1e8d3e54cfd981531b14d0c7b12b1c4cf2151a9"
     },
     {
       "path": "submission/2026-10-13/classical-verification-final/REPORT.md",
@@ -2018,11 +2008,6 @@
       "sha256": "1f0c37f5a45325ce02ae4d65a652aaf5c7660d34fb5ad7fa98b5d46892686165"
     },
     {
-      "path": "submission/2026-10-13/laya-training/control-holdout-rescored/summary.json",
-      "bytes": 4602,
-      "sha256": "1fecb3ec70c37f70f7b31bd6cb28c8c2db82bd35b2b1489d1a13a5228a6f3077"
-    },
-    {
       "path": "submission/2026-10-13/laya-training/control-holdout/responses.jsonl",
       "bytes": 229178,
       "sha256": "87802e73f1e95ccdd391d7d574e4cbe48976ea4d757d5f73fa846d123b488604"
@@ -2031,6 +2016,11 @@
       "path": "submission/2026-10-13/laya-training/control-holdout/summary.json",
       "bytes": 4036,
       "sha256": "dfbe15fbcabcf561f1d176efa5e5f9ba98570074dbdc9cb5c2a6f4833b33d9f8"
+    },
+    {
+      "path": "submission/2026-10-13/laya-training/control-holdout-rescored/summary.json",
+      "bytes": 4602,
+      "sha256": "1fecb3ec70c37f70f7b31bd6cb28c8c2db82bd35b2b1489d1a13a5228a6f3077"
     },
     {
       "path": "submission/2026-10-13/laya-training/curriculum/MANIFEST.json",
@@ -2593,11 +2583,6 @@
       "sha256": "d8ef0f1a59c8953e2da12288fbd369810d8a6d738f1db0b8232bbed66f861073"
     },
     {
-      "path": "submission/2026-10-13/live-rehearsal/expiry-after-rbac-fix.txt",
-      "bytes": 868,
-      "sha256": "96fe165bb82ab4151a469ec15ee481e9364711654793f5a0c84cf034bb5243bd"
-    },
-    {
       "path": "submission/2026-10-13/live-rehearsal/expiry-after-rbac-fix/exception.json",
       "bytes": 810,
       "sha256": "00ed0c2bfe4364214d49f49ce9ac77211a8f9be02072ebe192b57ab4cc53df0e"
@@ -2613,9 +2598,9 @@
       "sha256": "4200ddde68e52a3404714d2d697f347c22ddd0fbcac8b5462c44edb3c5f9f27d"
     },
     {
-      "path": "submission/2026-10-13/live-rehearsal/expiry-before-rbac-fix.txt",
-      "bytes": 1828,
-      "sha256": "ef9b83ff15747da7282a4ee6016f8757a6f244b048f5bde40669f23a0cb41e4e"
+      "path": "submission/2026-10-13/live-rehearsal/expiry-after-rbac-fix.txt",
+      "bytes": 868,
+      "sha256": "96fe165bb82ab4151a469ec15ee481e9364711654793f5a0c84cf034bb5243bd"
     },
     {
       "path": "submission/2026-10-13/live-rehearsal/expiry-before-rbac-fix/cleanup-policy.yaml",
@@ -2641,6 +2626,11 @@
       "path": "submission/2026-10-13/live-rehearsal/expiry-before-rbac-fix/verifier.py",
       "bytes": 7944,
       "sha256": "87e03c92ba2feada325cd2110f073efc7b87afe59b10011bfd1966e7c85eb60b"
+    },
+    {
+      "path": "submission/2026-10-13/live-rehearsal/expiry-before-rbac-fix.txt",
+      "bytes": 1828,
+      "sha256": "ef9b83ff15747da7282a4ee6016f8757a6f244b048f5bde40669f23a0cb41e4e"
     },
     {
       "path": "submission/2026-10-13/live-rehearsal/expiry-missing-permission-controller.txt",
@@ -2806,6 +2796,16 @@
       "path": "tabletop/congress-2026/demo.py",
       "bytes": 8346,
       "sha256": "b3d5d11a49d4dd97b1b177ea20011f89327b0bead8211d19905449720b8eb321"
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 3747,
+      "sha256": "841ed29a3dcab67e3402a974c45d02e2410019883ed424dac57f576c0d1df9e3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3747,
+      "sha256": "841ed29a3dcab67e3402a974c45d02e2410019883ed424dac57f576c0d1df9e3"
     }
   ]
 }
