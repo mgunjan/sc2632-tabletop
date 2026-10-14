@@ -1,0 +1,4 @@
+# Generated document and illustration assets are binary artifacts.
+*.pdf binary
+*.pptx binary
+*.png binary
