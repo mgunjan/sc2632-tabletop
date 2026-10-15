@@ -12,12 +12,12 @@ At most two table reports per round, 20 seconds each. A report has a decision, a
 
 ## 00–06: Context, participant assignment and setup
 
-The opening must state what the workshop produces and why it matters before defining the environment or tool names. Use the visible purpose slide, then the primer and participant assignment.
+Start with the incident and the decision participants own. State the required output and service constraint before terminology. Use slide 2 for the situation, then the environment primer and assignment.
 
 | Minutes | Lead and visible slide | What attendees do |
 |---|---|---|
 | 00–00:20 | Milind, slide 1: session and co-presenters | Find a table and the participant pack. |
-| 00:20–01:10 | Milind, slide 2: what and why | Understand the intended change set and the containment/availability problem. |
+| 00:20–01:10 | Milind, slide 2: incident review | Understand the uncertainty, service constraint, authority decision and required output. |
 | 01:10–01:50 | Milind, slide 3: environment | Learn the shared application's running units, resource groups and identities. |
 | 01:50–02:30 | Vivek, slide 4: Kyverno and its boundary | Follow a request/rule/denial example and distinguish future admission from existing-workload response. |
 | 02:30–03:15 | Vivek, slide 5: task, record and roles | Locate page 6, understand the decisions, materials and round sequence, and choose table roles. |
@@ -25,11 +25,11 @@ The opening must state what the workshop produces and why it matters before defi
 | 04:30–05:00 | Milind, slide 7: operating constraint | Understand the four tradeoffs and the required minimum service. |
 | 05:00–06:00 | Both, slide 7 remains visible: setup | Record the case, roles, constraint and minimum service on page 6. |
 
-**Milind's what/why statement:** “What we are building is a change set from a security requirement: policies, behavior tests, exceptions with an expiry and a phased rollout. The agent proposes controls, and your table decides what can proceed. Why this matters: harmful access can spread across shared infrastructure, while broad containment can interrupt essential services. We need evidence of the behavior the change prevents and the legitimate behavior it preserves. Quarantine Mode is the scoped incident posture whose level and recovery conditions you will justify.”
+**Milind's opening statement:** “Your organisation runs services and automated agents on a shared platform. Your case reports unexpected activity. Services are still operating, and the extent of exposure is uncertain. You are the security review team: decide what may proceed, what must be held and what evidence would justify tightening controls. We provide case facts, prepared proposals and enforcement evidence. You produce a reviewed change set and a scoped containment and recovery plan.”
 
-Point to the observable outputs on the purpose slide before using Kubernetes or Kyverno vocabulary. A participant should be able to describe the workshop's output and security purpose after slide 2. Explain that the compiler demonstration uses a supplied reference spec; the room's newly written statements are reviewed records rather than automatically deployed policies. The existing abstract's learning objectives remain the scope: intent-to-change mapping, justified tradeoffs and a Quarantine Mode playbook.
+Give a ten-second illustration from A: a payments process makes unexpected connections after a library update. This establishes a situation before vocabulary; other tables choose alternative cases, not simultaneous incidents. Do not reveal the later finding.
 
-**Milind's context statement:** “Your organisation runs customer services and automated agents on a shared Kubernetes platform. An alert shows activity outside an expected boundary. Services are still operating. You do not yet know the extent of exposure. Broad isolation could break dependencies. Delay could expose other workloads. Your selected case provides the observations available so far.”
+State the interaction contract while showing slide 5: the table's intent stays on its decision record. The common demo compiles a supplied reference spec; participants compare their requirements with prepared proposals and retain approval authority. A table can justify an approval, hold, revision or refusal. Its written boundary and evidence determine what that decision authorizes. The demonstration does not run a branching incident simulation from the table's prose.
 
 **Milind's environment explanation:** “We have applications and automated agents sharing a platform. Kubernetes manages their application packages, called containers, across machines. In this exercise it tries to keep the required number of application copies running. Those running units are Pods, and their copies are replicas. Namespaces group resources. A ServiceAccount identifies a workload making a management request. The incident is fictional, and recorded enforcement uses a separate disposable local lab.”
 
@@ -59,9 +59,9 @@ If a team writes “secure the cluster,” ask it to name an observable forbidde
 
 ## 10–13:30: Compiler and proposal demo
 
-Vivek presents the review question; Milind operates the prepared compiler. Show the intent and ask: “Would a clean admission report be enough to approve this change?” Give tables 20 seconds to record yes/no and a reason.
+Vivek distinguishes the policy agent selecting catalog controls from the case agents whose access is under review. The model is a candidate for varied-language mapping; fixed inputs may need only rules or a catalog. Milind operates the prepared compiler. Show the intent and ask: “Would a clean admission report be enough to approve this change?” Give tables 20 seconds to record yes/no and a reason.
 
-Run the bounded reference command. Show `readiness.json`, clause 3's RBAC handover, and the fixed privilege tests. A passing privilege suite covers six Pod CREATE behaviors; it does not resolve network connectivity, existing workloads, debug access or credentials.
+Say that the first example covers one privilege requirement; the next slide expands to the full four-clause Scenario A reference. Teams B/C/D then turn to their own prepared excerpt. Run the bounded reference command. Show `readiness.json`, clause 3's RBAC handover, and the fixed privilege tests. A passing privilege suite covers six Pod CREATE behaviors; it does not resolve network connectivity, existing workloads, debug access or credentials.
 
 If the reference output is unavailable, use slides 9–11 and the pre-opened reference proposal. Say that the artifact is prepared. If using the optional model replay, state that recorded model answers are being reused while compilation and tests run now. Do not describe replay time as new inference latency.
 
@@ -86,7 +86,7 @@ Do not require identical control choices. Ask each table what would falsify its 
 
 ## 18–26: Exceptions and rollout
 
-Milind opens the authority question; Vivek leads the rollout comparison. Ask: “Who independently verified this approval, and what exact permission expires?” A named owner, a ticket or a TTL label alone does not prove approval or revocation.
+Milind opens the case-specific operational request; Vivek leads the rollout comparison. Ask teams to commit before naming a preferred disposition: “Which legitimate operation must continue, what authority would you grant while approval is checked, and what evidence would change your answer?” Then probe independently verified approval and the exact permission that expires. A named owner, a ticket or a TTL label alone does not prove approval or revocation.
 
 Ask teams to choose modes per control. A confirmed exposure can justify immediate enforcement for one control while another remains at Warn because the compatibility evidence is incomplete. Require an availability check and a promotion/rollback trigger rather than accepting “audit first” as a universal answer.
 
@@ -94,7 +94,7 @@ Ask teams to choose modes per control. A confirmed exposure can justify immediat
 
 ## 26–38: Containment and later evidence
 
-Vivek introduces page 7; Milind introduces page 8. Before either reveal, the recorder retains the original plan. Ask: “Which action must happen first to preserve evidence and serving capacity?”
+Vivek defines Quarantine Mode as this project’s coordinated incident posture; each named control requires application and verification. Vivek introduces page 7; Milind introduces page 8. Before either reveal, the recorder retains the original plan. Ask: “Which action must happen first to preserve evidence and serving capacity?”
 
 After page 8 ask: “Which assumption changed, and what action changes with it?” Holding a decision can be reasonable if its original scope already covered the new finding; require an explanation. A changed answer earns no automatic bonus.
 
@@ -106,7 +106,7 @@ Before minute 34, D tables lock a copied-credential prediction: can it still rea
 
 ## 38–44: Recorded lab consequences
 
-Milind presents networking and eviction; Vivek presents the debug and guardrail-identity findings. Before each reveal ask for a prediction and one assumption. Keep each pair of prediction/reveal under 90 seconds.
+Milind presents networking and eviction; Vivek presents the debug and guardrail-identity findings. Supply the visible technical facts before asking for a decision and confirming test. Avoid testing recall of Kubernetes semantics. DNS has an existing allowance; removal needs clean capacity and evidence; debug uses another API path; the agent can modify the Deployment running the policy engine. Ask which part of the table’s response changes, then reveal the recorded observation. Keep each discussion/reveal under 90 seconds. These four discussions are ungraded.
 
 Use “recorded k3s observation” when identifying the source. The fictional incident and recorded lab are different evidence. Bring each finding back to a participant decision: additive network allows, clean replacement capacity, API subresources and identities with authority over the policy engine.
 
@@ -122,7 +122,7 @@ Ask: “Which requirement has actually been tested, and which action remains uni
 
 At 48 minutes Milind reveals INCOMPLETE_PROPOSAL on slide 25. Vivek hears one defended disposition and asks for the enforcement owner. A table can justify a bounded privilege control while documenting and escalating the remaining exposure. It must not declare the incident contained. Award up to three points for the limited test scope, actual owner/evidence and justified authority boundary.
 
-At 49 minutes show slide 26's historical provider metrics for one minute. This uses frozen option order and the zero-shot Laya configuration; the trained runtime-order comparison is separate. Jev/Claude's small author-labelled accuracy gap is inconclusive. No authenticated OpenAI result exists. The trained candidate's faster proposal remains incomplete and accepts additional wrong choices.
+At 49 minutes connect slide 26 to the authority just withheld: low API cost or short runtime does not resolve a missing requirement. Show the historical candidate-screening metrics for one minute. Production selection also needs representative error costs, reviewer effort and setup/operations measurements. This uses frozen option order and the zero-shot Laya configuration; the trained runtime-order comparison is separate. Jev/Claude's small author-labelled accuracy gap is inconclusive. No authenticated OpenAI result exists. The trained candidate's faster proposal remains incomplete and accepts additional wrong choices.
 
 The old three-case Jev/Claude challenge is an optional Q&A or rehearsal activity, with its original labels and caveats retained. Do not add it to this hour.
 
@@ -131,6 +131,8 @@ The old three-case Jev/Claude challenge is an optional Q&A or rehearsal activity
 ## 50–60: Recovery and transfer
 
 Milind opens recovery; Vivek asks for the personal action. Have neighboring tables review one exit test and ask whether it establishes safe service, restored controls and authorized rollback. A quiet alert stream alone does not establish recovery.
+
+At 54–55, show the illustrative Case A decision record on slide 28 and trace initial intent, held authority, new evidence, changed action order and recovery checks. It is a paper example, not executed containment or the only acceptable answer. Use WORKED-DECISION.md for the full record and compare an actual table revision. At 55–57, tally scores and transfer the review to one requirement in each attendee’s environment.
 
 Close with two 20-second reports: a decision whose justification changed and a test the participant will introduce at work. Record an owner, a change and a verification step. Leave the remaining time for questions.
 

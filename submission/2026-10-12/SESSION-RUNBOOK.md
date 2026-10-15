@@ -30,17 +30,17 @@ The exercise takes place on a shared production Kubernetes platform. The affecte
 | 22-26 | 14 | Select rollout mode per control and promotion criteria |
 | 26-34 | 15-16 | Explain levels briefly, open page 7 and write ordered containment |
 | 34-38 | 17 | Open page 8, keep original decision visible and revise it |
-| 38-44 | 18-22 | Predict four recorded lab consequences, reveal each verbally or through a rehearsed display |
+| 38-44 | 18-22 | Use supplied facts to choose a response/test; reveal four recorded consequences |
 | 44-45 | 23 (32 optional) | Compare cases, read one locked D prediction and reveal its separate lab evidence |
 | 45-48 | 24 | Review the recorded trained-model proposal; lock scope, owners and evidence |
 | 48-49 | 25 | Open the sealed findings and defend the authority granted |
 | 49-50 | 26 | Compare historical model quality and measured cost/time per run |
 | 50-54 | 27 | Write exit criteria and recovery authority |
-| 54-60 | 28-29 | Personal Monday action, resources and questions |
+| 54-60 | 28-29 | Trace an illustrative decision through new evidence; personal action, resources and questions |
 
 ## The first six minutes
 
-Slide 2 explicitly states what the workshop produces and why: a reviewed change set and scoped Quarantine Mode response to contain harmful access while essential services run. Slides 3–4 explain the shared environment and Kyverno's request-check role. Slide 5 assigns the participant task, written record, materials and table roles. Slide 6 preserves case choice. Slide 7 explains the operating constraints and remains visible for the final setup minute. The detailed leads and wording are in CO-PRESENTER-CARDS.md.
+Slide 2 begins with a concrete Case A illustration: unexpected payments connections after a library update while services remain operational and exposure is uncertain. It gives the participant decision and required output before terminology. Other cases remain alternatives. Slides 3–4 explain the shared environment and Kyverno. Slide 5 states what co-presenters provide, what participants write/review and that the common demo uses a supplied spec. Slide 6 preserves case choice; slide 7 remains visible for the final setup minute. Detailed wording is in CO-PRESENTER-CARDS.md.
 
 Milind leads purpose, environment and operating constraints. Vivek leads Kyverno, the participant assignment and case choice. The cover takes twenty seconds, purpose fifty seconds, environment and Kyverno forty seconds each, and assignment forty-five seconds. Case choice gets seventy-five seconds. Constraint explanation takes thirty seconds followed by a full minute of setup writing, preserving the six-minute opening. Both check table readiness. Keep scoring detail on paper and later evidence sealed. A ready table can explain the intended output and security purpose, then name its case, roles, constraint and minimum service. It can distinguish refusing a new request from responding to an existing workload.
 
@@ -73,7 +73,7 @@ Open proposal/PR.md, readiness.json and provenance.json under the chosen fresh o
 
 For the presenter’s live enforcement segment, rehearse a dedicated lab before the venue. A human applies the reviewed privilege policy and demonstrates server-dry-run rejection of a privileged Pod alongside admission of a compliant Pod. The hardened original launcher now uses generator/demo_gate.py rather than health alone. The frozen Strands model still fails; code remediation has not changed its score or granted live eligibility. For the default demonstration use the bounded reference compiler or authentic replay. The presenting-Mac disposable lab rehearsal is recorded separately in ../2026-10-13/live-rehearsal/. Keep the proposal command distinct from lab enforcement.
 
-The original standalone situation display is tabletop/deck/anim/situation.html. It is a redrawn lab recording, not a new live model or cluster result. The new submission deck uses static lab question images with explanatory notes, so it works without embedded video playback. The presenter reveals each recorded answer after the vote. Use the animated display only after local browser and projector rehearsal.
+The original standalone situation display is tabletop/deck/anim/situation.html. It is a redrawn lab recording, not a new live model or cluster result. The new submission deck uses static lab question images with explanatory notes, so it works without embedded video playback. Supply the visible technical facts before asking for a response and confirming test, then reveal each recorded observation. These discussions are ungraded and do not depend on recall of Kubernetes semantics. Use the animated display only after local browser and projector rehearsal.
 
 ## Debrief probes
 
@@ -94,7 +94,7 @@ The gate mismatch and confidence validation are remediated. The agent writes sta
 
 ## Review rubric and demonstration choice
 
-Use ../2026-10-13/REVIEW-SCORECARD.pdf: 12 core points plus up to three independent-review points. Require a written reason/evidence for each point; a co-presenter checks a sample using tabletop/congress-2026/SCORING-ANCHORS.md. Score acceptance evidence specified in the paper plan. Holding unverified authority earns credit; do not require or reward invented approvals or executed outcomes. The bonus evaluates test scope, enforcement owner/evidence and justified authority. A defensible bounded approval or escalation can earn points; there is no required vote. For equal scores, compare the evidence each team would require to revise the containment plan. At 54 minutes tally points before documenting an application to each participant’s environment.
+Use ../2026-10-13/REVIEW-SCORECARD.pdf: 12 core points plus up to three independent-review points. Require a written reason/evidence for each point; a co-presenter checks a sample using tabletop/congress-2026/SCORING-ANCHORS.md. Score acceptance evidence specified in the paper plan. Holding unverified authority earns credit; do not require or reward invented approvals or executed outcomes. The bonus evaluates test scope, enforcement owner/evidence and justified authority. A defensible bounded approval or escalation can earn points; there is no required vote. For equal scores, compare the evidence each team would require to revise the containment plan. At 54–55 use slide 28 and tabletop/congress-2026/WORKED-DECISION.md to trace an illustrative Case A paper plan through new evidence and recovery tests. At 55–57 tally points, hear two short reports and document a requirement, owner and verification step in each participant’s environment. The example is not executed containment or the required answer.
 
 Best default for this submission: reference-spec compilation and fixture admission, with recorded model runs available for replay. The recorded Jev/Claude outputs and failed local-model outputs are authentic; label them as recordings. The isolated presenting-Mac lab has actual e2e evidence; repeat preflight on the day. A reviewed server dry-run can demonstrate admission with a positive control and rollback plan. Venue networking, projector and human delivery remain separate checks.
 

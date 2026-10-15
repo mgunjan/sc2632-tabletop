@@ -9,3 +9,5 @@ Start with the repository README. The reference and recorded-answer demos requir
 The resource slide and all eight participant-handout pages name the public address. During the exercise, preserve the timing of sealed evidence; the full public materials include the later findings and answers.
 
 Native PowerPoint/projector inspection and the full 60-minute co-presenter rehearsal remain pending. Publication does not clear those release requirements.
+
+The audience-review revision grounds the opening in a concrete incident, makes the prepared-demo contract visible and supplies facts for the lab decisions. The final worked Case A record is an illustrative paper debrief, shared after participant recovery decisions. Human comprehension and timing remain unverified.

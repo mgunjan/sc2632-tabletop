@@ -20,7 +20,7 @@ Date/time: __________  Participants: __________  Display/room: __________
 
 ## Evidence of participation
 
-After slide 2, ask a reviewer to explain what the workshop produces and why it matters before product terminology is introduced. Record their description of the change set, containment goal and service constraint: __________
+After slide 2, ask a reviewer to explain the incident uncertainty, what must remain operational, the decision they own and the required output before product terminology. Record their description of the change set, containment goal and service constraint: __________
 
 Before Round 1, ask a general security participant to explain the assignment without presenter help: which case the table chose, which record it must complete, what it decides, and what stays sealed. Their answer and any correction: __________
 
@@ -31,6 +31,12 @@ Ask someone unfamiliar with Kubernetes to explain the platform's job, what an ap
 Record at least one concern stated by the independent reviewer: __________
 
 Record one differing decision defended by another table: __________
+
+After slide 10, ask whether their own intent ran through a model, what input the compiler actually used, and what authority the demo has: __________
+
+During slides 19–22, record whether the supplied facts let a general security reviewer propose a response and test without guessing unfamiliar platform semantics: __________
+
+After slide 28, ask a reviewer to trace one requirement through the original decision, new evidence, revision and recovery test: __________
 
 Record a phrase that confused the general security reviewer: __________
 

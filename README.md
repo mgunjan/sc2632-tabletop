@@ -4,7 +4,7 @@ This package accompanies SC2632, presented by Milind Gunjan and Vivek Mayuranath
 
 **What the workshop builds:** a reviewed change set from security intent, with policies, tests, expiring exceptions and phased rollout, plus a scoped Quarantine Mode response and recovery criteria.
 
-**Why:** contain harmful access on shared infrastructure while essential services keep running. The proposal and its tests must show both the forbidden behavior and the legitimate access they preserve. This purpose precedes the Kubernetes/Kyverno primer in the opening deck.
+**Why:** contain harmful access on shared infrastructure while essential services keep running. The proposal and its tests must show both the forbidden behavior and the legitimate access they preserve. The opening grounds this purpose in the fictional incident before the Kubernetes/Kyverno primer.
 
 ## Your task in the workshop
 
@@ -15,6 +15,8 @@ The opening slides and participant page 1 explain roles, supplied materials and 
 The opening also explains the environment for attendees unfamiliar with Kubernetes or Kyverno. A cluster runs workloads, namespaces group resources, Pods run containers and ServiceAccounts provide API identities. Kyverno checks a proposed resource change against policy. A denied create request does not terminate an existing Pod. Network traffic, API permissions and agent tool actions require their own controls. The [incident brief](tabletop/congress-2026/INCIDENT-BRIEF.md) gives the definitions and official documentation links. The incident is fictional; recorded enforcement uses a separate disposable local lab.
 
 For participants new to Kubernetes, the opening starts with the shared application platform and familiar functions before technical names. Application copies are replicas, resource groups are namespaces, and workload identities make management requests. State the required security behavior in your own words. Scores assess the decision and evidence, rather than Kubernetes vocabulary or code.
+
+After completing recovery, compare your decision record with the [illustrative Case A debrief](tabletop/congress-2026/WORKED-DECISION.md). It traces a held approval through later evidence and recovery criteria; it is a paper plan, not executed containment or a required answer.
 
 ## Reproduce a reviewable proposal
 
