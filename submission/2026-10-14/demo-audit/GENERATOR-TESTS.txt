@@ -1,0 +1,74 @@
+test_auth_failure_never_persists_token_or_response_payload (test_case_d_guards.GuardTests.test_auth_failure_never_persists_token_or_response_payload) ... ok
+test_existing_namespace_is_never_deleted_after_create_refusal (test_case_d_guards.GuardTests.test_existing_namespace_is_never_deleted_after_create_refusal) ... ok
+test_non_rehearsal_context_refuses_before_any_command (test_case_d_guards.GuardTests.test_non_rehearsal_context_refuses_before_any_command) ... ok
+test_proxy_and_redirect_are_disabled_for_the_bearer_transport (test_case_d_guards.GuardTests.test_proxy_and_redirect_are_disabled_for_the_bearer_transport) ... ok
+test_remote_api_server_refuses_before_resource_creation (test_case_d_guards.GuardTests.test_remote_api_server_refuses_before_resource_creation) ... ok
+test_duplicate_identity_and_escaping_paths_are_rejected (test_control_library.Controls.test_duplicate_identity_and_escaping_paths_are_rejected) ... ok
+test_exception_limit_and_unknown_controls_cannot_disappear (test_control_library.Controls.test_exception_limit_and_unknown_controls_cannot_disappear) ... ok
+test_review_does_not_turn_metadata_into_executed_evidence (test_control_library.Controls.test_review_does_not_turn_metadata_into_executed_evidence) ... ok
+test_shared_artifact_writer_attaches_catalog_review (test_control_library.Controls.test_shared_artifact_writer_attaches_catalog_review) ... ok
+test_vocabulary_templates_and_test_references_are_bound (test_control_library.Controls.test_vocabulary_templates_and_test_references_are_bound) ... ok
+test_bad_confidence_abstains (test_decision_contract.DecisionContractTests.test_bad_confidence_abstains) ... ok
+test_bad_shapes_abstain (test_decision_contract.DecisionContractTests.test_bad_shapes_abstain) ... ok
+test_probability_validation (test_decision_contract.DecisionContractTests.test_probability_validation) ... ok
+test_threshold_is_bounded (test_decision_contract.DecisionContractTests.test_threshold_is_bounded) ... ok
+test_valid_boundaries_and_alias (test_decision_contract.DecisionContractTests.test_valid_boundaries_and_alias) ... ok
+test_bound_evidence_and_live_identity (test_demo_gate.DemoGateTests.test_bound_evidence_and_live_identity) ... ok
+test_changed_code_or_host_or_threshold (test_demo_gate.DemoGateTests.test_changed_code_or_host_or_threshold) ... ok
+test_incomplete_agent_or_failed_independent_test (test_demo_gate.DemoGateTests.test_incomplete_agent_or_failed_independent_test) ... ok
+test_missing_or_tampered_evidence (test_demo_gate.DemoGateTests.test_missing_or_tampered_evidence) ... ok
+test_newer_failure_never_selects_an_older_pass (test_demo_gate.DemoGateTests.test_newer_failure_never_selects_an_older_pass) ... ok
+test_recomputed_cases_and_gates (test_demo_gate.DemoGateTests.test_recomputed_cases_and_gates) ... ok
+test_replay_and_launcher_recording_are_bound (test_demo_gate.DemoGateTests.test_replay_and_launcher_recording_are_bound) ... ok
+test_stale_evidence_and_fake_model (test_demo_gate.DemoGateTests.test_stale_evidence_and_fake_model) ... ok
+test_summary_health_or_pass_flag_is_insufficient (test_demo_gate.DemoGateTests.test_summary_health_or_pass_flag_is_insufficient) ... ok
+test_cached_base_works_without_pull_and_is_never_overwritten (test_image_import.ImageImportTests.test_cached_base_works_without_pull_and_is_never_overwritten) ... ok
+test_native_platform_archive_is_used_for_direct_import (test_image_import.ImageImportTests.test_native_platform_archive_is_used_for_direct_import) ... ok
+test_successful_import_exit_is_not_proof_of_every_node (test_image_import.ImageImportTests.test_successful_import_exit_is_not_proof_of_every_node) ... ok
+test_wrong_context_refuses_before_docker_writes (test_image_import.ImageImportTests.test_wrong_context_refuses_before_docker_writes) ... ok
+test_existing_k3d_refuses_before_context_switch (test_lab_guards.LabGuardTests.test_existing_k3d_refuses_before_context_switch) ... ok
+test_health_alone_never_reports_live_model (test_lab_guards.LabGuardTests.test_health_alone_never_reports_live_model) ... ok
+test_missing_yaml_fails_before_live_rehearsal_writes (test_lab_guards.LabGuardTests.test_missing_yaml_fails_before_live_rehearsal_writes) ... ok
+test_native_setup_refuses_unmarked_context_before_writes (test_lab_guards.LabGuardTests.test_native_setup_refuses_unmarked_context_before_writes) ... ok
+test_unknown_runtime_never_mutates_context (test_lab_guards.LabGuardTests.test_unknown_runtime_never_mutates_context) ... ok
+test_added_requirement_is_visible_even_when_the_proposal_omits_it (test_policy_contracts.PolicyContractTests.test_added_requirement_is_visible_even_when_the_proposal_omits_it) ... ok
+test_empty_intent_is_incomplete_even_without_ledger_rows (test_policy_contracts.PolicyContractTests.test_empty_intent_is_incomplete_even_without_ledger_rows) ... ok
+test_missing_policy_is_not_a_green_contract (test_policy_contracts.PolicyContractTests.test_missing_policy_is_not_a_green_contract) ... ok
+test_new_intent_or_namespace_requires_new_contract (test_policy_contracts.PolicyContractTests.test_new_intent_or_namespace_requires_new_contract) ... ok
+test_permissive_policy_fails_the_negative_expectations (test_policy_contracts.PolicyContractTests.test_permissive_policy_fails_the_negative_expectations) ... ok
+test_reference_is_reviewable_and_manual (test_policy_contracts.PolicyContractTests.test_reference_is_reviewable_and_manual) ... ok
+test_replaced_intent_cannot_inherit_prepared_control_meanings (test_policy_contracts.PolicyContractTests.test_replaced_intent_cannot_inherit_prepared_control_meanings) ... ok
+test_deadline_terminates_the_policy_tool_child (test_presenter_demo.PresenterDemoTests.test_deadline_terminates_the_policy_tool_child) ... ok
+test_existing_evidence_is_preserved (test_presenter_demo.PresenterDemoTests.test_existing_evidence_is_preserved) ... ok
+test_explicit_policy_tool_works_without_shell_path_setup (test_presenter_demo.PresenterDemoTests.test_explicit_policy_tool_works_without_shell_path_setup) ... ok
+test_invalid_deadline_and_unbound_replay_refused (test_presenter_demo.PresenterDemoTests.test_invalid_deadline_and_unbound_replay_refused) ... ok
+test_preflight_without_policy_tool_is_not_ready (test_presenter_demo.PresenterDemoTests.test_preflight_without_policy_tool_is_not_ready) ... ok
+test_similarly_prefixed_version_is_not_the_required_tool (test_presenter_demo.PresenterDemoTests.test_similarly_prefixed_version_is_not_the_required_tool) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 7.705s
+
+OK
+ok - health check: a live server answers, a dead port does not
+ok - parse: the server's real answer shape is read; an option outside the list, or an error, is unreadable, not guessed
+ok - confident, correct answers: A, B and C compile through generate.py; A writes deny-privilege-escalation; no exceptions invented
+ok - below the threshold: the sentence is escalated to a human and its guardrail is not written
+ok - all sentences escalated: exit 3, nothing to present as an agent result
+ok - server down: every sentence escalates, no guardrail written
+ok - replay: identical spec, provenance says REPLAYED, and a recording can't be reused for another intent
+ok - eval runner: every call recorded with the served model, gates computed, a confident miss counted, the whole agent run 5x; refuses to run without a server
+ok - the option list contains no loosening choice
+9 passed
+ok - blocked workload: the agent tests, sees backup-job would break, and files an exception REQUEST (no PolicyException written)
+ok - observe -> act again: allow_and_retest widens only the agent's own egress list, re-writes, re-tests, nothing blocked
+ok - block_is_intended: the block stays, recorded for the reviewer
+ok - below the threshold: the privilege sentence writes no policy, an unsure profile stays allowed, both go to a human
+ok - model down: the agent writes nothing, says so, hands the intent to a human (exit 3)
+ok - replay: same decisions, same policies, tools re-run; a recording can't answer a different question
+ok - an answer outside the offered options is treated as no answer and handed to a human
+ok - agent writes stage policies, provenance, fixed behavior tests and a review ledger; RBAC handover still prevents automatic promotion
+ok - confident under-enforcement is visibly incomplete even when current fixtures are not blocked
+ok - all-abstain output retains a complete unresolved requirement ledger
+ok - replay binds scenario, intent, questions and threshold, and refuses unused recorded calls
+ok - a server changing model identity cannot continue the evaluated proposal path
+12 passed

@@ -36,6 +36,24 @@ class PresenterDemoTests(unittest.TestCase):
         self.assertEqual(marker.read_text(), "keep")
         self.assertEqual(len(list(out.iterdir())), 1)
 
+    def test_explicit_policy_tool_works_without_shell_path_setup(self):
+        binary = self.folder / "kyverno"
+        binary.write_text(f"#!{sys.executable}\nprint('Version: 1.19.1')\n")
+        binary.chmod(0o700)
+        result = self.call("--check", "--kyverno", str(binary), env={**os.environ, "PATH": ""})
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        check = json.loads(result.stdout)
+        self.assertTrue(check["ready"])
+        self.assertEqual(check["kyverno_path"], str(binary))
+
+    def test_similarly_prefixed_version_is_not_the_required_tool(self):
+        binary = self.folder / "kyverno"
+        binary.write_text(f"#!{sys.executable}\nprint('Version: 1.19.10')\n")
+        binary.chmod(0o700)
+        result = self.call("--check", "--kyverno", str(binary))
+        self.assertEqual(result.returncode, 2)
+        self.assertFalse(json.loads(result.stdout)["ready"])
+
     def test_invalid_deadline_and_unbound_replay_refused(self):
         for value in ("nan", "inf", "0", "61"):
             result = self.call("--out", str(self.folder / "new"), "--deadline", value)

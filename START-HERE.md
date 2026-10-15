@@ -31,6 +31,8 @@ python3 -m venv .venv-session
 .venv-session/bin/python tabletop/congress-2026/demo.py --mode reference --scenario a --out output/my-first-review
 ```
 
+If Kyverno is outside your shell PATH, append `--kyverno` followed by its actual executable path to both `--check` and run commands. Preflight reports the selected path and checks exact version 1.19.1.
+
 Use a fresh output directory each time. Scenarios `b` and `c` also have reference specs. The reference path uses a supplied answer, compiles policy and runs fixture tests now. It makes no model call, creates no GitHub PR and changes no cluster. Inspect `proposal/PR.md`, `readiness.json`, `control-review.json` and `tests/result.txt`. In case A, six passing privilege checks leave the full proposal **REVIEW_REQUIRED**: API authorization and operational requirements still need their own implementation and evidence.
 
 To replay authentic recorded Jev answers for case A, replace `--mode reference` with `--mode replay` and choose another output directory. Replay is not new inference and does not measure today's provider cost or latency. No API key is needed. Live providers are optional, may incur charges and are unnecessary for the exercise.
@@ -40,6 +42,8 @@ To replay authentic recorded Jev answers for case A, replace `--mode reference` 
 Start with [controls/README.md](controls/README.md) and [controls/ENTERPRISE-QUALIFICATION.md](controls/ENTERPRISE-QUALIFICATION.md). Catalog 0.1.0 has ten stable control IDs with template bindings, test references, owners, exception limits and rollback requirements. It is a reference library requiring platform qualification. Pick one unresolved requirement, assign its owner and define an acceptance test on your own platform before considering deployment.
 
 Case D uses a [human RBAC review](scenarios/d-secret-enumeration/review/PR.md), rather than a generator scenario `d`. Its [executed synthetic lab record](submission/2026-10-13/live-rehearsal/case-d/README.md) distinguishes Pod network isolation, Secret-read authorization and Pod-bound credential invalidation. It does not prove application-key rotation or production monitoring delivery. The verifier refuses an unmarked or remote cluster; it is intended only for the separately created disposable k3d rehearsal lab described in [lab/README.md](lab/README.md).
+
+The [October 14 demo audit](submission/2026-10-14/README.md) records one fresh prepared Jev run and the added-requirement regression. New intent clauses remain unreviewed and visible; they need an independent contract before any approval.
 
 ## Read the evidence before drawing a model conclusion
 

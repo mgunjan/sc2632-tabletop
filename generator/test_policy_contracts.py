@@ -17,7 +17,8 @@ class PolicyContractTests(unittest.TestCase):
         compiler.write_policy_artifacts(spec, out)
         if mutate:
             mutate(out, spec)
-        return contracts.evaluate(scenario, intent or (compiler.GEN / f"intent-{scenario}.txt").read_text(), spec, [], out)
+        actual_intent = intent if intent is not None else (compiler.GEN / f"intent-{scenario}.txt").read_text()
+        return contracts.evaluate(scenario, actual_intent, spec, [], out)
 
     def test_reference_is_reviewable_and_manual(self):
         for scenario in "abc":
@@ -54,6 +55,34 @@ class PolicyContractTests(unittest.TestCase):
             self.assertFalse(review["contract_bound"])
             self.assertEqual(review["status"], "INCOMPLETE_PROPOSAL")
             self.assertFalse(review["promotion_allowed"])
+
+    def test_added_requirement_is_visible_even_when_the_proposal_omits_it(self):
+        original = (compiler.GEN / "intent-a.txt").read_text().strip()
+        added = "Preserve required monitoring access"
+        review = self.evaluate(intent=original + " " + added + ".")
+        self.assertEqual(len(review["requirements"]), 5)
+        last = review["requirements"][-1]
+        self.assertEqual(last["text"].rstrip("."), added)
+        self.assertIsNone(last["selected_control"])
+        self.assertEqual(last["status"], "UNBOUND_INTENT_REQUIRES_NEW_CONTRACT")
+        self.assertTrue(all(r["layer"] == "unreviewed" for r in review["requirements"]))
+        self.assertEqual(review["status"], "INCOMPLETE_PROPOSAL")
+        self.assertIn(added, contracts.pr_section(review))
+
+    def test_replaced_intent_cannot_inherit_prepared_control_meanings(self):
+        review = self.evaluate(intent="Keep monitoring available.")
+        self.assertEqual(len(review["requirements"]), 1)
+        self.assertEqual(review["requirements"][0]["layer"], "unreviewed")
+        self.assertIsNone(review["requirements"][0]["selected_control"])
+        self.assertEqual(len(review["unmatched_spec_clauses"]), 4)
+        self.assertFalse(review["promotion_allowed"])
+
+    def test_empty_intent_is_incomplete_even_without_ledger_rows(self):
+        review = self.evaluate(intent="")
+        self.assertEqual(review["requirements"], [])
+        self.assertFalse(review["contract_bound"])
+        self.assertEqual(review["status"], "INCOMPLETE_PROPOSAL")
+        self.assertFalse(review["promotion_allowed"])
 
 
 if __name__ == "__main__":

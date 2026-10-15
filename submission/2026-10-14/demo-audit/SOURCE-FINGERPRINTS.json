@@ -1,0 +1,33 @@
+{
+  "before_commit": "d08190b898fccaf4f31577f3288cef5a2f577919",
+  "files": {
+    "generator/policy_contracts.py": {
+      "before_sha256": "d54ce3845312c99fe2d38d859632e89077d9083885828488df40c64304d953f1",
+      "after_sha256": "692140fe10669b53fb5f16151e859b4f07aaa562e1816fab731b088899236a42"
+    },
+    "generator/policy_agent.py": {
+      "before_sha256": "63a4c986855a059ed80c410a4d6b947a0a671319e320c690399600c03d8a6285",
+      "after_sha256": "63a4c986855a059ed80c410a4d6b947a0a671319e320c690399600c03d8a6285"
+    },
+    "generator/decider_agent.py": {
+      "before_sha256": "29793ddc5d407394bd41ec41fb4d2c8feb9423e0e219ab9e763c7204da6d386b",
+      "after_sha256": "29793ddc5d407394bd41ec41fb4d2c8feb9423e0e219ab9e763c7204da6d386b"
+    },
+    "generator/contracts/requirements.json": {
+      "before_sha256": "2a92a6b6923d83ec116ea1a16ed8b3209271f1ed5146e71e1313d0c1e431b352",
+      "after_sha256": "2a92a6b6923d83ec116ea1a16ed8b3209271f1ed5146e71e1313d0c1e431b352"
+    },
+    "generator/intent-a.txt": {
+      "before_sha256": "1a4f8aaf22f3dedd734d45ac7959743b9fbde836d6b8bb5c127cd692df94993b",
+      "after_sha256": "1a4f8aaf22f3dedd734d45ac7959743b9fbde836d6b8bb5c127cd692df94993b"
+    },
+    "tabletop/congress-2026/demo.py": {
+      "before_sha256": "b3d5d11a49d4dd97b1b177ea20011f89327b0bead8211d19905449720b8eb321",
+      "after_sha256": "712f7adba6dfd321a945cb4b6e80a1d05671c64e3ed4678fcb6b9bc28cc6d24d"
+    },
+    "submission/2026-10-12/benchmark/provider_clients.py": {
+      "before_sha256": "cb1e10e38557c4420c7b3a9d7f3a4d4ecd3f4d2491d540eec3aff39a8b258d93",
+      "after_sha256": "cb1e10e38557c4420c7b3a9d7f3a4d4ecd3f4d2491d540eec3aff39a8b258d93"
+    }
+  }
+}

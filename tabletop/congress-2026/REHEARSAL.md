@@ -12,6 +12,14 @@ python3 -m venv .venv-session
 .venv-session/bin/python tabletop/congress-2026/demo.py --check
 ```
 
+If the policy CLI is outside the shell PATH, pass its executable explicitly using `--kyverno`. On the presenting Mac the already verified local binary is available as:
+
+```bash
+.venv-session/bin/python tabletop/congress-2026/demo.py --kyverno .session-build/live-rehearsal/bin/kyverno --check
+```
+
+Use the same `--kyverno` option on the reference, replay or optional live command. This local build path is not shipped to attendees; they install the pinned CLI and use its own executable path. Preflight reports the selected path and requires exactly version 1.19.1.
+
 The preflight is read-only and checks the interpreter, compiler dependencies and policy CLI. Reference/replay need no model, account, network or cluster. It does not verify PowerPoint, the projector, a CNI or actual Kubernetes enforcement.
 
 ## Run the prepared paths
@@ -75,3 +83,9 @@ Case D is now separately executed on that marked lab. It measures actual out-of-
 During the full rehearsal, one person represents a table with little Kubernetes experience and another challenges every approval. Record where the prompt is ambiguous, where a participant has no decision to make, and where a claimed outcome lacks evidence. Adjust prompts or cut explanation time; do not silently change benchmark labels or convert an untested behavior into a passing result.
 
 Use [REHEARSAL-RECORD.md](REHEARSAL-RECORD.md) to capture actual timestamps, participant decisions, scoring differences and display checks. Use [SCORING-ANCHORS.md](SCORING-ANCHORS.md) to grade a cautious refusal and a bounded approval before delivery. The blank record and scoring examples do not establish human rehearsal completion.
+
+## October 14 abstract and requirement audit
+
+See [the fresh demo audit](../../submission/2026-10-14/README.md). A prepared live Jev fixture run completed; that is one smoke observation, not live-demo eligibility or a new benchmark. Replay on the revised code runs the compiler and independent tests again, using those recorded answers.
+
+The requirement ledger now lists every actual intent clause when the input differs from the prepared contract. It marks them unreviewed and keeps the proposal incomplete. Proposal clauses that do not match the input appear separately. This makes a newly added requirement visible without borrowing an unrelated prepared control mapping. Arbitrary audience prose still needs a newly reviewed independent contract; no promotion or deployment authority is granted.

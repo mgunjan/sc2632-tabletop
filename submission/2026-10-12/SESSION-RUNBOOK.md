@@ -69,6 +69,8 @@ python3 tabletop/congress-2026/demo.py --check
 python3 tabletop/congress-2026/demo.py --mode reference --scenario a --out output/congress-2026/reference-demo-01
 ```
 
+If Kyverno is outside the shell PATH, add `--kyverno` with the actual executable path to both preflight and run commands; see the presenting-Mac example in tabletop/congress-2026/REHEARSAL.md. Preflight reports that path and checks exact version 1.19.1.
+
 Open proposal/PR.md, readiness.json and provenance.json under the chosen fresh output directory. Say **"The supplied spec is a reference answer. The compiler and admission simulation run now."** Ask teams to predict whether the proposal is ready before showing the missing RBAC clause, one generated policy, the six independent privilege tests, backup-job's WOULD BLOCK, the owner/24h example exception and the stage directories. The result is a local review proposal, not a GitHub PR opened automatically. REVIEW_REQUIRED explicitly retains human disposition and disables automatic promotion.
 
 For the presenter’s live enforcement segment, rehearse a dedicated lab before the venue. A human applies the reviewed privilege policy and demonstrates server-dry-run rejection of a privileged Pod alongside admission of a compliant Pod. The hardened original launcher now uses generator/demo_gate.py rather than health alone. The frozen Strands model still fails; code remediation has not changed its score or granted live eligibility. For the default demonstration use the bounded reference compiler or authentic replay. The presenting-Mac disposable lab rehearsal is recorded separately in ../2026-10-13/live-rehearsal/. Keep the proposal command distinct from lab enforcement.

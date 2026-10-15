@@ -19,13 +19,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 6428,
-      "sha256": "00d6b6f28063f30a822b2c0f3bc4665ab9e6227b05751b7fb912f29304fb310c"
+      "bytes": 6871,
+      "sha256": "f500dcfc59dfb2d5a086ce96551ee26eb52fb21e79927edc8d08ca661f20d602"
     },
     {
       "path": "START-HERE.md",
-      "bytes": 6428,
-      "sha256": "00d6b6f28063f30a822b2c0f3bc4665ab9e6227b05751b7fb912f29304fb310c"
+      "bytes": 6871,
+      "sha256": "f500dcfc59dfb2d5a086ce96551ee26eb52fb21e79927edc8d08ca661f20d602"
     },
     {
       "path": "ci/crds/policies.kyverno.io_policyexceptions.yaml",
@@ -159,8 +159,8 @@
     },
     {
       "path": "generator/policy_contracts.py",
-      "bytes": 5482,
-      "sha256": "d54ce3845312c99fe2d38d859632e89077d9083885828488df40c64304d953f1"
+      "bytes": 7039,
+      "sha256": "692140fe10669b53fb5f16151e859b4f07aaa562e1816fab731b088899236a42"
     },
     {
       "path": "generator/recordings/README.md",
@@ -269,13 +269,13 @@
     },
     {
       "path": "generator/test_policy_contracts.py",
-      "bytes": 2976,
-      "sha256": "7d7ac1500f3b1065247532cb8b27b8b71168bc3535045a0ceaf0cc8a3679d9f9"
+      "bytes": 4628,
+      "sha256": "7d9ce0818754550312b5464b01256c21292d4499145b9055fcae2df7142ce61b"
     },
     {
       "path": "generator/test_presenter_demo.py",
-      "bytes": 3311,
-      "sha256": "e70cc5b75d641df578532232e0a97681bcd4685969fe1db2f6e9eb27d52d5584"
+      "bytes": 4239,
+      "sha256": "9e641b55d1fe4ecf55cceb35a7fc70204a711bc00e0ba37c569d1cbb8cb3e524"
     },
     {
       "path": "guard/protect-the-guardrail.yaml",
@@ -1109,8 +1109,8 @@
     },
     {
       "path": "submission/2026-10-12/SESSION-RUNBOOK.md",
-      "bytes": 17313,
-      "sha256": "434db59cb990e534aee5141e7f67eeabbac38388f0064357e043241b6acf711c"
+      "bytes": 17568,
+      "sha256": "5f9a6beb0aa7f1313aa0f5b783581f8c569288acb4bcb79e11e2e317ac0253c2"
     },
     {
       "path": "submission/2026-10-12/benchmark/CONTRACT.json",
@@ -1874,13 +1874,13 @@
     },
     {
       "path": "submission/2026-10-13/PUBLIC-RELEASE.md",
-      "bytes": 1680,
-      "sha256": "9a91e4107ec477dae8c7e99e9bfc6637aa9b26b0798adb0ade89ed062626138c"
+      "bytes": 1915,
+      "sha256": "463b6a154fb495eddaf1bc4f7a709d5f9ed9657b5b98a2c93be0a33b18137d2e"
     },
     {
       "path": "submission/2026-10-13/README.md",
-      "bytes": 5762,
-      "sha256": "54bfc2e76cd623cbf4907cbfc0ad1b0ca853b75661a0900bf62affb555f6398f"
+      "bytes": 6001,
+      "sha256": "f8bf48c1e4ca888805f5905f2c1c26cb7a059ac0b3882cac2645de51d64ae665"
     },
     {
       "path": "submission/2026-10-13/REVIEW-SCORECARD.pdf",
@@ -2783,9 +2783,129 @@
       "sha256": "fb8e7d2d7bafd13b7138bd7e15cb28aeeba4adef3729c21292ddfc00a9a72f13"
     },
     {
+      "path": "submission/2026-10-14/ABSTRACT-ALIGNMENT.md",
+      "bytes": 4785,
+      "sha256": "a463be451d869fe16ac3413d765184592ab5b423373e131ed22aa638419586d0"
+    },
+    {
+      "path": "submission/2026-10-14/README.md",
+      "bytes": 5556,
+      "sha256": "f4d4d2081b1f12edf137d52f553e4ded3e0884afe71bb418e6a77cebc8095f4f"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/BEFORE-policy_contracts.py.txt",
+      "bytes": 5482,
+      "sha256": "d54ce3845312c99fe2d38d859632e89077d9083885828488df40c64304d953f1"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/CI-RESULT.json",
+      "bytes": 12123,
+      "sha256": "c5b0369e7fc4cba20168f0248bfd4454bb0b1d7f7dd8155fd72e8f7ee58e05ff"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/EXTRACTED-SOURCE-CHECKS.json",
+      "bytes": 1210,
+      "sha256": "38e437891203fe332f0a57d7572341912648b9d391fcc302f5c57f203105e778"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/GENERATOR-TESTS.txt",
+      "bytes": 8633,
+      "sha256": "43f8d6d59bc10d6198922b31aa33cf59e18f61d22b2fc764356c739b674e5f03"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/LIVE-JEV-agent-run.json",
+      "bytes": 11888,
+      "sha256": "cb9c907365168a01a0ba082bc7c96b5223709fb68a493ae3f47b5e8284d268e0"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/LIVE-JEV-demo-run.json",
+      "bytes": 198,
+      "sha256": "b5fb41bd0fddbb780549405a11d863884129905665ba2a5d21d1660e460b090c"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/LIVE-JEV-privilege-tests.txt",
+      "bytes": 1931,
+      "sha256": "c5c940995a7e625935e72116fadbb82074328bfcf4edbf579d1052d0377fc856"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/LIVE-JEV-provenance.json",
+      "bytes": 532,
+      "sha256": "5f8d923b98ae364991a5a036d0df8a24030939cc595f502ff0f50e734890c740"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/LIVE-JEV-spec.json",
+      "bytes": 1399,
+      "sha256": "e26e206faa70029cae5ef8369dc845d888b82e2aeb73963a3fddf42a3711ff01"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/PLAN.json",
+      "bytes": 1288,
+      "sha256": "350081b0d61aaa4ae748e3503810a67341b34be07dcd0e36b99af5bb309a0873"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/REPLAY-agent-run.json",
+      "bytes": 12312,
+      "sha256": "89e0581369133a81871ebe8ea15280dcf161ed0fd5c018ea6cefb95ca9e65668"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/REPLAY-demo-run.json",
+      "bytes": 202,
+      "sha256": "e28ddbc410f79c1dbe52537e9f35ff3aa84f9964646b3aac6f4d4008208fd2b2"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/REPLAY-privilege-tests.txt",
+      "bytes": 1942,
+      "sha256": "ee6806cd0f9489a41d56d634602f1e819f9385332959995e0f1226d268c23c87"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/REPLAY-readiness.json",
+      "bytes": 2354,
+      "sha256": "4b73d2c0849c33fad183ff3a6206f7c950593d22e0f7f9fb5ef7a489518005fb"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/SOURCE-FINGERPRINTS.json",
+      "bytes": 1682,
+      "sha256": "d5bac6052d7d30394b55c2b25061b632a661cedda461b1dcb1f508ea08a04448"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/SUMMARY.json",
+      "bytes": 1408,
+      "sha256": "c2a2e19cb55273224cf3bfde478ccb10225f821b8379924305b5c9a94632f526"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/UNBOUND-after-readiness.json",
+      "bytes": 2634,
+      "sha256": "3239ddad9531bd9454e7e3bc8a2f054b0a760f62d5f344e260db495420bf2889"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/UNBOUND-after-review.md",
+      "bytes": 1190,
+      "sha256": "625cf4c5824dcb02fcfad3712b541f6a8bacad775e536c43a4673a1b25e4ff75"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/UNBOUND-before-readiness.json",
+      "bytes": 1967,
+      "sha256": "bd39cce73a0243ebb5a23129d245ce2546cf38479853af18ed6353322958358d"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/UNBOUND-before-result.json",
+      "bytes": 149,
+      "sha256": "a8a8a2b6e0f089e811c2f749cb6b07218e6a3671825370b82194e629d22ad323"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/UNBOUND-intent.txt",
+      "bytes": 351,
+      "sha256": "f4cc047a9e57ba1fecf7cde7b0e8593baf783011b2e3e15176d1b4a2c0489bec"
+    },
+    {
+      "path": "submission/2026-10-14/demo-audit/UNBOUND-spec.json",
+      "bytes": 1868,
+      "sha256": "0aa2bd7d9c1ef1eb48cc3f9b941cb83f9019992ece3b3747fbefa3b07cca4d6e"
+    },
+    {
       "path": "tabletop/congress-2026/CO-PRESENTER-CARDS.md",
-      "bytes": 19754,
-      "sha256": "3fbce432f44ba89c98dc111f228b7953d1e8345b11348f6efa65660d910217d1"
+      "bytes": 20187,
+      "sha256": "9db90b7feb0ec2e18ec4bdd29ed1fc55166f6a0e0383570f437f635b89ab904f"
     },
     {
       "path": "tabletop/congress-2026/INCIDENT-BRIEF.md",
@@ -2799,8 +2919,8 @@
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL.md",
-      "bytes": 8589,
-      "sha256": "18f3710433c75c189fd6577020777d98e7ebfe9d6c31f55bbc0b43968de34781"
+      "bytes": 9957,
+      "sha256": "b3bf26d066e9dbc7898700cd7081cd4aa2ff596745a53c27efb5774a3fff2700"
     },
     {
       "path": "tabletop/congress-2026/SCORING-ANCHORS.md",
@@ -2819,8 +2939,8 @@
     },
     {
       "path": "tabletop/congress-2026/demo.py",
-      "bytes": 8346,
-      "sha256": "b3d5d11a49d4dd97b1b177ea20011f89327b0bead8211d19905449720b8eb321"
+      "bytes": 8968,
+      "sha256": "712f7adba6dfd321a945cb4b6e80a1d05671c64e3ed4678fcb6b9bc28cc6d24d"
     }
   ]
 }

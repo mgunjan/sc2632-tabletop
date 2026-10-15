@@ -11,3 +11,5 @@ The resource slide and all eight participant-handout pages name the public addre
 Native PowerPoint/projector inspection and the full 60-minute co-presenter rehearsal remain pending. Publication does not clear those release requirements.
 
 The audience-review revision grounds the opening in a concrete incident, makes the prepared-demo contract visible and supplies facts for the lab decisions. The final worked Case A record is an illustrative paper debrief, shared after participant recovery decisions. Human comprehension and timing remain unverified.
+
+The October 14 source follow-up includes the requirement-visibility repair, explicit policy-tool path, fresh prepared Jev smoke and full CI evidence. Runtime commit ed2ec0c passed all four jobs. Human delivery checks remain separate.

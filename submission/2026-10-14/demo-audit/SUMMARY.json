@@ -1,0 +1,48 @@
+{
+  "recorded_at": "2026-10-15T04:47:18.538293+00:00",
+  "scope": "One prepared fixture smoke; requirement visibility regression; no deployment or production qualification",
+  "live_jev": {
+    "scenario": "a",
+    "model": [
+      "jev-1.13.0"
+    ],
+    "elapsed_seconds": 2.973,
+    "api_calls": 8,
+    "errors": 0,
+    "escalations": 3,
+    "threshold": 0.6,
+    "review_status": "REVIEW_REQUIRED",
+    "independent_privilege": "PASS",
+    "deployment_performed": false,
+    "api_cost": "Not re-priced; do not use a historical token price as a current invoice"
+  },
+  "requirement_regression": {
+    "intent_clauses": 5,
+    "before_ledger_rows": 4,
+    "after_ledger_rows": 5,
+    "before_status": "INCOMPLETE_PROPOSAL",
+    "after_status": "INCOMPLETE_PROPOSAL",
+    "new_requirement_visible_before": false,
+    "new_requirement_visible_after": true,
+    "promotion_allowed": false
+  },
+  "tests": {
+    "generator_unittest_cases": 46,
+    "errors": 0,
+    "failures": 0,
+    "sandbox_mock_socket_denial_preserved_privately": true
+  },
+  "human_rehearsal_completed": false,
+  "native_powerpoint_projector_verified": false,
+  "ci": {
+    "status": "success",
+    "runtime_commit": "ed2ec0cf22fdd8bc9d3b5a25545a24fb03d37c88",
+    "url": "https://github.com/mgunjan/agentic-k8s-guardrails/actions/runs/38683366167",
+    "jobs": [
+      "laya-variant",
+      "test",
+      "falco",
+      "lab"
+    ]
+  }
+}

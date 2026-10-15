@@ -67,6 +67,8 @@ If the reference output is unavailable, use slides 9–11 and the pre-opened ref
 
 **Discussion prompt:** “Who owns the unresolved clause, and what independent test would close it?”
 
+If asked whether a newly written intent has the same coverage, explain that the independent contract is bound to the prepared input. The October 14 regression added a monitoring requirement: the repaired ledger shows every actual clause as unreviewed and requires a new contract. Keep this as an answer to the input-boundary question, not an added main-session demo. The audit and fresh Jev recording are in submission/2026-10-14/.
+
 **Evidence of learning:** A concrete condition under which a technically valid policy proposal remains incomplete.
 
 ## 13:30–18: Proposal review

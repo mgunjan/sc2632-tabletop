@@ -3,6 +3,7 @@
 This is a review aid, never deployment authority. Fixture observations and model confidence cannot clear it.
 """
 import hashlib
+import html
 import json
 import pathlib
 import re
@@ -23,10 +24,18 @@ def evaluate(scenario, intent, spec, decisions, out):
              and [c["id"] for c in spec["clauses"]] == [r["id"] for r in contract["requirements"]]
              and [c["text"].strip().rstrip(".") for c in spec["clauses"]]
                  == [c.strip().rstrip(".") for c in da.split_clauses(intent)])
+    clauses = da.split_clauses(intent)
+    requirements = contract["requirements"] if bound else [
+        {"id": index, "text": text, "controls": [], "layer": "unreviewed",
+         "review": "Write and independently review a requirement contract for this actual intent; prepared mappings do not apply."}
+        for index, text in enumerate(clauses, 1)
+    ]
     ledger = []
-    for requirement in contract["requirements"]:
+    for requirement in requirements:
         clause = next((c for c in spec["clauses"] if c["id"] == requirement["id"]), {})
-        control = clause.get("control")
+        text = clauses[requirement["id"] - 1]
+        matching_text = clause.get("text", "").strip().rstrip(".") == text.strip().rstrip(".")
+        control = clause.get("control") if matching_text else None
         decision = decisions[requirement["id"] - 1] if len(decisions) >= requirement["id"] else {}
         if not bound:
             status = "UNBOUND_INTENT_REQUIRES_NEW_CONTRACT"
@@ -42,7 +51,11 @@ def evaluate(scenario, intent, spec, decisions, out):
             status = "REQUIRED_POLICY_MISSING"
         else:
             status = "POLICY_GENERATED_REVIEW_REQUIRED"
-        ledger.append({**requirement, "selected_control": control, "status": status, "disposition": None})
+        ledger.append({**requirement, "text": text, "selected_control": control, "status": status, "disposition": None})
+
+    unmatched_spec_clauses = [c for c in spec["clauses"] if not any(
+        c["id"] == i and c["text"].strip().rstrip(".") == text.strip().rstrip(".")
+        for i, text in enumerate(clauses, 1))]
 
     tests = out / "tests"
     tests.mkdir(parents=True, exist_ok=True)
@@ -73,19 +86,28 @@ def evaluate(scenario, intent, spec, decisions, out):
 
     problems = [r for r in ledger if r["status"] in (
         "UNBOUND_INTENT_REQUIRES_NEW_CONTRACT", "MODEL_ABSTAINED", "UNEXPECTED_CONTROL_MAPPING", "REQUIRED_POLICY_MISSING")]
-    blocked = bool(problems) or behavior["status"] in ("FAIL", "REQUIRED_POLICY_MISSING", "TOOL_UNAVAILABLE_OR_TIMEOUT")
+    blocked = not bound or bool(problems) or behavior["status"] in ("FAIL", "REQUIRED_POLICY_MISSING", "TOOL_UNAVAILABLE_OR_TIMEOUT")
     review = {"status": "INCOMPLETE_PROPOSAL" if blocked else "REVIEW_REQUIRED", "promotion_allowed": False,
               "contract_bound": bound, "requirements_contract_sha256": hashlib.sha256(CONTRACT.read_bytes()).hexdigest(),
-              "requirements": ledger, "independent_behavior": behavior,
+              "requirements": ledger, "unmatched_spec_clauses": unmatched_spec_clauses, "independent_behavior": behavior,
               "reason": "A human must resolve each requirement, dependency allowance and exception request; no deployment authority is granted."}
     (out / "readiness.json").write_text(json.dumps(review, indent=2) + "\n")
     return review
 
 
 def pr_section(review):
+    def cell(value):
+        return html.escape(str(value)).replace("\\", "\\\\").replace("|", "\\|").replace("\r", " ").replace("\n", " ")
+
     lines = ["", "## Independent review status", "", f"**{review['status']} — promotion is not authorized.**", "",
-             "| Requirement | Enforcement layer | Review status |", "|---|---|---|"]
-    lines += [f"| {r['id']} | {r['layer']} | {r['status']} |" for r in review["requirements"]]
+             "| Requirement | Actual intent | Enforcement layer | Review status |", "|---|---|---|---|"]
+    lines += [f"| {r['id']} | {cell(r.get('text', 'Not recorded'))} | {r['layer']} | {r['status']} |" for r in review["requirements"]]
+    if not review["contract_bound"]:
+        lines += ["", "The actual intent is unbound. Every input requirement needs a new independently reviewed contract; prepared enforcement mappings do not apply."]
+    if review.get("unmatched_spec_clauses"):
+        lines += ["", "### Proposal clauses that do not match the actual input", "",
+                  "| Clause | Proposal text | Proposed control |", "|---|---|---|"]
+        lines += [f"| {cell(c['id'])} | {cell(c['text'])} | {cell(c.get('control'))} |" for c in review["unmatched_spec_clauses"]]
     lines += ["", f"Fixed privilege behavior checks: **{review['independent_behavior']['status']}**.", "",
               "See readiness.json for outstanding dispositions and tests/ for the independent expectations. "
               "Passing current-workload simulation does not establish complete containment.", ""]

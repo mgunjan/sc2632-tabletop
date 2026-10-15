@@ -1,0 +1,9 @@
+{
+  "status": "COMPLETE_REVIEW_PROPOSAL",
+  "mode": "jev",
+  "scenario": "a",
+  "elapsed_seconds": 2.973,
+  "deadline_seconds": 15.0,
+  "deployment_performed": false,
+  "api_calls_possible": true
+}

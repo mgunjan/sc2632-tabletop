@@ -5,6 +5,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import signal
 import subprocess
@@ -26,10 +27,11 @@ def preflight():
             version = check.stdout.strip().splitlines()[0] if check.returncode == 0 and check.stdout.strip() else "unavailable"
         except (OSError, subprocess.TimeoutExpired):
             pass
-    result = {"python": sys.version.split()[0], "missing_python_modules": missing,
+    result = {"python": sys.version.split()[0], "missing_python_modules": missing, "kyverno_path": binary,
               "kyverno": version, "expected_kyverno": "1.19.1", "cluster_required": False,
               "hosted_api_required_for_reference_or_replay": False}
-    result["ready"] = not missing and "1.19.1" in version and sys.version_info >= (3, 10)
+    parsed_version = re.fullmatch(r"Version:\s*v?(\d+\.\d+\.\d+)", version)
+    result["ready"] = not missing and parsed_version is not None and parsed_version[1] == "1.19.1" and sys.version_info >= (3, 10)
     return result
 
 
@@ -97,10 +99,16 @@ def main():
     parser.add_argument("--recording", help="required for B/C replay; default A replay is the frozen Jev recording")
     parser.add_argument("--env-file")
     parser.add_argument("--workspace-file")
+    parser.add_argument("--kyverno", help="explicit executable named kyverno; also used by compiler/test subprocesses")
     parser.add_argument("--deadline", type=float, default=15, help="whole-run seconds, including compiler/tests; 1..60")
     parser.add_argument("--check", action="store_true", help="read-only dependency preflight; no inference or cluster access")
     parser.add_argument("--_worker", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
+    if args.kyverno:
+        binary = Path(args.kyverno).expanduser().absolute()
+        if binary.name != "kyverno" or not binary.is_file() or not os.access(binary, os.X_OK):
+            parser.error("--kyverno must point to an executable file named kyverno")
+        os.environ["PATH"] = str(binary.parent) + os.pathsep + os.environ.get("PATH", "")
     if args.check:
         result = preflight()
         print(json.dumps(result, indent=2))

@@ -1,0 +1,37 @@
+{
+  "registered_at": "2026-10-15T04:38:18.575191+00:00",
+  "scope": "Prepared fixture demo and rejection of unbound changed intent; not production qualification",
+  "source_commit": "d08190b898fccaf4f31577f3288cef5a2f577919",
+  "threshold": 0.6,
+  "cases": [
+    {
+      "id": "reference-a",
+      "mode": "reference",
+      "scenario": "a",
+      "deadline_seconds": 15,
+      "expected": "REVIEW_REQUIRED, privilege PASS, no deployment"
+    },
+    {
+      "id": "jev-a",
+      "mode": "jev",
+      "scenario": "a",
+      "model": "jev-1.13.0",
+      "deadline_seconds": 15,
+      "expected": "Record actual completion, identity, mappings and checks; do not require success or alter threshold"
+    },
+    {
+      "id": "unbound-intent",
+      "mode": "offline-perturbation",
+      "scenario": "a",
+      "change": "Append Preserve required monitoring access. to the prepared intent",
+      "expected": "contract_bound false, INCOMPLETE_PROPOSAL, all contract rows UNBOUND_INTENT_REQUIRES_NEW_CONTRACT; new clause must be visibly unreviewed"
+    }
+  ],
+  "exclusions": [
+    "No frozen benchmark relabeling",
+    "No performance or model-family winner claim",
+    "No cluster access",
+    "No automatic exceptions or deployment",
+    "No human-review time inferred from automation"
+  ]
+}
