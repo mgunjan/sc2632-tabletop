@@ -19,7 +19,7 @@ Start with the incident and the decision participants own. State the required ou
 | 00–00:20 | Milind, slide 1: session and co-presenters | Find a table and the participant pack. |
 | 00:20–01:10 | Milind, slide 2: incident review | Understand the uncertainty, service constraint, authority decision and required output. |
 | 01:10–01:50 | Milind, slide 3: environment | Learn the shared application's running units, resource groups and identities. |
-| 01:50–02:30 | Vivek, slide 4: Kyverno and its boundary | Follow a request/rule/denial example and distinguish future admission from existing-workload response. |
+| 01:50–02:30 | Vivek, slide 4: detection, prevention and response | Locate Falco, audit logs, Kyverno, traffic/API/tool controls and human authority. Distinguish the supplied alerts from the tested demo. |
 | 02:30–03:15 | Vivek, slide 5: task, record and roles | Locate page 6, understand the decisions, materials and round sequence, and choose table roles. |
 | 03:15–04:30 | Vivek, slide 6: case selection | Choose one case and read its opening alert. Both co-presenters support different tables. |
 | 04:30–05:00 | Milind, slide 7: operating constraint | Understand the four tradeoffs and the required minimum service. |
@@ -35,7 +35,9 @@ State the interaction contract while showing slide 5: the table's intent stays o
 
 Begin with the familiar function, then name its Kubernetes equivalent. Explain the management API as the interface for reading or changing platform resources. Participants do not need prior Kubernetes or Kyverno experience to state the required behavior. Use “application copies” for replicas, “resource groups” for namespaces and “API permissions” for RBAC when explaining the task. Retain the technical name beside its explanation so experienced participants can inspect the actual boundary.
 
-**Vivek's Kyverno explanation:** “Kyverno checks a proposed Kubernetes change against policy before the request takes effect. For example, a new Pod requests privilege escalation, but our rule disallows it. In Deny mode, Kyverno refuses that covered request. An existing Pod keeps running. Network controls, API permissions and application tool controls handle different parts of containment. The model proposes a rule; human review authorizes enforcement.”
+**Vivek's control explanation:** “Falco provides a runtime detection layer, and audit logs record management requests. Kyverno checks a proposed change before it takes effect. It can deny a new Pod requesting privilege escalation. NetworkPolicy restricts traffic, RBAC restricts API access, and agent tools need application controls. The policy agent proposes controls. People authorize containment and recovery. Our Falco rules passed validation, but live detection is unverified. We supply incident alerts; the demo compiles proposals and runs policy tests.”
+
+Keep this overview within the existing forty-second slot. The alert is information to assess, not an automatic instruction to activate Quarantine Mode. The repository contains syscall rules for A/B and audit-plugin rules for C. Case D's separately executed authorization and credential record is not a verified Falco read detector. No live Falco installation or alert-to-response integration is demonstrated.
 
 Use “admission” only after defining it as that request checkpoint. Ask: “Does denying the new Pod stop the one already running?” Accept “no, it needs a separate response” without YAML or product-specific syntax. Kyverno also has other capabilities; the example describes its validation role in this exercise. An unfamiliar participant can still judge scope, legitimate access, exceptions and recovery evidence.
 

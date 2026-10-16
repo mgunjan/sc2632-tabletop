@@ -16,6 +16,8 @@ The opening also explains the environment for attendees unfamiliar with Kubernet
 
 For participants new to Kubernetes, the opening starts with the shared application platform and familiar functions before technical names. Application copies are replicas, resource groups are namespaces, and workload identities make management requests. State the required security behavior in your own words. Scores assess the decision and evidence, rather than Kubernetes vocabulary or code.
 
+Slide 4 maps the control roles before the exercise: Falco and audit logs provide detection evidence, Kyverno checks proposed changes, separate traffic/API/tool controls constrain access, and people authorize containment and recovery. Falco rules passed validation; live detection remains unverified. The incident alerts are supplied exercise facts. The common demo compiles proposals and runs policy tests.
+
 After completing recovery, compare your decision record with the [illustrative Case A debrief](tabletop/congress-2026/WORKED-DECISION.md). It traces a held approval through later evidence and recovery criteria; it is a paper plan, not executed containment or a required answer.
 
 ## Reproduce a reviewable proposal

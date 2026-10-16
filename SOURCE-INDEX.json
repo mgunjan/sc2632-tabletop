@@ -19,13 +19,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 6871,
-      "sha256": "f500dcfc59dfb2d5a086ce96551ee26eb52fb21e79927edc8d08ca661f20d602"
+      "bytes": 7279,
+      "sha256": "7c3d90439e94f61719ac39c37677d88b720cb6a60fbc9178886dabb20ec59c35"
     },
     {
       "path": "START-HERE.md",
-      "bytes": 6871,
-      "sha256": "f500dcfc59dfb2d5a086ce96551ee26eb52fb21e79927edc8d08ca661f20d602"
+      "bytes": 7279,
+      "sha256": "7c3d90439e94f61719ac39c37677d88b720cb6a60fbc9178886dabb20ec59c35"
     },
     {
       "path": "ci/crds/policies.kyverno.io_policyexceptions.yaml",
@@ -1109,8 +1109,8 @@
     },
     {
       "path": "submission/2026-10-12/SESSION-RUNBOOK.md",
-      "bytes": 17568,
-      "sha256": "5f9a6beb0aa7f1313aa0f5b783581f8c569288acb4bcb79e11e2e317ac0253c2"
+      "bytes": 17828,
+      "sha256": "51aacf0cc0e1d81d16f52844aab53924095ba8342a03cb336e03cdac7f739c80"
     },
     {
       "path": "submission/2026-10-12/benchmark/CONTRACT.json",
@@ -1854,8 +1854,8 @@
     },
     {
       "path": "submission/2026-10-13/ARTIFACT-VALIDATION.json",
-      "bytes": 5883,
-      "sha256": "614efe55f87fbfc8e6b7f833d9db69b6136ce229bd04199673f6b3a7c1aa215d"
+      "bytes": 6672,
+      "sha256": "d7c1d87927bb040c2ef5c670ecf2686fa2ad4afb793a1532d360bcdf56ad831f"
     },
     {
       "path": "submission/2026-10-13/CONTROL-REVIEW-EXERCISE.md",
@@ -1869,18 +1869,18 @@
     },
     {
       "path": "submission/2026-10-13/PARTICIPANT-PACK.pdf",
-      "bytes": 16822,
-      "sha256": "24148fd2261f9e6f99a54c64f7a40582e0a36340d360628339af970c18650bc7"
+      "bytes": 16919,
+      "sha256": "bd4cea752133d2ef5db2b2ccb73c54637ab205060e1c023d449d4bfe6b34be9d"
     },
     {
       "path": "submission/2026-10-13/PUBLIC-RELEASE.md",
-      "bytes": 1915,
-      "sha256": "463b6a154fb495eddaf1bc4f7a709d5f9ed9657b5b98a2c93be0a33b18137d2e"
+      "bytes": 2262,
+      "sha256": "8ecb43e9d92ef49b29bf8c62ddb0b4c7c7f099a686a1342bdfdb07ca683444cf"
     },
     {
       "path": "submission/2026-10-13/README.md",
-      "bytes": 6001,
-      "sha256": "f8bf48c1e4ca888805f5905f2c1c26cb7a059ac0b3882cac2645de51d64ae665"
+      "bytes": 6486,
+      "sha256": "f1574987d92746e86ed820ede9270cdf257a0812225bff327b0a9082dafcb8c1"
     },
     {
       "path": "submission/2026-10-13/REVIEW-SCORECARD.pdf",
@@ -1894,13 +1894,13 @@
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pdf",
-      "bytes": 8761535,
-      "sha256": "5b414dd54b3d629383ded23a88469e74a2c11a46816db610d83a212ab0728871"
+      "bytes": 8790048,
+      "sha256": "88647d7eb09f8038ec00ee69c4c095575a2c8ab01ea86c86f75ce5c66f801860"
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pptx",
-      "bytes": 7126330,
-      "sha256": "9c4e85327119570e237f7efee76b07d73fcc8c3d12ae013a5b5eb88063d5ca35"
+      "bytes": 7126840,
+      "sha256": "ad0bbfc9ee8038a4185f8bbee09d92ac2476663a0ef14094a396065337d03395"
     },
     {
       "path": "submission/2026-10-13/TRAINING-PROTOCOL.md",
@@ -2904,18 +2904,18 @@
     },
     {
       "path": "tabletop/congress-2026/CO-PRESENTER-CARDS.md",
-      "bytes": 20187,
-      "sha256": "9db90b7feb0ec2e18ec4bdd29ed1fc55166f6a0e0383570f437f635b89ab904f"
+      "bytes": 20743,
+      "sha256": "b3eceda04a86727f5817c1e18671b59c3f2c217acf5d7631cc05c524054983fe"
     },
     {
       "path": "tabletop/congress-2026/INCIDENT-BRIEF.md",
-      "bytes": 10847,
-      "sha256": "ee87a5bc1c0ed072ad6605de467f0b8bc2c649333ecc9b3b08d42124b3d99b86"
+      "bytes": 11506,
+      "sha256": "53e1e21d32a775b5967bcb673af324443ae00f0f400be57053a45ac3fba30650"
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL-RECORD.md",
-      "bytes": 4285,
-      "sha256": "c7f95ee36c65a03d5c663dabdf4b56a2e6ddfc367417e32d0d5f5142ef55d6f2"
+      "bytes": 4610,
+      "sha256": "0b3d616a1ef7887a0b8ce1bdd84153b01602da85213f5fb0569f7490fff64f52"
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL.md",

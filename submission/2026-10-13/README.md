@@ -8,6 +8,8 @@ The lab discussions now supply technical facts before asking for a response and 
 
 The session also supports attendees new to Kubernetes. The opening explains the shared application platform and familiar functions before naming Pods, replicas, namespaces and workload identities. Scenario choices, availability and the recorded-removal question use plain-language equivalents. Participants can state observable security behavior and acceptance evidence without naming products or writing code. Scoring assesses the decision, not platform vocabulary.
 
+Slide 4 introduces the control roles upfront: Falco and audit logs supply detection evidence, Kyverno checks proposed changes, separate traffic/API/tool controls constrain access, and people authorize containment and recovery. Its visible disclosure distinguishes validated Falco rules from unverified live detection. The exercise supplies incident alerts; the common demo compiles proposals and runs policy tests. The participant primer and co-presenter wording match this boundary.
+
 | Material | Use |
 |---|---|
 | [SC2632-session-four-cases.pptx](SC2632-session-four-cases.pptx) | Current editable deck: 29 main slides and six hidden backups |

@@ -13,3 +13,5 @@ Native PowerPoint/projector inspection and the full 60-minute co-presenter rehea
 The audience-review revision grounds the opening in a concrete incident, makes the prepared-demo contract visible and supplies facts for the lab decisions. The final worked Case A record is an illustrative paper debrief, shared after participant recovery decisions. Human comprehension and timing remain unverified.
 
 The October 14 source follow-up includes the requirement-visibility repair, explicit policy-tool path, fresh prepared Jev smoke and full CI evidence. Runtime commit ed2ec0c passed all four jobs. Human delivery checks remain separate.
+
+The October 16 revision adds the detection, admission, containment and authority map to opening slide 4 and the participant primer. It introduces Falco's role while distinguishing validated rules from unverified live detection. Supplied incident alerts and the compiler/test demo remain explicit. Runtime code and recorded results are unchanged.

@@ -85,6 +85,8 @@ Timed rounds, additional evidence, peer comparison and a transparent 12+3-point 
 
 ## Evidence boundaries
 
+The opening control map places Falco and Kubernetes audit logs alongside Kyverno, traffic rules, API permissions and application tool controls. Falco rules for A/B syscall signals and C audit-plugin signals passed CI validation. Live Falco detection and an alert-to-response integration have not been verified. The incident alerts are supplied fictional exercise facts. The common demo compiles a supplied proposal and runs policy tests; it does not start Falco. The policy agent proposes controls, and people authorize containment and recovery. Case D's actual synthetic authorization/credential record does not establish a Falco detector for Secret reads.
+
 Keep fictional alerts, recorded k3s observations, live fixture simulation and model screening results visibly distinct. The recorded lab demonstrates additive network allowances, admission/replacement interactions, the debug-subresource gap and policy-engine authority. It is not a newly validated venue cluster.
 
 The frozen model pilot retains its original cases, wording, labels and hashes. Reframing the workshop does not rerun or relabel that experiment. Three complete Scenario A runs per hosted provider and local Laya timings are recorded separately. Price estimates exclude human review, deployment and unmeasured operational cost.
