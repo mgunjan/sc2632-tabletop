@@ -19,13 +19,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 7631,
-      "sha256": "4742eb890333459c881a610a2aa396f54cfd2c731e595445bbd6bff247d0eba0"
+      "bytes": 8085,
+      "sha256": "bda899cf945592b901dada8e638bd8187673ea1f585d8763152526684f37d749"
     },
     {
       "path": "START-HERE.md",
-      "bytes": 7631,
-      "sha256": "4742eb890333459c881a610a2aa396f54cfd2c731e595445bbd6bff247d0eba0"
+      "bytes": 8085,
+      "sha256": "bda899cf945592b901dada8e638bd8187673ea1f585d8763152526684f37d749"
     },
     {
       "path": "ci/crds/policies.kyverno.io_policyexceptions.yaml",
@@ -43,14 +43,19 @@
       "sha256": "8867eb59fea2149224cf13df4786330f78787cd428cf4becaf0c0d50ba03a4b9"
     },
     {
+      "path": "controls/DATASET-DESIGN.md",
+      "bytes": 10470,
+      "sha256": "9948775e1b5104bf1571ecf96a106878f4e3adf44ec4815d39afc250390dfdcb"
+    },
+    {
       "path": "controls/ENTERPRISE-QUALIFICATION.md",
       "bytes": 7306,
       "sha256": "485e4b3b9a667cb04c2a3081d944434b786b02337121c8d2ce603f67e804f1b9"
     },
     {
       "path": "controls/README.md",
-      "bytes": 3562,
-      "sha256": "7352184ea3ebdaea6faf35e4d468016cb1d2430b4d8549c524c0925c69f117a3"
+      "bytes": 3847,
+      "sha256": "86642e9e56f7268ec890969e69847b5a528cb968897a626ad91ea2958d6a4743"
     },
     {
       "path": "controls/catalog.json",
@@ -374,8 +379,8 @@
     },
     {
       "path": "laya_variant/README.md",
-      "bytes": 14029,
-      "sha256": "302d3ef5189c82c5956e376d84a2b416b24d01f0169cf91a4e8773c2f98dd50a"
+      "bytes": 15192,
+      "sha256": "729f4b60163a4c50425b5092fdaf668f6849f1cf7092954f98784a18290fd72e"
     },
     {
       "path": "laya_variant/baselines.py",
@@ -391,6 +396,11 @@
       "path": "laya_variant/build_dataset.py",
       "bytes": 29798,
       "sha256": "df817a3e0fd9ba7b4e3c42d037c9070aa00c8a76fa1b649f83b5ce29b929bf00"
+    },
+    {
+      "path": "laya_variant/build_evidence_corpus.py",
+      "bytes": 10801,
+      "sha256": "ee47a5180d57e957d6461effc792d0c9d25011756f4c5a2660d66bb446f837fe"
     },
     {
       "path": "laya_variant/calibrate.py",
@@ -496,6 +506,11 @@
       "path": "laya_variant/test_evaluation_integrity.py",
       "bytes": 6183,
       "sha256": "0817fe07a4eae5dcd322646f5830bae6f09e53b72e43b8213d32901c47f2245f"
+    },
+    {
+      "path": "laya_variant/test_evidence_corpus.py",
+      "bytes": 4840,
+      "sha256": "9488ea8c74a1669d5357b5650cf79a8598523c2d7111fb80a7799e433ea32037"
     },
     {
       "path": "laya_variant/test_pipeline.py",
@@ -1116,6 +1131,16 @@
       "path": "standards/render.py",
       "bytes": 3277,
       "sha256": "6f2d66faea13dcd7b7348156d102f1caa71f69e6c2c0a6ee4ac3b57851514ee3"
+    },
+    {
+      "path": "submission/2026-10-12/HOSTED-COMPARISON.md",
+      "bytes": 8499,
+      "sha256": "3110ff5809add6cb6cbe0baca697bed681a7c77947f302ef71ffed693d146fc5"
+    },
+    {
+      "path": "submission/2026-10-12/RUN-COST-ANALYSIS.md",
+      "bytes": 7672,
+      "sha256": "6fade7b24c01868e7d78594aed29fc317ac106919ada9c3352e7bed89961a23c"
     },
     {
       "path": "submission/2026-10-12/RUNTIME-REMEDIATION.md",
@@ -2926,6 +2951,66 @@
       "path": "submission/2026-10-16/README.md",
       "bytes": 5496,
       "sha256": "69357145f81edaa3783a973dc46064af0c30dd7a32a97d6bc4f6ccf36b37801c"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/MANIFEST.json",
+      "bytes": 6295,
+      "sha256": "0d3cf35134cb47465e4977ac191e46443d60fc78446f3d662ccd77eedfc30884"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/README.md",
+      "bytes": 4124,
+      "sha256": "ecabf502eb2c362c388fd04579968538aae63b21aad36c0219615829ae9d3c19"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/apply.json",
+      "bytes": 3902,
+      "sha256": "02c3092314f530312015ed6c863787de840eabd5cd078d1bbbf31554478ae929"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/apply.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/apply.stdout.txt",
+      "bytes": 2550,
+      "sha256": "941d503a5b2da9133395e1a0f1ad4dfda098059bed37dd680feea992946b9cb5"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/execution.json",
+      "bytes": 1934,
+      "sha256": "26a858a15f2e5d240b50932b76095f27aeb2862e7a1cdd426aa3af5e036f9777"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/kyverno-test.yaml",
+      "bytes": 761,
+      "sha256": "5fd263b5c0f0a076c9ebd092c964e020699e763f43327f6b57bbcd2084b7d916"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/policy.yaml",
+      "bytes": 1175,
+      "sha256": "97b9d322f27b29ca76308744bf4cdc314f126bdd91edb61fa3f9bfd828b832fe"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/resources.yaml",
+      "bytes": 1371,
+      "sha256": "b9ecff479e2172f50af959a7f6f38444ad64d0a086cec103cf327eb38021012c"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/test.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/test.stdout.txt",
+      "bytes": 1909,
+      "sha256": "85fe58f9f0b1e7994e570dec3ba8bce6d4af84bddd35714e209d915b65d4bba4"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/records.jsonl",
+      "bytes": 115973,
+      "sha256": "9d7d6e190c40871bd3d9449f9b4800c59e36fa553bfce92d13e5cd8b2ebedd10"
     },
     {
       "path": "submission/2026-10-16/falco-audit/SUMMARY.json",

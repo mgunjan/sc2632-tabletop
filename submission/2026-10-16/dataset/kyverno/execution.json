@@ -1,0 +1,60 @@
+{
+  "scope": "Offline CLI resource evaluation and authored test comparison; no API-server admission or deployment",
+  "engine_version_output": "Version: 1.19.1\nTime: 2026-09-10T05:20:21Z\nGit commit ID: 40ec788d48bb28d83dbf85538e962a59db9d45c6",
+  "engine_binary_sha256": "44477b1176c9aac308794c3638fe5f82dfd1ceab28b7d8faa96651c81a0d0504",
+  "runs": {
+    "apply": {
+      "argv": [
+        "kyverno",
+        "apply",
+        "submission/2026-10-16/dataset/kyverno/policy.yaml",
+        "--resource",
+        "submission/2026-10-16/dataset/kyverno/resources.yaml",
+        "--policy-report",
+        "--output-format",
+        "json",
+        "--remove-color"
+      ],
+      "returncode": 1,
+      "elapsed_seconds": 0.242736
+    },
+    "test": {
+      "argv": [
+        "kyverno",
+        "test",
+        "submission/2026-10-16/dataset/kyverno",
+        "--require-tests",
+        "--remove-color"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.242992
+    }
+  },
+  "model_called": false,
+  "cluster_contacted": false,
+  "expected_apply_failure_exit": true,
+  "input_sources": [
+    {
+      "path": "generator/contracts/privilege-test.yaml",
+      "sha256": "6fcf79f07cb70412f4138d4173d194a5f3c56bbaf642920519a8b296a63610e3"
+    },
+    {
+      "path": "generator/contracts/privilege-resources.yaml",
+      "sha256": "b9ecff479e2172f50af959a7f6f38444ad64d0a086cec103cf327eb38021012c"
+    }
+  ],
+  "input_artifacts": [
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/policy.yaml",
+      "sha256": "97b9d322f27b29ca76308744bf4cdc314f126bdd91edb61fa3f9bfd828b832fe"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/resources.yaml",
+      "sha256": "b9ecff479e2172f50af959a7f6f38444ad64d0a086cec103cf327eb38021012c"
+    },
+    {
+      "path": "submission/2026-10-16/dataset/kyverno/kyverno-test.yaml",
+      "sha256": "5fd263b5c0f0a076c9ebd092c964e020699e763f43327f6b57bbcd2084b7d916"
+    }
+  ]
+}

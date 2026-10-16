@@ -27,4 +27,6 @@ Before promoting a catalog release for an enterprise, collect target-platform ev
 
 [ENTERPRISE-QUALIFICATION.md](ENTERPRISE-QUALIFICATION.md) defines the training-label contract, per-layer qualification work and release gates. The local Laya training run is measured; its candidate is rejected for delegation because confidence increased without better regression accuracy. Training and qualifying enforcement are separate work.
 
+[DATASET-DESIGN.md](DATASET-DESIGN.md) specifies how selected Falco/Kyverno sources, executed behavior and independent response labels form separate linked collections. The initial 20-case evidence seed is regression-only; it is not a training corpus or a new independent model test.
+
 This makes an effective tabletop challenge: ask each team which enforcement layer has actually been proved, which exception it would authorize, and which missing evidence prevents promotion. Changing the model cannot resolve a missing enforcement component.

@@ -6,7 +6,7 @@ A specialised, calibrated version of Laya that answers three kinds of questions:
 - **Exceptions:** whether an exception request holds up. These are often written *by an agent*.
 - **Inputs:** whether the text an agent read is trying to steer it.
 
-This directory has everything needed to build it: dataset, training, calibration, evaluation, and the tests that prove the plumbing. What it does **not** have yet is a trained variant. Training needs the real weights, and that has to run on a machine that can reach Hugging Face (see *Where things ran*).
+This directory contains dataset, training, calibration and evaluation tooling. A separate control-selection head was trained locally on the real Laya weights on October 13; it did not improve the 33-decision regression accuracy and did not qualify for delegation. That run does not establish a trained, qualified variant for the triage questions below. See [the measured pilot](../submission/2026-10-13/REVIEW.md).
 
 ## Why a variant, not the base model
 
@@ -48,7 +48,7 @@ Labels are **by construction**. Every example is assembled from parts whose mean
 
 | Split | What | Used for |
 |---|---|---|
-| `train` / `cal` / `test_iid` | Constructed, training templates and entity names | Training; calibration and model selection (`cal`); in-distribution check |
+| `train` / `cal` / `test_iid` | Constructed, training templates and entity names | Training; confidence calibration (`cal`); in-distribution check. Use separate development data for model selection in the next study |
 | `test_ood` | Constructed from **held-out templates AND held-out entity names** | "Did it learn the task or the strings?" |
 | `gold` | Hand-written, realistic phrasing, no template wording | "Is it useful on text that looks like real life?" |
 | `scenario` | The session's real tickets, Slack messages, intents and exceptions | The demo. **Never trained on.** A regression test |
@@ -128,7 +128,7 @@ The September Qwen recording matches 45/51 current states, including 39/42 gold 
 | | Where | Status |
 |---|---|---|
 | Dataset, baselines, all tests | Cloud workspace (no Hugging Face access) | **Ran.** `test_pipeline.py`: 7/7 on a tiny random checkpoint in laya's format, through laya's real `Agent` |
-| Zero-shot bases, training, calibration, evaluation on real weights | Needs Hugging Face: your Mac's own terminal, the NUC, or Kaggle | **Not run yet.** Commands above |
+| Control-selection base, head training, calibration and evaluation on real weights | Local Apple-silicon Mac, cached Laya typed-decisions weights | **Ran October 13.** See the completed control-selection pilot below; this does not verify a trained triage variant |
 
 `make_tiny_checkpoint.py` writes a random 64-dimensional model in laya's on-disk format, so all of this is testable without the weights. Its answers are noise by design. Never quote a number from it.
 
@@ -185,3 +185,19 @@ The [control library](../controls/README.md) records those implementation bounda
 The [completed local training pilot](../submission/2026-10-13/REVIEW.md) did not improve the 33-case accuracy;
 it increased accepted coverage and confident errors. Use it as measured evidence, not a qualified demo backend.
 Install `requirements-training.txt` for the recorded Python 3.12 environment.
+
+## Falco, Kyverno and the next dataset
+
+The [dataset design](../controls/DATASET-DESIGN.md) separates a versioned control library, executed behavioral
+evidence and independently reviewed incident decisions. Upstream rules and policy tests are useful sources;
+their existence does not label the appropriate response to an incident.
+
+`build_evidence_corpus.py` assembles the existing 14 Falco audit cases and six Kyverno privilege resources into
+a provenance-linked, regression-only seed. Expected results, actual observations and model-visible inputs
+are separate. No row is eligible for training or independent evaluation, and no incident response labels are
+invented. The seed retains test-only naming for reproduction and is not a ready-to-train model input format.
+
+```sh
+python laya_variant/build_evidence_corpus.py --out output/evidence-corpus
+python laya_variant/test_evidence_corpus.py
+```
