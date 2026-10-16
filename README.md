@@ -52,3 +52,5 @@ The [October 14 demo audit](submission/2026-10-14/README.md) records one fresh p
 [submission/2026-10-13/REVIEW.md](submission/2026-10-13/REVIEW.md) explains the training pilot, classical baselines and corrections to older recordings. The trained Laya candidate did not qualify for automatic delegation. The small authored evaluation does not establish a production winner between model families. No authenticated OpenAI result is recorded.
 
 The source index records each included file's SHA-256. This is a curated snapshot without repository history, API keys, Kubernetes credentials, model weights or build caches. The Apache-2.0 license is included. Current slides and printable materials are in `submission/2026-10-13/`; earlier results are retained only where they support provenance or replay.
+
+The [October 16 Falco audit verification](submission/2026-10-16/README.md) preserves the synthetic webhook contract, failed baseline, repaired rules and explicit visibility warnings. Actual cluster delivery and kernel detection remain separate qualifications.

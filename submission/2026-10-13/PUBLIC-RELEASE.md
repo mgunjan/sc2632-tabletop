@@ -17,3 +17,7 @@ The October 14 source follow-up includes the requirement-visibility repair, expl
 The October 16 revision adds the detection, admission, containment and authority map to opening slide 4 and the participant primer. It introduces Falco's role while distinguishing validated rules from unverified live detection. Supplied incident alerts and the compiler/test demo remain explicit. Runtime code and recorded results are unchanged.
 
 The professional briefing revision brings the actual decision loop, provider data, uncertainty defaults, compiled request scope, independent review contract and Quarantine implementation before scenario selection. The deck now has 30 main slides and six backups. The revised planned hour retains four minutes for intent writing and the existing later sealed reveals and recovery. TECHNICAL-BRIEF.md maps the explanation to source code. No runtime or inference results changed.
+
+The [October 16 Falco audit repair](../2026-10-16/README.md) adds a synthetic behavioral contract, retained failing baseline, subject-based alerts, stage filtering and explicit missing-evidence warnings. Both arm64 and amd64 execute the same contract. This source update leaves slide visuals and printed materials unchanged; actual cluster delivery and kernel detection remain unverified.
+
+The speaker-note source links now point to the public repository. All 26 cited paths are included or mapped to current materials; the one cited historical cloud log retains its original scope label. All 36 slide visuals and the PDF are unchanged.

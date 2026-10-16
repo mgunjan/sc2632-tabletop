@@ -1,0 +1,7 @@
+- rule: SC2632 synthetic input receipt
+  desc: Test-only input witness, separate from project detection rules.
+  source: k8s_audit
+  condition: ka.auditid exists
+  output: "Synthetic receipt (auditid=%ka.auditid stage=%ka.stage target=%ka.target.name)"
+  priority: DEBUG
+  tags: [sc2632-test-witness]

@@ -1,3 +1,11 @@
+# Current evidence and historical validation records
+
+As of October 16, the current deck is 36 slides: 30 main, six hidden backups and 14 editable tables. ARTIFACT-VALIDATION.json binds its exact hashes and rendered checks. The technical briefing precedes case selection; the revised timing remains unverified by a human rehearsal. Milind confirmed the full rehearsal is still unperformed on October 16. Native PowerPoint inspection is deferred at his request.
+
+The [synthetic Falco audit record](../2026-10-16/README.md) adds real plugin ingestion and matching: 15 synthetic HTTP events across 14 authored cases. The same contract exposed four baseline failures and passes after repair. It does not prove real API-server delivery, kernel capture or production detection quality. The updated workflow makes this behavioral check mandatory. All four jobs passed for runtime commit 908398b, including the real isolated cluster lab and Case D; the complete result is in ../2026-10-16/CI-RESULT.json.
+
+The sections below preserve historical validations, counts, slide positions and limitations for their respective revisions. Use the current artifact and package verification JSON for present bindings.
+
 # Verification record
 
 All listed checks passed on this checkout. Mock tests use no paid inference. Model measurements are documented separately in REVIEW.md.

@@ -185,6 +185,12 @@ kubectl -n falco logs -l app.kubernetes.io/name=falco -f | grep TRIGGER
 The k8s_audit rules (scenario C) need the API server's audit webhook pointed at Falco's k8saudit
 plugin. **Not run in the lab yet.** CI runs `falco --validate` on the rules.
 
+The separate synthetic webhook check now runs the real audit plugin in a capability-free
+container, sends 15 authored events and verifies detection, negative controls and explicit
+visibility warnings. Use `scripts/verify-falco-audit.py --plugins /path/to/plugins --out output/falco-audit-new`.
+See `submission/2026-10-16/README.md` for baseline failures, repairs and the exact scope.
+This does not establish API-server delivery or syscall capture from this cluster.
+
 ## Local model
 
 ```bash

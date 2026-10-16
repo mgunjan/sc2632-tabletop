@@ -36,3 +36,7 @@ The curated local `ATTENDEE-SOURCE-KIT.zip` has a [start-here guide](../../table
 The delivery revision clarifies scoring of written plans, justified refusals and held authority. Co-presenters have [case-specific scoring anchors](../../tabletop/congress-2026/SCORING-ANCHORS.md) and a [blank human rehearsal record](../../tabletop/congress-2026/REHEARSAL-RECORD.md). These are preparation materials; scoring calibration and the full human hour remain unperformed.
 
 The [October 14 demo audit](../2026-10-14/README.md) records a fresh prepared Jev fixture run, an explicit CLI-path option and a requirement-visibility repair. It does not qualify arbitrary audience intent or replace the human rehearsal.
+
+The [October 16 Falco audit verification](../2026-10-16/README.md) tests real synthetic webhook ingestion and matching on arm64 and amd64. It preserves the failed baseline and repairs subject attribution, audit-stage duplication and missing-evidence handling. The existing slide visuals and handouts remain unchanged, and the new example is optional technical Q&A. Actual cluster delivery, kernel detection and human delivery remain separate checks.
+
+The speaker-note source links now point to the public repository. All 26 cited paths are included or mapped to current materials; the one cited historical cloud log retains its original scope label. All 36 slide visuals and the PDF are unchanged.

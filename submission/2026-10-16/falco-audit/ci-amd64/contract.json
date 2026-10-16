@@ -1,0 +1,721 @@
+{
+  "scope": "Synthetic audit-plugin webhook matching; no cluster, kernel capture or automatic containment",
+  "cases": [
+    {
+      "id": "outside-denied",
+      "target_name": "outside-denied",
+      "classification": "positive_control",
+      "expected_alert_tags": [
+        "quarantine-q1"
+      ],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "801b6306-036c-57a6-a10e-329195792847",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/outside-denied",
+          "verb": "patch",
+          "user": {
+            "username": "system:serviceaccount:agents:ops-agent",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "deployments",
+            "namespace": "payments",
+            "name": "outside-denied",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 403
+          },
+          "requestObject": {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+              "name": "outside-denied",
+              "namespace": "payments"
+            },
+            "spec": {
+              "replicas": 12
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "outside-scale",
+      "target_name": "outside-scale",
+      "classification": "positive_control",
+      "expected_alert_tags": [
+        "quarantine-q1"
+      ],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "96a1502a-6ad2-5b06-a613-7b9ce0cca394",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/outside-scale",
+          "verb": "patch",
+          "user": {
+            "username": "system:serviceaccount:agents:ops-agent",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "deployments",
+            "namespace": "payments",
+            "name": "outside-scale",
+            "apiVersion": "v1",
+            "subresource": "scale"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          },
+          "requestObject": {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+              "name": "outside-scale",
+              "namespace": "payments"
+            },
+            "spec": {
+              "replicas": 12
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "own-namespace",
+      "target_name": "own-namespace",
+      "classification": "negative_control",
+      "expected_alert_tags": [],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "0cf724a6-9c47-5460-976b-015ee80e965a",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/own-namespace",
+          "verb": "patch",
+          "user": {
+            "username": "system:serviceaccount:agents:ops-agent",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "deployments",
+            "namespace": "agents",
+            "name": "own-namespace",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          },
+          "requestObject": {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+              "name": "own-namespace",
+              "namespace": "agents"
+            },
+            "spec": {
+              "replicas": 12
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "human-outside",
+      "target_name": "human-outside",
+      "classification": "negative_control",
+      "expected_alert_tags": [],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "1f969eb1-431b-5e01-aa5b-d107d32c6854",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/human-outside",
+          "verb": "patch",
+          "user": {
+            "username": "synthetic-human",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "deployments",
+            "namespace": "payments",
+            "name": "human-outside",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          },
+          "requestObject": {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+              "name": "human-outside",
+              "namespace": "payments"
+            },
+            "spec": {
+              "replicas": 12
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "agent-read",
+      "target_name": "agent-read",
+      "classification": "negative_control",
+      "expected_alert_tags": [],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "06a1b40e-b39c-5b55-9ff5-dd0db28e6a62",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/agent-read",
+          "verb": "get",
+          "user": {
+            "username": "system:serviceaccount:agents:ops-agent",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "deployments",
+            "namespace": "payments",
+            "name": "agent-read",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          },
+          "requestObject": {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+              "name": "agent-read",
+              "namespace": "payments"
+            },
+            "spec": {
+              "replicas": 12
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "neutral-binding",
+      "target_name": "neutral-binding",
+      "classification": "positive_control",
+      "expected_alert_tags": [
+        "quarantine-q2"
+      ],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "514756a0-319f-5170-a1ef-2760d771ce39",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/neutral-binding",
+          "verb": "create",
+          "user": {
+            "username": "synthetic-human",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "clusterrolebindings",
+            "namespace": "payments",
+            "name": "neutral-binding",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 201
+          },
+          "requestObject": {
+            "kind": "ClusterRoleBinding",
+            "apiVersion": "rbac.authorization.k8s.io/v1",
+            "metadata": {
+              "name": "neutral-binding"
+            },
+            "subjects": [
+              {
+                "kind": "ServiceAccount",
+                "namespace": "agents",
+                "name": "ops-agent"
+              }
+            ],
+            "roleRef": {
+              "apiGroup": "rbac.authorization.k8s.io",
+              "kind": "ClusterRole",
+              "name": "synthetic-reader"
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "same-name-other-namespace",
+      "target_name": "same-name-other-namespace",
+      "classification": "negative_control",
+      "expected_alert_tags": [],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "34bca2ca-7138-5c6d-8679-b7e7e0f3c9c4",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/same-name-other-namespace",
+          "verb": "patch",
+          "user": {
+            "username": "synthetic-human",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "rolebindings",
+            "namespace": "payments",
+            "name": "same-name-other-namespace",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          },
+          "requestObject": {
+            "kind": "RoleBinding",
+            "apiVersion": "rbac.authorization.k8s.io/v1",
+            "metadata": {
+              "name": "same-name-other-namespace"
+            },
+            "subjects": [
+              {
+                "kind": "ServiceAccount",
+                "namespace": "payments",
+                "name": "ops-agent"
+              }
+            ],
+            "roleRef": {
+              "apiGroup": "rbac.authorization.k8s.io",
+              "kind": "ClusterRole",
+              "name": "synthetic-reader"
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "misleading-binding-name",
+      "target_name": "ops-agent-unrelated-binding",
+      "classification": "negative_control",
+      "expected_alert_tags": [],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "2f090cb9-d588-50fe-a605-227111a5ccd4",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/ops-agent-unrelated-binding",
+          "verb": "patch",
+          "user": {
+            "username": "synthetic-human",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "rolebindings",
+            "namespace": "payments",
+            "name": "ops-agent-unrelated-binding",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          },
+          "requestObject": {
+            "kind": "RoleBinding",
+            "apiVersion": "rbac.authorization.k8s.io/v1",
+            "metadata": {
+              "name": "ops-agent-unrelated-binding"
+            },
+            "subjects": [
+              {
+                "kind": "ServiceAccount",
+                "namespace": "agents",
+                "name": "unrelated"
+              }
+            ],
+            "roleRef": {
+              "apiGroup": "rbac.authorization.k8s.io",
+              "kind": "ClusterRole",
+              "name": "synthetic-reader"
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "metadata-only",
+      "target_name": "ops-agent-body-unavailable",
+      "classification": "visibility_gap",
+      "expected_alert_tags": [],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "Metadata",
+          "auditID": "8f8963c3-4df7-5cb9-970e-08ff0e4f5058",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/ops-agent-body-unavailable",
+          "verb": "patch",
+          "user": {
+            "username": "synthetic-human",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "clusterrolebindings",
+            "namespace": "payments",
+            "name": "ops-agent-body-unavailable",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": [
+        "audit-visibility-gap"
+      ]
+    },
+    {
+      "id": "json-patch",
+      "target_name": "ops-agent-json-patch",
+      "classification": "visibility_gap",
+      "expected_alert_tags": [],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "8057bfad-ccc1-53fb-8f5f-4d4b6fdf0752",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/ops-agent-json-patch",
+          "verb": "patch",
+          "user": {
+            "username": "synthetic-human",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "clusterrolebindings",
+            "namespace": "payments",
+            "name": "ops-agent-json-patch",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          },
+          "requestObject": [
+            {
+              "op": "replace",
+              "path": "/roleRef/name",
+              "value": "synthetic-admin"
+            }
+          ]
+        }
+      ],
+      "expected_evidence_gap_tags": [
+        "audit-visibility-gap"
+      ]
+    },
+    {
+      "id": "unrelated-binding",
+      "target_name": "unrelated-binding",
+      "classification": "negative_control",
+      "expected_alert_tags": [],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "0fd70d16-d3ca-59e2-9636-3f79d89257a2",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/unrelated-binding",
+          "verb": "patch",
+          "user": {
+            "username": "synthetic-human",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "rolebindings",
+            "namespace": "payments",
+            "name": "unrelated-binding",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          },
+          "requestObject": {
+            "kind": "RoleBinding",
+            "apiVersion": "rbac.authorization.k8s.io/v1",
+            "metadata": {
+              "name": "unrelated-binding"
+            },
+            "subjects": [
+              {
+                "kind": "ServiceAccount",
+                "namespace": "agents",
+                "name": "unrelated"
+              }
+            ],
+            "roleRef": {
+              "apiGroup": "rbac.authorization.k8s.io",
+              "kind": "ClusterRole",
+              "name": "synthetic-reader"
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "duplicate-stages",
+      "target_name": "duplicate-stages",
+      "classification": "positive_control",
+      "expected_alert_tags": [
+        "quarantine-q1"
+      ],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "59cb26ba-8a63-5d89-b834-6e92d5e3bcc5",
+          "stage": "RequestReceived",
+          "requestURI": "/apis/synthetic/duplicate-stages",
+          "verb": "patch",
+          "user": {
+            "username": "system:serviceaccount:agents:ops-agent",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "deployments",
+            "namespace": "payments",
+            "name": "duplicate-stages",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z"
+        },
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "59cb26ba-8a63-5d89-b834-6e92d5e3bcc5",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/duplicate-stages",
+          "verb": "patch",
+          "user": {
+            "username": "system:serviceaccount:agents:ops-agent",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "deployments",
+            "namespace": "payments",
+            "name": "duplicate-stages",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          },
+          "requestObject": {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+              "name": "duplicate-stages",
+              "namespace": "payments"
+            },
+            "spec": {
+              "replicas": 12
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "denied-binding-attempt",
+      "target_name": "denied-binding-attempt",
+      "classification": "positive_control",
+      "expected_alert_tags": [
+        "quarantine-q2"
+      ],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "b25489b6-f301-55b8-b458-dd7f1c050bbe",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/denied-binding-attempt",
+          "verb": "create",
+          "user": {
+            "username": "synthetic-human",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "rolebindings",
+            "namespace": "payments",
+            "name": "denied-binding-attempt",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 403
+          },
+          "requestObject": {
+            "kind": "RoleBinding",
+            "apiVersion": "rbac.authorization.k8s.io/v1",
+            "metadata": {
+              "name": "denied-binding-attempt"
+            },
+            "subjects": [
+              {
+                "kind": "ServiceAccount",
+                "namespace": "agents",
+                "name": "ops-agent"
+              }
+            ],
+            "roleRef": {
+              "apiGroup": "rbac.authorization.k8s.io",
+              "kind": "ClusterRole",
+              "name": "synthetic-reader"
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    },
+    {
+      "id": "read-binding",
+      "target_name": "read-binding",
+      "classification": "negative_control",
+      "expected_alert_tags": [],
+      "events": [
+        {
+          "kind": "Event",
+          "apiVersion": "audit.k8s.io/v1",
+          "level": "RequestResponse",
+          "auditID": "fc23a7a9-0e29-56e0-a6aa-0e584f351998",
+          "stage": "ResponseComplete",
+          "requestURI": "/apis/synthetic/read-binding",
+          "verb": "get",
+          "user": {
+            "username": "synthetic-human",
+            "groups": [
+              "system:authenticated"
+            ]
+          },
+          "objectRef": {
+            "resource": "rolebindings",
+            "namespace": "payments",
+            "name": "read-binding",
+            "apiVersion": "v1"
+          },
+          "requestReceivedTimestamp": "2026-10-16T12:00:00.000000Z",
+          "stageTimestamp": "2026-10-16T12:00:00.010000Z",
+          "responseStatus": {
+            "code": 200
+          },
+          "requestObject": {
+            "kind": "RoleBinding",
+            "apiVersion": "rbac.authorization.k8s.io/v1",
+            "metadata": {
+              "name": "read-binding"
+            },
+            "subjects": [
+              {
+                "kind": "ServiceAccount",
+                "namespace": "agents",
+                "name": "ops-agent"
+              }
+            ],
+            "roleRef": {
+              "apiGroup": "rbac.authorization.k8s.io",
+              "kind": "ClusterRole",
+              "name": "synthetic-reader"
+            }
+          }
+        }
+      ],
+      "expected_evidence_gap_tags": []
+    }
+  ],
+  "expectations": "Authored behavioral regression, not a field detection benchmark. Visibility gaps require diagnostic warnings, not inferred agent association."
+}

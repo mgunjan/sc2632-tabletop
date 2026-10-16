@@ -19,18 +19,23 @@
     },
     {
       "path": "README.md",
-      "bytes": 7370,
-      "sha256": "5a1212b9b0fd7244bcf74285c5bb5d7e1ffbd38f081c5142b0c842bbdfe8c087"
+      "bytes": 7631,
+      "sha256": "4742eb890333459c881a610a2aa396f54cfd2c731e595445bbd6bff247d0eba0"
     },
     {
       "path": "START-HERE.md",
-      "bytes": 7370,
-      "sha256": "5a1212b9b0fd7244bcf74285c5bb5d7e1ffbd38f081c5142b0c842bbdfe8c087"
+      "bytes": 7631,
+      "sha256": "4742eb890333459c881a610a2aa396f54cfd2c731e595445bbd6bff247d0eba0"
     },
     {
       "path": "ci/crds/policies.kyverno.io_policyexceptions.yaml",
       "bytes": 20530,
       "sha256": "759cd434b6265c2cfb407304f76b516616275e1bf6b0e3ae8fe8a2cb62531d98"
+    },
+    {
+      "path": "ci/falco-audit-events.json",
+      "bytes": 22033,
+      "sha256": "0c9139b9b07ab6bdf071e50bae524c1bbff587a1a98766a9aa6543e8653f4bf2"
     },
     {
       "path": "ci/falco-k8saudit.yaml",
@@ -289,8 +294,13 @@
     },
     {
       "path": "lab/README.md",
-      "bytes": 11319,
-      "sha256": "161eaa3fe1684d9412f32a529b7f005c28463136894fa1ea1092ca40d35e39f6"
+      "bytes": 11786,
+      "sha256": "c5911c8953f06108201597a915effa96e67297b519f73020b695696c65e74029"
+    },
+    {
+      "path": "lab/RESULTS-live-2026-10-10.txt",
+      "bytes": 5605,
+      "sha256": "d268854cdf1baea23b4945fa49131871c10adcf201a28c950342b39dbc66baa4"
     },
     {
       "path": "lab/images/Dockerfile",
@@ -829,8 +839,8 @@
     },
     {
       "path": "runtime/falco-rules-k8saudit.yaml",
-      "bytes": 3461,
-      "sha256": "1faba913cec50fa0d57e8a6a8e1760d884b946cdfe3b3ccea2072fbc201598ab"
+      "bytes": 5192,
+      "sha256": "775bec0fb770a6e31525fa2cb5a4b84f7cfec2ad22249aceda0959550b7afed4"
     },
     {
       "path": "runtime/falco-rules-syscall.yaml",
@@ -1079,8 +1089,13 @@
     },
     {
       "path": "scripts/lint-falco.py",
-      "bytes": 2059,
-      "sha256": "b21d098ee96f1af92552f5dafdb3439eb827d34a04942305500fab5e576e79d6"
+      "bytes": 2083,
+      "sha256": "6e3764600e81ef85f51fe1c5ad7f70b899ad4827cf58e8d8c49825d3ac1d8c72"
+    },
+    {
+      "path": "scripts/verify-falco-audit.py",
+      "bytes": 9827,
+      "sha256": "788abdd191ba717ca5871456a92c5653d2e019e01459b465a30844e130f1f611"
     },
     {
       "path": "standards/README.md",
@@ -1854,8 +1869,8 @@
     },
     {
       "path": "submission/2026-10-13/ARTIFACT-VALIDATION.json",
-      "bytes": 9465,
-      "sha256": "257f137d4b18bbf7df41afe58ed87c11db3044e2f71ae830bdba94ae03d13d08"
+      "bytes": 11937,
+      "sha256": "48b91c7c86f463f60bc5113b27ad504b6de8a517d79051feaaa79d5893686dc2"
     },
     {
       "path": "submission/2026-10-13/CONTROL-REVIEW-EXERCISE.md",
@@ -1874,13 +1889,13 @@
     },
     {
       "path": "submission/2026-10-13/PUBLIC-RELEASE.md",
-      "bytes": 2740,
-      "sha256": "ec2bfa3da79c961df2650f859dfe3dcc96f88d5eed82eb85c8cfde980fed9a9f"
+      "bytes": 3378,
+      "sha256": "9ce05663d024860016f0af43e2c87583d6540369235ce119094dcbe008cb3ffd"
     },
     {
       "path": "submission/2026-10-13/README.md",
-      "bytes": 6623,
-      "sha256": "2ebba0d68c781e1a8b319cc78fc23ebdae6f351015b8ce7c77b50cc8a49f2eba"
+      "bytes": 7322,
+      "sha256": "a4f7eeb747a050006cf29a3dc04ea96cf0cf679833a9470a6cd98f985cd2a011"
     },
     {
       "path": "submission/2026-10-13/REVIEW-SCORECARD.pdf",
@@ -1899,8 +1914,8 @@
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pptx",
-      "bytes": 7131844,
-      "sha256": "a323251b1f8e39dd1264e1e855d3827ceaf1e254a771a10171caf5ea429b6f55"
+      "bytes": 7131804,
+      "sha256": "a470177e96a69a6d98dfde678d01d135d269c70e04f09b696d75a5ac0619305d"
     },
     {
       "path": "submission/2026-10-13/TRAINING-PROTOCOL.md",
@@ -1909,8 +1924,8 @@
     },
     {
       "path": "submission/2026-10-13/VALIDATION.md",
-      "bytes": 14263,
-      "sha256": "0a1def3ac28d8403432abdd59f26edad31086870bd67dec1853a4935bd13f2b6"
+      "bytes": 15463,
+      "sha256": "86a943df48096c0271d569295b67f508ead90f8f4cd110352fd6b830de723329"
     },
     {
       "path": "submission/2026-10-13/classical-verification-final/REPORT.md",
@@ -2784,8 +2799,8 @@
     },
     {
       "path": "submission/2026-10-14/ABSTRACT-ALIGNMENT.md",
-      "bytes": 4785,
-      "sha256": "a463be451d869fe16ac3413d765184592ab5b423373e131ed22aa638419586d0"
+      "bytes": 5176,
+      "sha256": "ee32ba89dc4c0be844f90de774f84a88b448b63863d7c1e8244e324369c102b0"
     },
     {
       "path": "submission/2026-10-14/README.md",
@@ -2903,9 +2918,134 @@
       "sha256": "0aa2bd7d9c1ef1eb48cc3f9b941cb83f9019992ece3b3747fbefa3b07cca4d6e"
     },
     {
+      "path": "submission/2026-10-16/CI-RESULT.json",
+      "bytes": 8555,
+      "sha256": "8003708ef5b513882f2e776f05833532d5d8b967eb631f13c639dd1c7c5b4390"
+    },
+    {
+      "path": "submission/2026-10-16/README.md",
+      "bytes": 5496,
+      "sha256": "69357145f81edaa3783a973dc46064af0c30dd7a32a97d6bc4f6ccf36b37801c"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/SUMMARY.json",
+      "bytes": 1239,
+      "sha256": "0307af27da299f7aabffc065aa5a2dff7fa3414ee26163943564ed0c839b4234"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/baseline/contract.json",
+      "bytes": 22033,
+      "sha256": "0c9139b9b07ab6bdf071e50bae524c1bbff587a1a98766a9aa6543e8653f4bf2"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/baseline/falco.stderr.txt",
+      "bytes": 887,
+      "sha256": "95e9b40bfef33c2012bc9decb84c94d0e1dce5cc6a34aeb500ef02f7805c0bb4"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/baseline/falco.stdout.jsonl",
+      "bytes": 14796,
+      "sha256": "c22cc5997b5ed7db8ed797f349f144085dc08dee92b1c5833b821c0afe79a0ac"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/baseline/falco.yaml",
+      "bytes": 528,
+      "sha256": "13cacd08ff4584cfff9b751cde53601e346cebc9bb782c3a582d0576c8c82b9e"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/baseline/result.json",
+      "bytes": 4925,
+      "sha256": "178e3daa90fab5474837ea09dcea327b9930c4bd1a210441f274505e14fa8c69"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/baseline/rules.yaml",
+      "bytes": 3461,
+      "sha256": "1faba913cec50fa0d57e8a6a8e1760d884b946cdfe3b3ccea2072fbc201598ab"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/baseline/witness.yaml",
+      "bytes": 301,
+      "sha256": "26c7e8255838f20b4e6a6094d3ce30a4ded8d6e5d9e3c652d648804884e3e161"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/ci-amd64/contract.json",
+      "bytes": 22033,
+      "sha256": "0c9139b9b07ab6bdf071e50bae524c1bbff587a1a98766a9aa6543e8653f4bf2"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/ci-amd64/falco.stderr.txt",
+      "bytes": 886,
+      "sha256": "3fed52230d61af3ebcf1651ab4ebf3315a2c3eec95b61ff52c45ac4dd6df9f95"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/ci-amd64/falco.stdout.jsonl",
+      "bytes": 13975,
+      "sha256": "ef4f627df88ec88ca450792bdbb4b38dfd6da7785981c15b90ff6bc1b29c2c6d"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/ci-amd64/falco.yaml",
+      "bytes": 528,
+      "sha256": "13cacd08ff4584cfff9b751cde53601e346cebc9bb782c3a582d0576c8c82b9e"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/ci-amd64/result.json",
+      "bytes": 4879,
+      "sha256": "895a9b1d1323e5b83908a2d1c8c63205f759128c40fd9ba92f3c62bc5337bee1"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/ci-amd64/rules.yaml",
+      "bytes": 5192,
+      "sha256": "775bec0fb770a6e31525fa2cb5a4b84f7cfec2ad22249aceda0959550b7afed4"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/ci-amd64/witness.yaml",
+      "bytes": 301,
+      "sha256": "26c7e8255838f20b4e6a6094d3ce30a4ded8d6e5d9e3c652d648804884e3e161"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/repaired/contract.json",
+      "bytes": 22033,
+      "sha256": "0c9139b9b07ab6bdf071e50bae524c1bbff587a1a98766a9aa6543e8653f4bf2"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/repaired/falco.stderr.txt",
+      "bytes": 887,
+      "sha256": "48f8dcebe2ba4de2a502bf9769c082c683070376a0dccc3d309dd08de0225f6b"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/repaired/falco.stdout.jsonl",
+      "bytes": 13975,
+      "sha256": "36c3332ccbcbe7941f2ec24246c925ef8064a13cc708a8489bf4946fb6df71e0"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/repaired/falco.yaml",
+      "bytes": 528,
+      "sha256": "13cacd08ff4584cfff9b751cde53601e346cebc9bb782c3a582d0576c8c82b9e"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/repaired/result.json",
+      "bytes": 4879,
+      "sha256": "4861b008b451cae481118063b1fe4fbe56f1728a4b67554298280b87a20cf7a8"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/repaired/rules.yaml",
+      "bytes": 5192,
+      "sha256": "775bec0fb770a6e31525fa2cb5a4b84f7cfec2ad22249aceda0959550b7afed4"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/repaired/witness.yaml",
+      "bytes": 301,
+      "sha256": "26c7e8255838f20b4e6a6094d3ce30a4ded8d6e5d9e3c652d648804884e3e161"
+    },
+    {
+      "path": "submission/2026-10-16/falco-audit/verify-falco-audit.py.txt",
+      "bytes": 9827,
+      "sha256": "788abdd191ba717ca5871456a92c5653d2e019e01459b465a30844e130f1f611"
+    },
+    {
       "path": "tabletop/congress-2026/CO-PRESENTER-CARDS.md",
-      "bytes": 16811,
-      "sha256": "4149aab320b511c16684d06ced67052788beef7e43d8d3122ef0c722f08ad943"
+      "bytes": 17398,
+      "sha256": "3bde95a957d6c4c328abfcbd2efabc0b5cf7cd3c318e606f38a35152e87ff581"
     },
     {
       "path": "tabletop/congress-2026/INCIDENT-BRIEF.md",
@@ -2929,8 +3069,8 @@
     },
     {
       "path": "tabletop/congress-2026/TECHNICAL-BRIEF.md",
-      "bytes": 6945,
-      "sha256": "98fc9e69ac0f504759f4d9f65bd6d585832eec0ed1c8b24ec84fcc8ab11abe20"
+      "bytes": 7069,
+      "sha256": "9a5df286ae256a98c090ed02d6008cb365db0a086b0ea56dee5c45b409b0d713"
     },
     {
       "path": "tabletop/congress-2026/WORKED-DECISION.md",

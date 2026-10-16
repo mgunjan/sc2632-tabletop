@@ -7,7 +7,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 KNOWN = {
   "syscall": {"evt.type","evt.dir","evt.is_open_read","fd.typechar","fd.l4proto","fd.snet","fd.sip","fd.sport","fd.name",
               "k8s.ns.name","k8s.pod.name","container.name","proc.name","proc.pname","proc.cmdline","user.name"},
-  "k8s_audit": {"ka.user.name","ka.verb","ka.target.resource","ka.target.subresource","ka.target.namespace","ka.target.name",
+  "k8s_audit": {"ka.auditid","ka.stage","ka.user.name","ka.verb","ka.target.resource","ka.target.subresource","ka.target.namespace","ka.target.name",
                 "ka.response.code","ka.req.binding.subjects","ka.req.binding.subjects.serviceaccount_ns_names","ka.req.binding.role"},
 }
 bad = 0

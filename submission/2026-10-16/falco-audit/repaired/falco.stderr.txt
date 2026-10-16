@@ -1,0 +1,13 @@
+Fri Oct 16 19:35:37 2026: Falco version: 0.45.0 (aarch64)
+Fri Oct 16 19:35:37 2026: Falco initialized with configuration files:
+Fri Oct 16 19:35:37 2026:    /check/falco.yaml | schema validation: ok
+Fri Oct 16 19:35:37 2026: Loaded plugin 'k8saudit@0.18.0' from file /plugins/libk8saudit.so
+Fri Oct 16 19:35:37 2026: Loaded plugin 'json@0.7.4' from file /plugins/libjson.so
+Fri Oct 16 19:35:37 2026: Loading rules from:
+Fri Oct 16 19:35:37 2026:    /check/rules.yaml | schema validation: ok
+Fri Oct 16 19:35:37 2026:    /check/witness.yaml | schema validation: ok
+Fri Oct 16 19:35:37 2026: Loaded event sources: syscall, k8s_audit
+Fri Oct 16 19:35:37 2026: Enabled event sources: k8s_audit
+Fri Oct 16 19:35:37 2026: Opening 'k8s_audit' source with plugin 'k8saudit'
+Fri Oct 16 19:35:37 2026: [libs]: Trying to open the right engine!
+Fri Oct 16 19:35:38 2026: SIGINT received, exiting...

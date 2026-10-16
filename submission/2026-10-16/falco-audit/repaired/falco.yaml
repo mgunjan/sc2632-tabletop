@@ -1,0 +1,25 @@
+engine:
+  kind: nodriver
+load_plugins: [k8saudit, json]
+plugins:
+  - name: k8saudit
+    library_path: /plugins/libk8saudit.so
+    init_config: ""
+    open_params: "http://:9765/k8s-audit"
+  - name: json
+    library_path: /plugins/libjson.so
+rules_files: []
+json_output: true
+json_include_output_property: true
+json_include_tags_property: true
+stdout_output:
+  enabled: true
+syslog_output:
+  enabled: false
+webserver:
+  enabled: false
+log_stderr: true
+log_syslog: false
+buffered_outputs: false
+priority: debug
+rule_matching: all

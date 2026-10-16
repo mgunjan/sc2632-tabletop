@@ -1,0 +1,179 @@
+{
+  "status": "PASS",
+  "scope": "Synthetic audit-plugin webhook matching; no cluster, kernel capture or automatic containment",
+  "case_count": 14,
+  "passed_cases": 14,
+  "events_received": 15,
+  "webhook_http_status": 200,
+  "checks": [
+    {
+      "id": "outside-denied",
+      "classification": "positive_control",
+      "expected_alerts": [
+        "quarantine-q1"
+      ],
+      "observed_alerts": [
+        "quarantine-q1"
+      ],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "outside-scale",
+      "classification": "positive_control",
+      "expected_alerts": [
+        "quarantine-q1"
+      ],
+      "observed_alerts": [
+        "quarantine-q1"
+      ],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "own-namespace",
+      "classification": "negative_control",
+      "expected_alerts": [],
+      "observed_alerts": [],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "human-outside",
+      "classification": "negative_control",
+      "expected_alerts": [],
+      "observed_alerts": [],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "agent-read",
+      "classification": "negative_control",
+      "expected_alerts": [],
+      "observed_alerts": [],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "neutral-binding",
+      "classification": "positive_control",
+      "expected_alerts": [
+        "quarantine-q2"
+      ],
+      "observed_alerts": [
+        "quarantine-q2"
+      ],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "same-name-other-namespace",
+      "classification": "negative_control",
+      "expected_alerts": [],
+      "observed_alerts": [],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "misleading-binding-name",
+      "classification": "negative_control",
+      "expected_alerts": [],
+      "observed_alerts": [],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "metadata-only",
+      "classification": "visibility_gap",
+      "expected_alerts": [],
+      "observed_alerts": [],
+      "expected_evidence_gaps": [
+        "audit-visibility-gap"
+      ],
+      "observed_evidence_gaps": [
+        "audit-visibility-gap"
+      ],
+      "passed": true
+    },
+    {
+      "id": "json-patch",
+      "classification": "visibility_gap",
+      "expected_alerts": [],
+      "observed_alerts": [],
+      "expected_evidence_gaps": [
+        "audit-visibility-gap"
+      ],
+      "observed_evidence_gaps": [
+        "audit-visibility-gap"
+      ],
+      "passed": true
+    },
+    {
+      "id": "unrelated-binding",
+      "classification": "negative_control",
+      "expected_alerts": [],
+      "observed_alerts": [],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "duplicate-stages",
+      "classification": "positive_control",
+      "expected_alerts": [
+        "quarantine-q1"
+      ],
+      "observed_alerts": [
+        "quarantine-q1"
+      ],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "denied-binding-attempt",
+      "classification": "positive_control",
+      "expected_alerts": [
+        "quarantine-q2"
+      ],
+      "observed_alerts": [
+        "quarantine-q2"
+      ],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    },
+    {
+      "id": "read-binding",
+      "classification": "negative_control",
+      "expected_alerts": [],
+      "observed_alerts": [],
+      "expected_evidence_gaps": [],
+      "observed_evidence_gaps": [],
+      "passed": true
+    }
+  ],
+  "image": "falcosecurity/falco:0.45.0",
+  "image_identity": "sha256:788f1129c542171813083d4afc61b16730a47dde8c23d9c39370acef996349b6 linux/arm64",
+  "rules_sha256": "775bec0fb770a6e31525fa2cb5a4b84f7cfec2ad22249aceda0959550b7afed4",
+  "contract_sha256": "0c9139b9b07ab6bdf071e50bae524c1bbff587a1a98766a9aa6543e8653f4bf2",
+  "harness_sha256": "788abdd191ba717ca5871456a92c5653d2e019e01459b465a30844e130f1f611",
+  "plugin_sha256": {
+    "libk8saudit.so": "a01cf425b9c345b6908196fe828d363531a3f1261e6346e4e8f4c25a281eccd3",
+    "libjson.so": "149159bbcec59d7e99696980e930f1337eb59e1084ce106f43d7a7ee398ae593"
+  },
+  "container_removed": true,
+  "elapsed_seconds": 0.892,
+  "kernel_capture": false,
+  "cluster_contacted": false,
+  "automatic_containment": false,
+  "matching_mode": "all, for the test-only input receipt rule"
+}

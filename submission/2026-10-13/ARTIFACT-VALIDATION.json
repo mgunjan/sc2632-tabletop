@@ -1,5 +1,5 @@
 {
-  "pptx_sha256": "a323251b1f8e39dd1264e1e855d3827ceaf1e254a771a10171caf5ea429b6f55",
+  "pptx_sha256": "a470177e96a69a6d98dfde678d01d135d269c70e04f09b696d75a5ac0619305d",
   "slide_count": 36,
   "main_slides": 30,
   "hidden_backup_slides": 6,
@@ -10,14 +10,7 @@
   "first_party_import_passed": true,
   "native_powerpoint_verified": false,
   "projector_verified": false,
-  "visually_inspected_changed_slides": [
-    2,
-    5,
-    6,
-    7,
-    8,
-    9
-  ],
+  "visually_inspected_changed_slides": [],
   "whole_deck_montage_inspected": true,
   "handout_pages_visually_inspected": {
     "CONTROL-REVIEW.pdf": 2,
@@ -34,7 +27,7 @@
     "SC2632-session-control-review.pdf": "8eef47176b83d47f2acef0ae90563d389f0f10ba13c47f121e4cfef5519f7c4c",
     "CONTROL-REVIEW.pdf": "74703651038316cd4c2419af850ff3b24041e52b2074b1e13eddc3d27cfeb238",
     "REVIEW-SCORECARD.pdf": "fb2afef7d10e4d7087cd27e696c0c65dd2c82f014023017d4d5256e865e8130d",
-    "SC2632-session-four-cases.pptx": "a323251b1f8e39dd1264e1e855d3827ceaf1e254a771a10171caf5ea429b6f55",
+    "SC2632-session-four-cases.pptx": "a470177e96a69a6d98dfde678d01d135d269c70e04f09b696d75a5ac0619305d",
     "SC2632-session-four-cases.pdf": "c727d17c6786d029ba38ebf4c1d8b659ecf5c6ae4f17535c446951c4a8790eee",
     "PARTICIPANT-PACK.pdf": "bd4cea752133d2ef5db2b2ccb73c54637ab205060e1c023d449d4bfe6b34be9d"
   },
@@ -49,7 +42,8 @@
     "kubernetes_accessibility_pptx_sha256": "d7b33ca45769bde241280c3ddffb6fc84b42b28c1b537be58447a88a0f3a1ff1",
     "purpose_pptx_sha256": "edc82bab837a924e804395d5970205e8f701b55437c77747ccd8f0d6de73758a",
     "audience_review_pptx_sha256": "9c4e85327119570e237f7efee76b07d73fcc8c3d12ae013a5b5eb88063d5ca35",
-    "runtime_control_map_pptx_sha256": "ad0bbfc9ee8038a4185f8bbee09d92ac2476663a0ef14094a396065337d03395"
+    "runtime_control_map_pptx_sha256": "ad0bbfc9ee8038a4185f8bbee09d92ac2476663a0ef14094a396065337d03395",
+    "technical_briefing_pptx_sha256": "a323251b1f8e39dd1264e1e855d3827ceaf1e254a771a10171caf5ea429b6f55"
   },
   "case_d_evidence": "live-rehearsal/case-d/result.json",
   "case_d_source_sha256_matches": true,
@@ -364,5 +358,63 @@
     "technical_source": "tabletop/congress-2026/TECHNICAL-BRIEF.md",
     "handout_bytes_unchanged": true,
     "native_powerpoint_check": "Deferred at user request"
+  },
+  "public_citation_revision": {
+    "all_36_slide_visuals_identical": true,
+    "slide_count": 36,
+    "native_tables": 14,
+    "curated_source_reference_count": 26,
+    "missing_curated_source_paths": [],
+    "public_note_url_occurrences": 41,
+    "historical_cloud_record_included": true,
+    "native_powerpoint_verified": false,
+    "pptx_sha256": "a470177e96a69a6d98dfde678d01d135d269c70e04f09b696d75a5ac0619305d",
+    "date": "2026-10-16",
+    "speaker_notes_only": true,
+    "prior_full_size_visual_review_reused_after_pixel_identity": true,
+    "pdf_bytes_unchanged": true,
+    "source_paths": [
+      "README.md",
+      "controls/catalog.json",
+      "generator/decider_agent.py",
+      "generator/decision_contract.py",
+      "generator/generate.py",
+      "generator/policy_agent.py",
+      "lab/README.md",
+      "lab/RESULTS-live-2026-10-10.txt",
+      "output/frozen-a/PR.md",
+      "output/frozen-a/policies/deny-privilege-escalation.yaml",
+      "quarantine/q1/freeze-agent-changes.yaml",
+      "quarantine/q2/",
+      "quarantine/q3/admission-policies.yaml",
+      "quarantine/q3/network-and-identity.yaml",
+      "quarantine/quarantine-mode.md",
+      "runtime/falco-rules-k8saudit.yaml",
+      "runtime/falco-rules-syscall.yaml",
+      "scenarios/d-secret-enumeration/README.md",
+      "submission/2026-10-12/benchmark/provider_clients.py",
+      "submission/2026-10-13/PARTICIPANT-PACK.pdf",
+      "submission/2026-10-14/demo-audit/CI-RESULT.json",
+      "tabletop/congress-2026/CO-PRESENTER-CARDS.md",
+      "tabletop/congress-2026/INCIDENT-BRIEF.md",
+      "tabletop/congress-2026/TECHNICAL-BRIEF.md",
+      "tabletop/congress-2026/WORKED-DECISION.md",
+      "tabletop/congress-2026/demo.py"
+    ],
+    "historical_record_scope": "October 10 cloud k3s record, explicitly not presenting-Mac evidence"
+  },
+  "falco_audit_revision": {
+    "date": "2026-10-16",
+    "runtime_rules_changed": true,
+    "same_14_case_contract_baseline_passed": 10,
+    "same_14_case_contract_repaired_passed": 14,
+    "synthetic_events_received": 15,
+    "arm64_and_amd64_verified": true,
+    "actual_cluster_delivery_verified": false,
+    "kernel_capture_verified": false,
+    "full_ci_url": "https://github.com/mgunjan/agentic-k8s-guardrails/actions/runs/38956377318",
+    "full_ci_commit": "908398b9c85fcb1577cde49aa6f483a57272482e",
+    "full_ci_jobs_passed": 4,
+    "human_rehearsal_completed": false
   }
 }

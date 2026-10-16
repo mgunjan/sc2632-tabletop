@@ -1,0 +1,111 @@
+# Falco rules — k8s_audit source (k8saudit plugin). Scenario C: the ops agent.
+#
+# Scenario C's signal is not a syscall: it's the ops agent's ServiceAccount changing
+# workloads, and a human being asked to widen its RBAC. That lives in the Kubernetes audit
+# log. Falco reads it with the k8saudit plugin (API server audit webhook -> Falco).
+#
+# Needs in falco.yaml:
+#   load_plugins: [k8saudit, json]
+#   plugins:
+#     - name: k8saudit
+#       library_path: libk8saudit.so
+#       open_params: "http://:9765/k8s-audit"
+#     - name: json
+#       library_path: libjson.so
+# Validate:  falco --validate runtime/falco-rules-k8saudit.yaml   (with the plugin loaded; CI does this)
+#
+# The admission policies in scenarios/c-rogue-ops-agent/ BLOCK the agent. These rules make
+# the attempt VISIBLE — including the part admission can't stop: a human running the
+# command the agent asked for.
+#
+# Match ResponseComplete once per request stage, including denied attempts. This does
+# not deduplicate repeated delivery of the same completed event. Binding association
+# requires the actual namespace + ServiceAccount in the request body, never its name.
+# Metadata-only and JSON Patch requests without subjects emit a separate evidence-gap
+# warning; resolve the effective binding from authoritative inventory before assigning
+# the incident level. These rules do not correlate Q1/Q2 or activate Quarantine Mode.
+
+- required_engine_version: 0.31.0
+
+- required_plugin_versions:
+    - name: k8saudit
+      version: 0.18.0
+    - name: json
+      version: 0.7.4
+
+- list: trustfall_agent_serviceaccounts
+  items: ['"system:serviceaccount:agents:ops-agent"']
+
+- list: trustfall_workload_resources
+  items: [deployments, statefulsets, daemonsets, replicasets]
+
+- list: trustfall_rbac_binding_resources
+  items: [rolebindings, clusterrolebindings]
+
+- macro: trustfall_agent_request
+  condition: (ka.user.name in (trustfall_agent_serviceaccounts))
+
+- macro: trustfall_write_verb
+  condition: (ka.verb in (create, update, patch))
+
+- macro: trustfall_completed_audit
+  condition: (ka.stage = "ResponseComplete")
+
+# ---------------------------------------------------------------------------- Q1
+
+- rule: Trustfall Financial ops agent changes a workload outside its namespace
+  desc: >
+    The ops agent's ServiceAccount created, updated, patched, or scaled a workload outside
+    `agents`. Admission denies it (deny-agent-mutation-outside-namespace), so this fires on
+    the ATTEMPT — which is the signal: the agent is acting on instructions it shouldn't have.
+    Q1 trigger. Scenario C's first alert.
+  source: k8s_audit
+  condition: >
+    trustfall_completed_audit and trustfall_agent_request and trustfall_write_verb
+    and ka.target.resource in (trustfall_workload_resources)
+    and ka.target.namespace != "agents"
+  output: >
+    Q1 CANDIDATE ops agent attempted workload change outside its namespace
+    (user=%ka.user.name verb=%ka.verb resource=%ka.target.resource subresource=%ka.target.subresource
+     ns=%ka.target.namespace name=%ka.target.name response=%ka.response.code auditid=%ka.auditid)
+  priority: WARNING
+  tags: [agent, trustfall, quarantine-q1]
+
+# ---------------------------------------------------------------------------- Q2
+
+- rule: Trustfall Financial RBAC binding changed for an agent ServiceAccount
+  desc: >
+    Anyone — human or agent — requested a (Cluster)RoleBinding change naming the actual
+    agents:ops-agent ServiceAccount in its subjects. During an agent
+    incident this is how the agent routes around admission: it asks a person to widen its
+    permissions. A human assesses a Q2 candidate and correlates earlier evidence. The
+    response code distinguishes a denied attempt from an accepted request.
+  source: k8s_audit
+  condition: >
+    trustfall_completed_audit and trustfall_write_verb
+    and ka.target.resource in (trustfall_rbac_binding_resources)
+    and ka.req.binding.subjects.serviceaccount_ns_names intersects ("agents:ops-agent")
+  output: >
+    Q2 CANDIDATE RBAC binding change requested for the ops agent
+    (by=%ka.user.name verb=%ka.verb resource=%ka.target.resource name=%ka.target.name
+     subjects=%ka.req.binding.subjects role=%ka.req.binding.role
+     response=%ka.response.code auditid=%ka.auditid)
+  priority: ERROR
+  tags: [agent, privilege-escalation, trustfall, quarantine-q2]
+
+- rule: Trustfall Financial RBAC mutation needs subject evidence
+  desc: >
+    A completed binding write lacks extractable subjects, as with Metadata-only audit
+    events or JSON Patch. This is a visibility warning, not proof of agent association,
+    privilege escalation or success. Review the audit policy and effective binding state.
+  source: k8s_audit
+  condition: >
+    trustfall_completed_audit and trustfall_write_verb
+    and ka.target.resource in (trustfall_rbac_binding_resources)
+    and not ka.req.binding.subjects exists
+  output: >
+    RBAC EVIDENCE GAP resolve binding subjects before assigning an incident level
+    (by=%ka.user.name verb=%ka.verb resource=%ka.target.resource name=%ka.target.name
+     response=%ka.response.code auditid=%ka.auditid)
+  priority: WARNING
+  tags: [visibility, trustfall, audit-visibility-gap]
