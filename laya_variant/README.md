@@ -188,6 +188,11 @@ Install `requirements-training.txt` for the recorded Python 3.12 environment.
 
 ## Falco, Kyverno and the next dataset
 
+The [upstream collection](../datasets/guardrails/README.md) is now downloaded and executed locally: 142 Kyverno
+suites and 87 Falco capture/ruleset replays. Its catalog, resource/context examples, expectations and observations
+are available for task-specific curriculum building. Local collection and exploratory fine-tuning do not require
+a workshop rehearsal. Keep behavior-supervision labels distinct from incident-response decisions.
+
 The [dataset design](../controls/DATASET-DESIGN.md) separates a versioned control library, executed behavioral
 evidence and independently reviewed incident decisions. Upstream rules and policy tests are useful sources;
 their existence does not label the appropriate response to an incident.

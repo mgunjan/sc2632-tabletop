@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1.0",
+  "sources_lock_sha256": "c20bcb52d0bc2418c79cc25583983999f3bfc0caec8536793353d4368a18aa7b",
+  "files": [
+    {
+      "path": "catalog.jsonl",
+      "rows": 462,
+      "sha256": "b917fe3cded13e42e2718d9a963cdd61e895bcb940d39c7c56cc944098ba378b",
+      "bytes": 929965
+    },
+    {
+      "path": "falco-entities.jsonl",
+      "rows": 622,
+      "sha256": "3d5eed8a1cc902873c8b99a0886c5141bf66a4e7bccdd411ecb01dcd320c6454",
+      "bytes": 546792
+    },
+    {
+      "path": "kyverno-cases.jsonl",
+      "rows": 1466,
+      "sha256": "51e7987921d0ebd0c4e03f13bfd7f3dc11ab490f8fd10e160a618b5e211c9580",
+      "bytes": 2900240
+    },
+    {
+      "path": "falco-replays.jsonl",
+      "rows": 87,
+      "sha256": "7877e42520e9dc7c42a7d7321c0ed5b69146eb3ce203d3a9999ba554eeb3ebf3",
+      "bytes": 54339
+    }
+  ],
+  "catalog_entries": 462,
+  "kyverno_policy_documents_by_role": {
+    "fixture": 182,
+    "reference": 184
+  },
+  "falco_rule_definitions": 96,
+  "kyverno_suites_executed": 142,
+  "kyverno_suites_completed": 142,
+  "kyverno_declared_resource_expectations": 1466,
+  "kyverno_unique_verified_expectations": 1434,
+  "kyverno_cases_with_unique_input_resource": 1465,
+  "kyverno_harness_rows": 1506,
+  "kyverno_excluded_harness_rows": 35,
+  "falco_distinct_captures": 29,
+  "falco_replay_observations": 87,
+  "falco_replays_completed": 87,
+  "falco_rule_names_observed": [
+    "Change thread namespace",
+    "Create files below dev",
+    "DB program spawned process",
+    "Launch Suspicious Network Tool on Host",
+    "Mkdir binary dirs",
+    "Modify binary dirs",
+    "Non sudo setuid",
+    "Read sensitive file trusted after startup",
+    "Read sensitive file untrusted",
+    "Run shell untrusted",
+    "Schedule Cron Jobs",
+    "System procs network activity",
+    "System user interactive",
+    "Unexpected UDP Traffic",
+    "User mgmt binaries",
+    "Web Server Spawned Shell",
+    "Write below binary dir",
+    "Write below etc",
+    "Write below rpm database"
+  ],
+  "independent_incident_decision_labels": 0,
+  "production_model_qualified": false,
+  "fixture_cues_require_review_before_model_input": true,
+  "split_requirement": "Group policy families and capture hashes; never split repeated replays across folds"
+}

@@ -30,7 +30,7 @@ Keep the library available through deterministic lookup or retrieval. Training o
 | [Falco event-generator](https://github.com/falcosecurity/event-generator) | Selected behavioral generators and expected detections | Immutable commit, license/NOTICE, action definition, isolated execution environment, actual receipts and outputs |
 | Authorized organizational cases | Redacted intents, constraints, legitimate exceptions and incident decisions | Permission, redaction review, source grouping, independent labels and allowed use |
 
-These links identify candidate sources, not imported snapshots. No upstream rule collection has been vendored by this change. Acquire selected files at immutable commits, record hashes and retain required attribution before generating derivatives. Check current repository guidance at acquisition time: moving branches and policy API migrations can change behavior. Run generators only in an explicitly disposable lab; their actions may modify the environment.
+The [local upstream collection](../datasets/guardrails/README.md) now pins and downloads all four repositories, retains their licenses, executes 142 Kyverno suites and replays 29 syscall captures against three Falco rulesets. Its normalized catalog and observations are separate from the original 20-case regression seed. Check the coverage manifest: downloading a rule does not establish a matching event, and a passing suite can leave declared expectations without uniquely mapped observations. Raw captures remain in the ignored local cache and are fetched from the original URLs.
 
 ## Record contract
 

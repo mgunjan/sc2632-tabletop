@@ -29,4 +29,6 @@ Before promoting a catalog release for an enterprise, collect target-platform ev
 
 [DATASET-DESIGN.md](DATASET-DESIGN.md) specifies how selected Falco/Kyverno sources, executed behavior and independent response labels form separate linked collections. The initial 20-case evidence seed is regression-only; it is not a training corpus or a new independent model test.
 
+The [expanded upstream dataset](../datasets/guardrails/README.md) adds pinned policy/rule catalogs, executed test/replay observations and a local lexical retrieval baseline. Its 184 reference Kyverno documents and 96 Falco rules are candidate implementations; they do not automatically become new compiled controls or qualified incident responses.
+
 This makes an effective tabletop challenge: ask each team which enforcement layer has actually been proved, which exception it would authorize, and which missing evidence prevents promotion. Changing the model cannot resolve a missing enforcement component.

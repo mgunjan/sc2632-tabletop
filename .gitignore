@@ -1,6 +1,9 @@
 output/*
 !output/frozen-*/
 evidence/
+# Curated public upstream execution summaries; raw local captures stay ignored.
+!datasets/guardrails/evidence/
+!datasets/guardrails/evidence/**
 __pycache__/
 tabletop/deck/proof/
 runs/

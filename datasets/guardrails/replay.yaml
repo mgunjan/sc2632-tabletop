@@ -1,0 +1,143 @@
+config_files: []
+watch_config_files: false
+rules_files:
+- /etc/falco/falco_rules.yaml
+- /etc/falco/falco_rules.local.yaml
+- /etc/falco/rules.d
+engine:
+  kind: replay
+  kmod:
+    buf_size_preset: 4
+    drop_failed_exit: false
+  modern_ebpf:
+    cpus_for_each_buffer: 2
+    buf_size_preset: 4
+    drop_failed_exit: false
+    disable_iterators: false
+  replay:
+    capture_file: ''
+capture:
+  enabled: false
+  path_prefix: /tmp/falco
+  mode: rules
+  default_duration: 5000
+load_plugins:
+- container
+plugins:
+- name: container
+  library_path: libcontainer.so
+  init_config:
+    engine_timeout: 1
+    engines:
+      docker:
+        enabled: false
+      podman:
+        enabled: false
+      containerd:
+        enabled: false
+      cri:
+        enabled: false
+      lxc:
+        enabled: false
+      libvirt_lxc:
+        enabled: false
+      bpm:
+        enabled: false
+      static:
+        enabled: false
+plugins_hostinfo: false
+time_format_iso_8601: false
+buffer_format_base64: false
+priority: debug
+json_output: true
+json_include_output_property: true
+json_include_message_property: false
+json_include_output_fields_property: true
+json_include_tags_property: true
+buffered_outputs: false
+rule_matching: all
+outputs_queue:
+  capacity: 0
+append_output:
+- suggested_output: true
+stdout_output:
+  enabled: true
+syslog_output:
+  enabled: false
+file_output:
+  enabled: false
+  keep_alive: false
+  filename: ./events.txt
+http_output:
+  enabled: false
+  url: ''
+  user_agent: falcosecurity/falco
+  insecure: false
+  ca_cert: ''
+  ca_bundle: ''
+  ca_path: /etc/ssl/certs
+  mtls: false
+  client_cert: /etc/ssl/certs/client.crt
+  client_key: /etc/ssl/certs/client.key
+  echo: false
+  compress_uploads: false
+  keep_alive: false
+  max_consecutive_timeouts: 5
+program_output:
+  enabled: false
+  keep_alive: false
+  program: 'jq ''{text: .output}'' | curl -d @- -X POST https://hooks.slack.com/services/XXX'
+webserver:
+  enabled: false
+  threadiness: 0
+  listen_port: 8765
+  listen_address: 0.0.0.0
+  k8s_healthz_endpoint: /healthz
+  prometheus_metrics_enabled: false
+  ssl_enabled: false
+  ssl_certificate: /etc/falco/falco.pem
+reload_control:
+  enabled: false
+  socket: /run/falco/control.sock
+log_stderr: true
+log_syslog: false
+log_level: info
+libs_logger:
+  enabled: true
+  severity: info
+output_timeout: 2000
+syscall_event_timeouts:
+  max_consecutives: 1000
+syscall_event_drops:
+  threshold: 0.1
+  actions:
+  - log
+  - alert
+  rate: 0.03333
+  max_burst: 1
+  simulate_drops: false
+metrics:
+  enabled: false
+  interval: 1h
+  output_rule: true
+  output_file: ''
+  rules_counters_enabled: true
+  resource_utilization_enabled: true
+  state_counters_enabled: true
+  kernel_event_counters_enabled: true
+  kernel_event_counters_per_cpu_enabled: false
+  libbpf_stats_enabled: true
+  plugins_metrics_enabled: true
+  kernel_iter_event_counters_enabled: true
+  jemalloc_stats_enabled: false
+  convert_memory_to_mb: true
+  include_empty_values: false
+base_syscalls:
+  custom_set: []
+  repair: false
+  all: false
+falco_libs:
+  thread_table_size: 262144
+  thread_table_auto_purging_interval_s: 300
+  thread_table_auto_purging_thread_timeout_s: 300
+  snaplen: 80

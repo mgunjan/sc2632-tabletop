@@ -1,0 +1,27 @@
+{
+  "source": "https://github.com/jbeaven/policybench",
+  "revision": "75200a4f4e0edb1235a5c8954aa3cae7cf69e444",
+  "corpus_path": "data/policybench-nl-v1.0.md",
+  "corpus_sha256": "3a2e0094a5d14e65825543d8c3e81a331059c7032444b2281bc5b235a4e7526c",
+  "repository_license": "Apache-2.0",
+  "repository_license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+  "entries": 147,
+  "categories": {
+    "application_authz": 3,
+    "iac_scanning": 65,
+    "kubernetes_admission": 79
+  },
+  "source_subcategories": {
+    "starter": 9,
+    "aws": 61,
+    "gcp": 1,
+    "cis": 22,
+    "gk": 44,
+    "kyv": 10
+  },
+  "local_checkout": ".session-build/upstream-data-20261016/policybench",
+  "raw_text_redistributed_in_this_package": false,
+  "public_fixture_availability": false,
+  "published_benchmark_scores_reproduced": false,
+  "use": "Natural-language source candidate; separate from executed Falco/Kyverno corpus. Retain original provenance and upstream terms."
+}

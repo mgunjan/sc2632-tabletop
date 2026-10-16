@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1.0",
+  "collected_date": "2026-10-16",
+  "sources": [
+    {
+      "name": "kyverno-policies",
+      "url": "https://github.com/kyverno/policies.git",
+      "revision": "ec478cb5996376c0d2f09520675805a8e33297c9",
+      "license": "Apache-2.0",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "name": "falco-rules",
+      "url": "https://github.com/falcosecurity/rules.git",
+      "revision": "81dfa535284a3fb3c04470eaefa435ac8f5b6558",
+      "license": "Apache-2.0",
+      "license_sha256": "f65bbfe8deb986105063c967001b84c00232c31ea4b28564d54b5133435c6453"
+    },
+    {
+      "name": "falco-testing",
+      "url": "https://github.com/falcosecurity/testing.git",
+      "revision": "e8d1d128247ac06a7255abcc5c48dd780b9fbab0",
+      "license": "Apache-2.0",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "name": "falco-event-generator",
+      "url": "https://github.com/falcosecurity/event-generator.git",
+      "revision": "07d29365f0d3ba0d160a9d703c914dd293aa27e2",
+      "license": "Apache-2.0",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    }
+  ],
+  "downloads": [
+    {
+      "name": "kyverno-cli_v1.19.1_linux_arm64.tar.gz",
+      "url": "https://github.com/kyverno/kyverno/releases/download/v1.19.1/kyverno-cli_v1.19.1_linux_arm64.tar.gz",
+      "sha256": "d78fecd183e1e6749c653fdb744c88d065e6737ec6856c97c4efac84bec54554",
+      "bytes": 49047951,
+      "redistribute": false
+    },
+    {
+      "name": "traces-positive-20200831.zip",
+      "url": "https://download.falco.org/fixtures/trace-files/traces-positive-20200831.zip",
+      "sha256": "2e4aa7b5cb4e8e7d8385e5630ac307466192a4c4ad4fc1f22d31fada6ba4cf0d",
+      "bytes": 472203,
+      "redistribute": false
+    },
+    {
+      "name": "traces-negative-20200831.zip",
+      "url": "https://download.falco.org/fixtures/trace-files/traces-negative-20200831.zip",
+      "sha256": "4c7aff5895db2f7a8644d7fc16da8d47296af436a818123cfc46f4b137b257f6",
+      "bytes": 429937602,
+      "redistribute": false
+    }
+  ],
+  "capture_redistribution": "Not included; fetched from original upstream URLs. Separate fixture licensing not established.",
+  "local_runtime": {
+    "architecture": "linux/arm64",
+    "kyverno_version": "1.19.1",
+    "kyverno_image": "sha256:73aaf090f3d85aa34ee199857f03fa3a95c8ede2ffd4cc2cdb5b94e566b11662",
+    "falco_version": "0.45.0",
+    "container_plugin_version": "0.7.4",
+    "falco_image": "sha256:788f1129c542171813083d4afc61b16730a47dde8c23d9c39370acef996349b6"
+  }
+}

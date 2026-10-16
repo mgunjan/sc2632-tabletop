@@ -1,0 +1,153 @@
+#!/usr/bin/env python3
+"""Run downloaded upstream policy suites and capture replays in disposable containers."""
+import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from collections import Counter
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import time
+import uuid
+
+import yaml
+
+
+def sha(path):
+    value = hashlib.sha256()
+    with path.open('rb') as stream:
+        for chunk in iter(lambda: stream.read(1048576), b''):
+            value.update(chunk)
+    return value.hexdigest()
+
+
+def json_results(output):
+    # The CLI prints progress before and a summary after its JSON array.
+    decoder = json.JSONDecoder()
+    for index, char in enumerate(output):
+        if char == '[':
+            try:
+                rows, _ = decoder.raw_decode(output[index:])
+            except ValueError:
+                continue
+            if isinstance(rows, list) and rows and all(isinstance(r, dict) and 'RESULT' in r for r in rows):
+                return rows
+    return []
+
+
+def run_one(kind, source, base, out, image, timeout):
+    relative = source.relative_to(base)
+    folder = out/hashlib.sha256(str(relative).encode()).hexdigest()[:16]
+    folder.mkdir()
+    name = 'acg-data-'+uuid.uuid4().hex
+    artifact_paths = [base/'bin/kyverno'] if kind == 'kyverno' else [base/'replay.yaml', base/'falco-rules/rules/falco_rules.yaml']
+    input_artifacts = [{'path': str(p.relative_to(base)), 'sha256': sha(p)} for p in artifact_paths]
+    command = ['docker', 'run', '--rm', '--name', name, '--network', 'none', '--cap-drop', 'ALL',
+               '--security-opt', 'no-new-privileges', '--read-only', '--cpus', '1', '--memory', '768m',
+               '--tmpfs', '/tmp:rw,noexec,nosuid,size=64m', '--env', 'HOME=/tmp',
+               '--label', 'acg.dataset=upstream-20261016',
+               '--mount', f'type=bind,src={base},dst=/data,readonly']
+    if kind == 'kyverno':
+        command += ['--user', '65534:65534', image, '/data/bin/kyverno', 'test',
+                    '/data/'+str(relative.parent), '--require-tests', '--output-format', 'json', '--remove-color']
+    else:
+        command += ['--env', 'HOST_ROOT=/', image, 'falco', '-c', '/data/replay.yaml',
+                    '-r', '/data/falco-rules/rules/falco_rules.yaml',
+                    '-o', 'engine.kind=replay', '-o', 'engine.replay.capture_file=/data/'+str(relative)]
+    started = time.monotonic()
+    timed_out = False
+    try:
+        with (folder/'stdout.txt').open('w') as stdout, (folder/'stderr.txt').open('w') as stderr:
+            process = subprocess.Popen(command, stdout=stdout, stderr=stderr)
+            try:
+                code = process.wait(timeout=timeout)
+            except subprocess.TimeoutExpired:
+                timed_out = True
+                subprocess.run(['docker', 'rm', '-f', name], capture_output=True, timeout=10)
+                process.kill()
+                process.wait(timeout=10)
+                code = None
+    finally:
+        subprocess.run(['docker', 'rm', '-f', name], capture_output=True, timeout=15)
+    elapsed = round(time.monotonic()-started, 6)
+    stdout = (folder/'stdout.txt').read_text(errors='replace')
+    result = {'kind': kind, 'source': str(relative), 'source_sha256': sha(source),
+              'image': image, 'argv': command, 'returncode': code, 'timed_out': timed_out,
+              'elapsed_seconds': elapsed, 'stdout_sha256': sha(folder/'stdout.txt'),
+              'stderr_sha256': sha(folder/'stderr.txt'), 'folder': folder.name,
+              'network': 'none', 'host_capture': False, 'cluster_access': False,
+              'input_artifacts': input_artifacts}
+    if kind == 'kyverno':
+        rows = json_results(stdout)
+        suite = yaml.safe_load(source.read_text())
+        result.update(test_rows=rows, status_counts=dict(Counter(r['RESULT'] for r in rows)),
+                      reason_counts=dict(Counter(r['REASON'] for r in rows)),
+                      declared_expectations=sum(len(r.get('resources', [])) for r in suite['results']))
+        result['completed'] = not timed_out and code == 0 and bool(rows) and all(r['RESULT'] == 'Pass' for r in rows)
+    else:
+        rows = []
+        for line in stdout.splitlines():
+            if line.startswith('{'):
+                try:
+                    row = json.loads(line)
+                except ValueError:
+                    continue
+                if 'rule' in row:
+                    rows.append(row)
+        result.update(alerts=len(rows), rule_counts=dict(Counter(r['rule'] for r in rows)),
+                      completed=not timed_out and code == 0)
+    (folder/'result.json').write_text(json.dumps(result, indent=2)+'\n')
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--base', type=Path, required=True)
+    parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--kind', choices=('kyverno', 'falco'), required=True)
+    parser.add_argument('--image', required=True, help='Exact local image digest/ID')
+    parser.add_argument('--workers', type=int, default=3)
+    parser.add_argument('--timeout', type=int, default=60)
+    args = parser.parse_args()
+    if not 1 <= args.workers <= 4 or not 1 <= args.timeout <= 180:
+        parser.error('Use 1–4 workers and a 1–180 second timeout')
+    base = args.base.resolve()
+    if not (args.image.startswith('sha256:') or '@sha256:' in args.image):
+        parser.error('Pin the container image by digest/ID')
+    sources = sorted((base/'kyverno-policies').rglob('kyverno-test.yaml')) if args.kind == 'kyverno' else sorted((base/'captures').rglob('*.scap'))
+    if not sources:
+        raise ValueError('No upstream inputs found')
+    args.out.mkdir(parents=True, exist_ok=False)
+    runner = Path(__file__).read_bytes()
+    (args.out/'RUNNER.py.txt').write_bytes(runner)
+    revisions = {}
+    for name in ('kyverno-policies', 'falco-rules', 'falco-testing', 'falco-event-generator'):
+        repo = base/name
+        revision = subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD'], text=True).strip()
+        dirty = subprocess.check_output(['git', '-C', str(repo), 'status', '--porcelain'], text=True)
+        if dirty:
+            raise ValueError(f'Upstream source is modified: {name}')
+        revisions[name] = revision
+    start = time.monotonic()
+    results = []
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        pending = [pool.submit(run_one, args.kind, path, base, args.out, args.image, args.timeout) for path in sources]
+        for future in as_completed(pending):
+            result = future.result()
+            results.append(result)
+            if len(results) % 10 == 0 or not result['completed'] or len(results) == len(sources):
+                print(json.dumps({'finished': len(results), 'total': len(sources),
+                                  'completed': sum(r['completed'] for r in results),
+                                  'latest': result['source'], 'returncode': result['returncode']}), flush=True)
+    summary = {'scope': 'Offline upstream tests/replays; no production admission or incident labels',
+               'kind': args.kind, 'image': args.image, 'sources': len(sources),
+               'runner_sha256': hashlib.sha256(runner).hexdigest(), 'upstream_revisions': revisions,
+               'completed': sum(r['completed'] for r in results),
+               'elapsed_seconds': round(time.monotonic()-start, 6),
+               'results': sorted(results, key=lambda r: r['source'])}
+    (args.out/'SUMMARY.json').write_text(json.dumps(summary, indent=2)+'\n')
+    print(json.dumps({k: summary[k] for k in ('kind', 'sources', 'completed', 'elapsed_seconds')}))
+
+
+if __name__ == '__main__':
+    main()
