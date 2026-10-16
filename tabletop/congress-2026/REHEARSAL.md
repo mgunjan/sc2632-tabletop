@@ -1,6 +1,6 @@
 # SC2632 rehearsal and demo release record
 
-This is a rehearsal plan, not a claim that the venue setup has passed. The presentation has 29 main slides and six backups; protect the participant decision time in the 60-minute runbook.
+This is a rehearsal plan, not a claim that the venue setup has passed. The presentation has 30 main slides and six backups; protect the participant decision time in the 60-minute runbook.
 
 ## Prepare a durable environment
 

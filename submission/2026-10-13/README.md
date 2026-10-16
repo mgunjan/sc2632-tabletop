@@ -2,9 +2,9 @@
 
 Co-presenters: **Milind Gunjan and Vivek Mayuranathan**. October 26, 2026, 4:30–5:30 PM Mountain Time. Four selectable incident cases, timed decisions, sealed evidence and a written containment review.
 
-The opening begins with an incident and the decision participants own: a concrete Case A illustration, uncertain exposure, operating services and the evidence needed before tightening controls. Environment definitions follow that situation. Slide 5 states what co-presenters provide and what tables do. The supplied-spec demo is explicit; the policy agent is distinguished from the case agents. Four case choices, 29 main slides, six backups and the six-minute setup remain.
+The opening gives security professionals the implementation before case selection: control roles, fixed Python decision loop, model-visible task strings, uncertainty defaults, a concrete compiled rule, independent coverage checks and Quarantine Mode mechanisms. The [technical briefing](../../tabletop/congress-2026/TECHNICAL-BRIEF.md) maps these claims to the code. Case selection starts at minute 8 and intent writing at minute 11. Thirty main slides and six backups fit the planned 60-minute schedule. Later evidence reveals and recovery retain their original times; the full human rehearsal remains pending.
 
-The lab discussions now supply technical facts before asking for a response and confirming test. The temporary-access round asks for a defended choice before its conditions are discussed. Slide 28 traces an [illustrative Case A decision record](../../tabletop/congress-2026/WORKED-DECISION.md) from initial intent through later evidence and recovery. This is a paper plan, not executed containment or the only acceptable answer. Model measurements remain historical candidate screening; production selection still needs error-cost and reviewer-effort evidence.
+The lab discussions now supply technical facts before asking for a response and confirming test. The temporary-access round asks for a defended choice before its conditions are discussed. Slide 29 traces an [illustrative Case A decision record](../../tabletop/congress-2026/WORKED-DECISION.md) from initial intent through later evidence and recovery. This is a paper plan, not executed containment or the only acceptable answer. Model measurements remain historical candidate screening; production selection still needs error-cost and reviewer-effort evidence.
 
 The session also supports attendees new to Kubernetes. The opening explains the shared application platform and familiar functions before naming Pods, replicas, namespaces and workload identities. Scenario choices, availability and the recorded-removal question use plain-language equivalents. Participants can state observable security behavior and acceptance evidence without naming products or writing code. Scoring assesses the decision, not platform vocabulary.
 
@@ -12,8 +12,8 @@ Slide 4 introduces the control roles upfront: Falco and audit logs supply detect
 
 | Material | Use |
 |---|---|
-| [SC2632-session-four-cases.pptx](SC2632-session-four-cases.pptx) | Current editable deck: 29 main slides and six hidden backups |
-| [SC2632-session-four-cases.pdf](SC2632-session-four-cases.pdf) | All 35 slide visuals, including backups |
+| [SC2632-session-four-cases.pptx](SC2632-session-four-cases.pptx) | Current editable deck: 30 main slides and six hidden backups |
+| [SC2632-session-four-cases.pdf](SC2632-session-four-cases.pdf) | All 36 slide visuals, including backups |
 | [CONTROL-REVIEW.pdf](CONTROL-REVIEW.pdf) | Two-page trained-model proposal exercise; keep page 2 sealed until decisions are recorded |
 | [Participant pack](PARTICIPANT-PACK.pdf) | Four selectable cases, worksheets and two sealed injects; eight pages |
 | [Review scorecard](REVIEW-SCORECARD.pdf) | Twelve core review criteria plus three evidence criteria for the proposal review |

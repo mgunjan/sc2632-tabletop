@@ -2,6 +2,8 @@
 
 Co-presenters: Milind Gunjan and Vivek Mayuranathan.
 
+Teach the [technical briefing](TECHNICAL-BRIEF.md) before introducing these case facts. The room first sees the fixed decision loop, provider data, compiled request scope, independent checks and Quarantine mechanisms. Scenario choice starts at minute 8; intent writing starts at minute 11. Later sealed evidence times remain unchanged.
+
 ## The situation and decision
 
 Services are still operating. The selected case reports unexpected activity with uncertain exposure. Broad restrictions may disrupt essential work. Participants own the decision about what may proceed, what must be held and what evidence would justify tightening controls. The co-presenters supply facts, prepared proposals and enforcement evidence.

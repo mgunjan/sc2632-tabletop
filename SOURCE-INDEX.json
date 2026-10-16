@@ -19,13 +19,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 7279,
-      "sha256": "7c3d90439e94f61719ac39c37677d88b720cb6a60fbc9178886dabb20ec59c35"
+      "bytes": 7370,
+      "sha256": "5a1212b9b0fd7244bcf74285c5bb5d7e1ffbd38f081c5142b0c842bbdfe8c087"
     },
     {
       "path": "START-HERE.md",
-      "bytes": 7279,
-      "sha256": "7c3d90439e94f61719ac39c37677d88b720cb6a60fbc9178886dabb20ec59c35"
+      "bytes": 7370,
+      "sha256": "5a1212b9b0fd7244bcf74285c5bb5d7e1ffbd38f081c5142b0c842bbdfe8c087"
     },
     {
       "path": "ci/crds/policies.kyverno.io_policyexceptions.yaml",
@@ -1109,8 +1109,8 @@
     },
     {
       "path": "submission/2026-10-12/SESSION-RUNBOOK.md",
-      "bytes": 17828,
-      "sha256": "51aacf0cc0e1d81d16f52844aab53924095ba8342a03cb336e03cdac7f739c80"
+      "bytes": 18026,
+      "sha256": "8613a3532d18fd15ad2c6971aadb4eec99dece831e63dd2226203022f96d8738"
     },
     {
       "path": "submission/2026-10-12/benchmark/CONTRACT.json",
@@ -1854,8 +1854,8 @@
     },
     {
       "path": "submission/2026-10-13/ARTIFACT-VALIDATION.json",
-      "bytes": 6672,
-      "sha256": "d7c1d87927bb040c2ef5c670ecf2686fa2ad4afb793a1532d360bcdf56ad831f"
+      "bytes": 9465,
+      "sha256": "257f137d4b18bbf7df41afe58ed87c11db3044e2f71ae830bdba94ae03d13d08"
     },
     {
       "path": "submission/2026-10-13/CONTROL-REVIEW-EXERCISE.md",
@@ -1874,13 +1874,13 @@
     },
     {
       "path": "submission/2026-10-13/PUBLIC-RELEASE.md",
-      "bytes": 2262,
-      "sha256": "8ecb43e9d92ef49b29bf8c62ddb0b4c7c7f099a686a1342bdfdb07ca683444cf"
+      "bytes": 2740,
+      "sha256": "ec2bfa3da79c961df2650f859dfe3dcc96f88d5eed82eb85c8cfde980fed9a9f"
     },
     {
       "path": "submission/2026-10-13/README.md",
-      "bytes": 6486,
-      "sha256": "f1574987d92746e86ed820ede9270cdf257a0812225bff327b0a9082dafcb8c1"
+      "bytes": 6623,
+      "sha256": "2ebba0d68c781e1a8b319cc78fc23ebdae6f351015b8ce7c77b50cc8a49f2eba"
     },
     {
       "path": "submission/2026-10-13/REVIEW-SCORECARD.pdf",
@@ -1894,13 +1894,13 @@
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pdf",
-      "bytes": 8790048,
-      "sha256": "88647d7eb09f8038ec00ee69c4c095575a2c8ab01ea86c86f75ce5c66f801860"
+      "bytes": 8961597,
+      "sha256": "c727d17c6786d029ba38ebf4c1d8b659ecf5c6ae4f17535c446951c4a8790eee"
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pptx",
-      "bytes": 7126840,
-      "sha256": "ad0bbfc9ee8038a4185f8bbee09d92ac2476663a0ef14094a396065337d03395"
+      "bytes": 7131844,
+      "sha256": "a323251b1f8e39dd1264e1e855d3827ceaf1e254a771a10171caf5ea429b6f55"
     },
     {
       "path": "submission/2026-10-13/TRAINING-PROTOCOL.md",
@@ -2904,28 +2904,33 @@
     },
     {
       "path": "tabletop/congress-2026/CO-PRESENTER-CARDS.md",
-      "bytes": 20743,
-      "sha256": "b3eceda04a86727f5817c1e18671b59c3f2c217acf5d7631cc05c524054983fe"
+      "bytes": 16811,
+      "sha256": "4149aab320b511c16684d06ced67052788beef7e43d8d3122ef0c722f08ad943"
     },
     {
       "path": "tabletop/congress-2026/INCIDENT-BRIEF.md",
-      "bytes": 11506,
-      "sha256": "53e1e21d32a775b5967bcb673af324443ae00f0f400be57053a45ac3fba30650"
+      "bytes": 11843,
+      "sha256": "6e3adfb8a7c69b2525a84765eb6bf359fadb08e6e5ab9b9437418501f9074599"
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL-RECORD.md",
-      "bytes": 4610,
-      "sha256": "0b3d616a1ef7887a0b8ce1bdd84153b01602da85213f5fb0569f7490fff64f52"
+      "bytes": 4750,
+      "sha256": "7e9de7fb043de9f02248b46effea68520da4eff540d97c494ae5cd8d8aa7a565"
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL.md",
       "bytes": 9957,
-      "sha256": "b3bf26d066e9dbc7898700cd7081cd4aa2ff596745a53c27efb5774a3fff2700"
+      "sha256": "c9291e53995e0dc6f898ed7a1a7b3acb30a4da7acd0152ed8f8dbf486985021a"
     },
     {
       "path": "tabletop/congress-2026/SCORING-ANCHORS.md",
       "bytes": 7226,
       "sha256": "81b9a944a45733e0d0849fefa640f0656e7d2b656cbc394a03206635aac2b0a9"
+    },
+    {
+      "path": "tabletop/congress-2026/TECHNICAL-BRIEF.md",
+      "bytes": 6945,
+      "sha256": "98fc9e69ac0f504759f4d9f65bd6d585832eec0ed1c8b24ec84fcc8ab11abe20"
     },
     {
       "path": "tabletop/congress-2026/WORKED-DECISION.md",

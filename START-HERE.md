@@ -4,7 +4,7 @@ This package accompanies SC2632, presented by Milind Gunjan and Vivek Mayuranath
 
 **What the workshop builds:** a reviewed change set from security intent, with policies, tests, expiring exceptions and phased rollout, plus a scoped Quarantine Mode response and recovery criteria.
 
-**Why:** contain harmful access on shared infrastructure while essential services keep running. The proposal and its tests must show both the forbidden behavior and the legitimate access they preserve. The opening grounds this purpose in the fictional incident before the Kubernetes/Kyverno primer.
+**Why:** contain harmful access on shared infrastructure while essential services keep running. The proposal and its tests must show both the forbidden behavior and the legitimate access they preserve. The opening explains the security problem, then the implementation before cases and team decisions.
 
 ## Your task in the workshop
 
@@ -16,7 +16,7 @@ The opening also explains the environment for attendees unfamiliar with Kubernet
 
 For participants new to Kubernetes, the opening starts with the shared application platform and familiar functions before technical names. Application copies are replicas, resource groups are namespaces, and workload identities make management requests. State the required security behavior in your own words. Scores assess the decision and evidence, rather than Kubernetes vocabulary or code.
 
-Slide 4 maps the control roles before the exercise: Falco and audit logs provide detection evidence, Kyverno checks proposed changes, separate traffic/API/tool controls constrain access, and people authorize containment and recovery. Falco rules passed validation; live detection remains unverified. The incident alerts are supplied exercise facts. The common demo compiles proposals and runs policy tests.
+Slides 3–9 explain [the implementation](tabletop/congress-2026/TECHNICAL-BRIEF.md) before case selection. Slide 4 maps the control roles: Falco and audit logs provide detection evidence, Kyverno checks proposed changes, separate traffic/API/tool controls constrain access, and people authorize containment and recovery. Falco rules passed validation; live detection remains unverified. The incident alerts are supplied exercise facts. The common demo compiles proposals and runs policy tests.
 
 After completing recovery, compare your decision record with the [illustrative Case A debrief](tabletop/congress-2026/WORKED-DECISION.md). It traces a held approval through later evidence and recovery criteria; it is a paper plan, not executed containment or a required answer.
 

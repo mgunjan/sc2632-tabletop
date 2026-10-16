@@ -10,70 +10,58 @@ Alternate the speaking lead by round. During team work, each co-presenter visits
 
 At most two table reports per round, 20 seconds each. A report has a decision, a boundary and the evidence needed to proceed. Park implementation questions that cannot change the current decision. The score rewards documented reasoning under the chosen constraint, never speed or the most restrictive quarantine level. Use SCORING-ANCHORS.md to calibrate a refusal and a bounded approval before the hour. Credit stated verification requirements; a paper plan cannot establish that a live test passed.
 
-## 00–06: Context, participant assignment and setup
+## 00–07:15: Technical briefing before scenarios
 
-Start with the incident and the decision participants own. State the required output and service constraint before terminology. Use slide 2 for the situation, then the environment primer and assignment.
+Give security professionals the implementation before they assess a case. Use [TECHNICAL-BRIEF.md](TECHNICAL-BRIEF.md) for code locations, task payloads, defaults and authority boundaries. Introduce the purpose without starting a case narrative. Explain familiar platform functions alongside their technical names.
 
-| Minutes | Lead and visible slide | What attendees do |
+| Minutes | Lead and slide | What the room learns |
 |---|---|---|
-| 00–00:20 | Milind, slide 1: session and co-presenters | Find a table and the participant pack. |
-| 00:20–01:10 | Milind, slide 2: incident review | Understand the uncertainty, service constraint, authority decision and required output. |
-| 01:10–01:50 | Milind, slide 3: environment | Learn the shared application's running units, resource groups and identities. |
-| 01:50–02:30 | Vivek, slide 4: detection, prevention and response | Locate Falco, audit logs, Kyverno, traffic/API/tool controls and human authority. Distinguish the supplied alerts from the tested demo. |
-| 02:30–03:15 | Vivek, slide 5: task, record and roles | Locate page 6, understand the decisions, materials and round sequence, and choose table roles. |
-| 03:15–04:30 | Vivek, slide 6: case selection | Choose one case and read its opening alert. Both co-presenters support different tables. |
-| 04:30–05:00 | Milind, slide 7: operating constraint | Understand the four tradeoffs and the required minimum service. |
-| 05:00–06:00 | Both, slide 7 remains visible: setup | Record the case, roles, constraint and minimum service on page 6. |
+| 00–00:20 | Milind, 1 | Session purpose and co-presenters |
+| 00:20–01:00 | Milind, 2 | Security-change problem and intended artifact |
+| 01:00–01:40 | Milind, 3 | Shared platform, workload copies, groups and identities |
+| 01:40–02:30 | Vivek, 4 | Falco/audit detection, admission and separate containment controls |
+| 02:30–03:30 | Milind, 5 | Fixed Python loop, typed model choices, tools and three-round bound |
+| 03:30–04:30 | Vivek, 6 | Provider-visible task data, uncertainty defaults and deployment boundary |
+| 04:30–05:15 | Milind, 7 | Supplied-spec compiler walkthrough and exact Pod CREATE scope |
+| 05:15–06:15 | Milind, 8 | Bound requirement contract, fixed tests and unresolved enforcement |
+| 06:15–07:15 | Vivek, 9 | Quarantine manifests, operator actions and per-layer checks |
 
-**Milind's opening statement:** “Your organisation runs services and automated agents on a shared platform. Your case reports unexpected activity. Services are still operating, and the extent of exposure is uncertain. You are the security review team: decide what may proceed, what must be held and what evidence would justify tightening controls. We provide case facts, prepared proposals and enforcement evidence. You produce a reviewed change set and a scoped containment and recovery plan.”
+**Purpose:** “Services and agents share infrastructure and credentials. A security change must restrict harmful access while essential services continue. We will build a reviewed change set and a scoped containment and recovery plan. First we will show the implementation and authority boundaries, then your table will assess a case.”
 
-Give a ten-second illustration from A: a payments process makes unexpected connections after a library update. This establishes a situation before vocabulary; other tables choose alternative cases, not simultaneous incidents. Do not reveal the later finding.
+**Detection boundary:** Falco rules passed validation; live detection remains unverified. The alerts are supplied fictional exercise facts. No Falco-to-agent or automatic Falco-to-Quarantine integration is implemented.
 
-State the interaction contract while showing slide 5: the table's intent stays on its decision record. The common demo compiles a supplied reference spec; participants compare their requirements with prepared proposals and retain approval authority. A table can justify an approval, hold, revision or refusal. Its written boundary and evidence determine what that decision authorizes. The demonstration does not run a branching incident simulation from the table's prose.
+**Model boundary:** Python fixes the sequence. The optional provider receives task strings and returns a listed choice plus score. Explain the exact input fields on slide 6. Invalid or below-0.6 decisions escalate; an uncertain dependency retains its proposed allowance and flags review. The score is not a calibrated probability of safe deployment. Code not issuing a deployment does not enforce credential isolation. Separate observation and deployment permissions require operator controls.
 
-**Milind's environment explanation:** “We have applications and automated agents sharing a platform. Kubernetes manages their application packages, called containers, across machines. In this exercise it tries to keep the required number of application copies running. Those running units are Pods, and their copies are replicas. Namespaces group resources. A ServiceAccount identifies a workload making a management request. The incident is fictional, and recorded enforcement uses a separate disposable local lab.”
+**Compiler walkthrough:** The supplied spec bypasses the model. Run the bounded reference command; use its pre-opened artifact immediately if unavailable or over deadline. Show the catalog key, ValidatingPolicy, namespace, CREATE coverage, regular/init containers and required fields. The output is local PR.md, stage files, tests, readiness and provenance. No GitHub PR opens and no cluster change occurs. The next slide expands from one privilege requirement to the four-clause reference contract. Do not describe audience prose as executed input. Keep provider comparison for minute 49.
 
-Begin with the familiar function, then name its Kubernetes equivalent. Explain the management API as the interface for reading or changing platform resources. Participants do not need prior Kubernetes or Kyverno experience to state the required behavior. Use “application copies” for replicas, “resource groups” for namespaces and “API permissions” for RBAC when explaining the task. Retain the technical name beside its explanation so experienced participants can inspect the actual boundary.
+**Quarantine boundary:** A human applies the reviewed objects and performs evidence/identity steps separately. Q1 is a native API-server write freeze for covered identities. Q2 combines traffic rules and labels with manual authorization work. Q3 adds suspect isolation and a Pod CREATE gate. Each needs a positive/negative check and explicit recovery authority. Preserve the later lab observations for their reveal.
 
-**Vivek's control explanation:** “Falco provides a runtime detection layer, and audit logs record management requests. Kyverno checks a proposed change before it takes effect. It can deny a new Pod requesting privilege escalation. NetworkPolicy restricts traffic, RBAC restricts API access, and agent tools need application controls. The policy agent proposes controls. People authorize containment and recovery. Our Falco rules passed validation, but live detection is unverified. We supply incident alerts; the demo compiles proposals and runs policy tests.”
+## 07:15–11: Assignment, case choice and setup
 
-Keep this overview within the existing forty-second slot. The alert is information to assess, not an automatic instruction to activate Quarantine Mode. The repository contains syscall rules for A/B and audit-plugin rules for C. Case D's separately executed authorization and credential record is not a verified Falco read detector. No live Falco installation or alert-to-response integration is demonstrated.
+| Minutes | Lead and slide | What attendees do |
+|---|---|---|
+| 07:15–08:00 | Vivek, 10 | Locate page 6 and understand the record and table roles |
+| 08:00–09:15 | Vivek, 11 | Choose one of four cases and read its opening alert |
+| 09:15–10:00 | Milind, 12 | Select the operating constraint and measurable service floor |
+| 10:00–11:00 | Both, 12 remains visible | Record case, constraint, roles and service floor on page 6 |
 
-Use “admission” only after defining it as that request checkpoint. Ask: “Does denying the new Pod stop the one already running?” Accept “no, it needs a separate response” without YAML or product-specific syntax. Kyverno also has other capabilities; the example describes its validation role in this exercise. An unfamiliar participant can still judge scope, legitimate access, exceptions and recovery evidence.
+**Assignment:** “We supply case facts, prepared proposals and enforcement evidence. Your table writes, reviews and revises decisions on page 6. Your intent stays on that record; the common demo used a supplied reference spec. Decide what may proceed, what you hold and the evidence required. Work in plain language. No laptop or YAML is required.”
 
-For a participant new to Kubernetes, the task is to answer: which behavior must stop, which access is legitimate, what evidence could change the decision, and what must remain available? Translate their statement into the control-layer terminology during debrief. For example, “prevent this identity from reading another team's stored credentials” states an API-permission requirement without naming RBAC. Do not require tool vocabulary to earn the review points.
+Hold up the pack and name its pages: four cases on 2–5, shared record on 6, sealed updates on 7/8. Keep the independent review findings sealed too. Lead states the decision; recorder writes; analyst checks evidence; independent reviewer raises a concern first. Combine roles for a small table. Both co-presenters support different tables.
 
-**Vivek's assignment statement:** “Your table is the incident review team. Decide what may proceed, what you hold and what evidence must come before enforcement. Write your security intent, review the proposal and exception conditions, then order containment and define recovery. Use one shared record on page 6. Discuss, write before the reveal, hear the new evidence, and revise beside your first answer.”
+Before Round 1 a ready table can identify its case and roles, explain what data the model sees, name who deploys, distinguish request prevention from runtime response, and state its minimum service. Accept behavioral security requirements without product vocabulary.
 
-Hold up the actual materials while identifying them. Keep pages 7 and 8 covered and the independent review findings sealed. Tell participants that the model proposes controls and the team retains review authority. The compiler demonstration uses a supplied reference specification; audience prose does not automatically deploy. Both co-presenters lead discussion, demonstrate evidence and debrief. These opening leads do not make either co-presenter an assistant.
-
-**Setup check before Round 1:** Each table can identify its case, primary constraint, recorder, decision worksheet and minimum service. An attendee can explain the assignment and why refusing a new request does not terminate an existing workload, without Kubernetes YAML. Keep the score explanation to one sentence and leave detailed scoring on the printed scorecard.
-
-## 06–10: Intent
+## 11–15: Intent
 
 **Opening prompt:** “Which behavior must stop, which identity is responsible, and which dependency must keep working?”
 
 Milind opens; Vivek collects two intent statements. The recorder writes one statement and a measurable availability floor. The independent reviewer marks the part admission cannot enforce.
 
-If a team writes “secure the cluster,” ask it to name an observable forbidden action. If a team names a product, ask what behavior that product must prevent. Let participants use platform-neutral language; YAML syntax is not part of the score.
+If a team writes “secure the cluster,” ask it to name an observable forbidden action. Let participants use platform-neutral language; YAML syntax is not part of the score.
 
 **Evidence of learning:** A scoped intent, an essential dependency and an enforcement-layer handover.
 
-## 10–13:30: Compiler and proposal demo
-
-Vivek distinguishes the policy agent selecting catalog controls from the case agents whose access is under review. The model is a candidate for varied-language mapping; fixed inputs may need only rules or a catalog. Milind operates the prepared compiler. Show the intent and ask: “Would a clean admission report be enough to approve this change?” Give tables 20 seconds to record yes/no and a reason.
-
-Say that the first example covers one privilege requirement; the next slide expands to the full four-clause Scenario A reference. Teams B/C/D then turn to their own prepared excerpt. Run the bounded reference command. Show `readiness.json`, clause 3's RBAC handover, and the fixed privilege tests. A passing privilege suite covers six Pod CREATE behaviors; it does not resolve network connectivity, existing workloads, debug access or credentials.
-
-If the reference output is unavailable, use slides 9–11 and the pre-opened reference proposal. Say that the artifact is prepared. If using the optional model replay, state that recorded model answers are being reused while compilation and tests run now. Do not describe replay time as new inference latency.
-
-**Discussion prompt:** “Who owns the unresolved clause, and what independent test would close it?”
-
-If asked whether a newly written intent has the same coverage, explain that the independent contract is bound to the prepared input. The October 14 regression added a monitoring requirement: the repaired ledger shows every actual clause as unreviewed and requires a new contract. Keep this as an answer to the input-boundary question, not an added main-session demo. The audit and fresh Jev recording are in submission/2026-10-14/.
-
-**Evidence of learning:** A concrete condition under which a technically valid policy proposal remains incomplete.
-
-## 13:30–18: Proposal review
+## 15–19: Proposal review
 
 Vivek opens; Milind samples table reasoning. Ask teams to record APPROVE, MODIFY, REJECT or ESCALATE and one acceptance test before hearing another table's answer. A draft can proceed for review while enforcement remains withheld; participants should specify the authority they are granting.
 
@@ -88,7 +76,7 @@ Choose the probe for the table's case:
 
 Do not require identical control choices. Ask each table what would falsify its decision.
 
-## 18–26: Exceptions and rollout
+## 19–26: Exceptions and rollout
 
 Milind opens the case-specific operational request; Vivek leads the rollout comparison. Ask teams to commit before naming a preferred disposition: “Which legitimate operation must continue, what authority would you grant while approval is checked, and what evidence would change your answer?” Then probe independently verified approval and the exact permission that expires. A named owner, a ticket or a TTL label alone does not prove approval or revocation.
 
@@ -98,7 +86,7 @@ Ask teams to choose modes per control. A confirmed exposure can justify immediat
 
 ## 26–38: Containment and later evidence
 
-Vivek defines Quarantine Mode as this project’s coordinated incident posture; each named control requires application and verification. Vivek introduces page 7; Milind introduces page 8. Before either reveal, the recorder retains the original plan. Ask: “Which action must happen first to preserve evidence and serving capacity?”
+Vivek revisits the implementation taught before case selection and asks teams to name authority and scope during minute 26–27. Open page 7 at minute 27; each named control still requires application and verification. Vivek introduces page 7; Milind introduces page 8. Before either reveal, the recorder retains the original plan. Ask: “Which action must happen first to preserve evidence and serving capacity?”
 
 After page 8 ask: “Which assumption changed, and what action changes with it?” Holding a decision can be reasonable if its original scope already covered the new finding; require an explanation. A changed answer earns no automatic bonus.
 
@@ -116,17 +104,17 @@ Use “recorded k3s observation” when identifying the source. The fictional in
 
 **Evidence of learning:** One test a table would add to its own environment, with an owner.
 
-If no table chose D, collect a short ungraded prediction before displaying slide 23; name the copied token and the Pod-only network control. Do not imply it was recorded earlier. Otherwise, at 44–45 read one D table's locked prediction and compare it with the separate October 13 synthetic lab record, using backup 32 or the status-only transcript within the existing case-comparison minute. Narrowing RBAC preserves a required named Secret GET; copied-token revocation and clean replacement are verified separately. Do not add a fifth live demo. Stand-in health is not real metrics delivery; external application-key rotation remains outstanding.
+If no table chose D, collect a short ungraded prediction before displaying slide 24; name the copied token and the Pod-only network control. Do not imply it was recorded earlier. Otherwise, at 44–45 read one D table's locked prediction and compare it with the separate October 13 synthetic lab record, using backup 33 or the status-only transcript within the existing case-comparison minute. Narrowing RBAC preserves a required named Secret GET; copied-token revocation and clean replacement are verified separately. Do not add a fifth live demo. Stand-in health is not real metrics delivery; external application-key rotation remains outstanding.
 
 ## 45–50: Independent proposal review
 
-Vivek distributes CONTROL-REVIEW.pdf page 1 and opens the question. Milind shows slide 24 with the actual recorded trained-Laya choices. Tables have three minutes to record the scope and authority they would grant, an outstanding requirement/owner and an acceptance test. Keep page 2 sealed.
+Vivek distributes CONTROL-REVIEW.pdf page 1 and opens the question. Milind shows slide 25 with the actual recorded trained-Laya choices. Tables have three minutes to record the scope and authority they would grant, an outstanding requirement/owner and an acceptance test. Keep page 2 sealed.
 
 Ask: “Which requirement has actually been tested, and which action remains unimplemented?” Six privilege CREATE checks pass. The network and rollout/expiry requirements map to a privilege control with high scores; API access escalates. Scores from synthetic calibration are not validated deployment probabilities.
 
-At 48 minutes Milind reveals INCOMPLETE_PROPOSAL on slide 25. Vivek hears one defended disposition and asks for the enforcement owner. A table can justify a bounded privilege control while documenting and escalating the remaining exposure. It must not declare the incident contained. Award up to three points for the limited test scope, actual owner/evidence and justified authority boundary.
+At 48 minutes Milind reveals INCOMPLETE_PROPOSAL on slide 26. Vivek hears one defended disposition and asks for the enforcement owner. A table can justify a bounded privilege control while documenting and escalating the remaining exposure. It must not declare the incident contained. Award up to three points for the limited test scope, actual owner/evidence and justified authority boundary.
 
-At 49 minutes connect slide 26 to the authority just withheld: low API cost or short runtime does not resolve a missing requirement. Show the historical candidate-screening metrics for one minute. Production selection also needs representative error costs, reviewer effort and setup/operations measurements. This uses frozen option order and the zero-shot Laya configuration; the trained runtime-order comparison is separate. Jev/Claude's small author-labelled accuracy gap is inconclusive. No authenticated OpenAI result exists. The trained candidate's faster proposal remains incomplete and accepts additional wrong choices.
+At 49 minutes connect slide 27 to the authority just withheld: low API cost or short runtime does not resolve a missing requirement. Show the historical candidate-screening metrics for one minute. Production selection also needs representative error costs, reviewer effort and setup/operations measurements. This uses frozen option order and the zero-shot Laya configuration; the trained runtime-order comparison is separate. Jev/Claude's small author-labelled accuracy gap is inconclusive. No authenticated OpenAI result exists. The trained candidate's faster proposal remains incomplete and accepts additional wrong choices.
 
 The old three-case Jev/Claude challenge is an optional Q&A or rehearsal activity, with its original labels and caveats retained. Do not add it to this hour.
 
@@ -136,7 +124,7 @@ The old three-case Jev/Claude challenge is an optional Q&A or rehearsal activity
 
 Milind opens recovery; Vivek asks for the personal action. Have neighboring tables review one exit test and ask whether it establishes safe service, restored controls and authorized rollback. A quiet alert stream alone does not establish recovery.
 
-At 54–55, show the illustrative Case A decision record on slide 28 and trace initial intent, held authority, new evidence, changed action order and recovery checks. It is a paper example, not executed containment or the only acceptable answer. Use WORKED-DECISION.md for the full record and compare an actual table revision. At 55–57, tally scores and transfer the review to one requirement in each attendee’s environment.
+At 54–55, show the illustrative Case A decision record on slide 29 and trace initial intent, held authority, new evidence, changed action order and recovery checks. It is a paper example, not executed containment or the only acceptable answer. Use WORKED-DECISION.md for the full record and compare an actual table revision. At 55–57, tally scores and transfer the review to one requirement in each attendee’s environment.
 
 Close with two 20-second reports: a decision whose justification changed and a test the participant will introduce at work. Record an owner, a change and a verification step. Leave the remaining time for questions.
 

@@ -10,41 +10,48 @@ The exercise takes place on a shared production Kubernetes platform. The affecte
 
 ## Materials and room mechanics
 
-- Use ../2026-10-13/SC2632-session-four-cases.pptx and ../2026-10-13/PARTICIPANT-PACK.pdf. The deck has 29 main slides and six hidden backup slides, with timed speaker notes. The original submission copy is retained. Slides 24-25 now use the recorded trained-model proposal review, and the cost backup is hidden. Use tabletop/congress-2026/CO-PRESENTER-CARDS.md for prompts and tabletop/congress-2026/REHEARSAL.md for release checks.
+- Use ../2026-10-13/SC2632-session-four-cases.pptx and ../2026-10-13/PARTICIPANT-PACK.pdf. The deck has 30 main slides and six hidden backup slides, with timed speaker notes. The original submission copy is retained. Slides 25-26 now use the recorded trained-model proposal review, and the cost backup is hidden. Use tabletop/congress-2026/CO-PRESENTER-CARDS.md for prompts and tabletop/congress-2026/REHEARSAL.md for release checks.
 - Print one ../2026-10-13/REVIEW-SCORECARD.pdf per table; use 12 core points plus up to three independent-review points. The rubric rewards defended evidence, not the strictest quarantine level.
 - Print two copies of participant pages 1-5 per table and one or two copies of page 6 (worksheet). Print two copies of page 7 behind a sealed "Round 3" cover, and two copies of page 8 behind a sealed "Later finding" cover. All four cases remain available for team choice.
 - Use the existing tabletop/print/vote-cards.pdf if wanted, or let a table lead speak its vote. Print two copies of ../2026-10-13/CONTROL-REVIEW.pdf page 1 per table and one copy of page 2 behind a sealed review-findings cover. Keep MODEL-DECISION-REVIEW.pdf as an optional backup exercise. The independent review needs a written disposition and acceptance evidence; no external polling system is necessary.
 - The original table-01 through table-12 envelopes and old room clock assume assigned A/B/C cases. Do not combine their assignment instructions with the new four-choice pack. The new kit is a separate coherent session variant.
 - Milind Gunjan and Vivek Mayuranathan co-present. Share the briefing, demonstration and debrief; alternate table support during exercises. Allow 45 minutes for setup if the venue permits, as the organizer described. Use a separate countdown timer and the runbook below; the old screen has different segment timing.
-- The authorized curated source and downloads are public at https://github.com/mgunjan/sc2632-tabletop. The original project retains its private visibility. Slide 29 and the participant footers display the public address. Use the public README for the no-key take-home demo; preserve sealed-evidence timing in the room.
+- The authorized curated source and downloads are public at https://github.com/mgunjan/sc2632-tabletop. The original project retains its private visibility. Slide 30 and the participant footers display the public address. Use the public README for the no-key take-home demo; preserve sealed-evidence timing in the room.
 
 ## The hour
 
 | Minutes | Slides | Activity and observable output |
 |---|---|---|
-| 00-06 | 1-7 | Incident context, participant assignment, materials and round sequence; choose a case/constraint, assign roles and open page 6 |
-| 06-10 | 8 | Team writes intent and a preserved dependency |
-| 10-13:30 | 9-11 | Explain typed decisions, demonstrate reference compiler, show missing coverage |
-| 13:30-18 | 12 | Team reviews proposal and writes APPROVE/MODIFY/REJECT/ESCALATE with one reason |
-| 18-22 | 13 | Team verifies exception authority, scope, owner and expiry |
-| 22-26 | 14 | Select rollout mode per control and promotion criteria |
-| 26-34 | 15-16 | Explain levels briefly, open page 7 and write ordered containment |
-| 34-38 | 17 | Open page 8, keep original decision visible and revise it |
-| 38-44 | 18-22 | Use supplied facts to choose a response/test; reveal four recorded consequences |
-| 44-45 | 23 (32 optional) | Compare cases, read one locked D prediction and reveal its separate lab evidence |
-| 45-48 | 24 | Review the recorded trained-model proposal; lock scope, owners and evidence |
-| 48-49 | 25 | Open the sealed findings and defend the authority granted |
-| 49-50 | 26 | Compare historical model quality and measured cost/time per run |
-| 50-54 | 27 | Write exit criteria and recovery authority |
-| 54-60 | 28-29 | Trace an illustrative decision through new evidence; personal action, resources and questions |
+| 00–02:30 | 1–4 | Purpose, shared environment and detection/admission/containment roles |
+| 02:30–04:30 | 5–6 | Actual decision loop, provider data and authority boundaries |
+| 04:30–06:15 | 7–8 | Concrete compiler walkthrough, independent contract and test limits |
+| 06:15–07:15 | 9 | Quarantine implementation and separate operator actions |
+| 07:15–11 | 10–12 | Assignment, case/constraint choice, roles and one minute of setup writing |
+| 11–15 | 13 | Team writes intent and a preserved dependency |
+| 15–19 | 14 | Proposal disposition and acceptance test |
+| 19–22 | 15 | Exception authority, scope, owner and expiry |
+| 22–26 | 16 | Rollout mode per control and promotion criterion |
+| 26–34 | 17 | Revisit authority; open page 7 at 27 and write ordered containment |
+| 34–38 | 18 | Open page 8 and revise or defend the plan |
+| 38–44 | 19–23 | Four recorded consequences and confirming tests |
+| 44–45 | 24 (33 optional) | Case comparison and locked D prediction |
+| 45–48 | 25 | Independent trained-model proposal review |
+| 48–49 | 26 | Open sealed findings and defend the granted authority |
+| 49–50 | 27 | Historical model quality, cost and time |
+| 50–54 | 28 | Recovery criteria and lifting authority |
+| 54–60 | 29–30 | Worked debrief, personal action, resources and questions |
 
-## The first six minutes
+## Technical briefing before the cases
 
-Slide 2 begins with a concrete Case A illustration: unexpected payments connections after a library update while services remain operational and exposure is uncertain. It gives the participant decision and required output before terminology. Other cases remain alternatives. Slide 3 explains the shared environment. Slide 4 maps detection (Falco and audit logs), admission (Kyverno), traffic/API/tool controls and human authority. It explicitly distinguishes validated Falco rules from unverified live detection and identifies supplied incident alerts and the compiler/test demo. Slide 5 states what co-presenters provide, what participants write/review and that the common demo uses a supplied spec. Slide 6 preserves case choice; slide 7 remains visible for the final setup minute. Detailed wording is in CO-PRESENTER-CARDS.md.
+The room sees the internals before selecting a scenario or making a team decision. Slides 3–9 establish the actual architecture: a shared workload platform, Falco/audit evidence, a fixed Python decision loop, provider-visible task strings, typed choices and uncertainty defaults, deterministic templates and Kyverno simulation, an independently bound requirement ledger, and separate Quarantine mechanisms. Use [TECHNICAL-BRIEF.md](../../tabletop/congress-2026/TECHNICAL-BRIEF.md) and the co-presenter cards for the implementation and handoffs.
 
-Milind leads purpose, environment and operating constraints. Vivek leads the control map, the participant assignment and case choice. The cover takes twenty seconds, purpose fifty seconds, environment and control map forty seconds each, and assignment forty-five seconds. Case choice gets seventy-five seconds. Constraint explanation takes thirty seconds followed by a full minute of setup writing, preserving the six-minute opening. Both check table readiness. Keep scoring detail on paper and later evidence sealed. A ready table can explain the intended output and security purpose, then name its case, roles, constraint and minimum service. It can distinguish refusing a new request from responding to an existing workload.
+The forty-five-second compiler walkthrough occurs at 04:30, using a supplied reference spec. Pre-open the generated policy, local PR.md and readiness result; use them if the command cannot finish in its bounded deadline. The model receives no call in this path, no GitHub PR opens and no cluster change occurs. At 05:15 expand the single privilege requirement to the whole-intent ledger. Do not consume participant writing time to repeat the demo after Round 1.
 
-Assume some attendees have no Kubernetes experience. Start with the platform's job and familiar functions, then give the technical term: application copies/replicas, resource groups/namespaces, workload identity/ServiceAccount. Define the management API, admission and voluntary removal before using them in a question. Accept behavioral security requirements without product names. The existing score is for justified decisions and evidence, not syntax or glossary recall.
+Falco rules passed validation, but live detection and an alert-to-response integration remain unverified. The incident alerts are supplied facts. On the optional model path, unclear dependencies can retain a proposed allowance and require review. Typed choices and a 0.6 cutoff are not calibrated deployment assurance. Process credentials still require separate least-privilege enforcement. Quarantine levels group reviewed manifests and operator actions; people apply and verify every control.
+
+Assignment begins at 07:15, case selection at 08:00 and setup writing at 10:00. Round 1 retains four minutes from 11:00 to 15:00. Proposal review gets four minutes and temporary access three; later sealed reveals at minutes 27, 34 and 48, recovery and the 60-minute finish retain their existing positions. These remain planned timings pending a full human rehearsal.
+
+Attendees can use ordinary security language while professionals inspect exact identities, request scope, payloads and authority. Scores assess decisions and evidence, not syntax or vocabulary recall. A ready table can distinguish what crosses the provider boundary, what the agent can propose, who deploys and which layer can enforce the requirement.
 
 ## The independent proposal review
 
@@ -86,7 +93,7 @@ The original standalone situation display is tabletop/deck/anim/situation.html. 
 | C | Did the guardrail stop the agent, or merely change who executes its request? | Verify the human approval path and narrow standing RBAC; freeze needs an authority boundary the agent cannot alter. |
 | D | Would a network quarantine stop a credential used elsewhere? | Revoke/narrow authorization, identify exposed credentials and coordinate rotation with availability. |
 
-During Round 3, D tables lock a copied-credential prediction before minute 34. At 44–45 read one original prediction and reveal the status-only October 13 lab result (backup 32 or transcript). The old token still reads synthetic Secrets after Pod network quarantine; narrowing its broad binding denies outside reads while preserving one required named Secret GET. Replacement and old bound-token revocation are tested separately. Stand-in health is not production metrics delivery, and external application-key rotation remains required. If no table chose D, collect an ungraded prediction before displaying slide 23, then compare it with the separate lab record. This replaces part of the existing case comparison; it adds no minutes or main slides.
+During Round 3, D tables lock a copied-credential prediction before minute 34. At 44–45 read one original prediction and reveal the status-only October 13 lab result (backup 33 or transcript). The old token still reads synthetic Secrets after Pod network quarantine; narrowing its broad binding denies outside reads while preserving one required named Secret GET. Replacement and old bound-token revocation are tested separately. Stand-in health is not production metrics delivery, and external application-key rotation remains required. If no table chose D, collect an ungraded prediction before displaying slide 24, then compare it with the separate lab record. This replaces part of the existing case comparison; it adds no minutes or main slides.
 
 The review examines assumptions about: intent coverage, API subresource, shared identity, human approval, additive network allows or recovery capacity. Ask tables to name the boundary, the evidence that checks it and the owner who can authorize crossing it.
 
@@ -96,7 +103,7 @@ The gate mismatch and confidence validation are remediated. The agent writes sta
 
 ## Review rubric and demonstration choice
 
-Use ../2026-10-13/REVIEW-SCORECARD.pdf: 12 core points plus up to three independent-review points. Require a written reason/evidence for each point; a co-presenter checks a sample using tabletop/congress-2026/SCORING-ANCHORS.md. Score acceptance evidence specified in the paper plan. Holding unverified authority earns credit; do not require or reward invented approvals or executed outcomes. The bonus evaluates test scope, enforcement owner/evidence and justified authority. A defensible bounded approval or escalation can earn points; there is no required vote. For equal scores, compare the evidence each team would require to revise the containment plan. At 54–55 use slide 28 and tabletop/congress-2026/WORKED-DECISION.md to trace an illustrative Case A paper plan through new evidence and recovery tests. At 55–57 tally points, hear two short reports and document a requirement, owner and verification step in each participant’s environment. The example is not executed containment or the required answer.
+Use ../2026-10-13/REVIEW-SCORECARD.pdf: 12 core points plus up to three independent-review points. Require a written reason/evidence for each point; a co-presenter checks a sample using tabletop/congress-2026/SCORING-ANCHORS.md. Score acceptance evidence specified in the paper plan. Holding unverified authority earns credit; do not require or reward invented approvals or executed outcomes. The bonus evaluates test scope, enforcement owner/evidence and justified authority. A defensible bounded approval or escalation can earn points; there is no required vote. For equal scores, compare the evidence each team would require to revise the containment plan. At 54–55 use slide 29 and tabletop/congress-2026/WORKED-DECISION.md to trace an illustrative Case A paper plan through new evidence and recovery tests. At 55–57 tally points, hear two short reports and document a requirement, owner and verification step in each participant’s environment. The example is not executed containment or the required answer.
 
 Best default for this submission: reference-spec compilation and fixture admission, with recorded model runs available for replay. The recorded Jev/Claude outputs and failed local-model outputs are authentic; label them as recordings. The isolated presenting-Mac lab has actual e2e evidence; repeat preflight on the day. A reviewed server dry-run can demonstrate admission with a positive control and rollback plan. Venue networking, projector and human delivery remain separate checks.
 

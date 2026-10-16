@@ -15,3 +15,5 @@ The audience-review revision grounds the opening in a concrete incident, makes t
 The October 14 source follow-up includes the requirement-visibility repair, explicit policy-tool path, fresh prepared Jev smoke and full CI evidence. Runtime commit ed2ec0c passed all four jobs. Human delivery checks remain separate.
 
 The October 16 revision adds the detection, admission, containment and authority map to opening slide 4 and the participant primer. It introduces Falco's role while distinguishing validated rules from unverified live detection. Supplied incident alerts and the compiler/test demo remain explicit. Runtime code and recorded results are unchanged.
+
+The professional briefing revision brings the actual decision loop, provider data, uncertainty defaults, compiled request scope, independent review contract and Quarantine implementation before scenario selection. The deck now has 30 main slides and six backups. The revised planned hour retains four minutes for intent writing and the existing later sealed reveals and recovery. TECHNICAL-BRIEF.md maps the explanation to source code. No runtime or inference results changed.
