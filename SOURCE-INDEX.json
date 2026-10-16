@@ -1149,8 +1149,8 @@
     },
     {
       "path": "submission/2026-10-12/SESSION-RUNBOOK.md",
-      "bytes": 18026,
-      "sha256": "8613a3532d18fd15ad2c6971aadb4eec99dece831e63dd2226203022f96d8738"
+      "bytes": 18536,
+      "sha256": "11af98919b8c142c05ed774d19baa6e5da9620801592ed1e8c0324941e237295"
     },
     {
       "path": "submission/2026-10-12/benchmark/CONTRACT.json",
@@ -3144,8 +3144,8 @@
     },
     {
       "path": "tabletop/congress-2026/REHEARSAL.md",
-      "bytes": 9957,
-      "sha256": "c9291e53995e0dc6f898ed7a1a7b3acb30a4da7acd0152ed8f8dbf486985021a"
+      "bytes": 10184,
+      "sha256": "a24715f69050ae4f908bbf8b090f3f3347ba6b1adb247acb4364737283d8a6d1"
     },
     {
       "path": "tabletop/congress-2026/SCORING-ANCHORS.md",

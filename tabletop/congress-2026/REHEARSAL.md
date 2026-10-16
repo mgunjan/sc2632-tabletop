@@ -39,9 +39,9 @@ Prepare the contrasting recorded failure on a separate run. It is the authentic 
 .venv-session/bin/python tabletop/congress-2026/demo.py --mode replay --recording submission/2026-10-12/benchmark/decider-agent-a/agent-run.json --out output/congress-2026/strands-replay-rehearsal-01
 ```
 
-This contrast belongs in rehearsal or the backup discussion unless you can keep the main demonstration inside 3 minutes 30 seconds. Have teams predict readiness before showing it. Do not describe the replay as a new model test or amend frozen results.
+Use this contrast in a separate rehearsal or backup discussion, with a prediction before revealing its result. The planned opening walkthrough is 04:30–05:15 and shows one compiled control; keep the second workflow outside that slot. The main trained-proposal review remains at 45–48. Replay is recorded model inference with current compilation/tests; preserve the frozen results.
 
-Optional live Jev proposal after rehearsal:
+Optional live Jev proposal for a separate provider rehearsal or backup discussion. The planned opening retains the reference walkthrough:
 
 ```bash
 .venv-session/bin/python tabletop/congress-2026/demo.py --mode jev --env-file .env.jev --out output/congress-2026/jev-live-rehearsal-01 --deadline 15
@@ -75,7 +75,7 @@ Case D is now separately executed on that marked lab. It measures actual out-of-
 |---|---|---|
 | Code smoke | Fresh A/B/C reference output; authentic replay; independent negative-test failure; gate refusal | Local checks recorded in RUNTIME-REMEDIATION.md |
 | Failure handling | Interrupted/deadline run terminates its worker; output-name reuse refuses; offline fallback is immediate | Automated/local checks only; presenter drill pending |
-| Full 60 minutes | Both presenters practise handoffs, sealed evidence timing, two table reports and recovery round | Not yet completed, confirmed by Milind on October 13 |
+| Full 60 minutes | Both presenters practise handoffs, sealed evidence timing, two table reports and recovery round | Not yet completed, confirmed by Milind on October 16 |
 | Target display | PowerPoint notes/hidden slides, PDF, font size, readable terminal on actual screen | File/render checks passed; native PowerPoint/projector pending |
 | Target enforcement | Intended denial plus compliant positive control, networking, recovery and restoration on presenting lab | 61-check Mac lab pass; three documented gaps retained; separate expiry and Case D records retained |
 | Distribution | Authorized source/package access and working attendee resource | Separate public curated repository authorized and verified; extracted reference/replay checks passed |
