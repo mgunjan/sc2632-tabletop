@@ -2224,8 +2224,8 @@
     },
     {
       "path": "submission/2026-10-13/ARTIFACT-VALIDATION.json",
-      "bytes": 15704,
-      "sha256": "3800dda4da68c1d7a4642b3c5889e6501e2a8ccac34c09ca4fc1dc574e91c838"
+      "bytes": 17472,
+      "sha256": "8e3f0bc359cf9de1e360b8c5fb63017c45b94fdc1fa4aa78eed8e490f1b64bd6"
     },
     {
       "path": "submission/2026-10-13/CONTROL-REVIEW-EXERCISE.md",
@@ -2244,8 +2244,8 @@
     },
     {
       "path": "submission/2026-10-13/PUBLIC-RELEASE.md",
-      "bytes": 3921,
-      "sha256": "3adc7858af2bfb3dc84e8fdee0943f3493c3a7b50efa2328166dfb3550237b1b"
+      "bytes": 4349,
+      "sha256": "cfc475c3bbf12e2001b15b9eaf5b74ca30728ad1e2e2a03f17e663cca3151f2b"
     },
     {
       "path": "submission/2026-10-13/README.md",
@@ -2264,13 +2264,13 @@
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pdf",
-      "bytes": 8961840,
-      "sha256": "f0f04853b13976bde8f1b8bb2eb936f0314948e2a83654d87329c288523452d3"
+      "bytes": 8957845,
+      "sha256": "b0f3082d90dfaae9d5be8da81af7e1afbde9d1b57df4771b210f576276bc3892"
     },
     {
       "path": "submission/2026-10-13/SC2632-session-four-cases.pptx",
-      "bytes": 7145906,
-      "sha256": "fec4ee7eae6a7c5edf81ca58adba268530e3ad7b8d4f82a943b393b9b06ef25a"
+      "bytes": 7146307,
+      "sha256": "617220882b7f0b0639db339ce5bfb1c91aadfee14f516bdfd26d6f0593ad444c"
     },
     {
       "path": "submission/2026-10-13/TRAINING-PROTOCOL.md",
@@ -2279,8 +2279,8 @@
     },
     {
       "path": "submission/2026-10-13/VALIDATION.md",
-      "bytes": 17365,
-      "sha256": "9e0499274b69494f8ff401e53bed8d73f70de3fd5ddb6afccf8117d4e18ef41f"
+      "bytes": 18589,
+      "sha256": "4c132de00e2c1a9ba461d49d0e187f0f1ea67f0e32b9c46b78373e435870748d"
     },
     {
       "path": "submission/2026-10-13/classical-verification-final/REPORT.md",
@@ -3159,8 +3159,8 @@
     },
     {
       "path": "submission/2026-10-14/ABSTRACT-ALIGNMENT.md",
-      "bytes": 5176,
-      "sha256": "ee32ba89dc4c0be844f90de774f84a88b448b63863d7c1e8244e324369c102b0"
+      "bytes": 5247,
+      "sha256": "a9328cb5c96486babaa019b1a986c159c183a6e917d88d4f4fa70a588c5dfeb0"
     },
     {
       "path": "submission/2026-10-14/README.md",

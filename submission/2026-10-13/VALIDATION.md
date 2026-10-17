@@ -4,6 +4,14 @@ As of October 17, the current deck is 36 slides: 30 main, six hidden backups and
 
 The [synthetic Falco audit record](../2026-10-16/README.md) adds real plugin ingestion and matching: 15 synthetic HTTP events across 14 authored cases. The same contract exposed four baseline failures and passes after repair. It does not prove real API-server delivery, kernel capture or production detection quality. The updated workflow makes this behavioral check mandatory. All four jobs passed for runtime commit 908398b, including the real isolated cluster lab and Case D; the complete result is in ../2026-10-16/CI-RESULT.json.
 
+## Native table fit, October 17
+
+The two table-sizing warnings on slides 6 and 9 are resolved. Three descriptions on slide 6 are shorter, and both tables have explicit row heights and matching frame heights that keep the estimated native content above the footnotes. Body text remains 24 px. No other table wording or speaker-note text changes.
+
+Changed slides 6 and 9 and their rendered PDF pages received full-size inspection. The other 34 slide visuals are pixel-identical to the preceding release; all 36 PDF embedded images match the current renders. The final deck retains 30 main slides, six hidden backups and 14 editable tables. Package, declared geometry, font-policy and first-party import checks pass with zero findings and zero warnings. This clears the sizing estimate, not native PowerPoint execution. Native PowerPoint/projector inspection remains deferred and unverified, and the full human rehearsal remains unperformed.
+
+The participant pack, review handouts, runtime code, policies, model results and frozen evidence are unchanged. Current hashes and detailed checks are embedded in ARTIFACT-VALIDATION.json. The sections below retain their original revision counts and warnings as historical evidence.
+
 ## Two-page shared decision record, October 17
 
 The participant pack now has nine pages. Pages 6-7 form one shared record: intent and requirement/test mapping, exact approval or hold scope, exception and rollout conditions, original containment order and tests, later evidence and revision, and recovery authority/tests. Teams retain the original plan beside the revision. Sealed incident updates move to pages 8 and 9; their opening times remain minute 27 and 34. The separate review finding still opens at minute 48. The runbook, co-presenter instructions, take-home guide and slide references agree.

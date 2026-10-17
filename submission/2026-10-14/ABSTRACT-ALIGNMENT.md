@@ -1,11 +1,11 @@
 # Submitted abstract and delivery evidence
 
-The accepted scope is a facilitated, gamified Kubernetes incident exercise: four selectable cases, natural-language intent mapped to a reviewable change set, justified operating tradeoffs and a scoped Quarantine Mode playbook. This audit separates artifact evidence from outcomes that still require human delivery. Updated October 16 for the implementation-first briefing and synthetic Falco audit verification.
+The accepted scope is a facilitated, gamified Kubernetes incident exercise: four selectable cases, natural-language intent mapped to a reviewable change set, justified operating tradeoffs and a scoped Quarantine Mode playbook. This audit separates artifact evidence from outcomes that still require human delivery. Updated October 17 for the two-page decision record and native-table sizing repair; the implementation-first briefing and synthetic Falco audit evidence are retained.
 
 | Accepted promise or participant need | Current evidence | Remaining boundary |
 |---|---|---|
 | Four cases and operating constraints | Participant pack pages 2–5; slide 11 offers all four; slide 12 offers constraint choice | Actual table choice and setup timing need the human rehearsal |
-| Meaningful participation | Page 6 records decisions before sealed injects; 12 core review points plus three independent-review points | Written reasoning is scored; the score does not establish security or human/model superiority |
+| Meaningful participation | Pages 6-7 record decisions before sealed injects; 12 core review points plus three independent-review points | Written reasoning is scored; the score does not establish security or human/model superiority |
 | Context without Kubernetes prerequisites | Purpose on slide 2, platform/control primers on 3–4, implementation and trust boundaries on 5–9, participant duties on 10 | General-security comprehension remains untested with an actual participant |
 | Intent to a reviewable change set | A/B/C compiler, policies, local PR document, simulated admission, requirements ledger, staged rollout and exception conditions | The shared demo uses supplied intent/specification or authentic replay; new attendee prose does not automatically compile or deploy |
 | Agentic workflow evidence | Historical recorded workflows and the fresh October 14 Jev fixture smoke; decisions, tests and human escalations are preserved | One new run is not live-demo qualification, a provider benchmark or arbitrary-intent assurance |
@@ -13,10 +13,10 @@ The accepted scope is a facilitated, gamified Kubernetes incident exercise: four
 | Justified exceptions and rollout | Round 2 request, owner/approval/expiry fields, control-specific Audit/Warn/Deny decisions; separate actual expiry-lifecycle record | An expiry timestamp is not immediate session/credential revocation; approval must be independently verified |
 | Containment with availability and evidence constraints | Q0–Q3 playbook, ordered actions, later evidence, recorded network/recovery/debug/authority observations and Case D's synthetic read-authorization record | Target platform behavior, application dependencies and incident authority require their own evidence |
 | Runtime detection evidence | Real Falco audit-plugin HTTP ingestion: 15 synthetic events, 14 authored cases, before/after rule records and explicit evidence-gap warnings | Actual API-server delivery, kernel events, production detection quality and automatic containment remain unverified |
-| Recovery and practical transfer | Page 6 exit test/lift authority/rollback; slide 29 and WORKED-DECISION.md trace an illustrative Case A response | The worked record is a paper example; human recovery decisions and scoring calibration remain pending |
+| Recovery and practical transfer | Page 7 exit test/lift authority/rollback; slide 29 and WORKED-DECISION.md trace an illustrative Case A response | The worked record is a paper example; human recovery decisions and scoring calibration remain pending |
 | Model and operating-cost insight | Authored-pilot quality, workflow time and estimated API cost; classical baselines; Laya training failure; setup/review-cost analysis | No model-family winner, production-grade reliability or lower total operating cost is established; OpenAI has no authenticated result |
 | Adaptable open-source patterns | Apache-2.0 public source, no-key reference/replay, ten-ID reference control catalog and qualification checklist | Cloud-agnostic patterns are not evidence of testing every Kubernetes distribution; the catalog is not enterprise-qualified |
-| Dependable submission and take-home material | Editable 30-slide main deck plus six backups, matching PDF, eight-page participant pack, source index and versioned releases | Native PowerPoint/projector behavior and a full 60-minute co-presenter rehearsal remain separate checks |
+| Dependable submission and take-home material | Editable 30-slide main deck plus six backups, matching PDF, nine-page participant pack, source index and versioned releases | Native PowerPoint/projector behavior and a full 60-minute co-presenter rehearsal remain separate checks |
 
 ## What must be observed before delivery is locked
 
