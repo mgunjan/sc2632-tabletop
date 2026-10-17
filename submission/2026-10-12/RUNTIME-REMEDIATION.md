@@ -25,7 +25,7 @@ The frozen model cases, labels, raw responses, costs and timings were not change
 - All 35 slides rendered identically to the original submission images. The new rehearsal PPTX changes technical notes only and passes package, layout, font and import checks with zero findings/warnings. Its SHA256 is `b862d65e883e69c1fe9c2bbdfd7c38d4e36e51a28097aa5de14235146b8cc0cd`.
 - Frozen case hash remains `e1f61778c0318a4e48e1c4736688772a39381a116668a49dde8b5bf429e92209`.
 
-Machine-readable offline checks and fresh proposal examples are under [runtime-rehearsal/](runtime-rehearsal/). Replay orchestration times in those examples are not new inference measurements. No hosted API call or cluster deployment occurred during this remediation.
+The [October 12 offline check summary](runtime-rehearsal/checks.json) is included in the attendee source. Full logs and the original proposal examples remain in the presenter repository's runtime-rehearsal directory. The published [October 14 demo audit](../2026-10-14/README.md) provides later proposal and requirement-check evidence. Replay orchestration times are not new inference measurements. No hosted API call or cluster deployment occurred during this remediation.
 
 ## Exercise delivery improvements
 

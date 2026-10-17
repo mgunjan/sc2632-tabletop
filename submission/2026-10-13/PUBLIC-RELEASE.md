@@ -6,7 +6,7 @@ The public snapshot includes the four cases, current deck and worksheets, refere
 
 Start with the repository README. The reference and recorded-answer demos require Python and Kyverno CLI 1.19.1, with no account, model download or cluster. Proposals remain subject to human review. Catalog 0.1.0 requires platform qualification; the measured model pilot does not establish a production winner.
 
-The resource slide and all eight participant-handout pages name the public address. During the exercise, preserve the timing of sealed evidence; the full public materials include the later findings and answers.
+The resource slide and all nine participant-handout pages name the public address. During the exercise, preserve the timing of sealed evidence; the full public materials include the later findings and answers.
 
 Native PowerPoint/projector inspection and the full 60-minute co-presenter rehearsal remain pending. Publication does not clear those release requirements.
 
@@ -21,3 +21,5 @@ The professional briefing revision brings the actual decision loop, provider dat
 The [October 16 Falco audit repair](../2026-10-16/README.md) adds a synthetic behavioral contract, retained failing baseline, subject-based alerts, stage filtering and explicit missing-evidence warnings. Both arm64 and amd64 execute the same contract. This source update leaves slide visuals and printed materials unchanged; actual cluster delivery and kernel detection remain unverified.
 
 The speaker-note source links now point to the public repository. All 26 cited paths are included or mapped to current materials; the one cited historical cloud log retains its original scope label. All 36 slide visuals and the PDF are unchanged.
+
+The October 17 distribution check repairs omitted evidence links and keeps both the canonical nested attendee guide and its root entry point usable. The source archive now verifies inline local Markdown file and directory targets before writing. The historical offline-check summary, recording-integrity audit and current decision-record verification are included at their cited paths. This check excludes external URLs and fragment anchors. Slides, handouts, runtime code and recorded model results are unchanged by this distribution repair.

@@ -1,0 +1,51 @@
+{
+  "recording_sha256": "73ec15aa1b11eedf1a6a48467127d4e89afb6953b49288de9e333953022e1d47",
+  "recorded_rows": 51,
+  "current_rows": 51,
+  "matched_rows": 45,
+  "unmatched": [
+    {
+      "split": "gold",
+      "id": "fa479d2305f1",
+      "task": "exception",
+      "state_sha256": "560672ef32b1fa69ad1b302d10c01cafcef0ae70456ef79a5c1abd2ab6a36dae",
+      "recording_match": false
+    },
+    {
+      "split": "gold",
+      "id": "a36f0809e4f7",
+      "task": "exception",
+      "state_sha256": "88264ed5f5d711ca57f5b49e5130bddae6afba0067863085ccfcfda35b4b99c2",
+      "recording_match": false
+    },
+    {
+      "split": "gold",
+      "id": "f070a0bc0bdc",
+      "task": "exception",
+      "state_sha256": "0eff5f1f405e6f39d6be81715ad1ffd99f7d0a13fb032f63e412eff17ae6c4ba",
+      "recording_match": false
+    },
+    {
+      "split": "scenario",
+      "id": "7b468d495fb6",
+      "task": "exception",
+      "state_sha256": "e19b74b3275f43aecc5ea7d4e32ba5dee33e38fda499ac57e1886a785c5a3609",
+      "recording_match": false
+    },
+    {
+      "split": "scenario",
+      "id": "c703362bedc7",
+      "task": "exception",
+      "state_sha256": "1b033fa175af298528ea04be3542dbf24e80ac2e453692ec0b3df84d9aea3ffa",
+      "recording_match": false
+    },
+    {
+      "split": "scenario",
+      "id": "dccdb3c707b2",
+      "task": "input",
+      "state_sha256": "bd3f9efdd31f9a88eb9006cd721dfed55f576f3ea15a2089043d6187871a1e8c",
+      "recording_match": false
+    }
+  ],
+  "historical_source_check": "The same six states fail to match after rebuilding from commit 059fd74 (first recording commit), seed 7 / n 6000. Original unmatched prompt states are not stored in the recording. Do not pair by position or rewrite labels."
+}

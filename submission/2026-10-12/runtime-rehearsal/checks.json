@@ -1,0 +1,159 @@
+{
+  "python_suites": [
+    {
+      "test": "test_decision_contract.py",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "test": "test_demo_gate.py",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "test": "test_policy_contracts.py",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "test": "test_presenter_demo.py",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "test": "test_policy_agent.py",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "test": "test_decider_agent.py",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "test": "test_generate.py",
+      "exit_code": 0,
+      "pass": true
+    }
+  ],
+  "provider_adapter_tests_pass": true,
+  "policy_suites": [
+    {
+      "suite": "handwritten/a-compromised-library/kyverno-test-quarantine-override-identity.yaml",
+      "passed": 3,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/a-compromised-library/kyverno-test-quarantine-q1.yaml",
+      "passed": 2,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/a-compromised-library/kyverno-test-quarantine-q2-q3.yaml",
+      "passed": 15,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/a-compromised-library/kyverno-test-quarantine-relabel.yaml",
+      "passed": 8,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/a-compromised-library/kyverno-test-with-exception.yaml",
+      "passed": 5,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/a-compromised-library/kyverno-test.yaml",
+      "passed": 15,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/b-sidecar-agent/kyverno-test-quarantine-relabel.yaml",
+      "passed": 3,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/b-sidecar-agent/kyverno-test.yaml",
+      "passed": 15,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/c-rogue-ops-agent/kyverno-test-as-human.yaml",
+      "passed": 12,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/c-rogue-ops-agent/kyverno-test-q1-agent-freeze-human.yaml",
+      "passed": 4,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/c-rogue-ops-agent/kyverno-test-q1-agent-freeze.yaml",
+      "passed": 4,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "handwritten/c-rogue-ops-agent/kyverno-test.yaml",
+      "passed": 12,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "generated/a/kyverno-test-quarantine-relabel.yaml",
+      "passed": 8,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "generated/a/kyverno-test-with-exception.yaml",
+      "passed": 5,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "generated/a/kyverno-test.yaml",
+      "passed": 15,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "generated/b/kyverno-test-quarantine-relabel.yaml",
+      "passed": 3,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "generated/b/kyverno-test.yaml",
+      "passed": 15,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "generated/c/kyverno-test-as-human.yaml",
+      "passed": 12,
+      "failed": 0,
+      "pass": true
+    },
+    {
+      "suite": "generated/c/kyverno-test.yaml",
+      "passed": 12,
+      "failed": 0,
+      "pass": true
+    }
+  ],
+  "frozen_cases_sha256": "e1f61778c0318a4e48e1c4736688772a39381a116668a49dde8b5bf429e92209",
+  "scope": "Offline tests, scripted localhost stand-ins and fixture compilation; no authenticated model inference or cluster deployment",
+  "pass": true
+}

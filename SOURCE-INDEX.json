@@ -1,6 +1,11 @@
 {
   "scope": "Curated attendee source and evidence snapshot",
   "deployment_authority": false,
+  "file_link_check": {
+    "checked": 174,
+    "missing": 0,
+    "scope": "Archive inline Markdown file/directory targets outside fenced code; external links and fragment anchors excluded"
+  },
   "files": [
     {
       "path": ".gitattributes",
@@ -1464,8 +1469,8 @@
     },
     {
       "path": "submission/2026-10-12/RUNTIME-REMEDIATION.md",
-      "bytes": 6221,
-      "sha256": "eec65b9fc49115ed69ace2719909a2f5d3a6358d09e934fdace73e71da94934d"
+      "bytes": 6427,
+      "sha256": "c128fe715b3259ce52c7b3c13c856c984b493401cdd8700ddd848cc84e5b5b20"
     },
     {
       "path": "submission/2026-10-12/SESSION-RUNBOOK.md",
@@ -2213,6 +2218,11 @@
       "sha256": "5e0f6227357152287c695aef8731472573f9e9286abc9b363c1fe02e04ae7e44"
     },
     {
+      "path": "submission/2026-10-12/runtime-rehearsal/checks.json",
+      "bytes": 3697,
+      "sha256": "07917abad357366d52648ceec78e5013935eb4d72d459f4e65152a88cc999c7a"
+    },
+    {
       "path": "submission/2026-10-13/ARTIFACT-VALIDATION.json",
       "bytes": 15704,
       "sha256": "3800dda4da68c1d7a4642b3c5889e6501e2a8ccac34c09ca4fc1dc574e91c838"
@@ -2234,8 +2244,8 @@
     },
     {
       "path": "submission/2026-10-13/PUBLIC-RELEASE.md",
-      "bytes": 3378,
-      "sha256": "9ce05663d024860016f0af43e2c87583d6540369235ce119094dcbe008cb3ffd"
+      "bytes": 3921,
+      "sha256": "3adc7858af2bfb3dc84e8fdee0943f3493c3a7b50efa2328166dfb3550237b1b"
     },
     {
       "path": "submission/2026-10-13/README.md",
@@ -2281,6 +2291,11 @@
       "path": "submission/2026-10-13/classical-verification-final/report.json",
       "bytes": 354096,
       "sha256": "c33792d2403e6370dd1a704b26b5dea0d2e6c2f39dfa185cf83dc45766e2f0d3"
+    },
+    {
+      "path": "submission/2026-10-13/classical-verification/recording-audit.json",
+      "bytes": 1716,
+      "sha256": "3b1c2fd200d23b9803de34ef771f568217ba931d5f9be201737c3839df241520"
     },
     {
       "path": "submission/2026-10-13/laya-training/ENVIRONMENT.json",
@@ -3446,6 +3461,16 @@
       "path": "submission/2026-10-16/falco-audit/verify-falco-audit.py.txt",
       "bytes": 9827,
       "sha256": "788abdd191ba717ca5871456a92c5653d2e019e01459b465a30844e130f1f611"
+    },
+    {
+      "path": "submission/2026-10-17/DECISION-RECORD-VERIFICATION.json",
+      "bytes": 2601,
+      "sha256": "f1bb1a3bba4c925cc0424e74e1d03aaa6a1c26bbb496dcd3ebb1cbe79ad5f7e1"
+    },
+    {
+      "path": "tabletop/congress-2026/ATTENDEE-START-HERE.md",
+      "bytes": 9204,
+      "sha256": "865d7ddf7b6e04f10fa7c007541f3af3603da8abd80d3a0cf40a9dce04eee904"
     },
     {
       "path": "tabletop/congress-2026/CO-PRESENTER-CARDS.md",
