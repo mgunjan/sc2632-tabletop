@@ -12,7 +12,7 @@ The exercise takes place on a shared production Kubernetes platform. The affecte
 
 - Use ../2026-10-13/SC2632-session-four-cases.pptx and ../2026-10-13/PARTICIPANT-PACK.pdf. The deck has 30 main slides and six hidden backup slides, with timed speaker notes. The original submission copy is retained. Slides 25-26 now use the recorded trained-model proposal review, and the cost backup is hidden. Use tabletop/congress-2026/CO-PRESENTER-CARDS.md for prompts and tabletop/congress-2026/REHEARSAL.md for release checks.
 - Print one ../2026-10-13/REVIEW-SCORECARD.pdf per table; use 12 core points plus up to three independent-review points. The rubric rewards defended evidence, not the strictest quarantine level.
-- Print two copies of participant pages 1-5 per table and one or two copies of page 6 (worksheet). Print two copies of page 7 behind a sealed "Round 3" cover, and two copies of page 8 behind a sealed "Later finding" cover. All four cases remain available for team choice.
+- Print two copies of participant pages 1-5 per table and one or two copies of pages 6-7 (one shared two-page decision record). Print two copies of page 8 behind a sealed "Round 3" cover, and two copies of page 9 behind a sealed "Later finding" cover. Keep the record together; do not duplex a record page with a sealed update. All four cases remain available for team choice.
 - Use the existing tabletop/print/vote-cards.pdf if wanted, or let a table lead speak its vote. Print two copies of ../2026-10-13/CONTROL-REVIEW.pdf page 1 per table and one copy of page 2 behind a sealed review-findings cover. Keep MODEL-DECISION-REVIEW.pdf as an optional backup exercise. The independent review needs a written disposition and acceptance evidence; no external polling system is necessary.
 - The original table-01 through table-12 envelopes and old room clock assume assigned A/B/C cases. Do not combine their assignment instructions with the new four-choice pack. The new kit is a separate coherent session variant.
 - Milind Gunjan and Vivek Mayuranathan co-present. Share the briefing, demonstration and debrief; alternate table support during exercises. Allow 45 minutes for setup if the venue permits, as the organizer described. Use a separate countdown timer and the runbook below; the old screen has different segment timing.
@@ -31,8 +31,8 @@ The exercise takes place on a shared production Kubernetes platform. The affecte
 | 15–19 | 14 | Proposal disposition and acceptance test |
 | 19–22 | 15 | Exception authority, scope, owner and expiry |
 | 22–26 | 16 | Rollout mode per control and promotion criterion |
-| 26–34 | 17 | Revisit authority; open page 7 at 27 and write ordered containment |
-| 34–38 | 18 | Open page 8 and revise or defend the plan |
+| 26–34 | 17 | Revisit authority; open page 8 at 27 and write ordered containment |
+| 34–38 | 18 | Open page 9 and revise or defend the plan |
 | 38–44 | 19–23 | Four recorded consequences and confirming tests |
 | 44–45 | 24 (33 optional) | Case comparison and locked D prediction |
 | 45–48 | 25 | Independent trained-model proposal review |

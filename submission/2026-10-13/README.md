@@ -15,7 +15,7 @@ Slide 4 introduces the control roles upfront: Falco and audit logs supply detect
 | [SC2632-session-four-cases.pptx](SC2632-session-four-cases.pptx) | Current editable deck: 30 main slides and six hidden backups |
 | [SC2632-session-four-cases.pdf](SC2632-session-four-cases.pdf) | All 36 slide visuals, including backups |
 | [CONTROL-REVIEW.pdf](CONTROL-REVIEW.pdf) | Two-page trained-model proposal exercise; keep page 2 sealed until decisions are recorded |
-| [Participant pack](PARTICIPANT-PACK.pdf) | Four selectable cases, worksheets and two sealed injects; eight pages |
+| [Participant pack](PARTICIPANT-PACK.pdf) | Four selectable cases, worksheets and two sealed injects; nine pages |
 | [Review scorecard](REVIEW-SCORECARD.pdf) | Twelve core review criteria plus three evidence criteria for the proposal review |
 | [Session runbook](../2026-10-12/SESSION-RUNBOOK.md) | Hour, print order, handoffs, demonstration and fallback |
 | [Co-presenter cards](../../tabletop/congress-2026/CO-PRESENTER-CARDS.md) | Prompts, evidence requirements and time-pressure cuts |

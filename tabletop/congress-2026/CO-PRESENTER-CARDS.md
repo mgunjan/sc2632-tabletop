@@ -47,7 +47,7 @@ For technical Q&A, the October 16 audit regression supplies a real example: comp
 | 09:15–10:00 | Milind, 12 | Select the operating constraint and measurable service floor |
 | 10:00–11:00 | Both, 12 remains visible | Record case, constraint, roles and service floor on page 6 |
 
-**Assignment:** “We supply case facts, prepared proposals and enforcement evidence. Your table writes, reviews and revises decisions on page 6. Your intent stays on that record; the common demo used a supplied reference spec. Decide what may proceed, what you hold and the evidence required. Work in plain language. No laptop or YAML is required.”
+**Assignment:** “We supply case facts, prepared proposals and enforcement evidence. Your table keeps one shared record on pages 6-7. Page 6 holds intent, review and temporary authority. Page 7 retains your containment plan, its later revision and recovery checks. Your intent stays on that record; the common demo used a supplied reference spec. Decide what may proceed, what you hold and the evidence required. Work in plain language. No laptop or YAML is required.”
 
 Hold up the pack and name its pages: four cases on 2–5, shared record on 6, sealed updates on 7/8. Keep the independent review findings sealed too. Lead states the decision; recorder writes; analyst checks evidence; independent reviewer raises a concern first. Combine roles for a small table. Both co-presenters support different tables.
 
@@ -88,9 +88,9 @@ Ask teams to choose modes per control. A confirmed exposure can justify immediat
 
 ## 26–38: Containment and later evidence
 
-Vivek revisits the implementation taught before case selection and asks teams to name authority and scope during minute 26–27. Open page 7 at minute 27; each named control still requires application and verification. Vivek introduces page 7; Milind introduces page 8. Before either reveal, the recorder retains the original plan. Ask: “Which action must happen first to preserve evidence and serving capacity?”
+Vivek revisits the implementation taught before case selection and asks teams to name authority and scope during minute 26–27. Open page 8 at minute 27; each named control still requires application and verification. Vivek introduces page 8; Milind introduces page 9. Use the first section of record page 7 for the original action order and tests. Keep that section legible; record the later fact and revision in the separate section below it. Ask: “Which action must happen first to preserve evidence and serving capacity?”
 
-After page 8 ask: “Which assumption changed, and what action changes with it?” Holding a decision can be reasonable if its original scope already covered the new finding; require an explanation. A changed answer earns no automatic bonus.
+After page 9 ask: “Which assumption changed, and what action changes with it?” Holding a decision can be reasonable if its original scope already covered the new finding; require an explanation. A changed answer earns no automatic bonus.
 
 For D, distinguish observing a Secret LIST from proving external credential use. Identify audit policy level and response evidence before asserting which values were exposed. Plan precautionary rotation according to exposure and operational dependencies; the alert alone does not establish exfiltration.
 

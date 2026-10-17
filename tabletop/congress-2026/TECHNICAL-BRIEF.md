@@ -44,8 +44,8 @@ Sources: `quarantine/q1/`, `quarantine/q2/`, `quarantine/q3/`, `quarantine/quara
 | 15–19 | 14 | Review proposal |
 | 19–22 | 15 | Decide temporary access |
 | 22–26 | 16 | Select rollout and promotion criteria |
-| 26–34 | 17 | Revisit level/authority; open page 7 at minute 27 and write ordered containment |
-| 34–38 | 18 | Open page 8 and revise or defend the plan |
+| 26–34 | 17 | Revisit level/authority; open page 8 at minute 27 and write ordered containment |
+| 34–38 | 18 | Open page 9 and revise or defend the plan |
 | 38–45 | 19–24 | Recorded consequences and case comparison |
 | 45–50 | 25–27 | Independent model-proposal review, sealed findings and measured comparison |
 | 50–60 | 28–30 | Recovery, worked debrief, transfer and questions |

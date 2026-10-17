@@ -24,6 +24,8 @@ After slide 2, ask a reviewer to explain the shared-platform security problem an
 
 Before Round 1, ask a general security participant to explain the assignment without presenter help: which case the table chose, which record it must complete, what it decides, and what stays sealed. Their answer and any correction: __________
 
+Check the revised printed pack: pages 6-7 form one shared record; page 8 opens at minute 27 and page 9 at minute 34. Ask the recorder to locate the requirement/test map, original containment plan, later revision and recovery tests. Record whether the table could write its decisions in the available space and within the existing round times: __________
+
 Ask someone unfamiliar with Kyverno: “If the policy refuses a new Pod, what happens to the already running Pod?” Record their explanation of the environment and the need for a separate response: __________
 
 After slide 4, ask: “Which component detects activity, which checks proposed changes, and who authorizes containment? Are the incident alerts live Falco observations?” Record whether the participant identifies the supplied alerts and the compiler/test demo without treating rule validation as live detection: __________

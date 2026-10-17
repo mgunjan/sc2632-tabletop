@@ -1,5 +1,5 @@
 {
-  "pptx_sha256": "a470177e96a69a6d98dfde678d01d135d269c70e04f09b696d75a5ac0619305d",
+  "pptx_sha256": "fec4ee7eae6a7c5edf81ca58adba268530e3ad7b8d4f82a943b393b9b06ef25a",
   "slide_count": 36,
   "main_slides": 30,
   "hidden_backup_slides": 6,
@@ -10,15 +10,23 @@
   "first_party_import_passed": true,
   "native_powerpoint_verified": false,
   "projector_verified": false,
-  "visually_inspected_changed_slides": [],
+  "visually_inspected_changed_slides": [
+    10,
+    17,
+    28
+  ],
   "whole_deck_montage_inspected": true,
   "handout_pages_visually_inspected": {
     "CONTROL-REVIEW.pdf": 2,
     "REVIEW-SCORECARD.pdf": 1,
     "PARTICIPANT-PACK.pdf": {
-      "pages": 8,
+      "pages": 9,
       "changed_pages": [
-        1
+        1,
+        6,
+        7,
+        8,
+        9
       ]
     }
   },
@@ -27,9 +35,9 @@
     "SC2632-session-control-review.pdf": "8eef47176b83d47f2acef0ae90563d389f0f10ba13c47f121e4cfef5519f7c4c",
     "CONTROL-REVIEW.pdf": "74703651038316cd4c2419af850ff3b24041e52b2074b1e13eddc3d27cfeb238",
     "REVIEW-SCORECARD.pdf": "fb2afef7d10e4d7087cd27e696c0c65dd2c82f014023017d4d5256e865e8130d",
-    "SC2632-session-four-cases.pptx": "a470177e96a69a6d98dfde678d01d135d269c70e04f09b696d75a5ac0619305d",
-    "SC2632-session-four-cases.pdf": "c727d17c6786d029ba38ebf4c1d8b659ecf5c6ae4f17535c446951c4a8790eee",
-    "PARTICIPANT-PACK.pdf": "bd4cea752133d2ef5db2b2ccb73c54637ab205060e1c023d449d4bfe6b34be9d"
+    "SC2632-session-four-cases.pptx": "fec4ee7eae6a7c5edf81ca58adba268530e3ad7b8d4f82a943b393b9b06ef25a",
+    "SC2632-session-four-cases.pdf": "f0f04853b13976bde8f1b8bb2eb936f0314948e2a83654d87329c288523452d3",
+    "PARTICIPANT-PACK.pdf": "d2b47ad6daebb89ca11c9dd63a2d11b6bf30fb8062dea9ca71c193ab0ebd8740"
   },
   "previous_revision": {
     "pptx_sha256": "3c6518cef73e97f550e2abcfba7fd56f7918ae51248efda929382a4da2bdeb6b",
@@ -43,7 +51,8 @@
     "purpose_pptx_sha256": "edc82bab837a924e804395d5970205e8f701b55437c77747ccd8f0d6de73758a",
     "audience_review_pptx_sha256": "9c4e85327119570e237f7efee76b07d73fcc8c3d12ae013a5b5eb88063d5ca35",
     "runtime_control_map_pptx_sha256": "ad0bbfc9ee8038a4185f8bbee09d92ac2476663a0ef14094a396065337d03395",
-    "technical_briefing_pptx_sha256": "a323251b1f8e39dd1264e1e855d3827ceaf1e254a771a10171caf5ea429b6f55"
+    "technical_briefing_pptx_sha256": "a323251b1f8e39dd1264e1e855d3827ceaf1e254a771a10171caf5ea429b6f55",
+    "before_two_page_decision_record_pptx_sha256": "a470177e96a69a6d98dfde678d01d135d269c70e04f09b696d75a5ac0619305d"
   },
   "case_d_evidence": "live-rehearsal/case-d/result.json",
   "case_d_source_sha256_matches": true,
@@ -416,5 +425,157 @@
     "full_ci_commit": "908398b9c85fcb1577cde49aa6f483a57272482e",
     "full_ci_jobs_passed": 4,
     "human_rehearsal_completed": false
+  },
+  "layout_warning_count": 2,
+  "layout_warnings": [
+    {
+      "available_bottom_in": 6.3958,
+      "columns": 2,
+      "declared_bottom_in": 6.5312,
+      "estimated_native_bottom_in": 6.8624,
+      "footer_object_ids": [
+        "4"
+      ],
+      "kind": "native_table_overflow",
+      "overflow_in": 0.4666,
+      "rows": 6,
+      "slide": 6,
+      "table_id": "3"
+    },
+    {
+      "available_bottom_in": 6.3958,
+      "columns": 3,
+      "declared_bottom_in": 6.4375,
+      "estimated_native_bottom_in": 6.4375,
+      "footer_object_ids": [
+        "4"
+      ],
+      "kind": "native_table_overflow",
+      "overflow_in": 0.0417,
+      "rows": 5,
+      "slide": 9,
+      "table_id": "3"
+    }
+  ],
+  "decision_record_revision": {
+    "slide_count": 36,
+    "native_tables": 14,
+    "native_table_text_unchanged": true,
+    "hidden_slides": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "changed_visible_slides": [
+      10,
+      17,
+      28
+    ],
+    "changed_notes_slides": [
+      9,
+      10
+    ],
+    "pdf_pages_match_render_pixels": 36,
+    "participant_pages": 9,
+    "unchanged_case_pages": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "sealed_update_body_unchanged": {
+      "old_7_to_new_8": true,
+      "old_8_to_new_9": true
+    },
+    "sealed_open_minutes": [
+      27,
+      34,
+      48
+    ],
+    "native_powerpoint_verified": false,
+    "human_rehearsal_completed": false,
+    "assets": {
+      "SC2632-session-four-cases.pptx": {
+        "bytes": 7145906,
+        "sha256": "fec4ee7eae6a7c5edf81ca58adba268530e3ad7b8d4f82a943b393b9b06ef25a"
+      },
+      "SC2632-session-four-cases.pdf": {
+        "bytes": 8961840,
+        "sha256": "f0f04853b13976bde8f1b8bb2eb936f0314948e2a83654d87329c288523452d3"
+      },
+      "PARTICIPANT-PACK.pdf": {
+        "bytes": 18614,
+        "sha256": "d2b47ad6daebb89ca11c9dd63a2d11b6bf30fb8062dea9ca71c193ab0ebd8740"
+      }
+    },
+    "date": "2026-10-17",
+    "prior_pptx_sha256": "a470177e96a69a6d98dfde678d01d135d269c70e04f09b696d75a5ac0619305d",
+    "shared_record_pages": [
+      6,
+      7
+    ],
+    "sealed_update_pages": [
+      8,
+      9
+    ],
+    "changed_pack_pages_visually_inspected": [
+      1,
+      6,
+      7,
+      8,
+      9
+    ],
+    "changed_slides_visually_inspected": [
+      10,
+      17,
+      28
+    ],
+    "whole_deck_montage_inspected": true,
+    "package_findings": 0,
+    "layout_findings": 0,
+    "layout_warnings": [
+      {
+        "available_bottom_in": 6.3958,
+        "columns": 2,
+        "declared_bottom_in": 6.5312,
+        "estimated_native_bottom_in": 6.8624,
+        "footer_object_ids": [
+          "4"
+        ],
+        "kind": "native_table_overflow",
+        "overflow_in": 0.4666,
+        "rows": 6,
+        "slide": 6,
+        "table_id": "3"
+      },
+      {
+        "available_bottom_in": 6.3958,
+        "columns": 3,
+        "declared_bottom_in": 6.4375,
+        "estimated_native_bottom_in": 6.4375,
+        "footer_object_ids": [
+          "4"
+        ],
+        "kind": "native_table_overflow",
+        "overflow_in": 0.0417,
+        "rows": 5,
+        "slide": 9,
+        "table_id": "3"
+      }
+    ],
+    "warning_slides_visually_inspected": [
+      6,
+      9
+    ],
+    "font_policy_passed": true,
+    "first_party_import_passed": true,
+    "runtime_policy_model_and_frozen_evidence_changed": false,
+    "human_comprehension_and_writing_space_check_completed": false,
+    "native_powerpoint_check": "Deferred at user request",
+    "source_syntax_checks_passed": true,
+    "git_diff_whitespace_check_passed": true
   }
 }

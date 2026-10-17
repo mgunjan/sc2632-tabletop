@@ -1,8 +1,16 @@
 # Current evidence and historical validation records
 
-As of October 16, the current deck is 36 slides: 30 main, six hidden backups and 14 editable tables. ARTIFACT-VALIDATION.json binds its exact hashes and rendered checks. The technical briefing precedes case selection; the revised timing remains unverified by a human rehearsal. Milind confirmed the full rehearsal is still unperformed on October 16. Native PowerPoint inspection is deferred at his request.
+As of October 17, the current deck is 36 slides: 30 main, six hidden backups and 14 editable tables. ARTIFACT-VALIDATION.json binds its exact hashes and rendered checks. The technical briefing precedes case selection; the revised timing remains unverified by a human rehearsal. Milind confirmed the full rehearsal is still unperformed on October 16. Native PowerPoint inspection is deferred at his request.
 
 The [synthetic Falco audit record](../2026-10-16/README.md) adds real plugin ingestion and matching: 15 synthetic HTTP events across 14 authored cases. The same contract exposed four baseline failures and passes after repair. It does not prove real API-server delivery, kernel capture or production detection quality. The updated workflow makes this behavioral check mandatory. All four jobs passed for runtime commit 908398b, including the real isolated cluster lab and Case D; the complete result is in ../2026-10-16/CI-RESULT.json.
+
+## Two-page shared decision record, October 17
+
+The participant pack now has nine pages. Pages 6-7 form one shared record: intent and requirement/test mapping, exact approval or hold scope, exception and rollout conditions, original containment order and tests, later evidence and revision, and recovery authority/tests. Teams retain the original plan beside the revision. Sealed incident updates move to pages 8 and 9; their opening times remain minute 27 and 34. The separate review finding still opens at minute 48. The runbook, co-presenter instructions, take-home guide and slide references agree.
+
+Changed slide visuals 10, 17 and 28 and participant pages 1, 6, 7, 8 and 9 received full-size visual inspection. The other 33 slide visuals are pixel-identical to the preceding release. All 36 slide PDF images match the current renders. The four case-card texts and both sealed-update bodies are unchanged. The final PPTX retains 30 main slides, six hidden backups and all 14 native tables with unchanged cell text. Package, declared geometry, font-policy and first-party import checks passed with zero findings. The geometry validator also reports two native-table sizing warnings on unchanged slides 6 and 9; both render correctly in Artifact Tool, but native PowerPoint remains unverified and deferred at the user's request. This is not a zero-warning or native-display success claim.
+
+Source syntax and whitespace checks pass. Runtime code, policies, model inputs/labels and frozen evidence did not change. The existing four-job CI result for runtime code commit b173689 remains the runtime evidence; these artifact checks do not replace it. Human comprehension, writing-space/time validation, scoring calibration and the full co-presenter rehearsal remain unperformed. Exact hashes and check scope are recorded in ARTIFACT-VALIDATION.json and ../2026-10-17/DECISION-RECORD-VERIFICATION.json.
 
 The sections below preserve historical validations, counts, slide positions and limitations for their respective revisions. Use the current artifact and package verification JSON for present bindings.
 
