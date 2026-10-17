@@ -55,6 +55,8 @@ For a custom specialist, read the [dataset design](controls/DATASET-DESIGN.md). 
 
 The [expanded upstream dataset](datasets/guardrails/README.md) adds 184 reference Kyverno policy documents, 96 Falco rule definitions, 142 executed policy suites and 87 replay observations from 29 distinct captures. It includes source pins, licenses, normalized data, coverage gaps and a local control-search baseline. The fetch/run tools work without a model API key; raw captures are downloaded separately into an ignored cache. These are inputs for task-specific training and verification, not independently labelled containment decisions.
 
+The subsequent [comprehensive collection](datasets/comprehensive/README.md) expands to 19 pinned sources and 37,166 typed records, including Gatekeeper, official Kubernetes fixtures, runtime enforcement, recorded logs, attack and response references. It provides local reproduction tools, source-specific licenses, duplicate groups and a separate execution audit. The complete normalized corpus stays in the local cache; public source files contain its hashes and coverage report.
+
 The source index records each included file's SHA-256. This is a curated snapshot without repository history, API keys, Kubernetes credentials, model weights or build caches. The Apache-2.0 license is included. Current slides and printable materials are in `submission/2026-10-13/`; earlier results are retained only where they support provenance or replay.
 
 The [October 16 Falco audit verification](submission/2026-10-16/README.md) preserves the synthetic webhook contract, failed baseline, repaired rules and explicit visibility warnings. Actual cluster delivery and kernel detection remain separate qualifications.

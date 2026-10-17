@@ -1,0 +1,59 @@
+{
+  "records_audited": 37166,
+  "corpus_manifest_sha256": "1eecd14c7af13d7a34219bcbec91392747ca6107c34bbf7df0a4c33790cefe2b",
+  "audit_sha256": "142bd195584dd4bcdb4395de901aabcbf899f0076f88bf507ac302f70c2e9d26",
+  "engine_observations": 6832,
+  "by_engine": {
+    "falco-replay": {
+      "observations": 87,
+      "verified_contract_expectations": 0
+    },
+    "gator-cel": {
+      "observations": 270,
+      "verified_contract_expectations": 264
+    },
+    "gator-rego": {
+      "observations": 270,
+      "verified_contract_expectations": 264
+    },
+    "kyverno": {
+      "observations": 4739,
+      "verified_contract_expectations": 3139
+    },
+    "kyverno-current": {
+      "observations": 1466,
+      "verified_contract_expectations": 1434
+    }
+  },
+  "gator_configurations": {
+    "gator-cel": {
+      "case_passes": 270,
+      "case_failures": 0,
+      "suite_summaries": 49
+    },
+    "gator-rego": {
+      "case_passes": 270,
+      "case_failures": 0,
+      "suite_summaries": 49
+    }
+  },
+  "gator_native_enabled_is_not_proof_every_case_used_cel": true,
+  "legacy_kyverno": {
+    "suites": 469,
+    "exit_zero": 467,
+    "failed_suites": [
+      "kyverno-legacy/other/allowed-label-changes/.kyverno-test/kyverno-test.yaml",
+      "kyverno-legacy/other/prepend-image-registry/.kyverno-test/kyverno-test.yaml"
+    ],
+    "elapsed_seconds": 121.964154
+  },
+  "independent_response_labels": 0,
+  "new_model_trained": false,
+  "model_api_calls": 0,
+  "observation_file": {
+    "path": "engine-observations.jsonl",
+    "rows": 6832,
+    "bytes": 4685492,
+    "sha256": "b5759d56a32fa42cc143d0fc694f179b129beeb927fa3aad6e0980ab376f41ed"
+  }
+}

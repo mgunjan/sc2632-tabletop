@@ -1,0 +1,29 @@
+{
+  "architecture": "linux/arm64",
+  "image": "sha256:73aaf090f3d85aa34ee199857f03fa3a95c8ede2ffd4cc2cdb5b94e566b11662",
+  "image_pull": "busybox@sha256:73aaf090f3d85aa34ee199857f03fa3a95c8ede2ffd4cc2cdb5b94e566b11662",
+  "artifacts": [
+    {
+      "name": "gator-v3.23.1-linux-arm64.tar.gz",
+      "url": "https://github.com/open-policy-agent/gatekeeper/releases/download/v3.23.1/gator-v3.23.1-linux-arm64.tar.gz",
+      "bytes": 35696486,
+      "sha256": "2d4bd0e28e708c2893a66fdca652f1d775b23fc5a3c07571fd314ba06d19ff2b",
+      "binary_sha256": "e3d4dc204f72f3216b4f97681eb5b185cffd386d9db5f5be43b7af2cdd54f216",
+      "official_checksum_verified": true,
+      "version": "3.23.1",
+      "executable": "gator",
+      "destination": "cache"
+    },
+    {
+      "name": "kyverno-cli_v1.19.1_linux_arm64.tar.gz",
+      "url": "https://github.com/kyverno/kyverno/releases/download/v1.19.1/kyverno-cli_v1.19.1_linux_arm64.tar.gz",
+      "sha256": "d78fecd183e1e6749c653fdb744c88d065e6737ec6856c97c4efac84bec54554",
+      "bytes": 49047951,
+      "redistribute": false,
+      "binary_sha256": "280d4c41a747179f3ccc10a0bcac902c165975434436fcda1731bc2f2f41d0c3",
+      "executable": "kyverno",
+      "destination": "legacy",
+      "version": "1.19.1"
+    }
+  ]
+}

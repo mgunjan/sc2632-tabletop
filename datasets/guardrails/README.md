@@ -4,6 +4,8 @@ This directory contains a real upstream collection, local execution pipeline and
 
 Four upstream repositories are pinned in [sources.lock.json](sources.lock.json). Their source checkouts, CLI binary, 29 syscall captures and raw execution logs are cached under `.session-build/upstream-data-20261016/`. No hosted model or API key is needed.
 
+The subsequent [comprehensive collection](../comprehensive/README.md) expands to 19 pinned sources and 37,166 typed records, including legacy Kyverno, Gatekeeper, official Kubernetes fixtures, runtime enforcement, recorded logs, attack and response references. This directory preserves the original core collection and its executed evidence.
+
 ## Collected and executed
 
 | Material | Recorded result |

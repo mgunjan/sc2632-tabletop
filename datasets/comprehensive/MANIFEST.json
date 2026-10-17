@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.0",
+  "collected_date": "2026-10-17",
+  "builder_sha256": "3f58e20b3709e5c43bc3fdd7379f7cb156a2209256c821ddb4d10d6310f54aca",
+  "collector_sha256": "c6e17baf8df34a5c121c87f27d23395e5dbfe53b25639c88a2b851ca677e0dac",
+  "python_version": "3.13.12",
+  "pyyaml_version": "6.0.3",
+  "sources_lock_sha256": "b3b0fd0b25375d6036c986f8922982a727e6587626d73a6cd5f5c4151969a8d0",
+  "source_count": 19,
+  "records": 37166,
+  "unique_record_payloads": 25486,
+  "exact_duplicate_groups": 4304,
+  "source_files_read": 20515,
+  "by_type": {
+    "admission_policy": 1596,
+    "attack_procedure": 452,
+    "attack_reference": 128,
+    "attack_technique": 550,
+    "behavior_case": 12429,
+    "defense_reference": 448,
+    "defense_relationship": 1697,
+    "detection_dependency": 670,
+    "detection_rule": 752,
+    "generator_definition": 116,
+    "natural_language_intent": 147,
+    "network_policy": 128,
+    "posture_control": 290,
+    "posture_rule": 304,
+    "recorded_dataset_context": 14,
+    "recorded_event": 50,
+    "resource_fixture": 16046,
+    "response_action": 7,
+    "response_mapping": 11,
+    "runtime_policy": 577,
+    "test_definition": 13,
+    "workflow_fixture": 741
+  },
+  "by_source": {
+    "atomic-red-team": 452,
+    "attack-stix-data": 2695,
+    "falco-event-generator": 116,
+    "falco-plugins": 352,
+    "falco-rules": 622,
+    "falco-talon": 18,
+    "falco-testing": 13,
+    "gatekeeper-library": 319,
+    "kubearmor-policies": 572,
+    "kubehound": 26,
+    "kubernetes": 4685,
+    "kubescape-regolibrary": 1863,
+    "kyverno-legacy": 18709,
+    "kyverno-policies": 5870,
+    "policybench": 147,
+    "sigma": 448,
+    "splunk-attack-data": 64,
+    "stratus-red-team": 102,
+    "tetragon": 93
+  },
+  "by_role": {
+    "fixture": 30226,
+    "reference": 6940
+  },
+  "intent_alignment_pairs": 2092,
+  "parse_errors": 0,
+  "new_engine_executions_in_this_builder": 0,
+  "independently_labelled_response_decisions": 0,
+  "hosted_model_api_calls": 0,
+  "split_status": "unassigned; exact duplicates and policy families must stay together; near-duplicate review remains required",
+  "not_all_collected_definitions_are_executed": true,
+  "raw_corpus_distribution": "Local cache; per-source licenses and notices retained. No blanket relicensing.",
+  "files": [
+    {
+      "path": "records.jsonl",
+      "rows": 37166,
+      "bytes": 76623673,
+      "sha256": "aca05c3306486d1d719c159f5ab07d1c666bbb445937b685dad97f1e6038252d"
+    },
+    {
+      "path": "intent-pairs.jsonl",
+      "rows": 2092,
+      "bytes": 2378478,
+      "sha256": "13d438821b135f9fbd9e11576ea621a7967c1b3860c4b08910ee2d641509caab"
+    },
+    {
+      "path": "files.jsonl",
+      "rows": 20515,
+      "bytes": 4664372,
+      "sha256": "04789c4c659d01a2d83f90ea5301ac51d1da5cf9598ebb30d97ee56b76749f70"
+    },
+    {
+      "path": "duplicates.jsonl",
+      "rows": 4304,
+      "bytes": 1906596,
+      "sha256": "5ca4b1c41b4ea2f88abfe1fba6d02c9e8bf572749b22d4532ac2ceb5689f881c"
+    },
+    {
+      "path": "parse-errors.jsonl",
+      "rows": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

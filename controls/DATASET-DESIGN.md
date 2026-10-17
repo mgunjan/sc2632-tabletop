@@ -1,6 +1,6 @@
 # Dataset for bounded security decisions
 
-Status: proposed collection and evaluation design, October 16, 2026. The accompanying evidence seed is an already examined regression corpus. It is not a new training set or independent evaluation.
+Status: collection and evaluation design, updated October 17, 2026. The [comprehensive local collection](../datasets/comprehensive/README.md) now spans 19 pinned sources and 37,166 typed records, with source locks, duplicate groups, original assertions and separate execution receipts. Its 2,092 source-description alignments support exploratory retrieval training. The accompanying original evidence seed remains an already examined regression corpus; it is not independent evaluation.
 
 ## What the model should learn
 

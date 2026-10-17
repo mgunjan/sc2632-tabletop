@@ -1,0 +1,278 @@
+{
+  "manifest_sha256": "1eecd14c7af13d7a34219bcbec91392747ca6107c34bbf7df0a4c33790cefe2b",
+  "sources": [
+    {
+      "source": "atomic-red-team",
+      "revision": "388942adbd9641f4dfdcf079d7efe9a75ec0ac43",
+      "records": 452,
+      "types": {
+        "attack_procedure": 452
+      },
+      "roles": {
+        "reference": 452
+      },
+      "license": "MIT",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "attack-stix-data",
+      "revision": "c2494b29dd268c46a5d0ea0990553e4327cd2253",
+      "records": 2695,
+      "types": {
+        "attack_technique": 550,
+        "defense_reference": 448,
+        "defense_relationship": 1697
+      },
+      "roles": {
+        "reference": 2695
+      },
+      "license": "LicenseRef-MITRE-ATTACK",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "falco-event-generator",
+      "revision": "07d29365f0d3ba0d160a9d703c914dd293aa27e2",
+      "records": 116,
+      "types": {
+        "generator_definition": 116
+      },
+      "roles": {
+        "fixture": 116
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "falco-plugins",
+      "revision": "0fa68c91e5c408d64d5c6d90a28cc2cb2339c9cd",
+      "records": 352,
+      "types": {
+        "detection_rule": 208,
+        "detection_dependency": 144
+      },
+      "roles": {
+        "reference": 340,
+        "fixture": 12
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "falco-rules",
+      "revision": "81dfa535284a3fb3c04470eaefa435ac8f5b6558",
+      "records": 622,
+      "types": {
+        "detection_dependency": 526,
+        "detection_rule": 96
+      },
+      "roles": {
+        "reference": 622
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "See EXECUTION-AUDIT.json and original core manifest"
+    },
+    {
+      "source": "falco-talon",
+      "revision": "d273e352f80e114954f40c9843fd0a1b71a30d57",
+      "records": 18,
+      "types": {
+        "response_action": 7,
+        "response_mapping": 11
+      },
+      "roles": {
+        "reference": 18
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "falco-testing",
+      "revision": "e8d1d128247ac06a7255abcc5c48dd780b9fbab0",
+      "records": 13,
+      "types": {
+        "test_definition": 13
+      },
+      "roles": {
+        "fixture": 13
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "gatekeeper-library",
+      "revision": "f8e3b4e9ab3b7d1a28092da75c2c5e71aedfd4b9",
+      "records": 319,
+      "types": {
+        "behavior_case": 270,
+        "admission_policy": 49
+      },
+      "roles": {
+        "fixture": 270,
+        "reference": 49
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "See EXECUTION-AUDIT.json and original core manifest"
+    },
+    {
+      "source": "kubearmor-policies",
+      "revision": "38005efe72fc72a7bfbe806cedd18cd2b3d681d3",
+      "records": 572,
+      "types": {
+        "runtime_policy": 485,
+        "admission_policy": 4,
+        "network_policy": 83
+      },
+      "roles": {
+        "reference": 572
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "kubehound",
+      "revision": "d206a94f3fffef5b84b456da0aeea0f6cf27a171",
+      "records": 26,
+      "types": {
+        "attack_reference": 26
+      },
+      "roles": {
+        "reference": 26
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "kubernetes",
+      "revision": "9b3380ed0f0882068abd7fb9bfbc816c595ae79e",
+      "records": 4685,
+      "types": {
+        "behavior_case": 4685
+      },
+      "roles": {
+        "fixture": 4685
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "kubescape-regolibrary",
+      "revision": "01585762365e270a437e3cad490d80f21c2f968b",
+      "records": 1863,
+      "types": {
+        "posture_control": 290,
+        "posture_rule": 304,
+        "behavior_case": 1269
+      },
+      "roles": {
+        "reference": 594,
+        "fixture": 1269
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "kyverno-legacy",
+      "revision": "1d6975a0f9d2dd69c9066cf417e98e2e0674da68",
+      "records": 18709,
+      "types": {
+        "resource_fixture": 12196,
+        "workflow_fixture": 562,
+        "admission_policy": 1177,
+        "behavior_case": 4739,
+        "network_policy": 35
+      },
+      "roles": {
+        "fixture": 18102,
+        "reference": 607
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "See EXECUTION-AUDIT.json and original core manifest"
+    },
+    {
+      "source": "kyverno-policies",
+      "revision": "ec478cb5996376c0d2f09520675805a8e33297c9",
+      "records": 5870,
+      "types": {
+        "resource_fixture": 3849,
+        "workflow_fixture": 179,
+        "admission_policy": 366,
+        "behavior_case": 1466,
+        "network_policy": 10
+      },
+      "roles": {
+        "fixture": 5686,
+        "reference": 184
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "See EXECUTION-AUDIT.json and original core manifest"
+    },
+    {
+      "source": "policybench",
+      "revision": "75200a4f4e0edb1235a5c8954aa3cae7cf69e444",
+      "records": 147,
+      "types": {
+        "natural_language_intent": 147
+      },
+      "roles": {
+        "reference": 147
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "sigma",
+      "revision": "864c5a30af89dc409cf6fe889e95ad9c1e347b9d",
+      "records": 448,
+      "types": {
+        "detection_rule": 448
+      },
+      "roles": {
+        "reference": 448
+      },
+      "license": "DRL-1.1",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "splunk-attack-data",
+      "revision": "aafa53ea228fbab8d9ac3e33c9275fab2136909d",
+      "records": 64,
+      "types": {
+        "recorded_event": 50,
+        "recorded_dataset_context": 14
+      },
+      "roles": {
+        "fixture": 64
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "stratus-red-team",
+      "revision": "592c425f1707d11dfda8cf16fe7027f159dfa172",
+      "records": 102,
+      "types": {
+        "attack_reference": 102
+      },
+      "roles": {
+        "reference": 102
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    },
+    {
+      "source": "tetragon",
+      "revision": "c9600dc8ccb43e7d4dfd14017680b7d3f3979bb6",
+      "records": 93,
+      "types": {
+        "runtime_policy": 92,
+        "resource_fixture": 1
+      },
+      "roles": {
+        "reference": 84,
+        "fixture": 9
+      },
+      "license": "Apache-2.0",
+      "engine_evidence": "collected reference/fixture; no new engine execution"
+    }
+  ]
+}

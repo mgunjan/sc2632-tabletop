@@ -1,0 +1,412 @@
+{
+  "schema_version": "1.0.0",
+  "collected_date": "2026-10-17",
+  "scope": "Kubernetes admission, runtime, identity, network, attack and response reference corpus",
+  "sources": [
+    {
+      "name": "atomic-red-team",
+      "url": "https://github.com/redcanaryco/atomic-red-team.git",
+      "revision": "388942adbd9641f4dfdcf079d7efe9a75ec0ac43",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE.txt",
+          "sha256": "65af6027045d23175366eab50e460ab3ee7790e591cb84cc32c78ac63a4c90e1",
+          "bytes": 1078
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "MIT"
+    },
+    {
+      "name": "attack-stix-data",
+      "url": "https://github.com/mitre-attack/attack-stix-data.git",
+      "revision": "c2494b29dd268c46a5d0ea0990553e4327cd2253",
+      "sparse_paths": [
+        "enterprise-attack"
+      ],
+      "license_files": [
+        {
+          "path": "LICENSE.txt",
+          "sha256": "738144f7fb054722a4ef9d3367c51710341dc12fc574c6ac3a41daaaecd8bf5e",
+          "bytes": 1354
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "LicenseRef-MITRE-ATTACK"
+    },
+    {
+      "name": "falco-event-generator",
+      "url": "https://github.com/falcosecurity/event-generator.git",
+      "revision": "07d29365f0d3ba0d160a9d703c914dd293aa27e2",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "falco-plugins",
+      "url": "https://github.com/falcosecurity/plugins.git",
+      "revision": "0fa68c91e5c408d64d5c6d90a28cc2cb2339c9cd",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "falco-rules",
+      "url": "https://github.com/falcosecurity/rules.git",
+      "revision": "81dfa535284a3fb3c04470eaefa435ac8f5b6558",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "f65bbfe8deb986105063c967001b84c00232c31ea4b28564d54b5133435c6453",
+          "bytes": 11348
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "falco-talon",
+      "url": "https://github.com/falcosecurity/falco-talon.git",
+      "revision": "d273e352f80e114954f40c9843fd0a1b71a30d57",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "397b243a37d3e6e23e9fabbb5c0d03713e029f6cf44b1735456ae068d72d10ae",
+          "bytes": 11348
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "falco-testing",
+      "url": "https://github.com/falcosecurity/testing.git",
+      "revision": "e8d1d128247ac06a7255abcc5c48dd780b9fbab0",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "gatekeeper-library",
+      "url": "https://github.com/open-policy-agent/gatekeeper-library.git",
+      "revision": "f8e3b4e9ab3b7d1a28092da75c2c5e71aedfd4b9",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+          "bytes": 11357
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "c9649e2af6499a1427b515dd0fd1d6ebe80e5c6a31d655a3a4a17917fd53cb75",
+          "bytes": 62
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "kubearmor-policies",
+      "url": "https://github.com/kubearmor/policy-templates.git",
+      "revision": "38005efe72fc72a7bfbe806cedd18cd2b3d681d3",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "kubehound",
+      "url": "https://github.com/DataDog/KubeHound.git",
+      "revision": "d206a94f3fffef5b84b456da0aeea0f6cf27a171",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357
+        },
+        {
+          "path": "LICENSE-3rdparty.csv",
+          "sha256": "66af938df3f80d55871914c164ade618efb2cd6b4b60f1da34fa50b24ec156ac",
+          "bytes": 28213
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "120e9c94dc2a83e89d675ea4603aedd783228f1b403425ea1070b5eaa5615136",
+          "bytes": 131
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "kubernetes",
+      "url": "https://github.com/kubernetes/kubernetes.git",
+      "revision": "9b3380ed0f0882068abd7fb9bfbc816c595ae79e",
+      "sparse_paths": [
+        "staging/src/k8s.io/pod-security-admission",
+        "plugin/pkg/admission/security",
+        "test/fixtures/doc-yaml"
+      ],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "kubescape-regolibrary",
+      "url": "https://github.com/kubescape/regolibrary.git",
+      "revision": "01585762365e270a437e3cad490d80f21c2f968b",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+          "bytes": 11357
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "kyverno-legacy",
+      "url": "https://github.com/kyverno/policies.git",
+      "revision": "1d6975a0f9d2dd69c9066cf417e98e2e0674da68",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "kyverno-policies",
+      "url": "https://github.com/kyverno/policies.git",
+      "revision": "ec478cb5996376c0d2f09520675805a8e33297c9",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "policybench",
+      "url": "https://github.com/jbeaven/policybench.git",
+      "revision": "75200a4f4e0edb1235a5c8954aa3cae7cf69e444",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "sigma",
+      "url": "https://github.com/SigmaHQ/sigma.git",
+      "revision": "864c5a30af89dc409cf6fe889e95ad9c1e347b9d",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "4213ed7e21d9435b0aa0aa7d11016e6ab3e4664fa71738ff507306fadce79597",
+          "bytes": 384
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "DRL-1.1"
+    },
+    {
+      "name": "splunk-attack-data",
+      "url": "https://github.com/splunk/attack_data.git",
+      "revision": "aafa53ea228fbab8d9ac3e33c9275fab2136909d",
+      "sparse_paths": [
+        "datasets/attack_techniques/T1046/kubernetes_scanning",
+        "datasets/attack_techniques/T1053.007/kubernetes_audit_cron_job_creation",
+        "datasets/attack_techniques/T1204/kubernetes_audit_daemonset_created",
+        "datasets/attack_techniques/T1204/kubernetes_falco_shell_spawned",
+        "datasets/attack_techniques/T1204/kubernetes_privileged_pod",
+        "datasets/attack_techniques/T1204/kubernetes_unauthorized_access",
+        "datasets/attack_techniques/T1212/kubernetes_nginx_lfi_attack",
+        "datasets/attack_techniques/T1212/kuberntest_nginx_rfi_attack",
+        "datasets/attack_techniques/T1526/kubernetes_audit_pull_image",
+        "datasets/attack_techniques/T1526/kubernetes_kube_hunter",
+        "datasets/attack_techniques/T1610/linux_suspicious_docker_build",
+        "datasets/attack_techniques/T1610/linux_suspicious_privileged_container",
+        "datasets/attack_techniques/T1610/snapattack",
+        "datasets/attack_techniques/T1611/cisco_isovalent_k8_escape"
+      ],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "8505946b2464fa90223996d99eecbc7639a86648ca071f0cac21695be2623a0a",
+          "bytes": 11344
+        }
+      ],
+      "license_id": "Apache-2.0",
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "large_files": [
+        {
+          "path": "datasets/attack_techniques/T1046/kubernetes_scanning/kubernetes_scanning.json",
+          "sha256": "c79a28e5b8ce12898af556e09417e01aa929fd11c7a840754ce7ba65eceb13db",
+          "bytes": 5053
+        },
+        {
+          "path": "datasets/attack_techniques/T1053.007/kubernetes_audit_cron_job_creation/kubernetes_audit_cron_job_creation.json",
+          "sha256": "9826b39d9c2d2998f7313414980429af6600ee8db118cec80dabb81461ee5974",
+          "bytes": 4498
+        },
+        {
+          "path": "datasets/attack_techniques/T1204/kubernetes_audit_daemonset_created/kubernetes_audit_daemonset_created.json",
+          "sha256": "ed7b4fc9ab8c5b26db18bd241e413893f2e21e52e34a9259c0123407dcc49895",
+          "bytes": 7076
+        },
+        {
+          "path": "datasets/attack_techniques/T1204/kubernetes_falco_shell_spawned/kubernetes_falco_shell_spawned.log",
+          "sha256": "b364998b89f38469db72a60114fb696b37e1c2b183ed5c8fc150783d1278de7a",
+          "bytes": 493
+        },
+        {
+          "path": "datasets/attack_techniques/T1204/kubernetes_privileged_pod/kubernetes_privileged_pod.json",
+          "sha256": "7d82ba47ac8df48a7c2256406e4afe32f43dc0836c8aaeca876079831bb51e6e",
+          "bytes": 5107
+        },
+        {
+          "path": "datasets/attack_techniques/T1204/kubernetes_unauthorized_access/kubernetes_unauthorized_access.json",
+          "sha256": "dff87213032a06345d98bac6b26f7486080e17b9e744f38b2bf6553bc0bae65f",
+          "bytes": 1357
+        },
+        {
+          "path": "datasets/attack_techniques/T1212/kubernetes_nginx_lfi_attack/kubernetes_nginx_lfi_attack.log",
+          "sha256": "60e877db8cab698bf8e0299c4b05f1bf44e538732ae16d8588bf6f48c4ef9904",
+          "bytes": 359
+        },
+        {
+          "path": "datasets/attack_techniques/T1212/kuberntest_nginx_rfi_attack/kubernetes_nginx_rfi_attack.log",
+          "sha256": "4d113b58de9e6fbe2afd04dc89060247bdf797920dc973945f420cefafafb16d",
+          "bytes": 756
+        },
+        {
+          "path": "datasets/attack_techniques/T1526/kubernetes_audit_pull_image/kubernetes_audit_pull_image.json",
+          "sha256": "475f2dd4d793bb9d32dbfab2ce49968010b13edc9c35ae09e9f989134ae3a8ba",
+          "bytes": 2727
+        },
+        {
+          "path": "datasets/attack_techniques/T1526/kubernetes_kube_hunter/kubernetes_kube_hunter.json",
+          "sha256": "2c941b815ccafdb139be08892c5e5e0215d6f1be43b28a9b675d317a2574ec25",
+          "bytes": 1226
+        },
+        {
+          "path": "datasets/attack_techniques/T1610/linux_suspicious_docker_build/snapattack_linux.log",
+          "sha256": "e168bd6b2c18612eb56dfb3a7869e1ac3c94ff602cf421e573af86e143829452",
+          "bytes": 3350
+        },
+        {
+          "path": "datasets/attack_techniques/T1610/linux_suspicious_privileged_container/snapattack_linux.log",
+          "sha256": "34d84bcb0efd8b99a55d9985f6e4b10c67239861056ad3f2b21b519fcde51c4f",
+          "bytes": 3408
+        },
+        {
+          "path": "datasets/attack_techniques/T1610/snapattack/snapattack_linux.log",
+          "sha256": "a19e535401e2f18a66f388dfe1331fa6dacfc9e9622d252fea5529f6e19b8c7e",
+          "bytes": 3379
+        },
+        {
+          "path": "datasets/attack_techniques/T1611/cisco_isovalent_k8_escape/cisco_isovalent.log",
+          "sha256": "b27a22a9bcae4e4fdb597ebb7a5b9dcbfe80609608ec76ee833d3f303a684bd5",
+          "bytes": 195551
+        }
+      ]
+    },
+    {
+      "name": "stratus-red-team",
+      "url": "https://github.com/DataDog/stratus-red-team.git",
+      "revision": "592c425f1707d11dfda8cf16fe7027f159dfa172",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357
+        },
+        {
+          "path": "LICENSE-3rdparty.csv",
+          "sha256": "574bfb821acf09fd7f723cfd4c714c26a4a3f716e6459cc1dc14f05a96a75451",
+          "bytes": 16519
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "455ab77504bd1c56f58821302e27456f78b039d0e0d3d4562312bca3889351df",
+          "bytes": 139
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    },
+    {
+      "name": "tetragon",
+      "url": "https://github.com/cilium/tetragon.git",
+      "revision": "c9600dc8ccb43e7d4dfd14017680b7d3f3979bb6",
+      "sparse_paths": [],
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha256": "f096c31ac0fb2e66df5b7ec20049741ae15accd50c8cd4d100b4db6c9353f6aa",
+          "bytes": 11350
+        }
+      ],
+      "license_scope": "Repository notices; nested licenses and source-specific terms remain applicable",
+      "license_id": "Apache-2.0"
+    }
+  ],
+  "normalization_is_not_execution": true,
+  "training_split": "unassigned; independent response labels absent"
+}

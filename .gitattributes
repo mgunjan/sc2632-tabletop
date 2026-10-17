@@ -2,3 +2,5 @@
 *.pdf binary
 *.pptx binary
 *.png binary
+# Preserve upstream notice bytes, including their original line endings.
+datasets/comprehensive/licenses/** -text -whitespace

@@ -188,6 +188,8 @@ Install `requirements-training.txt` for the recorded Python 3.12 environment.
 
 ## Falco, Kyverno and the next dataset
 
+The [comprehensive local corpus](../datasets/comprehensive/README.md) now contains 37,166 typed records from 19 pinned sources and 2,092 source-description alignments for retrieval experiments. Its cases, dependencies, recorded logs and response candidates remain distinct. This expansion does not train or qualify a new Laya checkpoint, and no examined workshop labels were changed.
+
 The [upstream collection](../datasets/guardrails/README.md) is now downloaded and executed locally: 142 Kyverno
 suites and 87 Falco capture/ruleset replays. Its catalog, resource/context examples, expectations and observations
 are available for task-specific curriculum building. Local collection and exploratory fine-tuning do not require
