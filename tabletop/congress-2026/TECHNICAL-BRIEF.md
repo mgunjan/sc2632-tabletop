@@ -1,6 +1,6 @@
 # Technical briefing before case selection
 
-Milind Gunjan and Vivek Mayuranathan explain the implemented paths before attendees choose a scenario. Slides 3–9 establish the environment, detection sources, decision loop, model data, compiled request scope, independent review contract and Quarantine Mode mechanisms. Case selection starts at minute 8; team intent writing starts at minute 11. These are planned timings, pending human rehearsal.
+Milind Gunjan and Vivek Mayuranathan explain the implemented paths before attendees choose a scenario. Slides 2–3 establish the premise, why the fictional payment API makes availability concrete, the unknowns, the agenda and participant output. The visible technical briefing then uses slides 5–7 and 9–11 to introduce the shared platform, detection sources, decision loop, model data, compiled request scope, independent review contract and Quarantine Mode mechanisms; slides 4 and 8 are hidden reference backups. Case selection starts at minute 9; intent writing starts at minute 12. These are planned timings; the full human rehearsal remains outstanding.
 
 ## Implementation and trust boundaries
 
@@ -35,19 +35,26 @@ Sources: `quarantine/q1/`, `quarantine/q2/`, `quarantine/q3/`, `quarantine/quara
 
 | Minutes | Slides | Purpose |
 |---|---|---|
-| 00–02:30 | 1–4 | Purpose, shared environment and control roles |
-| 02:30–04:30 | 5–6 | Decision loop, model data and authority |
-| 04:30–06:15 | 7–8 | Concrete compiler walkthrough and whole-intent review contract |
-| 06:15–07:15 | 9 | Quarantine implementation |
-| 07:15–11 | 10–12 | Assignment, case selection, constraint and setup writing |
-| 11–15 | 13 | Write intent and preserved dependency |
-| 15–19 | 14 | Review proposal |
-| 19–22 | 15 | Decide temporary access |
-| 22–26 | 16 | Select rollout and promotion criteria |
-| 26–34 | 17 | Revisit level/authority; open page 8 at minute 27 and write ordered containment |
-| 34–38 | 18 | Open page 9 and revise or defend the plan |
-| 38–45 | 19–24 | Recorded consequences and case comparison |
-| 45–50 | 25–27 | Independent model-proposal review, sealed findings and measured comparison |
-| 50–60 | 28–30 | Recovery, worked debrief, transfer and questions |
+| 00–03:30 | 1–3, 5–6 | Conflict, premise, agenda, platform map and control roles (slide 4 hidden backup) |
+| 03:30–05:30 | 7 (8 hidden backup) | Decision loop, model data and authority |
+| 05:30–07:15 | 9–10 | Concrete compiler walkthrough and whole-intent review contract |
+| 07:15–08:15 | 11 | Quarantine implementation |
+| 08:15–09:00 | 12 | Paper workflow, table roles and sealed pages |
+| 09:00–10:15 | 13 | Choose one prepared incident case |
+| 10:15–12:00 | 14 | Select operating constraint and service floor |
+| 12–16 | 15 | Write intent and preserved dependency |
+| 16–20 | 16 | Review proposal |
+| 20–23 | 17 | Decide temporary access |
+| 23–27 | 18 | Select rollout and promotion criteria |
+| 28–35 | 19 | Open page 8; write ordered containment |
+| 35–39 | 20 | Open page 9 and revise or defend the plan |
+| 39–40 | 21 | Collect four quick hands-up predictions; do not discuss yet |
+| 40–41:15 | 22 | Reveal additive DNS allowances and verification tests |
+| 41:15–42:30 | 23 | Reveal voluntary PDB eviction and the replacement stall |
+| 42:30–43:30 | 24 | Reveal the ephemeral-container subresource boundary |
+| 43:30–45 | 25 | Reveal the policy-engine failure and native guard |
+| 45–46 | 26 | Compare Case D prediction with its recorded synthetic observation |
+| 46–51 | 27–29 | Independent model-proposal review and measured comparison |
+| 51–60 | 30–32 | Recovery, worked debrief, transfer and questions |
 
-Six hidden backups follow the 30 main slides. Later finding details and the trained-model exercise answers stay sealed until their existing reveal times. The technical briefing supplies the mechanics needed to assess those findings without exposing their particular outcomes.
+The validated v20 deck has 38 numbered slides: 29 visible slides and nine hidden slides (4, 8, 29, 33–38). Slides 4 and 8 are reference backups, slide 29 is the model-cost Q&A backup, and 33–38 are technical/demo backups. Minute 27–28 is a transition buffer: unseal participant page 8 at minute 27, then begin the decision round on slide 19 at minute 28. Slide 21 stays projected from 39:00–40:00 while all four predictions are collected; reveal results on slides 22–25 over 40:00–45:00. Later finding details and the trained-model exercise answers stay sealed until their reveal times. The technical briefing supplies the mechanics needed to assess those findings without exposing their particular outcomes.

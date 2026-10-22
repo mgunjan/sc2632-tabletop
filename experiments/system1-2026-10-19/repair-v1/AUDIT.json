@@ -1,0 +1,21 @@
+{
+  "status": "PASSED_REPAIR_PAIRED_AUDIT",
+  "benchmark_sha256": "e5518c875708613d71cc31255af8609a030348e6bb8f96c6427992c6b3dd27ad",
+  "checkpoint_sha256": "ff57bcf50805a867dcb94cf549da547cf261639aa78ebf6669a81f5659015a28",
+  "data_manifest_sha256": "ac3138ac904b1556c042b4045f4d74bcc0cb19fed369d55a7f0f3126ab72595a",
+  "trainer_sha256": "2509147307d1f0b99bdbad19bafe4820080ee611828dfa3e545ddf93ecb46047",
+  "protocol_sha256": "cddaf6ea04ba695ef96b0edb923fbb54d5969d5644fd0e249f87cfa93f20e7bc",
+  "epoch_deltas_sha256": {
+    "epoch-1.safetensors": "05eb916aa72450d11af9bad1bda0347d6e3b7165b28f51a2dec95f8227c16e77",
+    "epoch-2.safetensors": "38a3a7d8fea3d3314ddc70ce0ed6882878235b96ffc2173ee1efe6630c0b8597",
+    "epoch-3.safetensors": "f73710e82e383958b4e59def80f3c39f0681fe19f17510efc902c3a56f10c156",
+    "epoch-4.safetensors": "b6b916a49cb7190fe97db38bded2da3e28ca5c414ccf9555bc53bfff87379c4c"
+  },
+  "reporter_sha256": "a0d45190744b936516d990c00b2915a4cfe2b0ba67c6a10a722dcffe824d7168",
+  "selected_epoch": 3,
+  "completed_steps": 1312,
+  "new_hosted_calls": 0,
+  "calibration_rows": 150,
+  "test_rows": 150,
+  "qualification": "EXAMINED_AUTHORED_REGRESSION_PENDING_INDEPENDENT_REVIEW"
+}

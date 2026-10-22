@@ -1,0 +1,85 @@
+{
+  "checkpoint_sha256": "ff57bcf50805a867dcb94cf549da547cf261639aa78ebf6669a81f5659015a28",
+  "actual_device": "mps",
+  "precision": "float32 direct forward; runtime comparison includes API probability rounding",
+  "data_manifest_sha256": "ac3138ac904b1556c042b4045f4d74bcc0cb19fed369d55a7f0f3126ab72595a",
+  "splits": {
+    "train": {
+      "rows": 1310,
+      "accuracy": 0.8870229007633588,
+      "cross_entropy": 0.6053300422740716,
+      "recall_by_disposition": {
+        "recommend": 0.0,
+        "review": 0.0,
+        "handoff": 0.0,
+        "exclude": 0.999140154772141
+      },
+      "confusion": {
+        "recommend->exclude": 61,
+        "exclude->exclude": 1162,
+        "review->exclude": 45,
+        "handoff->exclude": 41,
+        "exclude->recommend": 1
+      },
+      "max_encoded_length": 478,
+      "exact_plans": 14,
+      "cases": 131,
+      "missed_required": 147,
+      "wrong_recommendations": 1,
+      "other_errors": 0,
+      "development_error_cost": 740
+    },
+    "dev": {
+      "rows": 180,
+      "accuracy": 0.85,
+      "cross_entropy": 0.777319387636251,
+      "recall_by_disposition": {
+        "recommend": 0.0,
+        "review": 0.0,
+        "handoff": 0.0,
+        "exclude": 0.9870967741935484
+      },
+      "confusion": {
+        "recommend->exclude": 9,
+        "exclude->exclude": 153,
+        "review->exclude": 6,
+        "handoff->exclude": 10,
+        "exclude->recommend": 2
+      },
+      "max_encoded_length": 411,
+      "exact_plans": 2,
+      "cases": 18,
+      "missed_required": 25,
+      "wrong_recommendations": 2,
+      "other_errors": 0,
+      "development_error_cost": 135
+    }
+  },
+  "runtime_parity": [
+    {
+      "id": "research-import:bounded-fetch:egress_profile",
+      "expected": "recommend",
+      "choice": "exclude",
+      "max_probability_difference": 4.4923686981168665e-05
+    },
+    {
+      "id": "research-import:feed-unattributed:egress_profile",
+      "expected": "review",
+      "choice": "exclude",
+      "max_probability_difference": 4.0599244832992525e-05
+    },
+    {
+      "id": "support-companion:identity-and-tools:not_implementable",
+      "expected": "handoff",
+      "choice": "exclude",
+      "max_probability_difference": 3.000288009646912e-05
+    },
+    {
+      "id": "research-import:bounded-fetch:deny_privilege_escalation",
+      "expected": "exclude",
+      "choice": "exclude",
+      "max_probability_difference": 4.552859850227853e-05
+    }
+  ],
+  "elapsed_seconds": 420.32916162500624
+}

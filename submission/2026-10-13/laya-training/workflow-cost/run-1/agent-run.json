@@ -5,7 +5,7 @@
   "questions_sha256": "15018cd8574e1318abf1a490fdf6e15b1b7dbf301fff390a17f257e26137ca8e",
   "threshold": 0.6,
   "model": [
-    "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2"
+    "./.session-build/laya-control-training/checkpoint-v2"
   ],
   "tested_against": "scenario fixtures",
   "trace": [
@@ -49,7 +49,7 @@
       "about": "sentence: Deny new east-west communication from the payments namespace while preserving known service dependencies.",
       "state_sha256": "4a5ea3084bc879ae8131523e1118850c2f05826174325f818b837f197ab63de8",
       "response": {
-        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "model": "./.session-build/laya-control-training/checkpoint-v2",
         "answers": {
           "q": {
             "type": "choice",
@@ -90,7 +90,7 @@
       "about": "sentence: Prevent privilege escalation by workloads in that namespace.",
       "state_sha256": "7ece408d4dfde0105cd1c6c836db4a9d5797bd79b1c7e1a1daf048f656b95280",
       "response": {
-        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "model": "./.session-build/laya-control-training/checkpoint-v2",
         "answers": {
           "q": {
             "type": "choice",
@@ -131,7 +131,7 @@
       "about": "sentence: Restrict the compromised workload's access to the Kubernetes API.",
       "state_sha256": "ca5d542ce22135a5921dda733205098a9df052c1da8ebb5be6ef1bfabe509410",
       "response": {
-        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "model": "./.session-build/laya-control-training/checkpoint-v2",
         "answers": {
           "q": {
             "type": "choice",
@@ -172,7 +172,7 @@
       "about": "sentence: Do not disrupt running workloads; roll out in stages and time-box any exception.",
       "state_sha256": "cb6cd9f8d5091dae4b492d7f358bf4e5be24490fd4827f78b32cf6a2f60f6811",
       "response": {
-        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "model": "./.session-build/laya-control-training/checkpoint-v2",
         "answers": {
           "q": {
             "type": "choice",

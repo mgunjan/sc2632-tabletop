@@ -41,4 +41,4 @@ Return toward Q0 only after the authorized incident lead reviews denied suspect 
 
 For the attendee's own environment, record one requirement, its actual owner and the acceptance evidence still missing. Ask a neighboring table which fact would reverse that decision.
 
-Sources: Case A and the later finding in [the participant pack](../../submission/2026-10-13/PARTICIPANT-PACK.pdf); [the prepared proposal](../../output/frozen-a/PR.md); [the Quarantine Mode playbook](../../quarantine/quarantine-mode.md); and [the recorded lab evidence](../../submission/2026-10-13/live-rehearsal/README.md). These inputs establish the exercise facts, not that this illustrative plan has executed successfully.
+Sources: Case A and the later finding in [the participant pack](../../submission/2026-10-22/PARTICIPANT-PACK.pdf); [the prepared proposal](../../output/frozen-a/PR.md); [the Quarantine Mode playbook](../../quarantine/quarantine-mode.md); and [the recorded lab evidence](../../submission/2026-10-13/live-rehearsal/README.md). These inputs establish the exercise facts, not that this illustrative plan has executed successfully.

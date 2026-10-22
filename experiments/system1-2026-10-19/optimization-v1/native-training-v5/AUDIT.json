@@ -1,0 +1,132 @@
+{
+  "state": "PASSED_NATIVE_OPTIMIZATION_AND_PAIRED_COMPARISON",
+  "checkpoint_sha256": "b91977770379352b21ec9bb56c95b6fb315deac52e3352d9db1e1e5cdc0eb686",
+  "trainer_sha256": "39c4da681aa303c0aa6d96d2cfa165bf6e5448d48faeaeba9a0fce0e02679ff7",
+  "reporter_sha256": "e2e5133c236ffe48d67e1351136d0329e3d32df7f3d694f660b4cb62cf638d5c",
+  "head_forward_source_sha256": "55c3307464e99ab1efc71451f76c7c794e11349ab415e944e01d63716b684838",
+  "protocol_sha256": "d303a5184b2d347bf72636da8d3633dac6ae1829eb2baa1b5bd87a66f4ba9629",
+  "benchmark_sha256": "e5518c875708613d71cc31255af8609a030348e6bb8f96c6427992c6b3dd27ad",
+  "data_manifest_sha256": "ac3138ac904b1556c042b4045f4d74bcc0cb19fed369d55a7f0f3126ab72595a",
+  "selected_update": 1312,
+  "training_fit": {
+    "rows": 1310,
+    "accuracy": 0.9969465648854962,
+    "recall_by_disposition": {
+      "recommend": 1.0,
+      "review": 1.0,
+      "handoff": 1.0,
+      "exclude": 0.9965606190885641
+    },
+    "runtime_cache_argmax_disagreements": 0,
+    "max_probability_difference": 0.0001579711198806677,
+    "single_row_checks": [
+      {
+        "id": "artifact-import:contain:egress_profile",
+        "expected": "recommend",
+        "prediction": "recommend",
+        "max_probability_difference": 1.1920928955078125e-07
+      },
+      {
+        "id": "artifact-import:contain:deny_privilege_escalation",
+        "expected": "exclude",
+        "prediction": "exclude",
+        "max_probability_difference": 1.1920928955078125e-07
+      },
+      {
+        "id": "artifact-import:contain:restrict_registry",
+        "expected": "recommend",
+        "prediction": "recommend",
+        "max_probability_difference": 8.146735730463206e-09
+      },
+      {
+        "id": "artifact-import:contain:restrict_api_access",
+        "expected": "exclude",
+        "prediction": "exclude",
+        "max_probability_difference": 1.1920928955078125e-07
+      },
+      {
+        "id": "artifact-import:contain:deny_sa_token_for_agent_sidecars",
+        "expected": "exclude",
+        "prediction": "exclude",
+        "max_probability_difference": 1.0879790352191776e-05
+      },
+      {
+        "id": "artifact-import:contain:deny_agent_mutation_outside_namespace",
+        "expected": "exclude",
+        "prediction": "exclude",
+        "max_probability_difference": 9.137464222763736e-12
+      },
+      {
+        "id": "artifact-import:missing-paths:egress_profile",
+        "expected": "review",
+        "prediction": "review",
+        "max_probability_difference": 2.384185791015625e-07
+      },
+      {
+        "id": "artifact-import:missing-paths:restrict_registry",
+        "expected": "recommend",
+        "prediction": "recommend",
+        "max_probability_difference": 2.7013809606432886e-05
+      },
+      {
+        "id": "sidecar-bootstrap:remove-identity:restrict_api_access",
+        "expected": "handoff",
+        "prediction": "handoff",
+        "max_probability_difference": 8.150697998476897e-13
+      },
+      {
+        "id": "sidecar-bootstrap:remove-identity:deny_sa_token_for_agent_sidecars",
+        "expected": "recommend",
+        "prediction": "recommend",
+        "max_probability_difference": 4.67928484588348e-13
+      },
+      {
+        "id": "sidecar-bootstrap:api-dependency:deny_sa_token_for_agent_sidecars",
+        "expected": "review",
+        "prediction": "review",
+        "max_probability_difference": 2.182576075426823e-08
+      },
+      {
+        "id": "sidecar-bootstrap:projected-token:not_implementable",
+        "expected": "handoff",
+        "prediction": "handoff",
+        "max_probability_difference": 4.135636544333465e-08
+      },
+      {
+        "id": "deployment-operator:identity-unknown:deny_agent_mutation_outside_namespace",
+        "expected": "review",
+        "prediction": "review",
+        "max_probability_difference": 2.384185791015625e-07
+      },
+      {
+        "id": "deployment-operator:identity-unknown:require_ticket_on_agent_changes",
+        "expected": "review",
+        "prediction": "review",
+        "max_probability_difference": 4.795654096056978e-09
+      },
+      {
+        "id": "debug-privileges:existing-process:not_implementable",
+        "expected": "handoff",
+        "prediction": "handoff",
+        "max_probability_difference": 4.3667052523232996e-05
+      },
+      {
+        "id": "debug-privileges:non-root-only:not_implementable",
+        "expected": "handoff",
+        "prediction": "handoff",
+        "max_probability_difference": 2.384185791015625e-07
+      }
+    ],
+    "exact_plans": 128,
+    "cases": 131,
+    "missed_required": 0,
+    "wrong_recommendations": 3,
+    "other_errors": 1,
+    "development_error_cost": 16
+  },
+  "calibration_rows_paired": 150,
+  "test_rows_paired": 150,
+  "new_hosted_calls": 0,
+  "new_api_usd": 0,
+  "qualification": "EXAMINED_AUTHORED_REGRESSION_PENDING_INDEPENDENT_REVIEW"
+}

@@ -1,0 +1,515 @@
+{
+  "candidate": {
+    "candidate": "claude",
+    "model": "claude-opus-5-5",
+    "device": "Hosted service; server hardware unmeasured",
+    "provider": "anthropic",
+    "confidence_kind": "generated probability estimates, not token probabilities",
+    "adapter_sha256": "e4c4ccaf9a4b9d14d73ade73343ca05243580beb82a3b030d256eb9455e9bf3a",
+    "workspace_configured": true,
+    "thinking": "adaptive",
+    "effort": "medium",
+    "max_output_tokens": 1024,
+    "spending_limit_usd": 8.0,
+    "usage": {
+      "calls": 301,
+      "known_estimated_api_usd": 1.9647360000000003,
+      "conservative_upper_api_usd": 1.9647360000000003,
+      "input_tokens": 311184,
+      "output_tokens": 36000,
+      "unknown_cost_attempts": 0,
+      "budget_exhausted": false
+    },
+    "model_family": "claude"
+  },
+  "data_manifest_sha256": "8bef1c48334a2ed78560d45cc89be8ff1506806eaef52277a7cbae9d58449d7f",
+  "benchmark_sha256": "e5518c875708613d71cc31255af8609a030348e6bb8f96c6427992c6b3dd27ad",
+  "setup_seconds": 1.0420335456728935e-06,
+  "first_decision_warmup_seconds": 5.908059207955375,
+  "calibration": {
+    "rows": 150,
+    "temperature": 0.511646496140377,
+    "nll_before": 0.3077925256004406,
+    "nll_after": 0.20514791585261835,
+    "split": "cal"
+  },
+  "routing_selection": {
+    "split": "cal",
+    "maximum_observed_risk": 0.05,
+    "curve": [
+      {
+        "threshold": 0.5,
+        "accepted_cases": 12,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 3,
+        "coverage": 0.8,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.51,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.52,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.53,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.54,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.55,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.56,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.57,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.58,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.59,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.6,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.61,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.62,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.63,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.64,
+        "accepted_cases": 11,
+        "correctly_accepted_cases": 9,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.7333333333333333,
+        "observed_risk": 0.18181818181818182
+      },
+      {
+        "threshold": 0.65,
+        "accepted_cases": 10,
+        "correctly_accepted_cases": 8,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.6666666666666666,
+        "observed_risk": 0.2
+      },
+      {
+        "threshold": 0.66,
+        "accepted_cases": 10,
+        "correctly_accepted_cases": 8,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.6666666666666666,
+        "observed_risk": 0.2
+      },
+      {
+        "threshold": 0.67,
+        "accepted_cases": 10,
+        "correctly_accepted_cases": 8,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.6666666666666666,
+        "observed_risk": 0.2
+      },
+      {
+        "threshold": 0.68,
+        "accepted_cases": 9,
+        "correctly_accepted_cases": 7,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.6,
+        "observed_risk": 0.2222222222222222
+      },
+      {
+        "threshold": 0.69,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.7,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.71,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.72,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.73,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.74,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.75,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.76,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.77,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.78,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.79,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.8,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.81,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.82,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.83,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.84,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.85,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.86,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.87,
+        "accepted_cases": 8,
+        "correctly_accepted_cases": 6,
+        "wrong_accepted_cases": 2,
+        "coverage": 0.5333333333333333,
+        "observed_risk": 0.25
+      },
+      {
+        "threshold": 0.88,
+        "accepted_cases": 6,
+        "correctly_accepted_cases": 5,
+        "wrong_accepted_cases": 1,
+        "coverage": 0.4,
+        "observed_risk": 0.16666666666666666
+      },
+      {
+        "threshold": 0.89,
+        "accepted_cases": 6,
+        "correctly_accepted_cases": 5,
+        "wrong_accepted_cases": 1,
+        "coverage": 0.4,
+        "observed_risk": 0.16666666666666666
+      },
+      {
+        "threshold": 0.9,
+        "accepted_cases": 5,
+        "correctly_accepted_cases": 5,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.3333333333333333,
+        "observed_risk": 0.0
+      },
+      {
+        "threshold": 0.91,
+        "accepted_cases": 4,
+        "correctly_accepted_cases": 4,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.26666666666666666,
+        "observed_risk": 0.0
+      },
+      {
+        "threshold": 0.92,
+        "accepted_cases": 4,
+        "correctly_accepted_cases": 4,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.26666666666666666,
+        "observed_risk": 0.0
+      },
+      {
+        "threshold": 0.93,
+        "accepted_cases": 4,
+        "correctly_accepted_cases": 4,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.26666666666666666,
+        "observed_risk": 0.0
+      },
+      {
+        "threshold": 0.94,
+        "accepted_cases": 4,
+        "correctly_accepted_cases": 4,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.26666666666666666,
+        "observed_risk": 0.0
+      },
+      {
+        "threshold": 0.95,
+        "accepted_cases": 3,
+        "correctly_accepted_cases": 3,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.2,
+        "observed_risk": 0.0
+      },
+      {
+        "threshold": 0.96,
+        "accepted_cases": 3,
+        "correctly_accepted_cases": 3,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.2,
+        "observed_risk": 0.0
+      },
+      {
+        "threshold": 0.97,
+        "accepted_cases": 3,
+        "correctly_accepted_cases": 3,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.2,
+        "observed_risk": 0.0
+      },
+      {
+        "threshold": 0.98,
+        "accepted_cases": 1,
+        "correctly_accepted_cases": 1,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.06666666666666667,
+        "observed_risk": 0.0
+      },
+      {
+        "threshold": 0.99,
+        "accepted_cases": 1,
+        "correctly_accepted_cases": 1,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.06666666666666667,
+        "observed_risk": 0.0
+      }
+    ],
+    "qualification": "Exploratory; no independent risk guarantee"
+  },
+  "metrics": {
+    "decisions": 150,
+    "cases": 15,
+    "scenario_families": 5,
+    "decision_accuracy": 0.9666666666666667,
+    "exact_plan_cases": 10,
+    "exact_plan_rate": 0.6666666666666666,
+    "required_controls": 23,
+    "missed_required_controls": 0,
+    "required_control_recall": 1.0,
+    "recommendations": 9,
+    "wrong_recommendations": 0,
+    "recommendation_precision": 1.0,
+    "recommendation_recall": 0.9,
+    "correct_reviews": 5,
+    "expected_reviews": 5,
+    "correct_handoffs": 8,
+    "expected_handoffs": 8,
+    "invalid_decisions": 0,
+    "ece_10bins": 0.03910745965407608,
+    "recall_by_disposition": {
+      "recommend": 0.9,
+      "review": 1.0,
+      "handoff": 1.0,
+      "exclude": 0.968503937007874
+    },
+    "routing": {
+      "threshold": 0.9,
+      "accepted_cases": 5,
+      "correctly_accepted_cases": 5,
+      "wrong_accepted_cases": 0,
+      "coverage": 0.3333333333333333,
+      "observed_risk": 0.0
+    }
+  },
+  "family_bootstrap_95": {
+    "metric": "exact_plan_rate",
+    "group": "scenario_family",
+    "replicates": 1000,
+    "low": 0.4,
+    "high": 0.9333333333333333,
+    "limitations": "Few authored families; not independent enterprise evidence"
+  },
+  "timing": {
+    "warm_decision_p50_ms": 2614.941062522121,
+    "warm_decision_p95_ms": 3976.9932919880375,
+    "full_case_p50_ms": 26570.967418840155,
+    "full_case_p95_ms": 35703.12270987779,
+    "scope": "Sequential ten-candidate assessment; includes inference and response validation, excludes human review and deployment"
+  },
+  "peak_process_rss_bytes": 35717120,
+  "memory_scope": "Benchmark client only; hosted service hardware/memory is not measured",
+  "cost": {
+    "api_usd": null,
+    "estimated_api_usd_all_calls": 1.9647360000000003,
+    "estimated_calibration_api_usd": 0.98288,
+    "estimated_test_api_usd": 0.9743,
+    "estimated_api_usd_per_attempted_test_case": 0.06495333333333334,
+    "estimated_api_usd_per_correctly_accepted_test_case": 0.19486,
+    "spending_limit_usd": 8.0,
+    "price_as_of": "2026-10-18",
+    "price_source": "https://platform.claude.com/docs/en/models/overview",
+    "basis": "Published list-price estimate from provider usage; billed cost and human review remain unpriced",
+    "total_operating_usd": null
+  },
+  "qualification": "INCOMPLETE_INDEPENDENT_REVIEW_AND_SOURCE_GROUNDED_DATA_EXPANSION",
+  "limitations": [
+    "Assistant-authored cases and labels",
+    "Source-family separation does not prove semantic novelty",
+    "Few case families",
+    "No enterprise containment or industry-leadership claim"
+  ]
+}

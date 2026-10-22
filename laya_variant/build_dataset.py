@@ -394,16 +394,18 @@ def scenario_rows():
                      "labels": {q: q in flags for q in INPUT_QIDS}, "template": "scenario-" + pathlib.Path(f).stem})
     return rows
 
-def build(n, seed):
+def build(n, seed, with_dev=False):
     rng = random.Random(seed)
     tr_pool, te_pool = split_pools()
     out = {k: [] for k in ("train", "cal", "test_iid", "test_ood", "scenario", "gold")}
+    if with_dev: out['dev'] = []
     for task, (maker, tids) in MAKERS.items():
         tr_t, te_t = template_split(set(tids), rng)
         per = n // 3
         for i in range(per):
             u = rng.random()
             split = "train" if u < 0.70 else "cal" if u < 0.85 else "test_iid"
+            if with_dev and 0.60 <= u < 0.70: split = 'dev'
             out[split].append({"task": task, **maker(rng, tr_pool, tr_t)})
         for i in range(max(50, per // 6)):
             out["test_ood"].append({"task": task, **maker(rng, te_pool, te_t)})
@@ -423,8 +425,9 @@ def main():
     ap.add_argument("--n", type=int, default=6000, help="constructed examples across the three tasks (train+cal+test_iid)")
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--out", default=str(HERE / "data"))
+    ap.add_argument('--with-dev', action='store_true', help='Reserve a separate development split from the legacy training allocation; cal remains untouched')
     a = ap.parse_args()
-    out = build(a.n, a.seed)
+    out = build(a.n, a.seed, with_dev=a.with_dev)
     d = pathlib.Path(a.out); d.mkdir(parents=True, exist_ok=True)
     manifest = {}
     for split, rows in out.items():

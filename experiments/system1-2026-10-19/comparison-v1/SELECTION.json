@@ -1,0 +1,13 @@
+{
+  "rule": "Lowest selected development macro-cross-entropy; no test score used",
+  "primary_source_candidate": "source-adapted",
+  "lowest_dev_loss_candidate": "no-reference-adapted",
+  "development_loss": {
+    "balanced-head": 1.3790650208363824,
+    "balanced-adapted": 1.3844133601607387,
+    "no-reference-head": 1.3717086254695838,
+    "no-reference-adapted": 1.3616719497895156,
+    "source-head": 1.3715367049619716,
+    "source-adapted": 1.370806384140018
+  }
+}

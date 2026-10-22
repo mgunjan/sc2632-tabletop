@@ -1,1 +1,0 @@
-Deny new east-west communication from the payments namespace while preserving known service dependencies. Prevent privilege escalation by workloads in that namespace. Restrict the compromised workload's access to the Kubernetes API. Do not disrupt running workloads; roll out in stages and time-box any exception. Preserve required monitoring access.

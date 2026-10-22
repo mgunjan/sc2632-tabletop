@@ -16,7 +16,7 @@ The opening also explains the environment for attendees unfamiliar with Kubernet
 
 For participants new to Kubernetes, the opening starts with the shared application platform and familiar functions before technical names. Application copies are replicas, resource groups are namespaces, and workload identities make management requests. State the required security behavior in your own words. Scores assess the decision and evidence, rather than Kubernetes vocabulary or code.
 
-Slides 3–9 explain [the implementation](../../tabletop/congress-2026/TECHNICAL-BRIEF.md) before case selection. Slide 4 maps the control roles: Falco and audit logs provide detection evidence, Kyverno checks proposed changes, separate traffic/API/tool controls constrain access, and people authorize containment and recovery. Falco rules passed validation; live detection remains unverified. The incident alerts are supplied exercise facts. The common demo compiles proposals and runs policy tests.
+Slides 4–11 explain [the implementation](../../tabletop/congress-2026/TECHNICAL-BRIEF.md) before case selection on slide 13. Slide 2 explains why the fictional payment API gives teams a concrete availability floor; it is not payment-compliance guidance. Slide 6 maps the control roles: Falco and audit logs provide detection evidence, Kyverno checks proposed changes, separate traffic/API/tool controls constrain access, and people authorize containment and recovery. Falco rules passed static and synthetic checks; live detection remains unverified. The incident alerts are supplied exercise facts. The common demo compiles proposals and runs policy tests.
 
 After completing recovery, compare your decision record with the [illustrative Case A debrief](../../tabletop/congress-2026/WORKED-DECISION.md). It traces a held approval through later evidence and recovery criteria; it is a paper plan, not executed containment or a required answer.
 
@@ -45,7 +45,7 @@ Start with [controls/README.md](../../controls/README.md) and [controls/ENTERPRI
 
 Case D uses a [human RBAC review](../../scenarios/d-secret-enumeration/review/PR.md), rather than a generator scenario `d`. Its [executed synthetic lab record](../../submission/2026-10-13/live-rehearsal/case-d/README.md) distinguishes Pod network isolation, Secret-read authorization and Pod-bound credential invalidation. It does not prove application-key rotation or production monitoring delivery. The verifier refuses an unmarked or remote cluster; it is intended only for the separately created disposable k3d rehearsal lab described in [lab/README.md](../../lab/README.md).
 
-The [October 14 demo audit](../../submission/2026-10-14/README.md) records one fresh prepared Jev run and the added-requirement regression. New intent clauses remain unreviewed and visible; they need an independent contract before any approval.
+The saved Jev result is one prepared fixture run, not a benchmark or proof of live-demo eligibility. New intent clauses remain unreviewed and visible; they need an independent contract before any approval.
 
 ## Read the evidence before drawing a model conclusion
 
@@ -57,6 +57,6 @@ The [expanded upstream dataset](../../datasets/guardrails/README.md) adds 184 re
 
 The subsequent [comprehensive collection](../../datasets/comprehensive/README.md) expands to 19 pinned sources and 37,166 typed records, including Gatekeeper, official Kubernetes fixtures, runtime enforcement, recorded logs, attack and response references. It provides local reproduction tools, source-specific licenses, duplicate groups and a separate execution audit. The complete normalized corpus stays in the local cache; public source files contain its hashes and coverage report.
 
-The source index records each included file's SHA-256. This is a curated snapshot without repository history, API keys, Kubernetes credentials, model weights or build caches. The Apache-2.0 license is included. Current slides and printable materials are in `submission/2026-10-13/`; earlier results are retained only where they support provenance or replay.
+The source index records each included file's SHA-256. This is a curated snapshot without repository history, API keys, Kubernetes credentials, model weights or build caches. The Apache-2.0 license is included. Current slides and printable materials are in `submission/2026-10-22/`; earlier results are retained only where they support provenance or replay. The current versioned deck uses original generated artwork and project-authored diagrams; older presentation exports may still contain presenter-supplied images and are excluded from the current delivery set.
 
 The [October 16 Falco audit verification](../../submission/2026-10-16/README.md) preserves the synthetic webhook contract, failed baseline, repaired rules and explicit visibility warnings. Actual cluster delivery and kernel detection remain separate qualifications.

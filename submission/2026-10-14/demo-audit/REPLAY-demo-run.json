@@ -1,9 +1,0 @@
-{
-  "status": "COMPLETE_REVIEW_PROPOSAL",
-  "mode": "replay",
-  "scenario": "a",
-  "elapsed_seconds": 0.659,
-  "deadline_seconds": 15.0,
-  "deployment_performed": false,
-  "api_calls_possible": false
-}

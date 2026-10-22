@@ -1,42 +1,37 @@
-# October 22 local delivery verification
+# Delivery verification — 22 October 2026
 
-This record distinguishes current local checks from historical lab results. A local fixture pass does not prove enforcement in a live Kubernetes cluster.
+## Current release
 
-## Current source, local environment and tests
+The delivery deck is `SC2632-session-dayof-v20.pptx`. Earlier v11–v19 exports are review history, not current delivery files. The original submitted deck is retained separately. The current deck has 38 numbered slides: 29 visible and nine hidden backups (4, 8, 29, 33–38). Each slide has nonempty speaker notes. The hidden model-comparison slides keep pilot quality and separately measured workflow cost distinct.
 
-- The official Kyverno CLI 1.19.1 macOS arm64 binary is present in the ignored local `.venv-session/bin/kyverno`; its recorded checksum matched the official release archive. It is excluded from Git and participant packages.
-- `PATH="$PWD/.venv-session/bin:$PATH" .venv-session/bin/python tabletop/congress-2026/demo.py --check` returned `ready: true`, found the local CLI and verified exact version 1.19.1. The reference workflow does not require a hosted API or cluster.
-- `scripts/test-all.sh` completed with `ALL PASSED`. This includes hand-written and generated Kyverno policies, Python/unit and Laya pipeline tests, evidence capture and redaction, expiry behavior, Falco static lint, and standards crosswalk integrity.
-- Optional tools unavailable in this environment were skipped: strict `kubeconform`, `shellcheck`, and the browser-based tabletop packet renderer. The Python tests that bind loopback mocks passed when run with local `127.0.0.1` access.
-- The deck is produced from the editable source and neutral SVG map. Its build validates source package integrity, imports the result with the first-party authoring library, and runs presentation layout checks. The v11 PPTX was also opened in Microsoft PowerPoint on Mac.
+The visible PDF contains 29 pages; the reference PDF contains the nine hidden slides. They use exact rendered slide images and searchable source text, with bookmarks carrying the PowerPoint slide numbers. They are not native PowerPoint PDF exports. PowerPoint slide jumps use the 38-slide numbering; PDF page numbers differ.
 
-## October 22 delivery files
+The nine-page `PARTICIPANT-PACK.pdf`, two-page `PODIUM-CHEATSHEET.pdf`, two-page `CONTROL-REVIEW.pdf` and one-page `REVIEW-SCORECARD.pdf` form the print set. Page 8 is unsealed at minute 27 and the containment round starts at 28. Page 9 stays folded until 35. All four room predictions are collected on slide 21 at minutes 39–40 before answers on slides 22–25. Proposal-review page 2 stays folded until slide 28.
 
-- `SC2632-session-dayof-review-v11.pptx`: 38 slides, 32 visible and six hidden backups, with 38 speaker notes. Structural and layout validators returned zero findings and warnings; first-party import passed. All 38 slides have title semantics and all 11 embedded images have descriptive text alternatives. The full 38-slide contact sheet and changed opening pages were visually inspected.
-- `SC2632-session-dayof-review-v11.pdf`: 38-page 16:9 PDF rendered from the exact deck slide images. It is a review/delivery rendering, not a native PowerPoint PDF export.
-- `PODIUM-CHEATSHEET.pdf`: two-page field guide, aligned to the 60-minute agenda, slide numbers, roles, demo boundary and fallback. Its pages were rendered and visually checked.
-- `PARTICIPANT-PACK.pdf`: nine-page participant exercise pack.
-- `ATTENDEE-SOURCE-KIT.zip`: curated package with deck, PDF, participant and presenter materials, source assets and a SHA-256 file index. Its link audit checked 116 Markdown targets with zero missing links across 727 source files.
-- The full contact sheet and build receipt are retained in ignored `.session-build/congress-2026-context-review-v11/`.
+## Verified locally
 
-The opening now explains why the fictional payment API is used (a visible availability floor, not payment-compliance instruction), what is fixed and unknown before case choice, the two AI roles, the four control boundaries, the hour's agenda, the participant output and the paper-based/no-Kubernetes-experience requirement. The exercise starts at minute 12; the revised speaker notes shift the original sequence once in `mm:ss` and close at minute 60. The presenter and co-presenter guides use the same timing and slide references.
+- Official Kyverno CLI 1.19.1 is installed in ignored local build storage. `demo.py --check` reports `ready: true` for the offline reference path.
+- Fresh Scenario A/B/C reference runs each completed in under 1.5 seconds. All report `REVIEW_REQUIRED`, with automatic promotion disabled. They compile current source and execute fixtures; they make no provider call or cluster change.
+- A's independent fixed privilege gate passes. That gate does not cover B/C; their authored/generated policy suites pass separately. B's illustrative 24-hour exception exceeds a four-hour catalog maximum and is flagged `EXCEPTION_LIMIT_EXCEEDED` for human disposition.
+- A Jev replay completes with the independent privilege gate passing. The authentic Strands replay remains `INCOMPLETE_PROPOSAL` / `REQUIRED_POLICY_MISSING`. A failed recorded proposal is not converted into a successful run.
+- `scripts/test-all.sh` exits zero with `ALL PASSED`: 12 authored Kyverno suites, seven generated-policy parity suites, 30 Python test scripts, the separate seven-test tiny random Laya checkpoint pipeline, fake-kubectl evidence capture, offline exception expiry, Falco static lint and standards checks. The tiny checkpoint test proves plumbing, not model quality.
+- Strict kubeconform v0.6.7 checks 49 resources: 47 valid, zero invalid/errors, two explicitly skipped kinds. ShellCheck v0.11.0 passes 22 scripts. The browser packet renderer creates 18 PDFs without card overflow using the installed Chrome executable.
+- Evidence capture creates private directories/files, labels raw forensic material as sensitive, and refuses bundle-name reuse. Preflight and direct consequence scripts verify the exact expected disposable context; preflight also checks the pinned Kyverno CLI version before cluster access.
 
-Artwork rights are recorded in `IMAGE-RIGHTS-REVIEW.md`. The deck uses original generated illustrations and a source-authored platform diagram. Presenter-supplied Spider-Man and medal images with unverified redistribution rights are excluded from the current deck and curated package.
+Full command and machine-local evidence are retained in ignored `.session-build/dayof-current-review/quality-checks.json`, `test-all-full.log`, and `verification.json`. The raw forensic bundle is excluded from participant exports.
 
-## Technical claim boundaries
+## Presentation checks
 
-- Kyverno checks new resource requests; it does not stop an already-running Pod or a Secret read. NetworkPolicy and RBAC cover different traffic and API-action boundaries.
-- Falco rules passed static lint and audit rules passed synthetic tests. Live kernel capture, API-server delivery and alert-to-response are not verified for this session. Falco does not trigger quarantine in the workshop implementation.
-- Fresh offline A/B/C policy-reference runs completed in 1.54 s, 1.26 s and 0.59 s. All remain `REVIEW_REQUIRED`; automatic promotion is disabled. They compile current source and evaluate fixtures, not live cluster enforcement.
-- The historical October 13 lab and Case D records remain dated observations. They are not fresh October 22 cluster runs. The Case D 41.2-second credential observation is one measured interval, not an SLA or guaranteed bound.
-- No live cluster end-to-end run is claimed. The active context was not the disposable target lab. The current local demo compiles supplied source and evaluates offline fixtures; it does not call an AI provider, open a PR or modify a cluster.
+The first-party authoring library renders all 38 slides. Package integrity, geometry, required native evidence tables and import validation pass. All 38 slides were inspected in the v18 visual pass; v19 changed slides 2, 20, 26, 32 and 33 and these were re-inspected. v20 changes only speaking cues and evidence source anchors. The deck keeps ten native editable tables; evidence has not been replaced by illustrations. All 38 speaker notes and the hidden-slide set are checked after export.
 
-## Still outstanding before presenting
+The opening defines the fictional payment service and availability floor, the workload/policy-author distinction, the agenda, Kubernetes terms and control boundaries before case selection. The table instructions show the actual decision record. The three original illustrations support ownership, exception review and narrow self-validation; the [artwork record](IMAGE-RIGHTS-REVIEW.md) identifies their provenance. Supplied meme photos from earlier review drafts are excluded from the delivery deck and public kit.
 
-- The full 60-minute rehearsal with both presenters and sealed evidence handoffs has not occurred.
-- The venue projector, speaker notes and local network have not been checked in the room.
-- PowerPoint's Accessibility Assistant reports zero issues for contrast, missing image descriptions, missing table headers, missing/duplicate slide titles and restricted access. It raises a generic “Check reading order” review item on all 38 slides; I inspected the first two opening slides and their sequence was logical, but did not mark all remaining slide-order prompts reviewed.
-- Structural package checks, first-party import, native open, full contact-sheet review and PDF visual checks passed. Native visual review on the venue projector remains outstanding.
-- Live cluster enforcement and live Falco alert-to-response remain unverified. Do not present recorded observations as fresh execution or offline fixture results as containment proof.
+## Evidence limits and remaining delivery checks
 
-The slides and locally runnable offline demo are prepared for review. Rehearsal and room setup remain delivery gates; this document does not claim those gates have passed.
+- Dated k3s and synthetic Case D observations remain recorded evidence. No fresh local cluster/CNI enforcement run was executed in this pass. Do not describe offline fixture results as runtime containment.
+- Falco static/synthetic checks do not establish live kernel capture, API-server audit delivery or alert-to-response. Live Falco is not part of the workshop demonstration.
+- The current v20 deck has not been visually checked in native PowerPoint or on the venue projector. Image rendering and package validation do not establish native font/layout behavior.
+- Milind and Vivek have not completed the full 60-minute rehearsal with timed handoffs and sealed evidence. The rehearsal record remains blank until they do.
+- Application-key rotation and production containment effectiveness are not established by the copied Pod-bound token demonstration.
+
+The verified day-of demonstration is the bounded offline reference/replay workflow. The public package is an adaptable exercise and source example; it is not a production-readiness certification or a claim that the live environment has been contained.

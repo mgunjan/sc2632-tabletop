@@ -73,7 +73,7 @@ So beating keywords on constructed splits proves nothing. The questions where ke
 
 ```bash
 pip install laya torch transformers              # any machine
-python3 laya_variant/build_dataset.py --n 6000   # ~1s; writes laya_variant/data/
+python3 laya_variant/build_dataset.py --n 6000 --with-dev   # use a fresh --out to preserve prior evidence
 
 # 0. Baselines and zero-shot bases. Is a variant even needed?
 python3 laya_variant/evaluate.py --out runs/zero-shot \
@@ -96,6 +96,12 @@ python3 laya_variant/evaluate.py --out runs/v1-report \
 # 4. Use it
 python3 generator/classify.py --scenario b --model runs/v1-head
 ```
+
+New training defaults to checkpoint selection on `dev`, leaving `cal` for
+temperature fitting. The legacy builder's `--with-dev` flag reserves development
+rows from its former training allocation. Omitting it preserves the historical
+split generation for reproduction; it does not produce a separate development
+file. Previously recorded datasets and scores have not been rewritten.
 
 **Full fine-tune** (drop `--freeze-encoder`) wants a CUDA GPU. Upstream's reference point: Kaggle's free 2×T4 takes 4–5 h for 4 epochs over ~30k question rows. The default build gives about 4,200 training states and about 28k question rows, so budget a similar evening. `train.py` optimises laya's own `proper_reward`, a strictly proper scoring rule, directly. Upstream's notebook reaches the same reward through GRPO-style policy gradient. Use theirs if you want the RL path. For single-step decisions the deterministic gradient is simpler and should not be worse, but that is untested here.
 

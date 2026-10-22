@@ -1,0 +1,87 @@
+{
+  "status": "PASSED_SOURCE_CURRICULUM_AUDIT",
+  "source_data_manifest_sha256": "2ea8a05b1a0c240318e1b971c87c5e717bb7bf57f80e715719c677cb2dac7233",
+  "masked_data_manifest_sha256": "d0cd56dcd72404cae065db6755e4d7bffb92e0b502e87b25180180c79466b2ad",
+  "corpus_manifest_sha256": "1eecd14c7af13d7a34219bcbec91392747ca6107c34bbf7df0a4c33790cefe2b",
+  "original_data_manifest_sha256": "8bef1c48334a2ed78560d45cc89be8ff1506806eaef52277a7cbae9d58449d7f",
+  "label_counts": {
+    "recommend": 256,
+    "handoff": 256,
+    "exclude": 256,
+    "review": 256
+  },
+  "source_context_rows": 851,
+  "source_records": 202,
+  "source_families": 202,
+  "source_publishers": [
+    "falco-plugins",
+    "falco-rules",
+    "gatekeeper-library",
+    "kubearmor-policies",
+    "kubescape-regolibrary",
+    "kyverno-legacy",
+    "kyverno-policies",
+    "tetragon"
+  ],
+  "original_nonexclude_assessments_preserved": 45,
+  "per_control_labels": {
+    "deny_agent_mutation_outside_namespace": {
+      "recommend": 41,
+      "review": 34,
+      "exclude": 24
+    },
+    "restrict_api_access": {
+      "handoff": 90,
+      "exclude": 20
+    },
+    "audit_replica_surge": {
+      "exclude": 33,
+      "recommend": 39,
+      "review": 45
+    },
+    "deny_privilege_escalation": {
+      "review": 45,
+      "recommend": 42,
+      "exclude": 27
+    },
+    "deny_sa_token_for_agent_sidecars": {
+      "exclude": 27,
+      "recommend": 16,
+      "review": 21
+    },
+    "restrict_registry": {
+      "recommend": 44,
+      "exclude": 26,
+      "review": 36
+    },
+    "require_ticket_on_agent_changes": {
+      "exclude": 32,
+      "recommend": 36,
+      "review": 33
+    },
+    "process": {
+      "handoff": 76,
+      "exclude": 17
+    },
+    "not_implementable": {
+      "handoff": 90,
+      "exclude": 27
+    },
+    "egress_profile": {
+      "review": 42,
+      "recommend": 38,
+      "exclude": 23
+    }
+  },
+  "heldout_hashes": {
+    "dev.jsonl": "66e63fc589534122144582318deacb8868e500e6d1d88c178f6b9d3e3916b913",
+    "cal.jsonl": "13c3fdc113d97a6d21a066a1c3036c1c3ca4947d555f3cebba82b39f23e0fd5d",
+    "test_authored.jsonl": "f30e62572e7c551e65e333d93217ceeacd12fb2c6aa7a39cb6780b91a4481cc0",
+    "questions.json": "84e89ba114b948def346be4728ca0c20c90300d282c05f45ee0049ebed90bae6"
+  },
+  "reference_text_role": "Static domain context; the counterfactual request and evidence determine the generated label",
+  "independent_response_labels": 0,
+  "counterfactual_request_wordings": 40,
+  "qualification": "Programmatic training labels pending review; this audit proves construction/provenance, not incident-response truth",
+  "auditor_sha256": "7a4dbc30c64dadaad6a15f8ee21f2867ce33b3a208b45686ff8500dd0c7c5b3a"
+}

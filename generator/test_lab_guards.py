@@ -27,7 +27,7 @@ if name == 'kubectl':
  if any('readyReplicas' in a for a in args): print('1' if 'kyverno' in args else '3/3')
  sys.exit(0)
 if name == 'curl': print('healthy-but-unevaluated'); sys.exit(0)
-if name == 'kyverno': print('Version: 1.19.1'); sys.exit(0)
+if name == 'kyverno': print(os.environ.get('FAKE_KYVERNO_VERSION','Version: 1.19.1')); sys.exit(0)
 sys.exit(0)
 '''
         for name in ("kubectl", "k3d", "docker", "helm", "curl", "kyverno"):
@@ -35,6 +35,7 @@ sys.exit(0)
             path.write_text(script); path.chmod(0o700)
         self.env = {**os.environ, "PATH": str(self.folder) + os.pathsep + str(Path(sys.executable).parent) + os.pathsep + os.environ.get("PATH", ""),
                     "TEST_COMMAND_LOG": str(self.log), "TRUSTFALL_LAB_OK": "", "STAGED": "", "DEMO_REPLAY": "",
+                    "TRUSTFALL_EXPECTED_CONTEXT": "unit-test-context",
                     "DECIDER_EVAL_SUMMARY": str(next((ROOT / "submission/2026-10-12/benchmark/preregistered-decider").glob("*.summary.json")))}
 
     def run_script(self, script, **env):
@@ -67,6 +68,29 @@ sys.exit(0)
         self.assertTrue(line.startswith("SKIP"), line)
         self.assertNotIn("step 3 runs live", line)
         self.assertNotIn("curl", self.log.read_text())
+
+    def test_preflight_refuses_wrong_context_before_cluster_api_requests(self):
+        result = self.run_script("tabletop/consequences/preflight.sh", TRUSTFALL_EXPECTED_CONTEXT="another-context")
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertIn("does not match expected 'another-context'", result.stdout)
+        commands = self.log.read_text()
+        self.assertNotIn("/api/v1/namespaces/payments", commands)
+        self.assertNotIn("configmaps/trustfall-lab", commands)
+
+    def test_wrong_kyverno_version_fails_preflight(self):
+        result = self.run_script("tabletop/consequences/preflight.sh", TEST_MARKER="1",
+                                 FAKE_KYVERNO_VERSION="Version: 1.20.0")
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertIn("want exactly 1.19.1", result.stdout)
+
+    def test_stage_refuses_wrong_context_before_destructive_calls(self):
+        result = self.run_script("tabletop/consequences/stage.sh", TEST_MARKER="1",
+                                 TRUSTFALL_EXPECTED_CONTEXT="another-context")
+        self.assertEqual(result.returncode, 3, result.stdout + result.stderr)
+        self.assertIn("does not match expected lab context", result.stderr)
+        commands = self.log.read_text()
+        self.assertNotIn(" delete ", commands)
+        self.assertNotIn("apply", commands)
 
     def test_missing_yaml_fails_before_live_rehearsal_writes(self):
         python = self.folder/'python3'

@@ -14,7 +14,7 @@ GEN = pathlib.Path(__file__).resolve().parent
 CONTRACT = GEN / "contracts/requirements.json"
 
 
-def evaluate(scenario, intent, spec, decisions, out):
+def evaluate(scenario, intent, spec, decisions, out, handoffs=None):
     import generate as g
     import decider_agent as da
     import yaml
@@ -78,7 +78,12 @@ def evaluate(scenario, intent, spec, decisions, out):
             log = re.sub(r"\x1b\[[0-9;]*m", "", run.stdout + run.stderr)
             (tests / "result.txt").write_text(log)
             passed = run.returncode == 0 and "6 tests passed and 0 tests failed" in log
-            behavior.update(status="PASS" if passed else "FAIL", passed=passed)
+            actions = (yaml.safe_load(privilege.read_text()) or {}).get("spec", {}).get("validationActions")
+            if passed and actions != ["Deny"]:
+                # The six checks pass in Audit or Warn too; a policy that only reports does not block anything.
+                behavior.update(status="PASS_BUT_NOT_ENFORCING", passed=False, validation_actions=actions)
+            else:
+                behavior.update(status="PASS" if passed else "FAIL", passed=passed)
         except (OSError, subprocess.TimeoutExpired):
             behavior.update(status="TOOL_UNAVAILABLE_OR_TIMEOUT", passed=False)
     elif required_privilege:
@@ -86,10 +91,13 @@ def evaluate(scenario, intent, spec, decisions, out):
 
     problems = [r for r in ledger if r["status"] in (
         "UNBOUND_INTENT_REQUIRES_NEW_CONTRACT", "MODEL_ABSTAINED", "UNEXPECTED_CONTROL_MAPPING", "REQUIRED_POLICY_MISSING")]
-    blocked = not bound or bool(problems) or behavior["status"] in ("FAIL", "REQUIRED_POLICY_MISSING", "TOOL_UNAVAILABLE_OR_TIMEOUT")
+    blocked = not bound or bool(problems) or behavior["status"] in ("FAIL", "PASS_BUT_NOT_ENFORCING", "REQUIRED_POLICY_MISSING", "TOOL_UNAVAILABLE_OR_TIMEOUT")
     review = {"status": "INCOMPLETE_PROPOSAL" if blocked else "REVIEW_REQUIRED", "promotion_allowed": False,
               "contract_bound": bound, "requirements_contract_sha256": hashlib.sha256(CONTRACT.read_bytes()).hexdigest(),
               "requirements": ledger, "unmatched_spec_clauses": unmatched_spec_clauses, "independent_behavior": behavior,
+              # Decisions the model was not confident enough to make (dependency allowances kept open, blocked
+              # workloads, exception requests). They do not change the status, but they must be visible here.
+              "human_handoffs": list(handoffs or []), "human_handoff_count": len(handoffs or []),
               "reason": "A human must resolve each requirement, dependency allowance and exception request; no deployment authority is granted."}
     (out / "readiness.json").write_text(json.dumps(review, indent=2) + "\n")
     return review

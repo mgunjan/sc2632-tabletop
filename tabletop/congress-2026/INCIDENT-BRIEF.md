@@ -2,7 +2,7 @@
 
 Co-presenters: Milind Gunjan and Vivek Mayuranathan.
 
-Teach the [technical briefing](TECHNICAL-BRIEF.md) before introducing these case facts. The room first sees the fixed decision loop, provider data, compiled request scope, independent checks and Quarantine mechanisms. Scenario choice starts at minute 8; intent writing starts at minute 11. Later sealed evidence times remain unchanged.
+Teach the [technical briefing](TECHNICAL-BRIEF.md) before introducing these case facts. The room first gets the shared fictional setting, why the payment API gives a concrete service-availability constraint, the agenda and participant output. It then sees the control boundaries, decision loop, compiled request scope, independent checks and Quarantine mechanisms. Scenario choice starts at minute 9; intent writing starts at minute 12. Unseal page 8 at minute 27, begin decisions at 28, and open page 9 at 35.
 
 ## The situation and decision
 
@@ -59,7 +59,7 @@ Before Round 1, choose a case on pages 2–5, choose a primary operational const
 
 The table receives case cards and proposal excerpts, a worksheet, sealed incident updates and an independent-review handout/scorecard. Discuss the evidence and record a decision before each reveal. After the new evidence, revise beside the original answer. Keep pages 8/9 and the separate review findings closed until their round opens.
 
-Milind demonstrates the compiler and policy consequences. Vivek leads proposal reviews and evidence reveals. Both share round discussion and debrief. The model proposes bounded choices; participants retain review authority. The common compiler demonstration uses a supplied reference spec. The audience's newly written intent is a review artifact, not an automatically deployed change.
+Milind demonstrates the compiler and policy consequences. Vivek leads the PR review, rollout and Q0–Q3 framing; evidence reveals are split as in the field guide (Milind 20–23, Vivek 24–26). Both share round discussion and debrief. The model proposes bounded choices; participants retain review authority. The common compiler demonstration uses a supplied reference spec. The audience's newly written intent is a review artifact, not an automatically deployed change.
 
 ## Four selectable cases
 

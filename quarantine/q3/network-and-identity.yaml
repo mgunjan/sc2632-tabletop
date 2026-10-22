@@ -12,8 +12,8 @@
 #     Verified on k3s: without the label the "deny-all" suspect still resolves names.
 #   - No new Pods may be admitted in payments unless the incident commander overrides.
 #   - Node cordon for the suspect's node — ONLY after checking PodDisruptionBudgets.
-#     A PDB with minAvailable that the remaining replicas cannot satisfy will make
-#     `kubectl drain` hang or refuse. Cordon first (stops new scheduling, touches
+#     A PDB with minAvailable that the remaining replicas cannot satisfy blocks voluntary
+#     eviction while capacity is insufficient. Cordon first (stops new scheduling, touches
 #     nothing), drain only after the PDB check. See quarantine-mode.md, "The PDB gotcha".
 #   - Remove RBAC bindings for the suspect ServiceAccount (see rbac section below).
 #
@@ -39,9 +39,11 @@ spec:
   - Egress
 # Identity step: a RUNBOOK step, not a manifest. (An earlier version shipped a RoleBinding here with empty
 # subjects pointing at a Role that does not exist: it revoked nothing. Review, Sep 28.)
-#   kubectl -n payments get rolebindings -o wide | grep payments-api        # what the suspect's identity can do
-#   kubectl -n payments delete rolebinding <each one bound to payments-api>
-#   kubectl auth can-i --list -n payments --as=system:serviceaccount:payments:payments-api   # verify
+#   kubectl get rolebindings -A -o yaml   # inventory all namespaced bindings for the ServiceAccount
+#   kubectl get clusterrolebindings -o yaml  # inventory cluster-wide bindings too
+#   # Narrow/delete each applicable binding only after checking shared workloads and required access.
+#   kubectl auth can-i --list -n payments --as=system:serviceaccount:payments:payments-api
+#   # Verify both required named requests and prohibited cross-namespace requests against the API.
 # Two facts to decide on at the level, not discover during it:
 #   - every payments-api replica shares that ServiceAccount, so this also cuts the clean replicas' access;
 #   - tokens already issued stay valid until they expire (bound tokens cannot be revoked in place).

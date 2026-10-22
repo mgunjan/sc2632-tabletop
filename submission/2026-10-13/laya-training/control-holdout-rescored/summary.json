@@ -89,7 +89,7 @@
       }
     },
     "trained": {
-      "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+      "model": "./.session-build/laya-control-training/checkpoint-v2",
       "device": "mps",
       "setup_and_warmup_seconds": 2.834,
       "fit_seconds": null,

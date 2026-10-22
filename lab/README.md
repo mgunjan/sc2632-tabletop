@@ -43,9 +43,19 @@ python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
 
   The script now uses bash-3.2-compatible reads and a `shasum` fallback. Activate the Python
   environment first: a missing PyYAML dependency refuses before live writes.
-- **On the day:** `caffeinate -d &` for the whole session (a sleeping Mac pauses Docker and the
-  cluster), `./tabletop/consequences/stage.sh`, then `STAGED=1 ./tabletop/consequences/preflight.sh`
-  before you go on stage. Resolve failed enforcement checks; a model SKIP means use the declared
+- **On the day:** select the expected disposable lab context explicitly before staging. The default
+  k3d setup uses `k3d-trustfall`; if you named the cluster differently, set the exact corresponding
+  context (for example, `k3d-sc2632-rehearsal-20261013`). The context check runs before staging,
+  and the stage script refuses to touch a different context:
+
+  ```bash
+  export TRUSTFALL_EXPECTED_CONTEXT=k3d-trustfall
+  caffeinate -d &
+  ./tabletop/consequences/stage.sh
+  STAGED=1 ./tabletop/consequences/preflight.sh
+  ```
+
+  Resolve failed enforcement checks; a model SKIP means use the declared
   reference/replay path. `play.sh` re-runs the preflight quietly before each
   live consequence and replays, with the reason on screen, if anything fails.
 

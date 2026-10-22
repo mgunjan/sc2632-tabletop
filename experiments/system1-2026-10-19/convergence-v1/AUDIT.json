@@ -1,0 +1,14 @@
+{
+  "status": "PASSED_THREE_FULL_PASS_AUDIT",
+  "steps": 768,
+  "unique_assessments_seen": 1024,
+  "draws": 3072,
+  "training_source_sha256": "35251a9480d38db99e5f9517e75c4e32dbdd0537376713b435bc498b3e39d684",
+  "data_manifest_sha256": "2ea8a05b1a0c240318e1b971c87c5e717bb7bf57f80e715719c677cb2dac7233",
+  "checkpoint_sha256": "1b2a9faa2e47cba7e0a57c9997dd5cf098e16b8831289f9f8df4246ad392acba",
+  "benchmark_sha256": "e5518c875708613d71cc31255af8609a030348e6bb8f96c6427992c6b3dd27ad",
+  "protocol_sha256": "3c0935d0d23407fea48a00a563159f2b6a6e7ace160d52680ad0f62477be7ade",
+  "reporter_sha256": "9d8dd19687e993aa453c00e0269b5a5ca7453363ef001e301a5c71e8d9d70aab",
+  "new_hosted_calls": 0,
+  "qualification": "EXAMINED_AUTHORED_REGRESSION_PENDING_INDEPENDENT_VALIDATION"
+}

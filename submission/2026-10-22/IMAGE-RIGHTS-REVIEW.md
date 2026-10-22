@@ -1,7 +1,7 @@
-# Slide artwork review
+# Artwork in the v20 delivery deck
 
-Redistribution status: CLEARED
+The v20 deck uses three original illustrations generated with the built-in image tool on October 22. Their prompt briefs and hashes are in [the generation record](../../tabletop/congress-2026/artwork/GENERATION.md). They depict fictional generic characters and contain no supplied meme photograph, branded character or real person. Notes distinguish the illustrations from incident evidence.
 
-The v11 delivery deck uses original generated illustrations on slide 4 (`guardrail-loop-original.png`) and slide 28 (`false-assurance-original.png`). Neither depicts a real person, branded character, or existing meme image. The platform map on slide 5 is drawn from the editable source `tabletop/deck/media/cluster-map.svg`; its PNG is produced from that source during the slide build. It presents a neutral shared environment and does not name a suspect before case selection. The remaining images are project-authored or derived from recorded lab artifacts, with their evidence status described in speaker notes. All 11 embedded images have descriptive alt text in the deck.
+The recurring background has its [generation prompt](../2026-10-12/design-assets/PROMPT.md). The decision-record thumbnail is a page of the project-authored participant pack. The QR image encodes the public attendee repository. Technical diagrams and evidence tables are native editable slide objects.
 
-The older October 13 deck and earlier October 22 exports still include presenter-supplied Spider-Man and medal images whose source, license, attribution requirements, and redistribution permission have not been verified. They are superseded and excluded from the v11 delivery set. Do not redistribute those older exports or use their media in a recording.
+The supplied Spider-Man image and medal photograph remain only in earlier local review drafts. Their provenance and redistribution rights were not verified. They are excluded from the v20 deck and current attendee package. Do not publish superseded review decks as the current release.

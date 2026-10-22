@@ -1,0 +1,310 @@
+{
+  "auditor_sha256": "9f0bc0e6ee83d4930043d6cbd1b473f6662e168b7292a1755233f3f01a88f957",
+  "original": {
+    "manifest_sha256": "8bef1c48334a2ed78560d45cc89be8ff1506806eaef52277a7cbae9d58449d7f",
+    "assessments": 360,
+    "cases": 36,
+    "candidate_rows_per_case": {
+      "10": 36
+    },
+    "complete_ten_candidate_cases": 36,
+    "labels": {
+      "recommend": 15,
+      "exclude": 315,
+      "review": 10,
+      "handoff": 20
+    },
+    "exclude_fraction": 0.875,
+    "majority_training_accuracy": 0.875,
+    "label_frequency_only_training_cross_entropy": 0.5093772796511895,
+    "distinct_operative_model_inputs_after_removing_reference": 360,
+    "exact_operative_label_conflicts": 0,
+    "capability_label_contract_violations": [],
+    "independently_reviewed_assessments": 0,
+    "per_candidate_labels": {
+      "egress_profile": {
+        "recommend": 2,
+        "review": 3,
+        "exclude": 31
+      },
+      "deny_privilege_escalation": {
+        "exclude": 33,
+        "recommend": 2,
+        "review": 1
+      },
+      "restrict_registry": {
+        "recommend": 5,
+        "exclude": 30,
+        "review": 1
+      },
+      "restrict_api_access": {
+        "exclude": 33,
+        "handoff": 3
+      },
+      "deny_sa_token_for_agent_sidecars": {
+        "exclude": 34,
+        "recommend": 1,
+        "review": 1
+      },
+      "deny_agent_mutation_outside_namespace": {
+        "exclude": 32,
+        "recommend": 2,
+        "review": 2
+      },
+      "require_ticket_on_agent_changes": {
+        "exclude": 34,
+        "recommend": 1,
+        "review": 1
+      },
+      "audit_replica_surge": {
+        "exclude": 33,
+        "recommend": 2,
+        "review": 1
+      },
+      "process": {
+        "exclude": 28,
+        "handoff": 8
+      },
+      "not_implementable": {
+        "exclude": 27,
+        "handoff": 9
+      }
+    }
+  },
+  "failed_balanced": {
+    "manifest_sha256": "2ea8a05b1a0c240318e1b971c87c5e717bb7bf57f80e715719c677cb2dac7233",
+    "assessments": 1024,
+    "cases": 823,
+    "candidate_rows_per_case": {
+      "1": 725,
+      "2": 60,
+      "6": 7,
+      "4": 10,
+      "3": 6,
+      "5": 13,
+      "7": 2
+    },
+    "complete_ten_candidate_cases": 0,
+    "labels": {
+      "recommend": 256,
+      "handoff": 256,
+      "exclude": 256,
+      "review": 256
+    },
+    "exclude_fraction": 0.25,
+    "majority_training_accuracy": 0.25,
+    "label_frequency_only_training_cross_entropy": 1.3862943611198906,
+    "distinct_operative_model_inputs_after_removing_reference": 357,
+    "exact_operative_label_conflicts": 0,
+    "capability_label_contract_violations": [],
+    "independently_reviewed_assessments": 0,
+    "per_candidate_labels": {
+      "deny_agent_mutation_outside_namespace": {
+        "recommend": 41,
+        "review": 34,
+        "exclude": 24
+      },
+      "restrict_api_access": {
+        "handoff": 90,
+        "exclude": 20
+      },
+      "audit_replica_surge": {
+        "exclude": 33,
+        "recommend": 39,
+        "review": 45
+      },
+      "deny_privilege_escalation": {
+        "review": 45,
+        "recommend": 42,
+        "exclude": 27
+      },
+      "deny_sa_token_for_agent_sidecars": {
+        "exclude": 27,
+        "recommend": 16,
+        "review": 21
+      },
+      "restrict_registry": {
+        "recommend": 44,
+        "exclude": 26,
+        "review": 36
+      },
+      "require_ticket_on_agent_changes": {
+        "exclude": 32,
+        "recommend": 36,
+        "review": 33
+      },
+      "process": {
+        "handoff": 76,
+        "exclude": 17
+      },
+      "not_implementable": {
+        "handoff": 90,
+        "exclude": 27
+      },
+      "egress_profile": {
+        "review": 42,
+        "recommend": 38,
+        "exclude": 23
+      }
+    }
+  },
+  "repaired": {
+    "manifest_sha256": "ac3138ac904b1556c042b4045f4d74bcc0cb19fed369d55a7f0f3126ab72595a",
+    "assessments": 1310,
+    "cases": 131,
+    "candidate_rows_per_case": {
+      "10": 131
+    },
+    "complete_ten_candidate_cases": 131,
+    "labels": {
+      "recommend": 61,
+      "exclude": 1163,
+      "review": 45,
+      "handoff": 41
+    },
+    "exclude_fraction": 0.8877862595419848,
+    "majority_training_accuracy": 0.8877862595419848,
+    "label_frequency_only_training_cross_entropy": 0.47270203156289214,
+    "distinct_operative_model_inputs_after_removing_reference": 1310,
+    "exact_operative_label_conflicts": 0,
+    "capability_label_contract_violations": [],
+    "independently_reviewed_assessments": 0,
+    "per_candidate_labels": {
+      "egress_profile": {
+        "recommend": 8,
+        "review": 8,
+        "exclude": 115
+      },
+      "deny_privilege_escalation": {
+        "exclude": 117,
+        "recommend": 8,
+        "review": 6
+      },
+      "restrict_registry": {
+        "recommend": 11,
+        "exclude": 114,
+        "review": 6
+      },
+      "restrict_api_access": {
+        "exclude": 121,
+        "handoff": 10
+      },
+      "deny_sa_token_for_agent_sidecars": {
+        "exclude": 117,
+        "recommend": 8,
+        "review": 6
+      },
+      "deny_agent_mutation_outside_namespace": {
+        "exclude": 115,
+        "recommend": 9,
+        "review": 7
+      },
+      "require_ticket_on_agent_changes": {
+        "exclude": 117,
+        "recommend": 8,
+        "review": 6
+      },
+      "audit_replica_surge": {
+        "exclude": 116,
+        "recommend": 9,
+        "review": 6
+      },
+      "process": {
+        "exclude": 116,
+        "handoff": 15
+      },
+      "not_implementable": {
+        "exclude": 115,
+        "handoff": 16
+      }
+    }
+  },
+  "original_rows_removed_in_failed_set": {
+    "exclude": 187
+  },
+  "all_original_rows_preserved_in_repair": true,
+  "heldout_bytes_unchanged": {
+    "dev.jsonl": true,
+    "cal.jsonl": true,
+    "test_authored.jsonl": true,
+    "questions.json": true
+  },
+  "prior_only_calibration_diagnostic": {
+    "scope": "Original calibration only; no test tuning; training-frequency correction, not a fitted classifier",
+    "before": {
+      "decisions": 150,
+      "cases": 15,
+      "scenario_families": 5,
+      "decision_accuracy": 0.48,
+      "exact_plan_cases": 0,
+      "exact_plan_rate": 0.0,
+      "required_controls": 23,
+      "missed_required_controls": 5,
+      "required_control_recall": 0.782608695652174,
+      "recommendations": 33,
+      "wrong_recommendations": 26,
+      "recommendation_precision": 0.21212121212121213,
+      "recommendation_recall": 0.7,
+      "correct_reviews": 2,
+      "expected_reviews": 5,
+      "correct_handoffs": 3,
+      "expected_handoffs": 8,
+      "invalid_decisions": 0,
+      "ece_10bins": 0.15874404526632047,
+      "recall_by_disposition": {
+        "recommend": 0.7,
+        "review": 0.4,
+        "handoff": 0.375,
+        "exclude": 0.47244094488188976
+      },
+      "routing": {
+        "threshold": null,
+        "accepted_cases": 0,
+        "correctly_accepted_cases": 0,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.0,
+        "observed_risk": null
+      }
+    },
+    "after": {
+      "decisions": 150,
+      "cases": 15,
+      "scenario_families": 5,
+      "decision_accuracy": 0.8466666666666667,
+      "exact_plan_cases": 2,
+      "exact_plan_rate": 0.13333333333333333,
+      "required_controls": 23,
+      "missed_required_controls": 23,
+      "required_control_recall": 0.0,
+      "recommendations": 0,
+      "wrong_recommendations": 0,
+      "recommendation_precision": null,
+      "recommendation_recall": 0.0,
+      "correct_reviews": 0,
+      "expected_reviews": 5,
+      "correct_handoffs": 0,
+      "expected_handoffs": 8,
+      "invalid_decisions": 0,
+      "ece_10bins": 0.04220964703551668,
+      "recall_by_disposition": {
+        "recommend": 0.0,
+        "review": 0.0,
+        "handoff": 0.0,
+        "exclude": 1.0
+      },
+      "routing": {
+        "threshold": null,
+        "accepted_cases": 0,
+        "correctly_accepted_cases": 0,
+        "wrong_accepted_cases": 0,
+        "coverage": 0.0,
+        "observed_risk": null
+      }
+    },
+    "prediction_counts_after": {
+      "exclude": 150
+    }
+  },
+  "semantic_label_status": "No exact conflicting operative labels or capability contract violation is not proof of semantic correctness. All response labels await independent review.",
+  "known_ontology_ambiguity": "Generic not_implementable overlaps identity/process ownership; replica scope acknowledgement versus completed scope approval is underspecified. Frozen labels are preserved, not silently adjudicated."
+}

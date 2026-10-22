@@ -26,7 +26,7 @@ adds is the part those sources leave out: **levels, authority, and exit criteria
 | | **Q0 Normal** | **Q1 Freeze** | **Q2 Constrain** | **Q3 Isolate** |
 |---|---|---|---|---|
 | **Entry trigger** (any one) | — | One high-confidence runtime alert; OR first anomalous cross-namespace connection | Confirmed lateral-movement attempt; OR credential misuse (SA token used from a workload); OR Q1 signal repeats | Active exfiltration; OR privilege escalation succeeded; OR Q2 controls bypassed |
-| **Control delta** (cumulative) | Baseline guardrails, Deny | New PolicyExceptions refused without owner + TTL + IC override (annotation set by an incident commander) · **agents frozen: every write by an identity in the `agents` namespace refused, by a native policy** (`q1/freeze-agent-changes.yaml`) · rollout promotions paused · audit logging raised · affected-scope policies moved to Deny | **Evidence capture first.** Then: ingress default-deny with named allows · suspect Pod → DNS-only · suspect SA revoked (**runbook step**: delete its RoleBindings; every replica shares the SA, and issued tokens stay valid until expiry) · suspect's labels protected: only an incident commander can loosen them (`q2/protect-quarantine-labels.yaml`, native) · Audit-only controls → Deny | Suspect Pods deny-all · no new Pods without IC override (annotation + incident-commander identity) · suspect SA RoleBindings deleted (runbook) · node cordon (**after PDB check**) · signed-image-only (**not built**: a policy decision, no artifact in this repo) |
+| **Control delta** (cumulative) | Baseline guardrails, Deny | New PolicyExceptions refused without owner + TTL + IC override (annotation set by an incident commander) · **agents frozen: every write by an identity in the `agents` namespace refused, by a native policy** (`q1/freeze-agent-changes.yaml`) · rollout promotions paused · audit logging raised · affected-scope policies moved to Deny | **Evidence capture first.** Then: ingress default-deny with named allows · suspect Pod → DNS-only (UDP and TCP port 53) · incident team inventories effective RBAC and narrows both RoleBindings and ClusterRoleBindings, then verifies allowed and denied requests; this is not automated · suspect labels protected: only an incident commander can loosen them (`q2/protect-quarantine-labels.yaml`, native) · Audit-only controls → Deny | Suspect Pods deny-all · no new Pods without IC override (annotation + incident-commander identity) · repeat effective-RBAC review across RoleBindings and ClusterRoleBindings · node cordon (**after PDB check**) · signed-image-only (**not built**: a policy decision, no artifact in this repo) |
 | **Apply** | `network/payments-baseline-networkpolicies.yaml` | `kubectl apply -f quarantine/q1/` | `capture-evidence.sh`, then `kubectl apply -f quarantine/q2/` | `kubectl apply -f quarantine/q3/` |
 | **Declares** | — | On-call platform engineer, self-declare | Incident commander | Incident commander + security lead |
 | **Lifts** | — | Same | **Two-person** | IC + security lead, with evidence confirmed |
@@ -49,7 +49,7 @@ adds is the part those sources leave out: **levels, authority, and exit criteria
 - **Q3** does not restore service. It stops the bleeding. Restoration is a separate,
   explicit decision (usually: clean image + signed-image-only, which this repo does not build, + staged descent).
 
-## The PDB gotcha — and why Q3 turns it into a deadlock
+## The PDB capacity stall when Q3 blocks replacement
 
 Shown live on k3s by `scripts/lab-e2e.sh`. `payments-api` runs three replicas with a
 PodDisruptionBudget of `minAvailable: 2`, and two replicas are flagged suspect.
@@ -59,14 +59,16 @@ PodDisruptionBudget of `minAvailable: 2`, and two replicas are flagged suspect.
 2. The ReplicaSet tries to replace it. **Q3's "no new Pods without IC override" refuses the
    replacement**. The events say `FailedCreate … Quarantine Q3 is active`. Capacity stays at 2.
 3. Evict suspect 2. **Refused by the PDB** (`TooManyRequests: Cannot evict pod as it would
-   violate the pod's disruption budget`). Without Q3 this is temporary, because the replacement
-   comes up and the PDB frees again. With Q3 it is permanent. `kubectl drain` retries forever.
+   violate the pod's disruption budget`). Q3 prevents the replacement, so the second voluntary
+   eviction remains blocked until an operator restores healthy capacity, authorizes a reviewed
+   clean replacement, grants a scoped exception, or steps down from Q3. This is a capacity stall,
+   not a Kubernetes deadlock or a permanent condition.
 
-Your own containment level is what makes the PDB wait never end. Options, in order:
+The operator must resolve the interaction deliberately. Options, in order:
 
 1. **Don't evict to contain. Isolate in place.** Q3's network step (below) cuts a suspect off
    completely without deleting it. Cordon the node so nothing new lands there. The suspect stays
-   as evidence and keeps its place in the PDB count, so nothing deadlocks.
+   as evidence and keeps its place in the PDB count, so no eviction is attempted.
 2. If a suspect must go, **restore capacity first**, then evict. Annotating the Deployment's
    template does *not* help: Q3's override is checked against who makes the request, and the
    ReplicaSet controller is not an incident commander (it would also roll every replica, in
@@ -74,11 +76,11 @@ Your own containment level is what makes the PDB wait never end. Options, in ord
    directly (`scenarios/a-compromised-library/fixtures/q3-override.yaml` is one), or the IC grants a
    scoped, expiring PolicyException to `q3-no-new-pods-in-payments`, or you step back down to Q2.
 3. Delete the suspect directly (`kubectl delete pod` is not an eviction and ignores the PDB).
-   The replacement is still refused under Q3, so you have traded a deadlock for lost capacity.
+   The replacement is still refused under Q3, so direct deletion can lose evidence and reduce capacity.
 4. Edit the PDB. Last resort; log it as an incident action.
 
 None of the containment playbooks we reviewed mention the PDB interaction, and we have not
-seen the Q3 + PDB deadlock written down anywhere.
+seen this interaction covered by the offline policy tests; the sequence is demonstrated by the recorded live lab.
 
 ## Found on a live cluster (and not by any offline test)
 

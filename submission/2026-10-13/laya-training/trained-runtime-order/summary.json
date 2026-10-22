@@ -1,7 +1,7 @@
 {
   "provider": "laya-checkpoint-v2",
   "model_ids": [
-    "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2"
+    "./.session-build/laya-control-training/checkpoint-v2"
   ],
   "correct": 16,
   "of": 33,
@@ -81,10 +81,10 @@
       "confidence": 0.4072,
       "correct": null,
       "ms": 85.39,
-      "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+      "model": "./.session-build/laya-control-training/checkpoint-v2",
       "error": null,
       "raw": {
-        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "model": "./.session-build/laya-control-training/checkpoint-v2",
         "answers": {
           "q": {
             "type": "choice",
@@ -144,10 +144,10 @@
       "confidence": 0.4851,
       "correct": null,
       "ms": 88.42,
-      "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+      "model": "./.session-build/laya-control-training/checkpoint-v2",
       "error": null,
       "raw": {
-        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "model": "./.session-build/laya-control-training/checkpoint-v2",
         "answers": {
           "q": {
             "type": "choice",
@@ -207,10 +207,10 @@
       "confidence": 0.4435,
       "correct": null,
       "ms": 84.37,
-      "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+      "model": "./.session-build/laya-control-training/checkpoint-v2",
       "error": null,
       "raw": {
-        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "model": "./.session-build/laya-control-training/checkpoint-v2",
         "answers": {
           "q": {
             "type": "choice",
@@ -270,10 +270,10 @@
       "confidence": 0.3097,
       "correct": null,
       "ms": 87.24,
-      "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+      "model": "./.session-build/laya-control-training/checkpoint-v2",
       "error": null,
       "raw": {
-        "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+        "model": "./.session-build/laya-control-training/checkpoint-v2",
         "answers": {
           "q": {
             "type": "choice",
@@ -327,7 +327,7 @@
   "complete_pilot": true,
   "configuration": {
     "provider": "laya",
-    "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+    "model": "./.session-build/laya-control-training/checkpoint-v2",
     "effort": null,
     "question_order": "runtime",
     "requested_cases_sha256": "5721ca01b78e97426d46fd2a2210a7f316bcc2868df43ff0d368e4d11714853f"

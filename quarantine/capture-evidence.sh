@@ -22,15 +22,42 @@ POD="${2:?pod}"
 CTR="${3:-}"
 TS="$(date -u +%Y%m%dT%H%M%SZ)"
 OUT="evidence/${TS}-${NS}-${POD}"
-mkdir -p "$OUT"
+# Forensic output can contain raw credentials and incident details. Keep the parent and bundle
+# private, and fail rather than reusing a same-second path or overwriting prior evidence.
+umask 077
+mkdir -p evidence
+chmod 700 evidence
+if ! mkdir -m 700 "$OUT"; then
+  printf 'ABORT: evidence path already exists or cannot be created: %s\n' "$OUT" >&2
+  exit 2
+fi
+
+cat > "$OUT/SENSITIVITY.txt" <<'EOF'
+CLASSIFICATION: RAW-SENSITIVE INCIDENT EVIDENCE
+
+Treat every file in this bundle as sensitive. Container logs, process arguments, events,
+Pod/node metadata, and debug output are preserved as forensic evidence and may contain
+credentials or personal information. The live-state environment section retains only
+PATH, LANG, and LC_* variables; other KEY=VALUE environment entries are redacted.
+No other artifact is sanitized.
+
+Store and transfer only through approved encrypted, access-controlled custody. Verify
+SHA256SUMS after transfer. Do not email, publish, or attach this bundle to an ordinary
+ticket or chat.
+EOF
 
 # Redact secret-looking env values before anything touches disk. Runs locally with awk so it
 # works the same on macOS and Linux and never depends on tools inside the suspect's image.
 redact() {
-  awk '{ l = toupper($0)
-         if (l ~ /^[A-Z0-9_]*(TOKEN|SECRET|PASSWORD|PASSWD|API_KEY|PRIVATE_KEY|CREDENTIAL)[A-Z0-9_]*=/) {
-           sub(/=.*/, "=<redacted>") }
-         print }'
+  # Captured process environments are untrusted and credential names are not standardized.
+  # Preserve only a tiny operational allowlist; redact every other KEY=value, including unknown
+  # names, cloud access IDs, URLs and connection strings. This is safer than an incomplete denylist.
+  awk 'match($0, /^[A-Za-z_][A-Za-z0-9_]*=/) {
+         key = substr($0, 1, RLENGTH - 1)
+         if (key == "PATH" || key == "LANG" || key ~ /^LC_[A-Z_]+$/) { print; next }
+         sub(/=.*/, "=<redacted>")
+       }
+       { print }'
 }
 
 log() { printf '[%s] %s\n' "$(date -u +%H:%M:%S)" "$*" | tee -a "$OUT/capture.log"; }

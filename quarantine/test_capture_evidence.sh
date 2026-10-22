@@ -28,7 +28,7 @@ case "$*" in
       if [ "${FAKE_CHECKPOINT:-unsupported}" = ok ]; then echo '{"items":["/var/lib/kubelet/checkpoints/x.tar"]}'
       else echo 'the server could not find the requested resource' >&2; exit 1; fi ;;
   *" debug "*)  echo "Targeting container \"api\". Defaulting debug container name to evidence-1." ;;   # real kubectl: creates, prints nothing useful
-  *" logs "*"-c evidence-"*)  printf '== ps\nPID PPID USER ARGS\n1 0 app /app/payments-api\n42 1 app /tmp/.x/agent\n== env (pid 1)\nAPI_TOKEN=sk-live-9f8e7d\nDB_PASSWORD=hunter2\nstripe_secret_key=sk_abc\nPATH=/usr/bin\n' ;;
+  *" logs "*"-c evidence-"*)  printf '== ps\nPID PPID USER ARGS\n1 0 app /app/payments-api\n42 1 app /tmp/.x/agent\n== env (pid 1)\nAPI_TOKEN=sk-live-9f8e7d\nDB_PASSWORD=hunter2\nstripe_secret_key=sk_abc\nAWS_ACCESS_KEY_ID=AKIAFAKEKEY_FOR_TESTS\nDATABASE_URL=postgres://user:pass@example.invalid/db\nSERVICE_ENDPOINT=https://internal.example.invalid\nPATH=/usr/bin\nLANG=C\n' ;;
   *" logs "*"--previous"*) echo "previous container not found" >&2; exit 1 ;;
   *" logs "*) [ "${FAKE_LOGS:-ok}" = fail ] && { echo 'Get "https://10.0.0.5:10250/containerLogs/...": EOF' >&2; exit 1; }
               echo "2026-10-26T09:14:02Z GET /refunds 200" ;;
@@ -53,6 +53,17 @@ for mode in unsupported ok; do
   [ "$rc" = 0 ] && ok "[$mode] exits 0" || { bad "[$mode] exit $rc"; cat "$T/out-$mode"; continue; }
   [ -n "$outdir" ] && ok "[$mode] evidence directory created" || { bad "[$mode] no evidence dir"; continue; }
 
+  # Evidence must be private on disk and clearly identified as sensitive.
+  dir_mode=$(python3 -c 'import pathlib,sys; print(oct(pathlib.Path(sys.argv[1]).stat().st_mode & 0o777))' "$outdir")
+  root_mode=$(python3 -c 'import pathlib,sys; print(oct(pathlib.Path(sys.argv[1]).stat().st_mode & 0o777))' "$T/run-$mode/evidence")
+  file_mode=$(python3 -c 'import pathlib,sys; print(oct(pathlib.Path(sys.argv[1]).stat().st_mode & 0o777))' "$outdir/SENSITIVITY.txt")
+  [ "$dir_mode" = 0o700 ] && [ "$root_mode" = 0o700 ] && [ "$file_mode" = 0o600 ] \
+    && ok "[$mode] evidence root/bundle are 700 and files are 600" \
+    || bad "[$mode] evidence permissions root=$root_mode bundle=$dir_mode file=$file_mode"
+  grep -q 'CLASSIFICATION: RAW-SENSITIVE INCIDENT EVIDENCE' "$outdir/SENSITIVITY.txt" \
+    && grep -q 'No other artifact is sanitized' "$outdir/SENSITIVITY.txt" \
+    && ok "[$mode] raw-sensitive custody label is included" || bad "[$mode] sensitivity label missing or inaccurate"
+
   # Ordering: the relabel must be the LAST kubectl call, after every read.
   last=$(tail -1 "$calls")
   [[ "$last" == *" label pod payments-api trustfall.example/suspect=true trustfall.example/egress-profile=quarantined trustfall.example/in-rotation=false"* ]] \
@@ -74,8 +85,14 @@ for mode in unsupported ok; do
   ( cd "$outdir" && sha256sum -c --quiet SHA256SUMS 2>/dev/null || shasum -a 256 -c --quiet SHA256SUMS ) && ok "[$mode] hashes verify" || bad "[$mode] hash mismatch"
 
   # Secrets redacted in live state.
-  ! grep -q "sk-live-9f8e7d\|hunter2\|sk_abc" "$outdir/live-state.txt" && ok "[$mode] secret values redacted" || bad "[$mode] secret leaked"
-  grep -q "PATH=/usr/bin" "$outdir/live-state.txt" && ok "[$mode] non-secret env kept" || bad "[$mode] over-redacted"
+  ! grep -q "sk-live-9f8e7d\|hunter2\|sk_abc\|AKIAFAKEKEY_FOR_TESTS\|postgres://user:pass\|https://internal.example.invalid" "$outdir/live-state.txt" \
+    && grep -q 'AWS_ACCESS_KEY_ID=<redacted>' "$outdir/live-state.txt" \
+    && grep -q 'DATABASE_URL=<redacted>' "$outdir/live-state.txt" \
+    && grep -q 'SERVICE_ENDPOINT=<redacted>' "$outdir/live-state.txt" \
+    && ok "[$mode] non-allowlisted environment values, including cloud IDs and URLs, redacted" \
+    || bad "[$mode] environment value leaked or allowlist contract failed"
+  grep -q "PATH=/usr/bin" "$outdir/live-state.txt" && grep -q 'LANG=C' "$outdir/live-state.txt" \
+    && ok "[$mode] explicit safe environment allowlist kept" || bad "[$mode] safe allowlist missing"
 done
 
 # Preflight and completeness — both found on a live cluster, not by this harness.

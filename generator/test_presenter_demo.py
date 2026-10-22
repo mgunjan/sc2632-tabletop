@@ -17,8 +17,8 @@ class PresenterDemoTests(unittest.TestCase):
         self.addCleanup(folder.cleanup)
         self.folder = Path(folder.name)
 
-    def call(self, *args, **kwargs):
-        return subprocess.run([sys.executable, str(DEMO), *args], capture_output=True, text=True, timeout=10, **kwargs)
+    def call(self, *args, timeout=10, **kwargs):
+        return subprocess.run([sys.executable, str(DEMO), *args], capture_output=True, text=True, timeout=timeout, **kwargs)
 
     def test_preflight_without_policy_tool_is_not_ready(self):
         result = self.call("--check", env={**os.environ, "PATH": str(self.folder)})
@@ -83,6 +83,31 @@ class PresenterDemoTests(unittest.TestCase):
         self.assertFalse(run["deployment_performed"])
         self.assertTrue(signal_record.exists(), "policy-tool child did not receive termination")
         self.assertFalse((out / "proposal").exists())
+
+    def test_reference_run_from_another_directory_writes_where_asked(self):
+        result = subprocess.run([sys.executable, str(DEMO), "--mode", "reference", "--scenario", "a", "--out", "rel/run"],
+                                capture_output=True, text=True, timeout=30, cwd=self.folder)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        readiness = json.loads((self.folder / "rel/run/proposal/readiness.json").read_text())
+        self.assertEqual(readiness["status"], "REVIEW_REQUIRED")
+        self.assertFalse(readiness["promotion_allowed"])
+        self.assertFalse((ROOT / "rel").exists())
+        self.assertIn("automatic promotion: disabled", result.stdout)
+
+    def test_default_replay_shows_provenance_and_handoffs(self):
+        result = self.call("--mode", "replay", "--scenario", "a", "--out", str(self.folder / "r"), timeout=30)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("recording: agent-run.json · sha256 ", result.stdout)
+        self.assertIn("Handed to a human:", result.stdout)
+
+    def test_mismatched_recording_is_refused_with_a_visible_reason(self):
+        recording = ROOT / "submission/2026-10-12/benchmark/expanded/jev-jev-1.13.0/agent-a/agent-run.json"
+        result = self.call("--mode", "replay", "--scenario", "b", "--recording", str(recording), "--out", str(self.folder / "m"), timeout=30)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("replay: scenario or intent differs", result.stdout)
+        run = json.loads((self.folder / "m/demo-run.json").read_text())
+        self.assertIn("replay:", run["reason"])
+        self.assertFalse(run["deployment_performed"])
 
 
 if __name__ == "__main__":

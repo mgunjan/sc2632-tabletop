@@ -1,0 +1,143 @@
+{
+  "scope": "Metadata correction only; all training/evaluation/question/target file bytes unchanged",
+  "used_training_manifest_sha256": "ac3138ac904b1556c042b4045f4d74bcc0cb19fed369d55a7f0f3126ab72595a",
+  "corrected_manifest": {
+    "schema_version": "1.0",
+    "task": "guardrail_candidate",
+    "scenario_families": 48,
+    "cases": 179,
+    "candidate_decisions": 1790,
+    "catalog_sha256": "ccfa61972eeaedb2fca6c501918f0c58d8e6f7778e66173d4949b6b993bd2898",
+    "scenarios_sha256": "c074cf224aa4004249b185878d82349920c2fb57a6b51d393ef58618b6dc76ec",
+    "builder_sha256": "2b40db6b335a7098d626df8ad9a8b95dd2e695a64f91588756f42dd3c4b1d658",
+    "protocol_sha256": "0a62e89b4c1eb8b86f49ae411456ed4db09e1fd3e0a391e9f81b0801d0a5a96d",
+    "splits": {
+      "train": {
+        "decisions": 1310,
+        "cases": 131,
+        "families": 32,
+        "labels": {
+          "recommend": 61,
+          "exclude": 1163,
+          "review": 45,
+          "handoff": 41
+        }
+      },
+      "dev": {
+        "families": 6,
+        "cases": 18,
+        "decisions": 180,
+        "labels": {
+          "recommend": 9,
+          "review": 6,
+          "handoff": 10,
+          "exclude": 155
+        }
+      },
+      "cal": {
+        "families": 5,
+        "cases": 15,
+        "decisions": 150,
+        "labels": {
+          "recommend": 10,
+          "review": 5,
+          "handoff": 8,
+          "exclude": 127
+        }
+      },
+      "test_authored": {
+        "families": 5,
+        "cases": 15,
+        "decisions": 150,
+        "labels": {
+          "recommend": 10,
+          "review": 5,
+          "handoff": 8,
+          "exclude": 127
+        }
+      }
+    },
+    "independent_reviewed_cases": 0,
+    "upstream_description_alignments": 0,
+    "source_alignments_are_not_decision_labels": true,
+    "files": {
+      "blind-review.jsonl": {
+        "sha256": "6d27c43c50c8bcf36b6939060db08a6662f94dcc27ccbdb5a0f734eedc376734",
+        "bytes": 9280
+      },
+      "cal.inputs.jsonl": {
+        "sha256": "f718c5a2928a586425f3d465474971953359ceec251a13e04101074dd40fb627",
+        "bytes": 170985
+      },
+      "cal.jsonl": {
+        "sha256": "13c3fdc113d97a6d21a066a1c3036c1c3ca4947d555f3cebba82b39f23e0fd5d",
+        "bytes": 230880
+      },
+      "cal.targets.jsonl": {
+        "sha256": "8104510e374d5841bc23f246792a59d7e536e7f491134c82deacdb585dd5ef62",
+        "bytes": 70035
+      },
+      "dev.inputs.jsonl": {
+        "sha256": "084ad01d5bf120599e7b36e1b5572422e30367d91268bc5d42f95c77d4b60428",
+        "bytes": 206448
+      },
+      "dev.jsonl": {
+        "sha256": "66e63fc589534122144582318deacb8868e500e6d1d88c178f6b9d3e3916b913",
+        "bytes": 274510
+      },
+      "dev.targets.jsonl": {
+        "sha256": "e0959b017e12856a396f4bf5e9e714213279bb377a3b924ef021879b4f607e12",
+        "bytes": 80056
+      },
+      "questions.json": {
+        "sha256": "84e89ba114b948def346be4728ca0c20c90300d282c05f45ee0049ebed90bae6",
+        "bytes": 1105
+      },
+      "test_authored.inputs.jsonl": {
+        "sha256": "5a4848c0504656600827ee12d7fd3a271fcf50d3f26066d2923cc044961f8e07",
+        "bytes": 175265
+      },
+      "test_authored.jsonl": {
+        "sha256": "f30e62572e7c551e65e333d93217ceeacd12fb2c6aa7a39cb6780b91a4481cc0",
+        "bytes": 238870
+      },
+      "test_authored.targets.jsonl": {
+        "sha256": "0fe6518d7c4a639c5be753f9b5ce6716705c9ea9862e48b7ecf0a65b04bf045a",
+        "bytes": 73995
+      },
+      "train.inputs.jsonl": {
+        "sha256": "1b7407a6dde243867622151edbce69e76c58aab84275f9d7de3cfa0b2493046b",
+        "bytes": 1755331
+      },
+      "train.jsonl": {
+        "sha256": "6ca2a6a26d1dc8d94add77c3b21ba3af31250504a6d282cc6f618b706c75b8aa",
+        "bytes": 2187038
+      },
+      "train.targets.jsonl": {
+        "sha256": "e9f9963595297884a5441053562a6f309ec7d0ce8f2ecb22c9022704b3f0c45a",
+        "bytes": 531585
+      }
+    },
+    "qualification": "Authored development counterfactuals; no external incident decision labels",
+    "limitations": [
+      "Assistant-authored decision labels",
+      "Manual semantic near-duplicate review outstanding",
+      "No enterprise incidents",
+      "No model improvement established by data construction"
+    ],
+    "version": "complete-case-repair-v1.1",
+    "parent_manifest_sha256": "8bef1c48334a2ed78560d45cc89be8ff1506806eaef52277a7cbae9d58449d7f",
+    "profile_sha256": "05a5c15c373b5bb96b35a2c16e194cf021efb4932133885dcf7d23be4227b0e8",
+    "original_training_assessments_retained": 360,
+    "training_assessments": 1310,
+    "label_counts": {
+      "recommend": 61,
+      "exclude": 1163,
+      "review": 45,
+      "handoff": 41
+    },
+    "reference_excerpts": 0,
+    "parent_upstream_description_alignments": 2092
+  },
+  "note": "The running job and retained snapshot preserve their original manifest. Its top-level case/family/decision fields inherited parent counts, and the omitted unused upstream reference file retained a parent count. Current builder fixes these summaries. Split counts, input hashes and actual training rows were already correct. No training input or target changed."
+}

@@ -1,5 +1,5 @@
 {
-  "pptx_sha256": "617220882b7f0b0639db339ce5bfb1c91aadfee14f516bdfd26d6f0593ad444c",
+  "pptx_sha256": "3aabc4f7ada0ec748d30b13d0142007a1547a450a6876669b6efa0d359d3d4af",
   "slide_count": 36,
   "main_slides": 30,
   "hidden_backup_slides": 6,
@@ -11,8 +11,29 @@
   "native_powerpoint_verified": false,
   "projector_verified": false,
   "visually_inspected_changed_slides": [
+    2,
+    3,
+    4,
+    5,
     6,
-    9
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    18,
+    19,
+    20,
+    24,
+    25,
+    26,
+    27,
+    29,
+    30
   ],
   "whole_deck_montage_inspected": true,
   "handout_pages_visually_inspected": {
@@ -27,16 +48,18 @@
         8,
         9
       ]
-    }
+    },
+    "PODIUM-CHEATSHEET.pdf": 1
   },
   "file_sha256": {
     "SC2632-session-control-review.pptx": "3c6518cef73e97f550e2abcfba7fd56f7918ae51248efda929382a4da2bdeb6b",
     "SC2632-session-control-review.pdf": "8eef47176b83d47f2acef0ae90563d389f0f10ba13c47f121e4cfef5519f7c4c",
     "CONTROL-REVIEW.pdf": "74703651038316cd4c2419af850ff3b24041e52b2074b1e13eddc3d27cfeb238",
     "REVIEW-SCORECARD.pdf": "fb2afef7d10e4d7087cd27e696c0c65dd2c82f014023017d4d5256e865e8130d",
-    "SC2632-session-four-cases.pptx": "617220882b7f0b0639db339ce5bfb1c91aadfee14f516bdfd26d6f0593ad444c",
-    "SC2632-session-four-cases.pdf": "b0f3082d90dfaae9d5be8da81af7e1afbde9d1b57df4771b210f576276bc3892",
-    "PARTICIPANT-PACK.pdf": "d2b47ad6daebb89ca11c9dd63a2d11b6bf30fb8062dea9ca71c193ab0ebd8740"
+    "SC2632-session-four-cases.pptx": "3aabc4f7ada0ec748d30b13d0142007a1547a450a6876669b6efa0d359d3d4af",
+    "SC2632-session-four-cases.pdf": "e7fe3037d120170696302d6871761e76b85b217b7107d3f4bbca8e187079b5bf",
+    "PARTICIPANT-PACK.pdf": "f1550d09e28d2539b39910423ba20c9253e7b730a16505f94bfb39aef5787e0a",
+    "PODIUM-CHEATSHEET.pdf": "691738d521c203a30c8600a67e0fe1971da8a6c38cf04f7eaa3878c47d48c680"
   },
   "previous_revision": {
     "pptx_sha256": "3c6518cef73e97f550e2abcfba7fd56f7918ae51248efda929382a4da2bdeb6b",
@@ -52,7 +75,8 @@
     "runtime_control_map_pptx_sha256": "ad0bbfc9ee8038a4185f8bbee09d92ac2476663a0ef14094a396065337d03395",
     "technical_briefing_pptx_sha256": "a323251b1f8e39dd1264e1e855d3827ceaf1e254a771a10171caf5ea429b6f55",
     "before_two_page_decision_record_pptx_sha256": "a470177e96a69a6d98dfde678d01d135d269c70e04f09b696d75a5ac0619305d",
-    "before_native_table_fit_pptx_sha256": "fec4ee7eae6a7c5edf81ca58adba268530e3ad7b8d4f82a943b393b9b06ef25a"
+    "before_native_table_fit_pptx_sha256": "fec4ee7eae6a7c5edf81ca58adba268530e3ad7b8d4f82a943b393b9b06ef25a",
+    "before_context_redesign_pptx_sha256": "617220882b7f0b0639db339ce5bfb1c91aadfee14f516bdfd26d6f0593ad444c"
   },
   "case_d_evidence": "live-rehearsal/case-d/result.json",
   "case_d_source_sha256_matches": true,

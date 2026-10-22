@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Bounded presenter proposal demo. No kubectl, deployment, automatic exception or hosted fallback."""
 import argparse
+import hashlib
 import importlib.util
 import json
 import os
@@ -15,6 +16,9 @@ import time
 ROOT = Path(__file__).resolve().parents[2]
 GEN = ROOT / "generator"
 BENCHMARK = ROOT / "submission/2026-10-12/benchmark"
+DEFAULT_RECORDING = BENCHMARK / "expanded/jev-jev-1.13.0/agent-a/agent-run.json"
+# The frozen default recording. A replay of an edited copy would otherwise look identical on screen.
+DEFAULT_RECORDING_SHA256 = "bbe46fe349b3a9172f9280657ee2376035d978f751caa51f3ed8ea9f5ce2b67f"
 
 
 def preflight():
@@ -58,7 +62,7 @@ def worker(args):
             stream.write(policy_contracts.pr_section(review))
     else:
         if args.mode == "replay":
-            recording = Path(args.recording) if args.recording else BENCHMARK / "expanded/jev-jev-1.13.0/agent-a/agent-run.json"
+            recording = Path(args.recording) if args.recording else DEFAULT_RECORDING
             provider = agent.Recorded(recording)
         else:
             sys.path.insert(0, str(BENCHMARK))
@@ -125,34 +129,56 @@ def main():
             return 0
         except Exception as error:
             # Only the exception class is printed: provider payloads and credential values stay off the projector.
-            print(f"Proposal worker failed: {type(error).__name__}", file=sys.stderr)
+            detail = f": {error}" if str(error).startswith("replay:") else ""  # replay refusals carry no secrets
+            print(f"Proposal worker failed: {type(error).__name__}{detail}", file=sys.stderr)
             return 1
     out = Path(args.out).resolve()
     if out.exists():
         parser.error("output already exists; preserve it and choose a fresh run name")
     if not preflight()["ready"]:
         parser.error("dependency preflight failed; run --check before rehearsal")
+    recording = recorded = recording_sha = None
+    if args.mode == "replay":
+        recording = Path(args.recording).expanduser().resolve() if args.recording else DEFAULT_RECORDING
+        if not recording.is_file():
+            parser.error(f"recording not found: {recording}")
+        recording_sha = hashlib.sha256(recording.read_bytes()).hexdigest()
+        if not args.recording and recording_sha != DEFAULT_RECORDING_SHA256:
+            parser.error("the default recording differs from the frozen file (sha256 mismatch); restore it from Git")
+        recorded = json.loads(recording.read_text())
     out.mkdir(parents=True)
     labels = {"reference": "REFERENCE SPEC: supplied answer; compiler and fixture tests run now",
               "replay": "REPLAY: recorded model answers; compiler and fixture tests run now",
               "jev": "LIVE JEV: prepared fixture proposal; human review required",
               "claude": "LIVE CLAUDE: prepared fixture proposal; human review required"}
     print(labels[args.mode], flush=True)
+    if recording:
+        print(f"  recording: {recording.name} · sha256 {recording_sha[:12]} · model {', '.join(recorded.get('model') or ['?'])} · recorded {str(recorded.get('recorded_at', '?'))[:10]}", flush=True)
     started = time.monotonic()
-    command = [sys.executable, str(Path(__file__).resolve()), *sys.argv[1:], "--_worker"]
+    # Every path is resolved here and passed absolute, so the worker (cwd = repository root) reads and writes
+    # exactly what the presenter named, whatever directory the command was started from.
+    command = [sys.executable, str(Path(__file__).resolve()), "--mode", args.mode, "--scenario", args.scenario,
+               "--out", str(out), "--deadline", str(args.deadline), "--_worker"]
+    for flag, value in (("--recording", recording), ("--kyverno", args.kyverno and binary),
+                        ("--env-file", args.env_file and Path(args.env_file).expanduser().resolve()),
+                        ("--workspace-file", args.workspace_file and Path(args.workspace_file).expanduser().resolve())):
+        if value:
+            command += [flag, str(value)]
     process = subprocess.Popen(command, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                text=True, start_new_session=(os.name == "posix"))
-    status = "FAILED"; exit_code = 1
+    status = "FAILED"; exit_code = 1; reason = None
     try:
         stdout, stderr = process.communicate(timeout=args.deadline)
         if process.returncode == 0:
             status = "COMPLETE_REVIEW_PROPOSAL"; exit_code = 0
         else:
-            print("Proposal did not complete. Use the reference run or the prepared slides.")
+            reason = (stderr.strip().splitlines() or ["no reason reported"])[-1][:160]
+            print(f"Proposal did not complete: {reason}")
+            print("Show hidden slides 33-34 (recorded fixture results) and continue.")
     except subprocess.TimeoutExpired:
         terminate(process)
         status = "DEADLINE_EXCEEDED"; exit_code = 124
-        print("Time limit reached. Use the reference run or the prepared slides.")
+        print("Time limit reached. Show hidden slides 33-34 (recorded fixture results) and continue.")
     except KeyboardInterrupt:
         terminate(process)
         status = "INTERRUPTED"; exit_code = 130
@@ -160,6 +186,10 @@ def main():
     run = {"status": status, "mode": args.mode, "scenario": args.scenario,
            "elapsed_seconds": round(time.monotonic() - started, 3), "deadline_seconds": args.deadline,
            "deployment_performed": False, "api_calls_possible": args.mode in ("jev", "claude")}
+    if exit_code != 0 and status == "FAILED":
+        run["reason"] = reason
+    if recording:
+        run["recording"] = {"path": str(recording), "sha256": recording_sha}
     if exit_code != 0 and (out / "proposal").exists():
         (out / "proposal").rename(out / "partial-proposal-do-not-use")
     (out / "demo-run.json").write_text(json.dumps(run, indent=2) + "\n")
@@ -168,6 +198,8 @@ def main():
         review = json.loads((proposal / "readiness.json").read_text())
         print(f"Review status: {review['status']}; automatic promotion: disabled")
         print(f"Independent privilege checks: {review['independent_behavior']['status']}")
+        if review.get("human_handoff_count"):
+            print(f"Handed to a human: {review['human_handoff_count']} decision(s) the model was not sure of (listed in PR.md)")
         for requirement in review["requirements"]:
             print(f"  Clause {requirement['id']}: {requirement['status']} ({requirement['layer']})")
         print(f"Open: {proposal / 'PR.md'}")

@@ -4,3 +4,6 @@
 *.png binary
 # Preserve upstream notice bytes, including their original line endings.
 datasets/comprehensive/licenses/** -text -whitespace
+
+# Keep recorded engine output byte-for-byte, including its final blank line.
+experiments/system1-2026-10-18/receipts/engine/receipt-*/stdout.txt whitespace=-blank-at-eof

@@ -276,7 +276,9 @@ class Agent:
         # Both compiler and agent use the same stage renderer. No exception is granted here.
         g.write_policy_artifacts(spec, out)
         import policy_contracts
-        review = policy_contracts.evaluate(self.scenario, self.intent, spec, decisions, out)
+        review = policy_contracts.evaluate(self.scenario, self.intent, spec, decisions, out,
+                                          handoffs=[{"kind": "escalation", **e} for e in self.escalations]
+                                          + [{"kind": "exception_request", **r} for r in self.requests])
         self.step("write local review proposal", f"{out.name}/PR.md: {len(self.requests)} exception request(s), "
                                        f"{len(self.escalations)} item(s) for a human")
         (out / "spec.json").write_text(json.dumps(spec, indent=2) + "\n")

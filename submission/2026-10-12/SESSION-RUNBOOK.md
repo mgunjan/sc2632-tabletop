@@ -20,36 +20,36 @@ The exercise takes place on a shared production Kubernetes platform. The affecte
 
 ## The hour
 
-| Minutes | Slides | Activity and observable output |
-|---|---|---|
-| 00–02:30 | 1–4 | Purpose, shared environment and detection/admission/containment roles |
-| 02:30–04:30 | 5–6 | Actual decision loop, provider data and authority boundaries |
-| 04:30–06:15 | 7–8 | Concrete compiler walkthrough, independent contract and test limits |
-| 06:15–07:15 | 9 | Quarantine implementation and separate operator actions |
-| 07:15–11 | 10–12 | Assignment, case/constraint choice, roles and one minute of setup writing |
-| 11–15 | 13 | Team writes intent and a preserved dependency |
-| 15–19 | 14 | Proposal disposition and acceptance test |
-| 19–22 | 15 | Exception authority, scope, owner and expiry |
-| 22–26 | 16 | Rollout mode per control and promotion criterion |
-| 26–34 | 17 | Revisit authority; open page 8 at 27 and write ordered containment |
-| 34–38 | 18 | Open page 9 and revise or defend the plan |
-| 38–44 | 19–23 | Four recorded consequences and confirming tests |
-| 44–45 | 24 (33 optional) | Case comparison and locked D prediction |
-| 45–48 | 25 | Independent trained-model proposal review |
-| 48–49 | 26 | Open sealed findings and defend the granted authority |
-| 49–50 | 27 | Historical model quality, cost and time |
-| 50–54 | 28 | Recovery criteria and lifting authority |
-| 54–60 | 29–30 | Worked debrief, personal action, resources and questions |
+| Minutes | Slides | Lead | Activity and observable output |
+|---|---|---|---|
+| 00–02:30 | 1–4 | Milind | AI proliferation hook, Two AI Shifts (Agents as Workloads vs Policy Writers), cluster map & 4 control layers |
+| 02:30–04:30 | 5–6 | Vivek | 4-stage Python decision loop, provider data boundary and fail-open vs fail-closed defaults |
+| 04:30–06:15 | 7–8 | Milind | 45s compiler walkthrough, requirement coverage ledger (`readiness.json`) and RBAC handoff |
+| 06:15–07:15 | 9 | Vivek | Quarantine Mode (Q0–Q3) implementation and separate operator actions |
+| 07:15–11 | 10–12 | Vivek & Milind | Pack orientation, 30s default case by table number (`1,5,9→A · 2,6,10→B · 3,7,11→C · 4,8,12→D`), constraint & roles on p. 6 |
+| 11–15 | 13 | Milind & Vivek | Team writes intent, preserved dependency and non-admission handoff on page 6 |
+| 15–19 | 14 | Vivek & Milind | Proposal disposition (`APPROVE/MODIFY/REJECT/ESCALATE`) and missing acceptance test |
+| 19–22 | 15 | Milind & Vivek | Urgent exception inject: verify authority, scope, human owner and hard TTL |
+| 22–26 | 16 | Vivek & Milind | Rollout mode (`Audit/Warn/Deny`) per control, promotion trigger and cleanup controller RBAC |
+| 26–34 | 17 | Vivek & Milind | Open Sealed Page 8 at minute 27 and write ordered Q0–Q3 containment plan on page 7 |
+| 34–38 | 18 | Milind & Vivek | Open Sealed Page 9 and revise or defend the plan beside the original on page 7 |
+| 38–44 | 19–23 | Milind (1–2), Vivek (3–4) | Four recorded k3s lab traps (predict before reveal) and confirming tests |
+| 44–45 | 24 (33 optional) | Vivek | Case comparison and locked Case D copied-credential prediction |
+| 45–48 | 25 | Vivek & Milind | Independent trained-model proposal audit (`CONTROL-REVIEW.pdf` page 1) |
+| 48–49 | 26 | Milind & Vivek | Open Sealed `CONTROL-REVIEW.pdf` page 2 (`6/6 PASS` yet `INCOMPLETE_PROPOSAL`) |
+| 49–50 | 27 | Milind | Model speed vs. reviewer economics (`$2/min` engineer review vs `$0.038` API tokens) |
+| 50–54 | 28 | Milind & Vivek | Recovery exit criteria, verification tests and lifting authority on page 7 |
+| 54–60 | 29–30 | Both | Worked Case A debrief, 15-point scorecard tally, Monday action and Q&A |
 
 ## Technical briefing before the cases
 
-The room sees the internals before selecting a scenario or making a team decision. Slides 3–9 establish the actual architecture: a shared workload platform, Falco/audit evidence, a fixed Python decision loop, provider-visible task strings, typed choices and uncertainty defaults, deterministic templates and Kyverno simulation, an independently bound requirement ledger, and separate Quarantine mechanisms. Use [TECHNICAL-BRIEF.md](../../tabletop/congress-2026/TECHNICAL-BRIEF.md) and the co-presenter cards for the implementation and handoffs.
+The room sees the stakes and the internals before selecting a scenario or making a team decision. Slides 2–9 establish the operational context and actual architecture: the Two Operational Traps (Green-PR Illusion vs. Containment Self-Sabotage), the shared workload platform diagram (`cluster-map.png`), Falco/audit evidence, a fixed Python decision loop, provider-visible task strings, typed choices and uncertainty defaults, deterministic templates and Kyverno simulation, an independently bound requirement ledger, and separate Quarantine mechanisms. Use [TECHNICAL-BRIEF.md](../../tabletop/congress-2026/TECHNICAL-BRIEF.md) and the co-presenter cards for the implementation and 4 consolidated speaker blocks (`Milind 1–4`, `Vivek 5–6`, `Milind 7–8`, `Vivek 9`).
 
 The forty-five-second compiler walkthrough occurs at 04:30, using a supplied reference spec. Pre-open the generated policy, local PR.md and readiness result; use them if the command cannot finish in its bounded deadline. The model receives no call in this path, no GitHub PR opens and no cluster change occurs. At 05:15 expand the single privilege requirement to the whole-intent ledger. Do not consume participant writing time to repeat the demo after Round 1.
 
 Falco rules passed validation, but live detection and an alert-to-response integration remain unverified. The incident alerts are supplied facts. On the optional model path, unclear dependencies can retain a proposed allowance and require review. Typed choices and a 0.6 cutoff are not calibrated deployment assurance. Process credentials still require separate least-privilege enforcement. Quarantine levels group reviewed manifests and operator actions; people apply and verify every control.
 
-Assignment begins at 07:15, case selection at 08:00 and setup writing at 10:00. Round 1 retains four minutes from 11:00 to 15:00. Proposal review gets four minutes and temporary access three; later sealed reveals at minutes 27, 34 and 48, recovery and the 60-minute finish retain their existing positions. These remain planned timings pending a full human rehearsal.
+Assignment begins at 07:15, fast-start case selection at 08:00 (using the default table-number mapping `Tables 1,5,9 → Case A · Tables 2,6,10 → Case B · Tables 3,7,11 → Case C · Tables 4,8,12 → Case D`, or swap within 30 seconds) and setup writing at 09:45. Round 1 retains four minutes from 11:00 to 15:00. Proposal review gets four minutes and temporary access three; later sealed reveals at minutes 27, 34 and 48, recovery and the 60-minute finish retain their existing positions.
 
 Attendees can use ordinary security language while professionals inspect exact identities, request scope, payloads and authority. Scores assess decisions and evidence, not syntax or vocabulary recall. A ready table can distinguish what crosses the provider boundary, what the agent can propose, who deploys and which layer can enforce the requirement.
 

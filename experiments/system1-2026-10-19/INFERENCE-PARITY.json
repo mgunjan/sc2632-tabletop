@@ -1,0 +1,34 @@
+{
+  "status": "PASSED_SINGLE_STATE_TRAIN_RUNTIME_PARITY",
+  "checkpoint": ".session-build/system1-20261019/checkpoints-v1/source-adapted",
+  "device": "mps",
+  "records": [
+    {
+      "id": "research-import:bounded-fetch:egress_profile",
+      "label": "recommend",
+      "runtime_choice": "recommend",
+      "max_probability_difference": 4.90218162536582e-05
+    },
+    {
+      "id": "research-import:feed-unattributed:egress_profile",
+      "label": "review",
+      "runtime_choice": "recommend",
+      "max_probability_difference": 4.82616186142093e-05
+    },
+    {
+      "id": "support-companion:identity-and-tools:not_implementable",
+      "label": "handoff",
+      "runtime_choice": "review",
+      "max_probability_difference": 3.254294395446666e-05
+    },
+    {
+      "id": "research-import:bounded-fetch:deny_privilege_escalation",
+      "label": "exclude",
+      "runtime_choice": "recommend",
+      "max_probability_difference": 4.857218265533203e-05
+    }
+  ],
+  "batched_vs_single_max_probability_difference": 1.7881393432617188e-07,
+  "batched_vs_single_argmax_disagreements": 0,
+  "scope": "Four development inputs, one per label; diagnostic only, no training or label changes"
+}

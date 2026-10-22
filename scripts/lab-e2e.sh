@@ -3,7 +3,7 @@
 # and a real kubelet what the offline suites cannot:
 #
 #   admission (Kyverno)  ·  NetworkPolicy enforcement  ·  evidence capture against a kubelet
-#   the Q2 -> Q3 network interaction  ·  the PDB + Q3 deadlock  ·  the ephemeral-container gap
+#   the Q2 -> Q3 network interaction  ·  the PDB + Q3 capacity stall  ·  the ephemeral-container gap
 #
 #   ./lab/setup.sh && ./scripts/lab-e2e.sh
 #
@@ -97,6 +97,7 @@ tcp() {  # tcp <pod> <host> <port> [ns] -> 0 if a TCP connection opened (busybox
   kubectl -n "${4:-$NS}" exec "$1" -- sh -c "nc -w 3 $2 $3 </dev/null >/dev/null 2>&1"
 }
 resolves() { kubectl -n $NS exec "$1" -- nslookup -timeout=2 -retry=1 postgres.database.svc.cluster.local >/dev/null 2>&1; }
+DNS_IP="$(kubectl -n kube-system get svc kube-dns -o jsonpath='{.spec.clusterIP}')"
 
 for ns in database hr-sync inventory observability storage; do
   kubectl -n $ns rollout status deploy --timeout=90s >/dev/null 2>&1 || { fail "target in $ns not Ready — re-run ./lab/setup.sh"; }
@@ -178,6 +179,7 @@ expect_admitted "declare Q2 (admission + network)" kubectl apply -f quarantine/q
 sleep 3
 reach "$S1" http://postgres.database:5432/    && fail "suspect still reaches the database" || pass "suspect is DNS-only: database unreachable"
 resolves "$S1"                                 && pass "suspect still resolves DNS (Q2 allows it)" || fail "suspect lost DNS at Q2"
+tcp "$S1" "$DNS_IP" 53                        && pass "suspect can open the TCP/53 DNS fallback path" || fail "suspect lost TCP/53 DNS fallback at Q2"
 reach "$CLEAN" http://postgres.database:5432/ && pass "clean replica still reaches the database (payroll continues)" || fail "clean replica lost the database"
 kubectl -n gateway run gw-probe --image=registry.trustfall.internal/platform/lab-target:1 --restart=Never >/dev/null 2>&1 || true
 kubectl -n gateway wait --for=condition=Ready pod/gw-probe --timeout=60s >/dev/null 2>&1
@@ -223,7 +225,7 @@ expect_refused_by "a PRIVILEGED debug container (--profile=sysadmin) is REFUSED,
 expect_admitted "kubectl debug with the approved debug image is admitted, even on a Pod that already has an old debug container" \
   kubectl -n $NS debug "$S1" --image=registry.trustfall.internal/platform/debug:1 --profile=general -- true
 
-echo; echo "Q3 Isolate — the network step needs a label, and the PDB turns eviction into a deadlock   [CSF RS.MI-01 · D3FEND Isolate, not Evict]"
+echo; echo "Q3 Isolate — the network step needs a label; Q3 blocks replacement capacity under the PDB   [CSF RS.MI-01 · D3FEND Isolate, not Evict]"
 expect_admitted "declare Q3" kubectl apply -f quarantine/q3/
 sleep 3
 ovr='{"apiVersion":"v1","kind":"Pod","metadata":{"generateName":"ovr-","namespace":"payments","labels":{"trustfall.example/egress-profile":"none","trustfall.example/probe":"true"},"annotations":{"trustfall.example/quarantine-override":"incident-commander"}},"spec":{"containers":[{"name":"p","image":"registry.trustfall.internal/platform/lab-target:1","securityContext":{"allowPrivilegeEscalation":false}}]}}'
@@ -234,6 +236,7 @@ resolves "$S1" && pass "Q3 applied but suspect not yet labelled isolated: DNS st
                || fail "expected Q2's DNS allow to still apply before the isolated label"
 kubectl -n $NS label pod "$S1" trustfall.example/isolated=true --overwrite >/dev/null; sleep 2
 resolves "$S1" && fail "isolated suspect still resolves DNS" || pass "isolated suspect loses DNS too — Q3 deny-all now actually holds"
+tcp "$S1" "$DNS_IP" 53 && fail "isolated suspect can still open TCP/53 to DNS" || pass "isolated suspect also loses TCP/53 DNS access"
 # Second suspect found (same image). Evidence first, then try to evict both.
 ( cd "$EV" && DEBUG_IMAGE=registry.trustfall.internal/platform/debug:1 "$OLDPWD/quarantine/capture-evidence.sh" $NS "$S2" api ) > "$EV/out2.txt" 2>&1 \
   && pass "evidence captured on suspect 2 under Q3 with the approved debug image" || fail "evidence capture on suspect 2 under Q3: $(tail -2 "$EV/out2.txt")"
@@ -243,7 +246,7 @@ out=$(evict "$S1"); grep -qE '"code":201|Success' <<<"$out" && pass "evict suspe
 sleep 8
 fc=$(kubectl -n $NS get events --field-selector reason=FailedCreate -o jsonpath='{.items[*].message}')
 grep -qi "quarantine q3" <<<"$fc" && pass "replacement Pod REFUSED by Q3 — the ReplicaSet cannot restore capacity" || fail "no Q3 FailedCreate event: $fc"
-out=$(evict "$S2"); grep -qi "disruption budget" <<<"$out" && pass "evict suspect 2: REFUSED by the PDB (2 = minAvailable), and it stays stuck while Q3 holds" || fail "evict suspect 2: $out"
+out=$(evict "$S2"); grep -qi "disruption budget" <<<"$out" && pass "evict suspect 2: PDB refuses voluntary disruption at minAvailable until capacity is restored" || fail "evict suspect 2: $out"
 [ -n "$(kubectl -n $NS get pod "$S1" -o jsonpath='{.metadata.deletionTimestamp}' 2>/dev/null)" ] || ! kubectl -n $NS get pod "$S1" >/dev/null 2>&1 \
   && pass "…and evicting suspect 1 is destroying it — only the evidence captured beforehand survives" \
   || fail "suspect 1 is not being deleted after eviction"

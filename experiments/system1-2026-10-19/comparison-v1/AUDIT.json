@@ -1,0 +1,178 @@
+{
+  "status": "PASSED_PAIRED_RETRAINING_AUDIT",
+  "candidates": 15,
+  "new_training_runs": 6,
+  "selection": {
+    "rule": "Lowest selected development macro-cross-entropy; no test score used",
+    "primary_source_candidate": "source-adapted",
+    "lowest_dev_loss_candidate": "no-reference-adapted",
+    "development_loss": {
+      "balanced-head": 1.3790650208363824,
+      "balanced-adapted": 1.3844133601607387,
+      "no-reference-head": 1.3717086254695838,
+      "no-reference-adapted": 1.3616719497895156,
+      "source-head": 1.3715367049619716,
+      "source-adapted": 1.370806384140018
+    }
+  },
+  "contrasts": {
+    "head_source_vs_no_reference": {
+      "delta_exact_plan_rate": 0.0,
+      "family_bootstrap_95_low": 0.0,
+      "family_bootstrap_95_high": 0.0,
+      "replicates": 2000,
+      "seed": 19,
+      "limitation": "Only five authored families; not a population or production guarantee"
+    },
+    "head_expanded_no_reference_vs_balanced": {
+      "delta_exact_plan_rate": 0.0,
+      "family_bootstrap_95_low": 0.0,
+      "family_bootstrap_95_high": 0.0,
+      "replicates": 2000,
+      "seed": 19,
+      "limitation": "Only five authored families; not a population or production guarantee"
+    },
+    "adapted_source_vs_no_reference": {
+      "delta_exact_plan_rate": 0.0,
+      "family_bootstrap_95_low": 0.0,
+      "family_bootstrap_95_high": 0.0,
+      "replicates": 2000,
+      "seed": 19,
+      "limitation": "Only five authored families; not a population or production guarantee"
+    },
+    "adapted_expanded_no_reference_vs_balanced": {
+      "delta_exact_plan_rate": 0.0,
+      "family_bootstrap_95_low": 0.0,
+      "family_bootstrap_95_high": 0.0,
+      "replicates": 2000,
+      "seed": 19,
+      "limitation": "Only five authored families; not a population or production guarantee"
+    },
+    "primary_source_vs_previous_adapted": {
+      "delta_exact_plan_rate": -0.13333333333333333,
+      "family_bootstrap_95_low": -0.26666666666666666,
+      "family_bootstrap_95_high": 0.0,
+      "replicates": 2000,
+      "seed": 19,
+      "limitation": "Only five authored families; not a population or production guarantee"
+    },
+    "primary_source_vs_claude": {
+      "delta_exact_plan_rate": -0.6666666666666666,
+      "family_bootstrap_95_low": -0.9333333333333333,
+      "family_bootstrap_95_high": -0.4,
+      "replicates": 2000,
+      "seed": 19,
+      "limitation": "Only five authored families; not a population or production guarantee"
+    },
+    "classical_source_vs_original": {
+      "delta_exact_plan_rate": -0.06666666666666667,
+      "family_bootstrap_95_low": -0.26666666666666666,
+      "family_bootstrap_95_high": 0.13333333333333333,
+      "replicates": 2000,
+      "seed": 19,
+      "limitation": "Only five authored families; not a population or production guarantee"
+    },
+    "classical_source_vs_no_reference": {
+      "delta_exact_plan_rate": 0.0,
+      "family_bootstrap_95_low": 0.0,
+      "family_bootstrap_95_high": 0.0,
+      "replicates": 2000,
+      "seed": 19,
+      "limitation": "Only five authored families; not a population or production guarantee"
+    }
+  },
+  "new_hosted_calls": 0,
+  "prediction_counts": {
+    "starting": {
+      "recommend": 91,
+      "review": 59
+    },
+    "head": {
+      "exclude": 149,
+      "handoff": 1
+    },
+    "adapted": {
+      "exclude": 132,
+      "handoff": 18
+    },
+    "rules": {
+      "recommend": 15,
+      "exclude": 127,
+      "handoff": 8
+    },
+    "context-retrieval": {
+      "recommend": 11,
+      "exclude": 131,
+      "review": 2,
+      "handoff": 6
+    },
+    "candidate-lr": {
+      "exclude": 130,
+      "handoff": 19,
+      "recommend": 1
+    },
+    "claude-opus-5-5": {
+      "recommend": 9,
+      "exclude": 123,
+      "review": 6,
+      "handoff": 12
+    },
+    "balanced-head": {
+      "recommend": 90,
+      "review": 60
+    },
+    "balanced-adapted": {
+      "recommend": 85,
+      "review": 55,
+      "handoff": 10
+    },
+    "no-reference-head": {
+      "recommend": 81,
+      "review": 64,
+      "handoff": 2,
+      "exclude": 3
+    },
+    "no-reference-adapted": {
+      "recommend": 73,
+      "review": 69,
+      "exclude": 4,
+      "handoff": 4
+    },
+    "source-head": {
+      "recommend": 88,
+      "review": 62
+    },
+    "source-adapted": {
+      "recommend": 81,
+      "review": 69
+    },
+    "no-reference-candidate-lr": {
+      "exclude": 140,
+      "handoff": 10
+    },
+    "source-candidate-lr": {
+      "exclude": 127,
+      "handoff": 22,
+      "recommend": 1
+    }
+  },
+  "benchmark_sha256": "e5518c875708613d71cc31255af8609a030348e6bb8f96c6427992c6b3dd27ad",
+  "trainer_sha256": "35251a9480d38db99e5f9517e75c4e32dbdd0537376713b435bc498b3e39d684",
+  "new_checkpoint_sha256": {
+    "balanced-head": "2149d1b7391c4aa468467f53c150239d1806b3c12e7c35c8ac7fd095fd3a9294",
+    "balanced-adapted": "6001f3f7b41a4a506059d421f5c21b3c3a0b2d834b11eed673a51b53f4fa347c",
+    "no-reference-head": "edfc0af08d8700f7d3688081620b63cadafb8960b2382c64e7ea821ae8c86382",
+    "no-reference-adapted": "f7c3a72ae5979d268238e68dc87fddbaf5dee2bb1ff39a26ec54aad3a95c71ef",
+    "source-head": "8917428f137bc07f16c4441a90473b25cb2d53852551f57a9d5680a9fbb3a809",
+    "source-adapted": "4d0640e9f15f1ddc7dc6d4be4f8a35318e747e1ebfe060eb31c89406672a009e"
+  },
+  "protocol_sha256": "41256924015ff3f363dccfb212d5c4aaa9edea53ef33e144100bffbb12a7529a",
+  "reporter_sha256": "11c6a975cbecae9daea03c7df94bc53c960f566a7354536d3d84044d64b97fff",
+  "heldout_file_hashes": {
+    "dev.jsonl": "66e63fc589534122144582318deacb8868e500e6d1d88c178f6b9d3e3916b913",
+    "cal.jsonl": "13c3fdc113d97a6d21a066a1c3036c1c3ca4947d555f3cebba82b39f23e0fd5d",
+    "test_authored.jsonl": "f30e62572e7c551e65e333d93217ceeacd12fb2c6aa7a39cb6780b91a4481cc0",
+    "questions.json": "84e89ba114b948def346be4728ca0c20c90300d282c05f45ee0049ebed90bae6"
+  },
+  "qualification": "AUTHORED_REGRESSION_NOT_INDEPENDENT_GENERALIZATION"
+}

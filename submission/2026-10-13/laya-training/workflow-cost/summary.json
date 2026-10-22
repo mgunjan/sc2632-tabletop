@@ -1,6 +1,6 @@
 {
   "provider": "laya",
-  "model": "/Users/milanjali/projects/agentic-k8s-guardrails/.session-build/laya-control-training/checkpoint-v2",
+  "model": "./.session-build/laya-control-training/checkpoint-v2",
   "runs": [
     {
       "run": 1,

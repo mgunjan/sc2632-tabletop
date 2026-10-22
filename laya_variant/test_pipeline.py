@@ -33,7 +33,7 @@ def main():
     tmp = pathlib.Path(tempfile.mkdtemp())
     data, ckpt, run = tmp / "data", tmp / "tiny", tmp / "run"
 
-    sh("laya_variant/build_dataset.py", "--n", "240", "--seed", "3", "--out", str(data))
+    sh("laya_variant/build_dataset.py", "--n", "240", "--seed", "3", "--with-dev", "--out", str(data))
     man = json.loads((data / "MANIFEST.json").read_text())
     assert man["splits"]["scenario"]["rows"] == 9 and man["splits"]["gold"]["rows"] >= 40
     train_t = {json.loads(l)["template"] for l in (data / "train.jsonl").read_text().splitlines()}
@@ -61,11 +61,18 @@ def main():
             assert np.allclose(ours, theirs, atol=2e-3), (mode, ours, theirs)
     ok("training encoding matches laya.predict() exactly, in all three noul renderings")
 
+    assert (data/'dev.jsonl').is_file() and (data/'cal.jsonl').is_file()
+
     out = sh("laya_variant/train.py", "--base", str(ckpt), "--data", str(data), "--out", str(run),
              "--epochs", "1", "--limit", "40", "--device", "cpu", "--lr", "3e-3")
     cfg = json.loads((run / "rl_agent_config.json").read_text())
     assert cfg["trustfall_variant"]["question_set"] and cfg["temperature"] == [1.0, 1.0, 1.0]
     assert "temperature_by_options" not in cfg
+    assert cfg['trustfall_variant']['selection_split'] == 'dev'
+    receipt=json.loads((run/'TRAINING-RUN.json').read_text())
+    assert receipt['selection_split']=='dev' and receipt['total_completed_steps']==10
+    assert receipt['full_run_elapsed_seconds']>=receipt['optimizer_compute_seconds']>0
+    assert (run/'TRAINER.py.txt').is_file()
     ok("train.py saves a checkpoint with manifest and neutral temperatures")
 
     sh("laya_variant/calibrate.py", "--model", str(run), "--data", str(data), "--device", "cpu", "--min-rows", "10")
