@@ -1,0 +1,46 @@
+{
+  "scope": "SC2632 v11 day-of delivery and attendee source package",
+  "published": true,
+  "files": [
+    {
+      "path": "submission/2026-10-22/SC2632-session-dayof-review-v11.pptx",
+      "bytes": 11846747,
+      "sha256": "79611935c29dd5ec5172226a4548a610bf4478524fab4fe85f4317d2ab67a85b"
+    },
+    {
+      "path": "submission/2026-10-22/SC2632-session-dayof-review-v11.pdf",
+      "bytes": 10286915,
+      "sha256": "be087b358e729adea2d919132ac6f911b88a39d4f0a0359ee8a60048619034b1"
+    },
+    {
+      "path": "submission/2026-10-22/PARTICIPANT-PACK.pdf",
+      "bytes": 19125,
+      "sha256": "1522244cec8d9bee6c504601b44ac545cb7a934923e25d4b70499e9bf8ba2cc0"
+    },
+    {
+      "path": "submission/2026-10-22/PODIUM-CHEATSHEET.pdf",
+      "bytes": 7830,
+      "sha256": "b8bc60a94d5a523e1ea023c47434ce1428cfcc3deb0d485c6ed28f7b5f179bf6"
+    },
+    {
+      "path": "submission/2026-10-22/ATTENDEE-SOURCE-KIT.zip",
+      "bytes": 28411946,
+      "sha256": "2be6f5194ee1b66b532e34cd1dc43c5d7f2bae59532dd94d77ad460174633ba7"
+    },
+    {
+      "path": "submission/2026-10-22/SLIDE-BY-SLIDE-REVIEW.md",
+      "bytes": 9547,
+      "sha256": "332f4902cb53452265d730cc7edbf14aae6ace86abe5f80f87f3ecfd4ddbd67b"
+    },
+    {
+      "path": "submission/2026-10-22/DELIVERY-VERIFICATION.md",
+      "bytes": 5775,
+      "sha256": "fe97df2ba38cd692ecc6439c6af6246a05087f77bd61957ac79187cf5b04eca6"
+    },
+    {
+      "path": "submission/2026-10-22/IMAGE-RIGHTS-REVIEW.md",
+      "bytes": 1090,
+      "sha256": "77351d78b26bc91eedcec1391a0d976fdf28a2b4724693bffc6875d7b7c356c4"
+    }
+  ]
+}
