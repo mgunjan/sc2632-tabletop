@@ -22,6 +22,12 @@ args=sys.argv[1:]
 with Path(os.environ['TEST_COMMAND_LOG']).open('a') as stream: stream.write(name+' '+ ' '.join(args)+'\\n')
 if name == 'k3d': sys.exit(0)
 if name == 'kubectl':
+ if any('go-template=' in a for a in args):
+  print('suspect-one' if any('suspect=true' in a for a in args) else 'clean-one'); sys.exit(0)
+ if 'exec' in args and os.environ.get('TEST_DNS_TRANSPORT_FAIL') == '1': sys.exit(1)
+ if args and args[0] == 'wait' and 'validatingpolicies.policies.kyverno.io' in args:
+  if '--for=jsonpath={.status.conditionStatus.ready}=true' not in args: sys.exit(97)
+  sys.exit(0 if os.environ.get('TEST_POLICY_READY') == '1' else 1)
  if 'current-context' in args: print('unit-test-context'); sys.exit(0)
  if any('configmaps/trustfall-lab' in a for a in args): sys.exit(0 if os.environ.get('TEST_MARKER') == '1' else 1)
  if any('readyReplicas' in a for a in args): print('1' if 'kyverno' in args else '3/3')
@@ -38,8 +44,39 @@ sys.exit(0)
                     "TRUSTFALL_EXPECTED_CONTEXT": "unit-test-context",
                     "DECIDER_EVAL_SUMMARY": str(next((ROOT / "submission/2026-10-12/benchmark/preregistered-decider").glob("*.summary.json")))}
 
-    def run_script(self, script, **env):
-        return subprocess.run(["/bin/bash", str(ROOT / script)], cwd=ROOT, env={**self.env, **env}, capture_output=True, text=True, timeout=10)
+    def run_script(self, script, arguments=(), **env):
+        return subprocess.run(["/bin/bash", str(ROOT / script), *arguments], cwd=ROOT, env={**self.env, **env}, capture_output=True, text=True, timeout=10)
+
+    def test_ready_policy_gate_uses_pinned_nested_status(self):
+        result = subprocess.run(["/bin/bash", "-c", "source lab/lib-guard.sh; wait_validating_policies"],
+                                cwd=ROOT, env={**self.env, "TEST_POLICY_READY": "1"},
+                                capture_output=True, text=True, timeout=10)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("--for=jsonpath={.status.conditionStatus.ready}=true", self.log.read_text())
+
+    def test_unready_policy_gate_fails_instead_of_silently_continuing(self):
+        result = subprocess.run(["/bin/bash", "-c", "source lab/lib-guard.sh; wait_validating_policies"],
+                                cwd=ROOT, env={**self.env, "TEST_POLICY_READY": "0"},
+                                capture_output=True, text=True, timeout=10)
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertIn("did not become ready", result.stderr)
+
+    def test_dns_reveal_refuses_transport_failure_before_applying_posture(self):
+        result = self.run_script("tabletop/consequences/1-deny-all.sh", TEST_MARKER="1",
+                                 TEST_DNS_TRANSPORT_FAIL="1", PACE="0")
+        self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+        self.assertIn("DNS probe unavailable", result.stderr)
+        self.assertNotIn("apply", self.log.read_text())
+
+    def test_launcher_labels_live_failure_without_replaying_after_attempt(self):
+        result = self.run_script("tabletop/consequences/play.sh", ("1-deny-all",), TEST_MARKER="1",
+                                 TEST_DNS_TRANSPORT_FAIL="1", PACE="0", STAGED="0",
+                                 DEMO_REPLAY="1")
+        self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+        self.assertIn("LIVE — prepared disposable lab", result.stdout)
+        self.assertIn("LIVE check FAILED", result.stderr)
+        self.assertNotIn("(replay,", result.stdout)
+        self.assertNotIn("apply", self.log.read_text())
 
     def test_native_setup_refuses_unmarked_context_before_writes(self):
         result = self.run_script("lab/setup.sh", RUNTIME="k3s")

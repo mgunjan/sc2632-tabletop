@@ -108,7 +108,7 @@ for ns in database hr-sync inventory observability storage; do kubectl -n "$ns" 
 # Baseline (Q0)
 kubectl apply -f network/payments-baseline-networkpolicies.yaml >/dev/null
 kubectl apply -f "$S/policies/" >/dev/null
-kubectl wait --for=condition=Ready validatingpolicies.policies.kyverno.io --all --timeout=120s >/dev/null 2>&1 || sleep 15
+wait_validating_policies >/dev/null || exit 2
 kubectl apply -f exceptions/cleanup-policy-exceptions-rbac.yaml >/dev/null
 kubectl apply -f exceptions/expire-policy-exceptions.yaml >/dev/null
 # Guard the guardrail: a native (in-API-server) policy so nobody but Kyverno and platform admins

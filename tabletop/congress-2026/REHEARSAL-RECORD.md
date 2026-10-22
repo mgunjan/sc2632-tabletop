@@ -12,7 +12,10 @@ Date/time: __________  Participants: __________  Display/room: __________
 | Exception authority/expiry and rollout criteria written | 27 | | |
 | Original containment plan retained | 35 | | |
 | Revision or defended hold tied to new evidence | 39 | | |
-| Recorded consequences compared with predictions | 46 | | |
+| Four slide 21 predictions locked before any reveal | 40 | | |
+| Slide 22 launcher state correctly named: live, dated replay, or failed live check | 41:15 | | Record exact banner and path shown |
+| If live, result stated narrowly: suspect DNS before/after label; clean DNS/DB; Ready count | 41:15 | | No UDP/TCP pair claim, suspect TCP DB-denial claim or full-health claim |
+| Slides 23–26 introduced as dated recorded observations | 46 | | Preserve October 10 source provenance |
 | Independent proposal disposition recorded before reveal | 49 | | |
 | Recovery criteria and lifting authority written | 55 | | |
 | Personal action, owner and verification recorded | 58 | | |
@@ -24,7 +27,7 @@ After slides 2–3, ask a reviewer why the scenario uses a fictional payment API
 
 Before Round 1, ask a general security participant to explain the assignment without presenter help: which case the table chose, which record it must complete, what it decides, and what stays sealed. Their answer and any correction: __________
 
-Check the revised printed pack: pages 6-7 form one shared record; page 8 opens at minute 28 and page 9 at minute 35. Ask the recorder to locate the requirement/test map, original containment plan, later revision and recovery tests. Record whether the table could write its decisions in the available space and within the existing round times: __________
+Check the revised printed pack: pages 6-7 form one shared record; page 8 is unsealed at minute 27, the decision round starts at 28, and page 9 opens at 35. Ask the recorder to locate the requirement/test map, original containment plan, later revision and recovery tests. Record whether the table could write its decisions in the available space and within the existing round times: __________
 
 Ask someone unfamiliar with Kyverno: “If the policy refuses a new Pod, what happens to the already running Pod?” Record their explanation of the environment and the need for a separate response: __________
 
@@ -36,11 +39,13 @@ Record at least one concern stated by the independent reviewer: __________
 
 Record one differing decision defended by another table: __________
 
-Before case selection, after slides 7–8, ask what exact text a hosted model sees, what an uncertain dependency does, which actions the harness executes, who deploys, and whether Falco activates Quarantine automatically. Ask whether audience prose is supplied as model input: __________
+Before case selection, after slide 7 (slide 8 is a hidden reference), ask what exact text a hosted model sees, what an uncertain dependency does, which actions the harness executes, who deploys, and whether Falco activates Quarantine automatically. Ask whether audience prose is supplied as model input: __________
 
-During slides 22–26, record whether the supplied facts let a general security reviewer propose a response and test without guessing unfamiliar platform semantics: __________
+During the predictions on slide 21 and the results on slides 22–26, record whether the supplied facts let a general security reviewer propose a response and test without guessing unfamiliar platform semantics: __________
 
 After slide 31, ask a reviewer to trace one requirement through the original decision, new evidence, revision and recovery test: __________
+
+For the slide 22 live check, record the exact launcher banner, whether it ran live or replayed, the starting lab context, script duration, suspect DNS before Q3 and after the isolation label, clean-pod DNS and database result, and Ready replica count. If the live command failed, record the exit code and do not fill in a successful observation from the replay or dated slide: __________
 
 Record a phrase that confused the general security reviewer: __________
 
@@ -57,6 +62,8 @@ Perform these as a separate short drill after the timed hour. Keep the prepared 
 | Condition | Required observed response | Result and timestamp |
 |---|---|---|
 | Compiler/demo unavailable | Move immediately to the prepared artifact and identify it as prepared | |
+| Slide 22 preflight fails | Call out the explicit dated replay; do not present it as a live change | |
+| Slide 22 command returns `LIVE check FAILED` | Claim no result; stop and use dated slide evidence; no in-room retry | |
 | No table chooses D | Collect an ungraded prediction before slide 26 is displayed, then use the separate D record | |
 | Scheduled minute 39 starts at actual elapsed minute 44 | Execute the five-minute recovery plan in CO-PRESENTER-CARDS.md; preserve writing and recovery tasks | |
 | Forceful reviewer disputes a score | Point to the written criterion and acceptance evidence; preserve a justified hold/refusal | |

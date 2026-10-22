@@ -31,11 +31,11 @@ Falco boundary: rules passed static validation and audit-rule synthetic tests, b
 | 28–35 | 19 | Both | Use page 8; order evidence, containment scope, service floor and verification. |
 | 35–39 | 20 | Milind | Open sealed page 9; revise or defend the plan and state which fact matters. |
 | 39–40 | 21 | Milind asks / Vivek tallies | Keep slide 21 projected. Read all four concise setups and collect one hands-up vote each; tally, do not discuss. |
-| 40–41:15 | 22 | Milind / Vivek | Reveal additive DNS allows; ask which allowance to change and what UDP/TCP test confirms it. |
-| 41:15–42:30 | 23 | Vivek / Milind | PDB counts Ready Pods, not trust. One voluntary eviction is allowed at 3 Ready; Q3 blocks replacement; the next eviction is denied at minAvailable 2. Direct deletion bypasses the PDB. |
-| 42:30–43:30 | 24 | Vivek | Reveal the debug subresource gap; ask who owns the missing test and which forensic image is approved. |
-| 43:30–45 | 25 | Milind / Vivek | Reveal the native Q1 guard when Kyverno is down. State its matched-write scope; it does not cover all administrator actions. |
-| 45–46 | 26; backup 35 | Vivek | Compare a locked Case D prediction with a separate recorded synthetic result. |
+| 40–41:15 | 22 | Milind frames / Vivek runs | Separate prepared lab, Q1/Q2 staged. Run `./tabletop/consequences/play.sh 1-deny-all`; compare suspect DNS before/after isolation label. Report clean DNS/DB and Ready controls; no full-containment claim. |
+| 41:15–42:30 | 23 | Vivek / Milind | Dated Oct 10: PDB counts Ready Pods, not trust. One eviction allowed at 3 Ready; Q3 blocks replacement; second denied at minAvailable 2. Direct deletion bypasses PDB. |
+| 42:30–43:30 | 24 | Vivek | Dated Oct 10: reveal debug-subresource gap; ask who owns the missing test and which forensic image is approved. |
+| 43:30–45 | 25 | Milind / Vivek | Dated Oct 10: reveal policy-engine failure and native Q1 guard; it protects matched writes, not all administrator actions. |
+| 45–46 | 26; backup 35 | Vivek | Separate dated synthetic Case D observation; compare the locked prediction without generalizing the measured interval. |
 | 46–49 | 27 | Both | Review CONTROL-REVIEW page 1; keep page 2 sealed. Name test scope, missing evidence and owner. |
 | 49–51 | 28 | Milind | Reveal incomplete coverage; one rule passed 6/6 checks, three intent clauses remain unresolved. Slide 29 (model cost) is a hidden Q&A backup. |
 | 51–55 | 30 | Both | Define recovery evidence, rollback criteria and who can lift each posture. |
@@ -44,9 +44,11 @@ Falco boundary: rules passed static validation and audit-rule synthetic tests, b
 
 Keep decision pages sealed until the matching prompt. Hear no more than two 20-second reports per round. Credit a justified hold when evidence is missing; do not award points for maximum lockdown. The four roles are incident lead, recorder, evidence analyst and independent reviewer; combine roles for small tables. Both presenters circulate and facilitate; there is no separate floor facilitator.
 
-## Local demo and recovery
+For slide 22, call it live only if the launcher prints `LIVE` and `LIVE check complete`. If preflight fails and the launcher labels a dated replay, name it and continue. If it prints `LIVE check FAILED`, claim no result, do not troubleshoot, and use the dated slide evidence. A successful run leaves Q3 active; the operator re-stages the disposable lab after rehearsal.
 
-Participants need no laptop, YAML or Kubernetes experience. Run the local reference only when `demo.py --check` reports `ready: true` with Kyverno CLI 1.19.1. It compiles supplied source and runs offline fixtures; it does not call a model, open a PR or change a cluster.
+## Offline reference demo and recovery
+
+Participants need no laptop, YAML or Kubernetes experience. The offline reference path is separate from slide 22's live Q3 lab check. Run the local reference only when `demo.py --check` reports `ready: true` with Kyverno CLI 1.19.1. It compiles supplied source and runs offline fixtures; it does not call a model, open a PR or change a cluster.
 
 Command, from the repository root, into a fresh directory each time (the session venv holds the Python packages and the verified Kyverno 1.19.1):
 

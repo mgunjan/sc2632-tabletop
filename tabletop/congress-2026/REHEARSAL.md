@@ -1,6 +1,6 @@
 # SC2632 rehearsal and demo release record
 
-This is a rehearsal plan, not a claim that the venue setup has passed. The validated v20 deck has 38 numbered slides: 29 visible in the 60-minute run and nine hidden (4, 8, 29, 33–38). Slides 4 and 8 are reference backups, slide 29 is a Q&A backup, and 33–38 are technical/demo backups. v20 keeps v19's visuals and updates presenter notes. Protect the participant decision time in the runbook.
+This is a rehearsal plan, not a claim that the venue setup has passed. The v21 delivery sequence has 38 numbered slides: 29 visible in the 60-minute run and nine hidden (4, 8, 29, 33–38). Slides 4 and 8 are reference backups, slide 29 is a Q&A backup, and 33–38 are technical/demo backups. Protect the participant decision time in the runbook.
 
 ## Prepare a durable environment
 
@@ -12,14 +12,14 @@ python3 -m venv .venv-session
 .venv-session/bin/python tabletop/congress-2026/demo.py --check
 ```
 
-The October 22 local preflight passes with the official Kyverno CLI 1.19.1 installed at `.venv-session/bin/kyverno`; its archive checksum was verified against the official release checksum and `kyverno version` reports 1.19.1. A fresh Scenario A reference run also completed locally in 1.30 seconds, with `REVIEW_REQUIRED` and automatic promotion disabled. This ignored local environment is not part of the attendee source kit. On this Apple Silicon Mac, restore it with the repository script below. The script verifies the pinned archive checksum before installation. On other platforms, install the official Kyverno CLI 1.19.1 release and verify that platform's published checksum, then require preflight to return `ready: true` before running the demo.
+The October 22 local demo preflight passes with the official Kyverno CLI 1.19.1 installed at `.venv-session/bin/kyverno`; its archive checksum was verified against the official release checksum. A fresh Scenario A reference run completed in 1.30 seconds with `REVIEW_REQUIRED` and automatic promotion disabled. This ignored Python environment is not part of the attendee source kit. On this Apple Silicon Mac, restore it with the repository script below. On other platforms, install the official Kyverno CLI 1.19.1 release and verify that platform's published checksum. The offline demo preflight is separate from the live-cluster preflight described below.
 
 ```bash
 scripts/install-kyverno-cli.sh
 PATH="$PWD/.venv-session/bin:$PATH" .venv-session/bin/python tabletop/congress-2026/demo.py --check
 ```
 
-If the verified CLI is installed outside PATH, pass its executable explicitly using `--kyverno` on the reference, replay or optional live command. Preflight requires exactly version 1.19.1. The historical live-lab result remains recorded evidence; a fresh local reference run verifies the current source and fixtures but does not repeat Kubernetes enforcement.
+If the verified CLI is installed outside PATH, pass its executable explicitly using `--kyverno` on the reference or replay command. Preflight requires exactly version 1.19.1. The local reference run checks source and fixtures only; it does not repeat Kubernetes enforcement.
 
 The preflight is read-only and checks the interpreter, compiler dependencies and policy CLI. Reference/replay need no model, account, network or cluster. It does not verify PowerPoint, the projector, a CNI or actual Kubernetes enforcement.
 
@@ -60,18 +60,48 @@ The local Strands launcher's current gate must refuse its frozen failed evaluati
 
 ## Live enforcement release check
 
-Rehearse only on the disposable marked lab. Verify the actual requester/context, policy controller version and readiness, CNI enforcement, positive connectivity controls, permitted forensic identity and available clean serving capacity. Demonstrate rejection of a privileged Pod and acceptance of a compliant Pod using server dry-run; confirm rejection comes from the intended policy. Capture the command output and restore the reviewed lab posture.
+Slide 22 uses a separate, disposable local Mac lab. It is not the tables' selected case environment and does not apply an attendee-authored intent or agent proposal. Do not use a production context. The current October 22 kubeconfig and expected context are:
+
+```bash
+export PATH="$PWD/.venv-session/bin:$PATH"
+export CLUSTER=sc2632-rehearsal-20261022
+export DEMO_REPLAY=1  # model path only; the lab wrapper still attempts live enforcement
+export KUBECONFIG=.session-build/presenter-live-20261022/kubeconfig-rehearsal
+export TRUSTFALL_EXPECTED_CONTEXT=k3d-sc2632-rehearsal-20261022
+kubectl config current-context
+```
+
+Before doors (and after every rehearsal), reset only this disposable cluster to the Q1/Q2 starting posture and create the evidence-captured suspects. `stage.sh` deletes and recreates the payments Deployment and Pods; run it only against the exact context above, before attendees enter. Its evidence bundle is local sensitive incident material: keep it private and off the projector. Then run the stage-aware, read-only check. Require the exact context, lab marker, Kyverno readiness, 3/3 payment replicas, two suspects plus one clean replica, local dependencies and eligible tools to pass.
+
+```bash
+./tabletop/consequences/stage.sh
+STAGED=1 ./tabletop/consequences/preflight.sh
+```
+
+At 40:00, after all four predictions are locked, Vivek runs the single live/replay wrapper; it reruns preflight and prints which path it takes:
+
+```bash
+./tabletop/consequences/play.sh 1-deny-all
+```
+
+The successful live action first confirms the suspect DNS lookup and clean database path. It then applies Q3 over staged Q1/Q2, observes that the existing Q2 DNS allowance still works, and applies the isolation label to exclude the suspect from that allowance. The observed lookup to the selected service is blocked while the clean replica retains DNS and TCP database connectivity and the Ready floor remains intact. The fresh October 22 local run completed in 12.85 seconds (final labelled-launcher run). This proves only the named DNS-path behavior plus the checked clean-path/availability controls in that lab. It does not separately test DNS over UDP and TCP, deny TCP database access from the suspect, or establish full application health. Q3 remains active after success; re-stage before any later rehearsal or test.
+
+If preflight fails, the wrapper explicitly identifies and plays the dated October 10 recording; call it recorded and continue—do not attempt a live retry. If the wrapper prints `LIVE check FAILED`, make no success claim, do not troubleshoot in the room, and use the dated slide evidence. The wrapper does not silently replay after a failed live execution. Preserve the output for follow-up and re-stage the lab before any next run. Slides 23–25 are dated October 10 lab evidence; slide 26 is a separate dated synthetic Case D observation. Do not describe them as fresh October 22 enforcement.
+
+The local verification record is [LOCAL-LAB-VERIFICATION.md](../../submission/2026-10-22/LOCAL-LAB-VERIFICATION.md). On October 22, setup passed in 24.45 s; the repaired live e2e passed in 188.71 s; actual exception expiry verification passed in 122.75 s, with scheduled cleanup observed 76.7 s after expiry (one measured delay, not an SLA); Case D passed all 56 checks in 37.07 s; staging and preflight passed. These are distinct checks, not completion of the 60-minute presentation rehearsal.
 
 The existing cluster-changing consequence scripts require the lab marker. The presenter proposal command does not use them. The actual exception lifecycle verifier is `lab/verify-exception-expiry.py`: the same exact Pod request is denied before an exception, admitted while active and denied after observed scheduled deletion. It preserves failed evidence and verifies that the cleanup controller's deletion authority is limited to payments. This checks new admission; it does not terminate existing workloads or revoke exposed credentials.
 
-The October 13 presenting-Mac lab uses the separate kubeconfig `.session-build/live-rehearsal/kubeconfig-20261013`, cluster `sc2632-rehearsal-20261013`, k3d 5.9.0, K3s 1.33.4 and official Kyverno 1.19.1/chart 3.9.1. Select its exact context before any cluster-changing tabletop command:
+### Historical October 13 presenting-Mac lab
+
+The earlier October 13 Mac lab used kubeconfig `.session-build/live-rehearsal/kubeconfig-20261013`, cluster `sc2632-rehearsal-20261013`, k3d 5.9.0, K3s 1.33.4 and official Kyverno 1.19.1/chart 3.9.1. This is separate from the current October 22 live-check lab. Its recorded 61-pass e2e and three documented gaps remain historical evidence. Select its exact context only when deliberately reproducing that older check:
 
 ```bash
 export KUBECONFIG=.session-build/live-rehearsal/kubeconfig-20261013
 export TRUSTFALL_EXPECTED_CONTEXT=k3d-sc2632-rehearsal-20261013
 ```
 
-Native platform archives and every fixture tag are verified on all three node runtimes. A complete e2e run records 61 passes and three explicit gaps: unavailable memory checkpointing, a system-namespace RBAC bypass and loss of admission rules when the unguarded agent disables Kyverno. Reference/replay remain available without this infrastructure.
+Native platform archives and every fixture tag were verified on all three node runtimes. That historical e2e run recorded 61 passes and three explicit gaps: unavailable memory checkpointing, a system-namespace RBAC bypass and loss of admission rules when the unguarded agent disables Kyverno. Reference/replay remain available without this infrastructure.
 
 The first elapsed-time expiry proof failed: the cleanup controller selected the expired exception but could not delete it. The scoped repair adds only PolicyException deletion in payments and keeps the five-minute cleanup schedule. Read the separate [live-rehearsal record](../../submission/2026-10-13/live-rehearsal/README.md) before describing the final result. Scheduled cleanup can lag the expiry timestamp; it is not an instantaneous cutoff.
 
@@ -85,7 +115,7 @@ Case D is now separately executed on that marked lab. It measures actual out-of-
 | Failure handling | Interrupted/deadline run terminates its worker; output-name reuse refuses; offline fallback is immediate | Automated/local checks only; presenter drill pending |
 | Full 60 minutes | Both presenters practise handoffs, sealed evidence timing, two table reports and recovery round | Not yet completed, confirmed by Milind on October 16 |
 | Target display | PowerPoint notes/hidden slides, PDF, font size, readable terminal on actual screen | File/render checks passed; native PowerPoint/projector pending |
-| Target enforcement | Intended denial plus compliant positive control, networking, recovery and restoration on presenting lab | 61-check Mac lab pass; three documented gaps retained; separate expiry and Case D records retained |
+| Target enforcement | Current local lab context, staged Q1/Q2, positive clean DB path, Ready floor, live Q3 check, fallback and restoration | October 22 local checks passed; re-run stage and preflight before delivery; venue network/projector still pending |
 | Distribution | Authorized source/package access and working attendee resource | Separate public curated repository authorized and verified; extracted reference/replay checks passed |
 
 During the full rehearsal, one person represents a table with little Kubernetes experience and another challenges every approval. Record where the prompt is ambiguous, where a participant has no decision to make, and where a claimed outcome lacks evidence. Adjust prompts or cut explanation time; do not silently change benchmark labels or convert an untested behavior into a passing result.

@@ -6,18 +6,19 @@ This package accompanies SC2632, presented by Milind Gunjan and Vivek Mayuranath
 
 **Why:** contain harmful access on shared infrastructure while essential services keep running. The proposal and its tests must show both the forbidden behavior and the legitimate access they preserve. The opening explains the security problem, then the implementation before cases and team decisions.
 
-## Current delivery files — v20
+## Current delivery files — v21
 
-- [Editable PowerPoint deck](submission/2026-10-22/SC2632-session-dayof-v20.pptx)
-- [Projected slides PDF](submission/2026-10-22/SC2632-session-dayof-v20.pdf)
-- [Hidden reference slides PDF](submission/2026-10-22/SC2632-session-reference-v20.pdf)
+- [Editable PowerPoint deck](submission/2026-10-22/SC2632-session-dayof-v21.pptx)
+- [Projected slides PDF](submission/2026-10-22/SC2632-session-dayof-v21.pdf)
+- [Hidden reference slides PDF](submission/2026-10-22/SC2632-session-reference-v21.pdf)
 - [Participant pack](submission/2026-10-22/PARTICIPANT-PACK.pdf)
 - [Presenter field guide](submission/2026-10-22/PODIUM-CHEATSHEET.pdf)
 - [Independent control review](submission/2026-10-22/CONTROL-REVIEW.pdf) and [scorecard](submission/2026-10-22/REVIEW-SCORECARD.pdf)
 - [Source kit ZIP with file-hash index](submission/2026-10-22/ATTENDEE-SOURCE-KIT.zip)
-- [Verification and remaining checks](submission/2026-10-22/DELIVERY-VERIFICATION.md)
+- [Fresh local lab verification](submission/2026-10-22/LOCAL-LAB-VERIFICATION.md)
+- [Verification and remaining delivery checks](submission/2026-10-22/DELIVERY-VERIFICATION.md)
 
-The deck has 29 projected slides and nine hidden references. The PDFs use rendered slide images plus searchable source text; they are not native PowerPoint exports. Full presenter rehearsal and venue display checks remain outstanding.
+The deck has 29 projected slides and nine hidden references. The PDFs use rendered slide images plus searchable source text; they are not native PowerPoint exports. Slide 22 runs one prepared local Q3 check when staged preflight passes, with an explicitly dated fallback. Other findings retain their recorded provenance. Full presenter rehearsal and native PowerPoint/venue display checks remain outstanding.
 
 ## Your task in the workshop
 
@@ -29,7 +30,7 @@ The opening also explains the environment for attendees unfamiliar with Kubernet
 
 For participants new to Kubernetes, the opening starts with the shared application platform and familiar functions before technical names. Application copies are replicas, resource groups are namespaces, and workload identities make management requests. State the required security behavior in your own words. Scores assess the decision and evidence, rather than Kubernetes vocabulary or code.
 
-Visible slides 5–7 and 9–11 explain [the implementation](tabletop/congress-2026/TECHNICAL-BRIEF.md) before case selection on slide 13. Slide 2 explains why the fictional payment API gives teams a concrete availability floor; it is not payment-compliance guidance. Slide 6 maps the control roles: Falco and audit logs provide detection evidence, Kyverno checks proposed changes, separate traffic/API/tool controls constrain access, and people authorize containment and recovery. Falco rules passed static and synthetic checks; live detection remains unverified. The incident alerts are supplied exercise facts. The common demo compiles proposals and runs policy tests.
+Slides 4–11 explain [the implementation](tabletop/congress-2026/TECHNICAL-BRIEF.md) before case selection on slide 13. Slide 2 explains why the fictional payment API gives teams a concrete availability floor; it is not payment-compliance guidance. Slide 6 maps the control roles: Falco and audit logs provide detection evidence, Kyverno checks proposed changes, separate traffic/API/tool controls constrain access, and people authorize containment and recovery. Falco rules passed static and synthetic checks; live detection remains unverified. The incident alerts are supplied exercise facts. The reference demo compiles proposals and runs policy tests. Slide 22 adds a separate prepared live Q3 network check when local preflight passes, with an explicitly dated fallback. The [October 22 local verification](submission/2026-10-22/LOCAL-LAB-VERIFICATION.md) states the paths checked and their limits.
 
 After completing recovery, compare your decision record with the [illustrative Case A debrief](tabletop/congress-2026/WORKED-DECISION.md). It traces a held approval through later evidence and recovery criteria; it is a paper plan, not executed containment or a required answer.
 

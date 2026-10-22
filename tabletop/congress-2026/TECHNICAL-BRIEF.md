@@ -31,6 +31,8 @@ Quarantine Mode is a coordinated project-defined posture, with no automatic Falc
 
 Sources: `quarantine/q1/`, `quarantine/q2/`, `quarantine/q3/`, `quarantine/quarantine-mode.md`. Positive/negative traffic and authorization checks, controller readiness and recovery criteria are control-specific. Rule validation, fixture simulation, actual lab observation and venue rehearsal remain distinct evidence.
 
+On October 22, the fresh Mac-lab `1-deny-all` check activated Q3 over a staged Q1/Q2 posture. The added deny-all alone did not block the suspect's DNS lookup to the selected database service; after the isolation label excluded it from the existing Q2 allowance, the lookup was blocked. The clean Pod retained DNS and a TCP database connection, and all three payment replicas remained Ready. The check took 12.85 seconds (final labelled-launcher run). This is live evidence for those selected paths in that prepared lab, not a DNS UDP/TCP comparison, a TCP database-denial test against the suspect, or proof of full application health. Slides 23–26 remain dated recorded observations. See [the local lab verification](../../submission/2026-10-22/LOCAL-LAB-VERIFICATION.md), `tabletop/consequences/1-deny-all.sh`, and `quarantine/q2/network-and-identity.yaml` / `quarantine/q3/network-and-identity.yaml`.
+
 ## Briefing and exercise timing
 
 | Minutes | Slides | Purpose |
@@ -46,15 +48,15 @@ Sources: `quarantine/q1/`, `quarantine/q2/`, `quarantine/q3/`, `quarantine/quara
 | 16–20 | 16 | Review proposal |
 | 20–23 | 17 | Decide temporary access |
 | 23–27 | 18 | Select rollout and promotion criteria |
-| 28–35 | 19 | Open page 8; write ordered containment |
+| 28–35 | 19 | Use page 8, unsealed at 27; write ordered containment |
 | 35–39 | 20 | Open page 9 and revise or defend the plan |
 | 39–40 | 21 | Collect four quick hands-up predictions; do not discuss yet |
-| 40–41:15 | 22 | Reveal additive DNS allowances and verification tests |
-| 41:15–42:30 | 23 | Reveal voluntary PDB eviction and the replacement stall |
-| 42:30–43:30 | 24 | Reveal the ephemeral-container subresource boundary |
-| 43:30–45 | 25 | Reveal the policy-engine failure and native guard |
-| 45–46 | 26 | Compare Case D prediction with its recorded synthetic observation |
-| 46–51 | 27–29 | Independent model-proposal review and measured comparison |
+| 40–41:15 | 22 | Activate Q3 in the prepared lab and test the selected DNS path after all votes are locked |
+| 41:15–42:30 | 23 | Reveal the dated PDB eviction and replacement-stall result |
+| 42:30–43:30 | 24 | Reveal the dated ephemeral-container subresource result |
+| 43:30–45 | 25 | Reveal the dated policy-engine failure and native guard result |
+| 45–46 | 26 | Compare Case D prediction with its separate dated synthetic observation |
+| 46–51 | 27–28 | Independent model-proposal review; slide 29 is hidden Q&A |
 | 51–60 | 30–32 | Recovery, worked debrief, transfer and questions |
 
-The validated v20 deck has 38 numbered slides: 29 visible slides and nine hidden slides (4, 8, 29, 33–38). Slides 4 and 8 are reference backups, slide 29 is the model-cost Q&A backup, and 33–38 are technical/demo backups. Minute 27–28 is a transition buffer: unseal participant page 8 at minute 27, then begin the decision round on slide 19 at minute 28. Slide 21 stays projected from 39:00–40:00 while all four predictions are collected; reveal results on slides 22–25 over 40:00–45:00. Later finding details and the trained-model exercise answers stay sealed until their reveal times. The technical briefing supplies the mechanics needed to assess those findings without exposing their particular outcomes.
+The v21 delivery sequence has 38 numbered slides: 29 visible slides and nine hidden slides (4, 8, 29, 33–38). Slides 4 and 8 are reference backups, slide 29 is the model-cost Q&A backup, and 33–38 are technical/demo backups. Minute 27–28 is a transition buffer: unseal participant page 8 at minute 27, then begin the decision round on slide 19 at minute 28. Slide 21 stays projected from 39:00–40:00 while all four predictions are collected; slide 22 runs the prepared live Q3 check from 40:00–41:15, and slides 23–26 are dated recorded observations. Later finding details and the trained-model exercise answers stay sealed until their reveal times. The technical briefing supplies the mechanics needed to assess those findings without exposing their particular outcomes.

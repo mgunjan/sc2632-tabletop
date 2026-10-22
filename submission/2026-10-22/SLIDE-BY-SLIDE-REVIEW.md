@@ -1,4 +1,4 @@
-# Slide-by-slide delivery review — v20
+# Slide-by-slide delivery review — v21
 
 Reviewed on 22 October 2026. All 38 slide renders were inspected in v18; v19 visual changes on 2, 20, 26, 32 and 33 were re-inspected. All 38 v20 render hashes match v19. v20 changes speaking cues and source anchors only. All notes are nonempty, the hidden set matches the runbook, and ten evidence tables remain editable. Native PowerPoint and venue rendering remain unchecked.
 
@@ -25,7 +25,7 @@ Reviewed on 22 October 2026. All 38 slide renders were inspected in v18; v19 vis
 | 19 | Yes | Page 8 opens at 27, decision begins at 28; page 9 remains sealed. |
 | 20 | Yes | Minute-35 later facts agree with sealed page 9; no early copied-token reveal. |
 | 21 | Yes | All four complete prediction setups shown; one-minute vote slot before answers. |
-| 22 | Yes | Dated additive NetworkPolicy observation and repair; DNS protocols included in notes. |
+| 22 | Yes | Prepared live Q3 DNS check with dated fallback; notes distinguish selected lookup/clean controls from further UDP/TCP and containment tests. |
 | 23 | Yes | PDB voluntary eviction and blocked replacement distinguished; Ready does not mean trusted. |
 | 24 | Yes | Pod CREATE versus ephemeral-container subresource; approved forensic image. |
 | 25 | Yes | Policy-engine availability, native matched-write guard and RBAC limitations. |
@@ -44,3 +44,5 @@ Reviewed on 22 October 2026. All 38 slide renders were inspected in v18; v19 vis
 | 38 | Backup | Hidden full pilot comparison with sample/score limits. |
 
 The participant pack, co-presenter cards and podium sheet agree on sealed-page timing and the minute-39 vote sequence. The code and fixture checks are summarized in [delivery verification](DELIVERY-VERIFICATION.md). The two-presenter rehearsal has not occurred; this review does not establish pacing with a real room.
+
+The v21 render pass compared every slide image against v20: only slide 22 changed, and its new live/fallback subtitle was inspected. The rebuilt two-page podium PDF was inspected at full page size. Fresh local enforcement evidence is recorded separately in [LOCAL-LAB-VERIFICATION.md](LOCAL-LAB-VERIFICATION.md).

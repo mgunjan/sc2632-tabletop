@@ -1,0 +1,189 @@
+{
+  "date": "2026-10-22",
+  "scope": "Disposable local Apple Silicon k3d rehearsal lab; synthetic workloads and credentials only",
+  "source_commits": {
+    "enforcement": "8780a021f3d8746efb33a30d40cb93fa3f9e6c62",
+    "live_reveal": "d05d86f3702aa8ee4c9e9bd4540b9f567ee142ad"
+  },
+  "environment": {
+    "docker_engine": "29.5.3",
+    "architecture": "linux/arm64",
+    "k3d": "5.9.0",
+    "k3s": "1.33.4",
+    "kyverno": "1.19.1",
+    "kyverno_chart": "3.9.1",
+    "nodes": 3
+  },
+  "source_sha256": {
+    "lab/lib-guard.sh": "fe873491079a82865d28bd2d07051c3febbf28eef1e6c3b140c630654b3ceccb",
+    "lab/setup.sh": "bfa56082a6030d04c54da979f39774e3f85017d459ed582b1f0d320fcf1efcbb",
+    "scripts/lab-e2e.sh": "8eb922598c4a7b84cb75718ed05de94e28a2b53dc1f13f14a8ce74b7536d19a0",
+    "lab/verify-exception-expiry.py": "e8e317de437d107d5954791075f6bf3377646ec940dd301de42362497f96a812",
+    "lab/verify-case-d.py": "589b079e2b58f9ca94db9bc2b4083a9adbc56d31a332bebb378da41695b98b42",
+    "tabletop/consequences/1-deny-all.sh": "fdb22dc88d440d26f8e703c666eee88b8f07258f591e365922103c228209dd9d",
+    "tabletop/consequences/play.sh": "6dfb23a3f5ea529747878d84a382c7e61a7fcd92d9530be4291638ce322eb159"
+  },
+  "status": "PASS",
+  "enforcement_phases": [
+    {
+      "name": "setup-fixed",
+      "returncode": 0,
+      "elapsed_seconds": 24.45,
+      "log": "setup-fixed.log"
+    },
+    {
+      "name": "e2e-fixed",
+      "returncode": 0,
+      "elapsed_seconds": 188.71,
+      "log": "e2e-fixed.log"
+    },
+    {
+      "name": "expiry",
+      "returncode": 0,
+      "elapsed_seconds": 122.75,
+      "log": "expiry.log"
+    },
+    {
+      "name": "case-d",
+      "returncode": 0,
+      "elapsed_seconds": 37.07,
+      "log": "case-d.log"
+    },
+    {
+      "name": "stage",
+      "returncode": 0,
+      "elapsed_seconds": 43.32,
+      "log": "stage.log"
+    },
+    {
+      "name": "preflight",
+      "returncode": 0,
+      "elapsed_seconds": 0.59,
+      "log": "preflight.log"
+    }
+  ],
+  "live_reveal_and_reset": [
+    {
+      "name": "stage-before-final",
+      "returncode": 0,
+      "elapsed_seconds": 43.27,
+      "log": "stage-before-final.log"
+    },
+    {
+      "name": "preflight-before-final",
+      "returncode": 0,
+      "elapsed_seconds": 0.65,
+      "log": "preflight-before-final.log"
+    },
+    {
+      "name": "live-reveal-final",
+      "returncode": 0,
+      "elapsed_seconds": 12.85,
+      "log": "live-reveal-final.log"
+    },
+    {
+      "name": "stage-after-final",
+      "returncode": 0,
+      "elapsed_seconds": 43.17,
+      "log": "stage-after-final.log"
+    },
+    {
+      "name": "preflight-after-final",
+      "returncode": 0,
+      "elapsed_seconds": 0.6,
+      "log": "preflight-after-final.log"
+    }
+  ],
+  "live_reveal_mode": "LIVE (not replay)",
+  "live_transcript_sha256": "da5dc56b77f327f15e9bf9f587a54feb1f5f09cda02a00e8adff6064fe52c55b",
+  "e2e": {
+    "pass_lines": 63,
+    "documented_gaps": 3,
+    "result": "ALL PASSED (3 documented gaps confirmed)"
+  },
+  "exception_expiry": {
+    "status": "PASS",
+    "cleanup_schedule": "*/5 * * * *",
+    "observed_cleanup_lag_seconds": 76.7,
+    "scope": "PolicyException cleanup and new Pod admission only",
+    "steps": [
+      {
+        "step": "remove q3",
+        "returncode": 0
+      },
+      {
+        "step": "remove q2",
+        "returncode": 0
+      },
+      {
+        "step": "remove q1",
+        "returncode": 0
+      },
+      {
+        "step": "restore baseline admission",
+        "returncode": 0
+      },
+      {
+        "step": "restore baseline network",
+        "returncode": 0
+      },
+      {
+        "step": "ensure unchanged expiry controller policy",
+        "returncode": 0
+      },
+      {
+        "step": "read expiry policy",
+        "returncode": 0
+      },
+      {
+        "step": "cleanup delete authority in payments",
+        "returncode": 0
+      },
+      {
+        "step": "cleanup delete authority in inventory",
+        "returncode": 1
+      },
+      {
+        "step": "admission deny",
+        "returncode": 1
+      },
+      {
+        "step": "create exact scoped exception",
+        "returncode": 0
+      },
+      {
+        "step": "admission admit",
+        "returncode": 0
+      },
+      {
+        "step": "admission deny",
+        "returncode": 1
+      },
+      {
+        "step": "final cleanup",
+        "returncode": 0
+      }
+    ]
+  },
+  "case_d": {
+    "status": "PASS",
+    "passed_checks": 56,
+    "total_checks": 56,
+    "scope": "Synthetic Secret reads in two fresh namespaces; real bearer-token authentication and CNI/RBAC changes",
+    "limits": [
+      "Stand-in HTTP health is not real monitoring delivery.",
+      "No external application credential is revoked.",
+      "No audit-server export is collected.",
+      "No generator scenario d or model-generated RBAC is claimed."
+    ]
+  },
+  "default_kubeconfig_unchanged_during_enforcement": true,
+  "final_posture": "Q1/Q2 staged; 2 suspects and 1 clean replica; Q3 reveal reset; exact-target staged preflight PASS",
+  "limits": [
+    "This summary omits raw forensic logs, bearer tokens, kubeconfig contents and host paths. Logs remain private local evidence.",
+    "Live Q3 reveal checks one suspect DNS lookup and retained clean DNS/TCP database access, not a separate UDP/TCP matrix, suspect TCP database denial or full application health.",
+    "Full e2e separately checks UDP/TCP DNS; assertions are specific to this local CNI and authored fixtures.",
+    "Falco live kernel capture, API-server audit delivery and automatic alert-to-response were not run.",
+    "The 60-minute two-presenter rehearsal and native PowerPoint/venue display checks remain pending."
+  ]
+}

@@ -34,16 +34,20 @@ The case setting is a fictional shared Kubernetes platform. A payment API is use
 | 28–35 | 19 | Both | Use page 8. Order evidence capture, identity/action, containment scope, service floor and verification. |
 | 35–39 | 20 | Milind | Open page 9. Revise or defend; cite the new fact and preserve the original decision. |
 | 39–40 | 21 | Milind asks; Vivek tallies | Keep slide 21 projected. Read all four concise setups and collect one hands-up vote for each; record, do not discuss. This is a fast prediction check, not four table reports. |
-| 40–41:15 | 22 | Milind / Vivek | Reveal the DNS result: NetworkPolicy allows are additive. Ask which allow must change and which UDP/TCP tests would verify it. |
-| 41:15–42:30 | 23 | Vivek / Milind | Explain that PDB limits voluntary eviction by readiness count, not trust. One eviction is allowed at 3 Ready; Q3 blocks replacement; a second is denied at minAvailable 2. Direct deletion bypasses the PDB. |
-| 42:30–43:30 | 24 | Vivek | Reveal the debug subresource boundary. Ask who owns a test and what forensic image should be approved. |
-| 43:30–45 | 25 | Milind / Vivek | Reveal the policy-engine failure and native Q1 guard. Keep scope explicit: protects matched writes; it is not a universal defense against administrator actions. These are recorded lab observations. |
-| 45–46 | 26; backup 35 | Vivek | Case D only: compare a prediction locked earlier with the separate synthetic credential observation. Do not generalize one observed 41.2-second interval as a guarantee. |
+| 40–41:15 | 22 | Milind frames; Vivek runs | In the separate prepared lab, Q1/Q2 are staged and preflight has checked the staged Ready counts; the live script checks the clean DNS/DB paths. Run `./tabletop/consequences/play.sh 1-deny-all` after votes are locked. It applies Q3 and compares the suspect's DNS lookup before/after the isolation label. State only the observed lookup, clean DNS/DB path and Ready floor; no claim of full containment. |
+| 41:15–42:30 | 23 | Vivek / Milind | Dated Oct 10 observation: PDB limits voluntary eviction by readiness count, not trust. One eviction is allowed at 3 Ready; Q3 blocks replacement; a second is denied at minAvailable 2. Direct deletion bypasses the PDB. |
+| 42:30–43:30 | 24 | Vivek | Dated Oct 10 observation: reveal the debug subresource boundary. Ask who owns a test and what forensic image should be approved. |
+| 43:30–45 | 25 | Milind / Vivek | Dated Oct 10 observation: reveal the policy-engine failure and native Q1 guard. Keep scope explicit: protects matched writes; it is not a universal defense against administrator actions. |
+| 45–46 | 26; backup 35 | Vivek | Separate dated synthetic Case D observation. Compare the locked prediction; do not generalize the measured interval as a guarantee. |
 | 46–49 | 27 | Both | Give CONTROL-REVIEW page 1; keep page 2 sealed. Ask what authority the evidence supports and what remains unimplemented. |
 | 49–51 | 28 (29 hidden backup) | Milind | Reveal. Six tests covered one privilege rule; three intent clauses remain unresolved. Screening scores and workflow cost are distinct measurements. |
 | 51–55 | 30 | Both | Record evidence that permits recovery, who can lift controls and what triggers rollback. |
 | 55–58 | 31 | Both | Compare the illustrative paper record; tables score with REVIEW-SCORECARD; ask each person for one work action, an owner and a verification step. |
 | 58–60 | 32 | Both | Resources and repository; Q&A. |
+
+## Slide 22 live check and fallback
+
+For slide 22, call the action live only when the launcher prints `LIVE` and `LIVE check complete`. If preflight fails, identify the dated replay and move on. If it prints `LIVE check FAILED`, make no success claim, do not troubleshoot, and use the dated slide evidence. The successful Q3 check leaves Q3 active; re-stage the disposable lab after rehearsal and before the next run.
 
 ## Four case probes
 

@@ -32,3 +32,16 @@ lab_guard() {
   } >&2
   exit 3
 }
+
+# Kyverno 1.19.1 CEL policies expose a nested boolean, not a Ready condition.
+# A timeout or missing readiness must block setup/test success.
+wait_validating_policies() {
+  if kubectl wait --for='jsonpath={.status.conditionStatus.ready}=true' \
+      validatingpolicies.policies.kyverno.io --all --timeout="${POLICY_READY_TIMEOUT:-120s}"; then
+    return 0
+  fi
+  echo "PREFLIGHT: Kyverno ValidatingPolicies did not become ready; inspect their status before continuing." >&2
+  kubectl --request-timeout=5s get validatingpolicies.policies.kyverno.io \
+    -o 'custom-columns=NAME:.metadata.name,READY:.status.conditionStatus.ready' >&2 || true
+  return 1
+}

@@ -75,7 +75,7 @@ if ! kubectl -n kyverno rollout status deploy/kyverno-admission-controller --tim
   echo "  Fix that first (kubectl -n kyverno describe pod -l app.kubernetes.io/component=admission-controller)."
   exit 2
 fi
-kubectl wait --for=condition=Ready validatingpolicies.policies.kyverno.io --all --timeout=120s >/dev/null 2>&1 || true
+wait_validating_policies >/dev/null || exit 2
 sleep 3
 
 pod_yaml() {

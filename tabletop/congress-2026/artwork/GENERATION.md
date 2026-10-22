@@ -26,4 +26,4 @@ SHA-256: `0f2d148c1fda1b7e4aea64ad3580e0af8cd9386df267225ad77c18364f1a97e8`
 - `attendee-repo-qr.png`: functional QR encoding `https://github.com/mgunjan/sc2632-tabletop`, made with ReportLab and rendered with Poppler.
 - The recurring incident-room background is stored in `submission/2026-10-12/design-assets/incident-room.png`; its original prompt is beside it in `PROMPT.md`.
 
-No presenter-supplied Spider-Man or medal photograph is used in the v20 delivery deck. Earlier local review decks are not the public release.
+No presenter-supplied Spider-Man or medal photograph is used in the v21 delivery deck. Earlier local review decks are not the public release.
