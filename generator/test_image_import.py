@@ -27,10 +27,14 @@ class ImageImportTests(unittest.TestCase):
             first = tag.split('/')[0]
             if '/' not in tag: return 'docker.io/library/' + tag
             return tag if '.' in first or ':' in first or first == 'localhost' else 'docker.io/' + tag
-        script = f'#!{sys.executable}\n' + '''import json,os,sys
+        script = f'#!{sys.executable}\n' + '''import json,os,sys,time
 from pathlib import Path
 name=Path(sys.argv[0]).name; args=sys.argv[1:]
 with Path(os.environ['IMAGE_TEST_LOG']).open('a') as f: f.write(json.dumps([name,*args])+'\\n')
+if name=='k3d':
+ if os.environ.get('IMAGE_TEST_HANG')=='1':
+  print('Failed to copy read stream', file=sys.stderr, flush=True); time.sleep(60)
+ sys.exit(int(os.environ.get('IMAGE_TEST_IMPORT_CODE','0')))
 if name=='kubectl':
  if 'current-context' in args: print(os.environ.get('IMAGE_TEST_CONTEXT','k3d-sc2632-test'))
  sys.exit(0)
@@ -78,15 +82,35 @@ sys.exit(0)
         self.assertFalse(any(c[:2] == ['docker', 'tag'] and c[-1] in busybox_aliases for c in commands))
         self.assertEqual(sum(c[:2] == ['docker', 'exec'] for c in commands), 2)
 
-    def test_native_platform_archive_is_used_for_direct_import(self):
+    def test_native_platform_archive_is_used_for_tools_import(self):
         r, commands = self.run_build()
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         save = next(c for c in commands if c[:3] == ['docker', 'image', 'save'] and '--output' in c)
         self.assertEqual(save[save.index('--platform')+1], 'linux/arm64')
         imported = next(c for c in commands if c[:3] == ['k3d', 'image', 'import'])
-        self.assertEqual(imported[imported.index('--mode')+1], 'direct')
+        self.assertEqual(imported[imported.index('--mode')+1], 'tools-node')
         self.assertEqual(imported[-1], save[save.index('--output')+1])
         self.assertFalse(Path(imported[-1]).exists(), 'The temporary image archive must be removed')
+
+    def test_import_hang_fails_before_node_readiness_and_cleans_archive(self):
+        r, commands = self.run_build(IMAGE_TEST_HANG='1', IMAGE_IMPORT_TIMEOUT='0.25')
+        self.assertEqual(r.returncode, 124, r.stdout + r.stderr)
+        self.assertIn('setup is incomplete', r.stderr)
+        self.assertFalse(any(c[:2] == ['docker', 'exec'] for c in commands))
+        imported = next(c for c in commands if c[:3] == ['k3d', 'image', 'import'])
+        self.assertFalse(Path(imported[-1]).exists())
+        self.assertNotIn('loaded and verified:', r.stdout)
+
+    def test_import_error_is_not_converted_to_success(self):
+        r, commands = self.run_build(IMAGE_TEST_IMPORT_CODE='7')
+        self.assertEqual(r.returncode, 7, r.stdout + r.stderr)
+        self.assertFalse(any(c[:2] == ['docker', 'exec'] for c in commands))
+        self.assertNotIn('loaded and verified:', r.stdout)
+
+    def test_invalid_deadline_refuses_import(self):
+        r, commands = self.run_build(IMAGE_IMPORT_TIMEOUT='nan')
+        self.assertEqual(r.returncode, 2, r.stdout + r.stderr)
+        self.assertFalse(any(c[:3] == ['k3d', 'image', 'import'] for c in commands))
 
     def test_wrong_context_refuses_before_docker_writes(self):
         r, commands = self.run_build(IMAGE_TEST_CONTEXT='existing-production-context')

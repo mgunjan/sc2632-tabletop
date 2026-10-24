@@ -1,0 +1,280 @@
+{
+  "date": "2026-10-24",
+  "scope": "Image-import repair and selected disposable-lab reruns; not production qualification",
+  "source_commit": "a9a42acec2d092286c3b6d9d0066c8de3dc40d70",
+  "source_sha256": {
+    "lab/images/build.sh": "7b3ebcd697897a7e1db3046ad5c67cca8300a305a0592fd891e10625fd6fa396",
+    "lab/lib-guard.sh": "fe873491079a82865d28bd2d07051c3febbf28eef1e6c3b140c630654b3ceccb",
+    "lab/setup.sh": "bfa56082a6030d04c54da979f39774e3f85017d459ed582b1f0d320fcf1efcbb",
+    "scripts/lab-e2e.sh": "8eb922598c4a7b84cb75718ed05de94e28a2b53dc1f13f14a8ce74b7536d19a0",
+    "lab/verify-case-d.py": "430161a633764a9e4519fb41d0f2d35dc4a6d2c4bc93888c9a43e4befbc00a1f",
+    "tabletop/consequences/stage.sh": "b1ca23ac4dc17f2549dffad8a1425a0b3ed66d4f0419f011f5bff161ad1b15f9",
+    "tabletop/consequences/preflight.sh": "e5c33e26735ccd24e3b1d9db55629ac54ec423a0d275a4e6425a677e410c3195",
+    "tabletop/consequences/play.sh": "6dfb23a3f5ea529747878d84a382c7e61a7fcd92d9530be4291638ce322eb159",
+    "tabletop/consequences/1-deny-all.sh": "fdb22dc88d440d26f8e703c666eee88b8f07258f591e365922103c228209dd9d"
+  },
+  "environment": {
+    "docker_engine": "29.5.3",
+    "platform": "linux/arm64",
+    "k3d": "5.9.0",
+    "k3s": "1.33.4",
+    "kyverno": "1.19.1",
+    "kyverno_chart": "3.9.1",
+    "nodes": 3
+  },
+  "import": {
+    "returncode": 0,
+    "elapsed_seconds": 5.22,
+    "source_sha256": "7b3ebcd697897a7e1db3046ad5c67cca8300a305a0592fd891e10625fd6fa396",
+    "log": "native-tools-node-import.log",
+    "mode": "tools-node",
+    "default_kubeconfig_unchanged": true,
+    "scope": "Native stand-in image content on every marked local node; no policy/workload changes"
+  },
+  "cold_tag_transport": {
+    "status": "PASS",
+    "platform": "linux/arm64",
+    "elapsed_seconds": 3.56,
+    "checks": [
+      {
+        "node": "k3d-sc2632-rehearsal-20261022-agent-1",
+        "tag_absent_before": true,
+        "native_content_ready_after": true
+      },
+      {
+        "node": "k3d-sc2632-rehearsal-20261022-agent-0",
+        "tag_absent_before": true,
+        "native_content_ready_after": true
+      },
+      {
+        "node": "k3d-sc2632-rehearsal-20261022-server-0",
+        "tag_absent_before": true,
+        "native_content_ready_after": true
+      }
+    ],
+    "cleanup": [
+      {
+        "scope": "k3d-sc2632-rehearsal-20261022-agent-1",
+        "exit_code": 0
+      },
+      {
+        "scope": "k3d-sc2632-rehearsal-20261022-agent-0",
+        "exit_code": 0
+      },
+      {
+        "scope": "k3d-sc2632-rehearsal-20261022-server-0",
+        "exit_code": 0
+      },
+      {
+        "scope": "host-unique-tag",
+        "exit_code": 0
+      }
+    ]
+  },
+  "first_sequence": {
+    "status": "FAIL",
+    "source_commit": "902ff97d5c5f2160edd53fe7250a237698144a83",
+    "phases": [
+      {
+        "name": "setup",
+        "returncode": 0,
+        "elapsed_seconds": 30.54,
+        "log": "setup.log"
+      },
+      {
+        "name": "e2e",
+        "returncode": 0,
+        "elapsed_seconds": 191.97,
+        "log": "e2e.log"
+      },
+      {
+        "name": "case-d",
+        "returncode": 1,
+        "elapsed_seconds": 5.15,
+        "log": "case-d.log"
+      }
+    ],
+    "e2e": {
+      "passed_assertions": 63,
+      "documented_gaps": 3
+    },
+    "case_d": {
+      "status": "FAIL",
+      "error": "baseline stand-in health remains available failed",
+      "passed_checks": 14,
+      "checks": 15,
+      "cleanup_exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "default_kubeconfig_unchanged": true
+  },
+  "repaired_sequence": {
+    "status": "PASS",
+    "phases": [
+      {
+        "name": "case-d-repeat-1",
+        "returncode": 0,
+        "elapsed_seconds": 38.1,
+        "log": "case-d-repeat-1.log"
+      },
+      {
+        "name": "case-d-repeat-2",
+        "returncode": 0,
+        "elapsed_seconds": 48.32,
+        "log": "case-d-repeat-2.log"
+      },
+      {
+        "name": "case-d-repeat-3",
+        "returncode": 0,
+        "elapsed_seconds": 48.2,
+        "log": "case-d-repeat-3.log"
+      },
+      {
+        "name": "stage-before",
+        "returncode": 0,
+        "elapsed_seconds": 43.13,
+        "log": "stage-before.log"
+      },
+      {
+        "name": "preflight-before",
+        "returncode": 0,
+        "elapsed_seconds": 0.66,
+        "log": "preflight-before.log"
+      },
+      {
+        "name": "live-q3",
+        "returncode": 0,
+        "elapsed_seconds": 12.86,
+        "log": "live-q3.log"
+      },
+      {
+        "name": "stage-after",
+        "returncode": 0,
+        "elapsed_seconds": 42.64,
+        "log": "stage-after.log"
+      },
+      {
+        "name": "preflight-after",
+        "returncode": 0,
+        "elapsed_seconds": 0.67,
+        "log": "preflight-after.log"
+      }
+    ],
+    "case_d_repeats": [
+      {
+        "run": 1,
+        "status": "PASS",
+        "checks": 56,
+        "passed_checks": 56,
+        "elapsed_seconds": 38.1,
+        "startup_observations": [
+          {
+            "description": "baseline Service startup readiness",
+            "attempt": 1,
+            "healthy": true,
+            "returncode": 0,
+            "expected_body": true
+          }
+        ],
+        "cleanup_exit_codes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "run": 2,
+        "status": "PASS",
+        "checks": 58,
+        "passed_checks": 58,
+        "elapsed_seconds": 48.32,
+        "startup_observations": [
+          {
+            "description": "baseline Service startup readiness",
+            "attempt": 1,
+            "healthy": true,
+            "returncode": 0,
+            "expected_body": true
+          }
+        ],
+        "cleanup_exit_codes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "run": 3,
+        "status": "PASS",
+        "checks": 58,
+        "passed_checks": 58,
+        "elapsed_seconds": 48.2,
+        "startup_observations": [
+          {
+            "description": "baseline Service startup readiness",
+            "attempt": 1,
+            "healthy": true,
+            "returncode": 0,
+            "expected_body": true
+          }
+        ],
+        "cleanup_exit_codes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "default_kubeconfig_unchanged": true
+  },
+  "ci": {
+    "run_id": 40105771093,
+    "url": "https://github.com/mgunjan/agentic-k8s-guardrails/actions/runs/40105771093",
+    "head_sha": "a9a42acec2d092286c3b6d9d0066c8de3dc40d70",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "laya-variant",
+        "conclusion": "success"
+      },
+      {
+        "name": "falco",
+        "conclusion": "success"
+      },
+      {
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "name": "lab",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "regression_checks": {
+    "local_full_suite_at_import_fix": "ALL PASSED",
+    "import_tests": 7,
+    "case_d_guard_tests": 8,
+    "combined_targeted_tests_after_startup_fix": 15,
+    "final_ci_full_suite": "PASS"
+  },
+  "limits": [
+    "The original baseline HTTP failure did not retain enough probe detail to establish its DNS/Service/HTTP subcause.",
+    "The startup wait is bounded to 30 seconds and occurs before containment measurements; subsequent health checks remain strict.",
+    "No live Falco capture, application-key rotation, production containment qualification, native PowerPoint check or human rehearsal is established.",
+    "The October 22 expiry lifecycle was not rerun in this October 24 sequence.",
+    "Machine-local logs, raw forensic bundles, kubeconfig contents and bearer tokens are excluded."
+  ]
+}

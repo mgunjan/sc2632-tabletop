@@ -18,6 +18,37 @@ case_d = importlib.util.module_from_spec(spec); spec.loader.exec_module(case_d)
 
 
 class GuardTests(unittest.TestCase):
+    def test_baseline_service_can_settle_before_intervention(self):
+        responses = [subprocess.CompletedProcess([], 1, '', 'service not ready'),
+                     subprocess.CompletedProcess([], 0, 'trustfall lab stand-in', '')]
+        observations = []
+        fake = unittest.mock.Mock()
+        fake.call.side_effect = responses
+        with patch.object(case_d.time, 'sleep'):
+            case_d.wait_for_baseline_service(fake, 'synthetic-test', observations.append)
+        self.assertEqual([o['healthy'] for o in observations], [False, True])
+        self.assertEqual(fake.call.call_count, 2)
+
+    def test_unavailable_baseline_service_fails_at_deadline(self):
+        observations = []
+        fake = unittest.mock.Mock()
+        fake.call.return_value = subprocess.CompletedProcess([], 1, '', 'unavailable')
+        with self.assertRaisesRegex(RuntimeError, 'startup deadline'):
+            case_d.wait_for_baseline_service(fake, 'synthetic-test', observations.append, seconds=0.01)
+        self.assertTrue(observations)
+        self.assertFalse(any(o['healthy'] for o in observations))
+
+    def test_health_timeout_and_unexpected_body_never_count_as_success(self):
+        fake = unittest.mock.Mock()
+        fake.call.side_effect = subprocess.TimeoutExpired('probe', 1)
+        self.assertFalse(case_d.probe_standin_health(fake, 'synthetic-test')['healthy'])
+        payload = 'must-not-enter-evidence'
+        fake.call.side_effect = None
+        fake.call.return_value = subprocess.CompletedProcess([], 0, payload, '')
+        observation = case_d.probe_standin_health(fake, 'synthetic-test')
+        self.assertFalse(observation['healthy'])
+        self.assertNotIn(payload, json.dumps(observation))
+
     def test_non_rehearsal_context_refuses_before_any_command(self):
         with patch.object(case_d.Lab, 'call') as command:
             with self.assertRaisesRegex(ValueError, 'named disposable'):
@@ -75,7 +106,8 @@ class GuardTests(unittest.TestCase):
             def __init__(self): self.commands = []
             def call(self, arguments, body=None, timeout=25):
                 self.commands.append(arguments)
-                if '--raw' in arguments:
+                if 'wget' in arguments: stdout = 'trustfall lab stand-in'
+                elif '--raw' in arguments:
                     stdout = json.dumps({'status': {'token': credential, 'expirationTimestamp':
                         (dt.datetime.now(dt.timezone.utc)+dt.timedelta(minutes=10)).isoformat()}})
                 elif 'jsonpath={.metadata.uid}' in arguments: stdout = 'unit-pod-uid'

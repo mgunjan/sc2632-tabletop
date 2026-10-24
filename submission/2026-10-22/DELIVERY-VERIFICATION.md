@@ -35,3 +35,7 @@ The opening defines the fictional payment service and availability floor, the wo
 - Application-key rotation and production containment effectiveness are not established by the copied Pod-bound token demonstration.
 
 The day-of sequence uses the bounded offline reference/replay workflow and one prepared local Q3 path check on slide 22, subject to staged preflight. The wrapper visibly distinguishes live, dated replay and failed execution; the notes state the tested paths and limits. The public package is an adaptable exercise and source example; it is not a production-readiness certification or a claim that the live environment has been contained.
+
+## October 24 setup-reliability follow-up
+
+The [Docker import repair and fresh retest](../2026-10-24/IMPORT-REPAIR.md) adds actual three-node Mac transport verification and a fresh Linux CI run. The extended Mac retest retained an initial Case D baseline HTTP failure, repaired its missing Service-path startup precondition, and passed three subsequent Case D runs plus the labelled live Q3 check and final reset/preflight. Its timings and source hashes are separate from the October 22 observations above. The v21 deck and print materials are unchanged; native display checks and the timed human rehearsal remain open.

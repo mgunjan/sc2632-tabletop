@@ -28,6 +28,34 @@ IMAGE = 'registry.trustfall.internal/platform/lab-target:1'
 def utc(): return dt.datetime.now(dt.timezone.utc).isoformat()
 
 
+def probe_standin_health(lab, namespace, timeout=8):
+    """A positive Service-path control, without persisting response contents."""
+    try:
+        response = lab.call(['-n', namespace, 'exec', 'positive-control', '--', 'wget',
+                             '-q', '-T', '3', '-O', '-', 'http://collector:8080/'], timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return {'healthy': False, 'returncode': None, 'expected_body': False, 'error': 'PROBE_TIMEOUT'}
+    expected = 'trustfall lab stand-in' in response.stdout
+    return {'healthy': response.returncode == 0 and expected,
+            'returncode': response.returncode, 'expected_body': expected}
+
+
+def wait_for_baseline_service(lab, namespace, record, seconds=30):
+    """Pod TCP readiness does not establish Service/DNS readiness. Wait only before intervention."""
+    deadline = time.monotonic() + seconds
+    attempt = 0
+    while True:
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise RuntimeError('Baseline Service path did not become healthy within the startup deadline')
+        attempt += 1
+        observation = probe_standin_health(lab, namespace, timeout=min(8, remaining))
+        record({'description': 'baseline Service startup readiness', 'attempt': attempt, **observation})
+        if observation['healthy']:
+            return
+        time.sleep(min(1, max(0, deadline - time.monotonic())))
+
+
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, request, fp, code, message, headers, url):
         return None
@@ -153,8 +181,8 @@ def main():
     def tcp(pod):
         return lab.call(['-n', observer, 'exec', pod, '--', 'sh', '-c', 'nc -w 2 '+api_ip+' 443 </dev/null >/dev/null 2>&1']).returncode == 0
     def health(description):
-        response = lab.call(['-n', observer, 'exec', 'positive-control', '--', 'wget', '-q', '-T', '3', '-O', '-', 'http://collector:8080/'])
-        check(description, response.returncode == 0 and 'trustfall lab stand-in' in response.stdout)
+        observation = probe_standin_health(lab, observer)
+        check(description, observation['healthy'], **observation)
     def issue_token(pod):
         uid = command('read bound Pod UID', ['-n', observer, 'get', 'pod', pod, '-o', 'jsonpath={.metadata.uid}'])
         payload = {'apiVersion': 'authentication.k8s.io/v1', 'kind': 'TokenRequest',
@@ -186,6 +214,10 @@ def main():
         for name, value in [('before-rbac.json', broad+scoped), ('after-rbac.json', scoped), ('network-quarantine.json', [quarantine]), ('replacement-pod.json', [replacement])]:
             (args.out/name).write_text(json.dumps({'apiVersion': 'v1', 'kind': 'List', 'items': value}, indent=2)+'\n')
         command('wait for stand-in and positive control', ['-n', observer, 'wait', '--for=condition=Ready', 'pod/collector-old', 'pod/positive-control', '--timeout=60s'], timeout=75)
+        def startup_observation(observation):
+            result['operations'].append(observation)
+            save()
+        wait_for_baseline_service(lab, observer, startup_observation)
         api_ip = command('read API Service IP for DNS-independent probes', ['-n', 'default', 'get', 'service', 'kubernetes', '-o', 'jsonpath={.spec.clusterIP}'])
         ipaddress.ip_address(api_ip)
         token, expiry = issue_token('collector-old')

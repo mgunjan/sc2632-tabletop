@@ -35,3 +35,7 @@ The earlier setup waited for a nonexistent generic `Ready` condition and ignored
 An initial lab attempt used a name outside the verifier's deliberate rehearsal-name boundary. That newly created attempt was stopped and removed; its failed/superseded log remains private. It is excluded from the passing sequence. An earlier GitHub run also failed before lab creation because a floating k3d installer returned HTTP 404. CI now downloads pinned k3d, kubectl and Helm artifacts and verifies their official release checksums. Remote CI results remain separate from these measured Mac results.
 
 No fresh hosted model call, live Falco kernel capture, API-server audit delivery or automatic alert-to-response path was exercised. Case D uses synthetic resources and stand-in health; it does not prove application-key rotation or production monitoring delivery. Raw local logs are retained privately; only the reviewed summary is included in the attendee package.
+
+## Subsequent October 24 retest
+
+The [import-repair record](../2026-10-24/IMPORT-REPAIR.md) documents a later setup-reliability repair, a real new-tag transfer to all three nodes, fresh local e2e checks, a retained Case D baseline failure and three successful runs after a bounded Service startup wait was added. The prepared live Q3 path and reset/preflight also passed. Keep that later evidence separate from the October 22 phase timings and expiry lifecycle reported here.

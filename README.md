@@ -15,7 +15,8 @@ This package accompanies SC2632, presented by Milind Gunjan and Vivek Mayuranath
 - [Presenter field guide](submission/2026-10-22/PODIUM-CHEATSHEET.pdf)
 - [Independent control review](submission/2026-10-22/CONTROL-REVIEW.pdf) and [scorecard](submission/2026-10-22/REVIEW-SCORECARD.pdf)
 - [Source kit ZIP with file-hash index](submission/2026-10-22/ATTENDEE-SOURCE-KIT.zip)
-- [Fresh local lab verification](submission/2026-10-22/LOCAL-LAB-VERIFICATION.md)
+- [October 24 Docker repair and fresh retest](submission/2026-10-24/IMPORT-REPAIR.md)
+- [October 22 local lab verification](submission/2026-10-22/LOCAL-LAB-VERIFICATION.md)
 - [Verification and remaining delivery checks](submission/2026-10-22/DELIVERY-VERIFICATION.md)
 
 The deck has 29 projected slides and nine hidden references. The PDFs use rendered slide images plus searchable source text; they are not native PowerPoint exports. Slide 22 runs one prepared local Q3 check when staged preflight passes, with an explicitly dated fallback. Other findings retain their recorded provenance. Full presenter rehearsal and native PowerPoint/venue display checks remain outstanding.

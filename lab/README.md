@@ -5,7 +5,13 @@
 RUNTIME=k3s ./lab/setup.sh && ./scripts/lab-e2e.sh  # Linux host / NUC with k3s installed
 ```
 
-`setup.sh` builds the stand-in images and loads them into the cluster. It then installs Kyverno, the
+`setup.sh` builds the stand-in images and loads them into the cluster. The k3d path uses the
+pinned CLI's `tools-node` import mode, a 180-second import deadline, and exact image-content
+checks on every server/agent node. Direct import previously hung after a Docker stream error;
+the command's exit status alone also cannot prove that every node imported its images.
+Python 3 supplies the deadline on both macOS and Linux. `IMAGE_IMPORT_TIMEOUT` can set a
+positive timeout up to 1800 seconds for an explicitly reviewed setup; a timeout exits 124,
+keeps the marked lab intact for inspection, and does not report readiness. It then installs Kyverno, the
 targets, the baseline NetworkPolicies and the scenario's policies. `lab-e2e.sh` resets to Q0 and
 walks the whole ladder and confirms that three documented gaps still exist.
 
