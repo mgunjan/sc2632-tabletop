@@ -6,7 +6,11 @@ This package accompanies SC2632, presented by Milind Gunjan and Vivek Mayuranath
 
 **Why:** contain harmful access on shared infrastructure while essential services keep running. The proposal and its tests must show both the forbidden behavior and the legitimate access they preserve. The opening explains the security problem, then the implementation before cases and team decisions.
 
-## Current delivery files — v21
+## Live phone tabletop — 26 October 2026
+
+Use the [mobile casebook](PARTICIPANT-PHONE-CASEBOOK.md) for the four incident cases. Its later rounds are collapsed until the co-presenters announce them. One spokesperson per table submits decisions in [ISC2 Conference i/o](https://isc2.cnf.io/sessions/q3pj). No printouts are needed. The v21 files below are a historical source package; the event slide deck and lab guide are being finalized separately.
+
+## Reference package — v21
 
 - [Editable PowerPoint deck](submission/2026-10-22/SC2632-session-dayof-v21.pptx)
 - [Projected slides PDF](submission/2026-10-22/SC2632-session-dayof-v21.pdf)
