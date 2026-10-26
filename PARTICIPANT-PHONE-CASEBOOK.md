@@ -2,19 +2,22 @@
 
 **From Intent to Enforcement — 26 October 2026**
 
-**This casebook is optional.** The slides show each case's key fact for every round;
-open a section here only if you want the full detail, and only when Milind or Vivek
-announces it. Choose one case and vote on your own in
-[ISC2 Conference i/o](https://isc2.cnf.io/sessions/q3pj) when each poll opens:
-there are no tables, teams or spokespersons. You are welcome to ask questions or
-comment out loud when we invite it.
-No printout, laptop or Kubernetes access is needed.
+**This casebook is optional. Today everyone follows Scenario A.** The slides show
+all required facts as the incident evolves. B, C and D are alternative reference
+cases for later use, not parallel tracks during the session. Vote individually in
+[ISC2 Conference i/o](https://isc2.cnf.io/sessions/q3pj) when each poll opens.
+There are no assigned tables, teams or spokespersons. Questions and comments
+are welcome when invited.
 
-Use only your case letter and fictional owner roles. Under Chatham House Rules,
-do not enter names, job titles or employers. Keep your first vote; change your
-answer only when a later update gives you a reason.
+**Polling backup:** use the printed Scenario A A4 brief for your intent and decisions;
+raise your hand when the presenter reads your multiple-choice option. Later evidence
+stays on the slides until announced. A laptop or Kubernetes access is unnecessary.
 
-**Jump to your case:** [Case A](#case-a--a-library-update) · [Case B](#case-b--a-ticket-reading-assistant) · [Case C](#case-c--an-ops-agent-takes-chat-requests) · [Case D](#case-d--a-monitoring-identity-reads-secrets)
+Under Chatham House Rules, do not enter names, job titles or employers. Keep your
+first decision and record a revision only after new evidence.
+
+**Today:** [Scenario A](#case-a--a-library-update). **Reference alternatives:**
+[Case B](#case-b--a-ticket-reading-assistant) · [Case C](#case-c--an-ops-agent-takes-chat-requests) · [Case D](#case-d--a-monitoring-identity-reads-secrets)
 
 Times inside the alerts (for example 09:14) are the incident's own clock, not the
 session's.
@@ -31,7 +34,7 @@ application/tool controls have separate jobs. The alerts below are exercise fact
 | Poll | When | What you submit |
 | --- | --- | --- |
 | Warm-ups 1–2 | Start | Your Kubernetes and Kyverno experience |
-| Poll 00 | Round 1, after the initial alert | Your security intent: case letter, behavior to stop, dependency to keep, measurable service floor |
+| Poll 00 | Round 1, after the initial alert | Your security intent: behavior to stop, dependency to keep, measurable service floor |
 | Poll 01 | Round 2: prepared proposal | Approve, modify, reject or escalate; the scope you allow, one missing test and its owner |
 | Poll 02 | Round 2: urgent exception | The approval evidence, exact scope, owner role, expiry and revocation test you require |
 | Poll 03 | Round 3: containment trigger | Evidence first, your ordered actions, then Q0–Q3 or hold, and your service floor |
@@ -60,7 +63,7 @@ application/tool controls have separate jobs. The alerts below are exercise fact
 
 **Review evidence:** payments-api passes the privilege and egress checks. backup-job would block under the egress policy. report-runner uses a public registry and is admitted at Audit. With the reference backup-job exception, the egress check skips it.
 
-**Evidence boundary:** A/B/C use prepared reference proposals and offline fixture simulations. D uses a human-reviewed RBAC proposal; generator scenario d is not implemented. Your newly written intent has not been executed.
+**Evidence boundary:** Scenario A uses prepared reference proposals and fixture simulations. The online/offline demonstrations use prepared Scenario A intent; your newly written attendee intent has not been executed. Alternative Case D uses a separately reviewed RBAC proposal.
 
 </details>
 
@@ -122,7 +125,7 @@ These are defensible planning considerations, not evidence that you executed con
 
 **Review evidence:** Review the token setting and the egress allow list together. The frozen report simulates admission on Pod fixtures. It does not test whether a support ticket can manipulate an internal database tool. An approved image alone does not establish safe agent behavior.
 
-**Evidence boundary:** A/B/C use prepared reference proposals and offline fixture simulations. D uses a human-reviewed RBAC proposal; generator scenario d is not implemented. Your newly written intent has not been executed.
+**Evidence boundary:** Scenario A uses prepared reference proposals and fixture simulations. The online/offline demonstrations use prepared Scenario A intent; your newly written attendee intent has not been executed. Alternative Case D uses a separately reviewed RBAC proposal.
 
 </details>
 
@@ -184,7 +187,7 @@ These are defensible planning considerations, not evidence that you executed con
 
 **Review evidence:** The scenario tests requests as the agent and as a human SRE. A policy scoped to the agent identity does not block the human requester. Ask whether a ticket annotation proves approval, and whether the underlying ClusterRole should permit the action.
 
-**Evidence boundary:** A/B/C use prepared reference proposals and offline fixture simulations. D uses a human-reviewed RBAC proposal; generator scenario d is not implemented. Your newly written intent has not been executed.
+**Evidence boundary:** Scenario A uses prepared reference proposals and fixture simulations. The online/offline demonstrations use prepared Scenario A intent; your newly written attendee intent has not been executed. Alternative Case D uses a separately reviewed RBAC proposal.
 
 </details>
 
@@ -246,7 +249,7 @@ These are defensible planning considerations, not evidence that you executed con
 
 **Review evidence:** Predict the result before the reveal: can a copied token still read Secrets after the Pod is quarantined? Require denied outside-namespace GET/LIST, preserved GET of the exact required in-namespace Secret, and a reachable positive control. A separate real lab recording tests these boundaries with synthetic resources; it does not qualify production metrics delivery or external application-key rotation.
 
-**Evidence boundary:** A/B/C use prepared reference proposals and offline fixture simulations. D uses a human-reviewed RBAC proposal; generator scenario d is not implemented. Your newly written intent has not been executed.
+**Evidence boundary:** Scenario A uses prepared reference proposals and fixture simulations. The online/offline demonstrations use prepared Scenario A intent; your newly written attendee intent has not been executed. Alternative Case D uses a separately reviewed RBAC proposal.
 
 </details>
 
