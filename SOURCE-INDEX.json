@@ -2087,8 +2087,8 @@
     },
     {
       "path": "LICENSE",
-      "bytes": 11358,
-      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      "bytes": 4563,
+      "sha256": "ffcca38841adb694b6f380647e15f17c446a4d1656fed51a1e2041d064c94cc8"
     },
     {
       "path": "submission/2026-10-16/falco-audit/baseline/contract.json",
@@ -3245,6 +3245,37 @@
       "path": "START-HERE.md",
       "bytes": 9700,
       "sha256": "3d8bad711fef1d42cc9db788c08cec8453ca6cbb4c6aa44be71a9831c6c4a8bb"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6608,
+      "sha256": "96f3b3661aab1bfcdd1d419e8c710c17e315f2613e415f02853397c04d85c0ae"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 3936,
+      "sha256": "125f55ae9f3d953d130849badfd4e77bba3bd1f3fb706c74c7d66cfe4515a6cc"
+    },
+    {
+      "path": "MIGRATION-NOTICE.md",
+      "bytes": 4490,
+      "sha256": "fb2259718022e190f20bfaabbd55fc7a7cf6fa127600be56fe345acea6020b0e"
+    },
+    {
+      "path": "LICENSES/Apache-2.0.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "PARTICIPANT-PHONE-CASEBOOK.md",
+      "bytes": 17765,
+      "sha256": "29f822a4d0168a8eea3670175068a4587b331ec21a9be85f4a8e4f11bf08429a"
     }
-  ]
+  ],
+  "license_transition": {
+    "date": "2026-10-26",
+    "default": "PolyForm-Noncommercial-1.0.0",
+    "scope": "Covered new owned material and modifications only; prior grants and third-party licenses retained",
+    "notice": "MIGRATION-NOTICE.md"
+  }
 }
