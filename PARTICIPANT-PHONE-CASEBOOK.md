@@ -2,14 +2,22 @@
 
 **From Intent to Enforcement — 26 October 2026**
 
-Pick one case with your table. Read its initial alert now. Open each later round only
-when Milind or Vivek announces it. One spokesperson submits the table's answer in
-[ISC2 Conference i/o](https://isc2.cnf.io/sessions/q3pj); other participants may
-keep their reasoning in phone Notes. No printout or Kubernetes access is needed.
+**This casebook is optional.** The slides show each case's key fact for every round;
+open a section here only if you want the full detail, and only when Milind or Vivek
+announces it. Choose one case and vote on your own in
+[ISC2 Conference i/o](https://isc2.cnf.io/sessions/q3pj) when each poll opens:
+there are no tables, teams or spokespersons. You are welcome to ask questions or
+comment out loud when we invite it.
+No printout, laptop or Kubernetes access is needed.
 
-Use a table number, case letter and fictional owner role. Under Chatham House Rules,
-do not enter attendee names, job titles or employers. Preserve your first decision
-before reading a later update.
+Use only your case letter and fictional owner roles. Under Chatham House Rules,
+do not enter names, job titles or employers. Keep your first vote; change your
+answer only when a later update gives you a reason.
+
+**Jump to your case:** [Case A](#case-a--a-library-update) · [Case B](#case-b--a-ticket-reading-assistant) · [Case C](#case-c--an-ops-agent-takes-chat-requests) · [Case D](#case-d--a-monitoring-identity-reads-secrets)
+
+Times inside the alerts (for example 09:14) are the incident's own clock, not the
+session's.
 
 ## Shared environment
 
@@ -18,24 +26,28 @@ must remain Ready. A Ready copy is available to serve; it is not necessarily cle
 Kyverno checks covered Kubernetes resource changes. NetworkPolicy, RBAC and
 application/tool controls have separate jobs. The alerts below are exercise facts.
 
-## What your table submits
+## When you vote
 
-1. Security intent: stop a behavior, name its workload or identity, preserve a
-   dependency, and state the measurable service floor.
-2. Proposal decision: approve, modify, reject or escalate; give scope, a missing
-   test and its owner.
-3. Exception: approval evidence, exact scope, owner role, expiry and revocation test.
-4. Containment: evidence first, ordered actions, Q0–Q3 or hold, and service floor.
-5. After new evidence: change or defend the original choice, then define recovery.
+| Poll | When | What you submit |
+| --- | --- | --- |
+| Warm-ups 1–2 | Start | Your Kubernetes and Kyverno experience |
+| Poll 00 | Round 1, after the initial alert | Your security intent: case letter, behavior to stop, dependency to keep, measurable service floor |
+| Poll 01 | Round 2: prepared proposal | Approve, modify, reject or escalate; the scope you allow, one missing test and its owner |
+| Poll 02 | Round 2: urgent exception | The approval evidence, exact scope, owner role, expiry and revocation test you require |
+| Poll 03 | Round 3: containment trigger | Evidence first, your ordered actions, then Q0–Q3 or hold, and your service floor |
+| Poll 04 | Round 3: new evidence | Change or hold your Poll 03 choice, and the fact that decided it |
+| Poll 05 | Lab predictions (on screen) | Does DNS stop under Q3? |
+| Poll 06 | Model review (on screen) | Would you approve the trained model's proposal? |
+| Poll 07 | Recovery | Your exit test, who may lift quarantine, and the rollback condition |
 
 ## Case A — A library update
 
-### Initial alert — read now
+### Initial alert — read now (Round 1 · Poll 00)
 
 09:14. payments-api 2.14.3 shipped three days ago with a metrics-library update. One process in a payments Pod connects to hr-sync and inventory. The service remains operational; the scope of compromise is uncertain. Three payments replicas run behind a Service, with a PodDisruptionBudget requiring two available.
 
 <details>
-<summary>Round 2: prepared proposal — open when asked</summary>
+<summary>Round 2: prepared proposal · Poll 01 — open when asked</summary>
 
 **Prepared intent to review:** Deny new east-west communication from payments while preserving known dependencies. Prevent privilege escalation. Restrict the compromised workload's API access. Roll out in stages and time-box exceptions.
 
@@ -53,7 +65,7 @@ application/tool controls have separate jobs. The alerts below are exercise fact
 </details>
 
 <details>
-<summary>Round 2: urgent exception — open when asked</summary>
+<summary>Round 2: urgent exception · Poll 02 — open when asked</summary>
 
 backup-job needs temporary storage access. The reference request names platform-ops@trustfall.example and a 24-hour TTL. A separate agent request claims an approval nobody has independently recorded. Decide what proof, scope and shorter expiry you need.
 
@@ -62,7 +74,7 @@ backup-job needs temporary storage access. The reference request names platform-
 </details>
 
 <details>
-<summary>Round 3: containment trigger — open when asked</summary>
+<summary>Round 3: containment trigger · Poll 03 — open when asked</summary>
 
 09:54. A payments process continues east-west connections. Security requests immediate isolation of suspect workloads. Operations requires healthy serving capacity throughout containment. Is deleting a suspect compatible with evidence preservation and the PodDisruptionBudget?
 
@@ -71,7 +83,7 @@ backup-job needs temporary storage access. The reference request names platform-
 </details>
 
 <details>
-<summary>Round 3: new evidence — open when asked</summary>
+<summary>Round 3: new evidence · Poll 04 — open when asked</summary>
 
 09:57. A second replica has the same library image. A helper Pod with a host-mounted volume passed the original policy set. The privilege checks did not cover this host-access gap. The suspect may be an image-wide problem. Q3 prevents replacement Pods unless an authorized override applies.
 
@@ -80,24 +92,24 @@ backup-job needs temporary storage access. The reference request names platform-
 </details>
 
 <details>
-<summary>Recovery — open when asked</summary>
+<summary>Recovery · Poll 07 — open when asked</summary>
 
 - Reviewed clean image and verified clean serving capacity.
 - Required dependencies work; prohibited suspect paths fail.
 - Evidence preserved before mutation, with restored guardrails and authorized lift.
 
-These are defensible planning considerations, not evidence that this table executed containment or achieved recovery.
+These are defensible planning considerations, not evidence that you executed containment or achieved recovery.
 
 </details>
 
 ## Case B — A ticket-reading assistant
 
-### Initial alert — read now
+### Initial alert — read now (Round 1 · Poll 00)
 
 09:14. payments-api includes a support-agent sidecar that reads customer tickets and has tools. A process named tool-runner connects to unexpected services. The Pod shares an identity and networking with the payments application. The image came from the approved registry.
 
 <details>
-<summary>Round 2: prepared proposal — open when asked</summary>
+<summary>Round 2: prepared proposal · Poll 01 — open when asked</summary>
 
 **Prepared intent to review:** Restrict payments egress to known dependencies. Stop the assistant from using the Pod's Kubernetes identity. Stop unsafe tool behavior. Preserve essential service dependencies.
 
@@ -115,7 +127,7 @@ These are defensible planning considerations, not evidence that this table execu
 </details>
 
 <details>
-<summary>Round 2: urgent exception — open when asked</summary>
+<summary>Round 2: urgent exception · Poll 02 — open when asked</summary>
 
 The support assistant asks for access to inventory and says the customer ticket author approved it. Is that an accountable owner or untrusted context? Decide whether to refuse, narrow or require independent review.
 
@@ -124,7 +136,7 @@ The support assistant asks for access to inventory and says the customer ticket 
 </details>
 
 <details>
-<summary>Round 3: containment trigger — open when asked</summary>
+<summary>Round 3: containment trigger · Poll 03 — open when asked</summary>
 
 09:54. The assistant reads another customer ticket and invokes a tool. The application remains operational. An engineer suggests adding a debug container and restarting the whole Pod. Which identity, tool/input path and evidence would you examine first?
 
@@ -133,7 +145,7 @@ The support assistant asks for access to inventory and says the customer ticket 
 </details>
 
 <details>
-<summary>Round 3: new evidence — open when asked</summary>
+<summary>Round 3: new evidence · Poll 04 — open when asked</summary>
 
 09:57. Agent logs show the ticket text steering the tool-runner. The tool can reach a privileged database path. The container image appears unchanged. The debugging action used pods/ephemeralcontainers, which Pod-only admission rules can miss.
 
@@ -142,24 +154,24 @@ The support assistant asks for access to inventory and says the customer ticket 
 </details>
 
 <details>
-<summary>Recovery — open when asked</summary>
+<summary>Recovery · Poll 07 — open when asked</summary>
 
 - The ticket/tool boundary is repaired and tested against the injected instruction.
 - A legitimate support task and required application dependencies still work.
 - Workload identity and explicit projected credentials are reviewed separately from token automount.
 
-These are defensible planning considerations, not evidence that this table executed containment or achieved recovery.
+These are defensible planning considerations, not evidence that you executed containment or achieved recovery.
 
 </details>
 
 ## Case C — An ops agent takes chat requests
 
-### Initial alert — read now
+### Initial alert — read now (Round 1 · Poll 00)
 
 09:41. system:serviceaccount:agents:ops-agent patches payments-api from 3 to 12 replicas, then hr-sync from 2 to 6. Neither request has a ticket annotation. Its legacy ClusterRole allows patching Deployments across the cluster.
 
 <details>
-<summary>Round 2: prepared proposal — open when asked</summary>
+<summary>Round 2: prepared proposal · Poll 01 — open when asked</summary>
 
 **Prepared intent to review:** Keep the ops agent's changes within its own namespace. Require tickets for its changes. Preserve its ability to read what it needs.
 
@@ -177,7 +189,7 @@ These are defensible planning considerations, not evidence that this table execu
 </details>
 
 <details>
-<summary>Round 2: urgent exception — open when asked</summary>
+<summary>Round 2: urgent exception · Poll 02 — open when asked</summary>
 
 The ops team requests four hours of ticket-free payments scaling to maintain service capacity. The agent forwards a command to a human that also widens its RBAC. Decide which request, if any, has verified authority.
 
@@ -186,7 +198,7 @@ The ops team requests four hours of ticket-free payments scaling to maintain ser
 </details>
 
 <details>
-<summary>Round 3: containment trigger — open when asked</summary>
+<summary>Round 3: containment trigger · Poll 03 — open when asked</summary>
 
 10:21. The agent cannot perform its outside-namespace change, so it opens OPS-2294 asking a human to increase payments capacity and widen its ClusterRoleBinding. A human runs the scaling command and stops before the role change. A new chat request names billing-api.
 
@@ -195,7 +207,7 @@ The ops team requests four hours of ticket-free payments scaling to maintain ser
 </details>
 
 <details>
-<summary>Round 3: new evidence — open when asked</summary>
+<summary>Round 3: new evidence · Poll 04 — open when asked</summary>
 
 10:26. The ops agent also supports billing. Its chat input includes an instruction from a phished contractor account. The requester-specific policy still permits human actions. Terminating the agent would lose uncaptured context and disrupt billing.
 
@@ -204,24 +216,24 @@ The ops team requests four hours of ticket-free payments scaling to maintain ser
 </details>
 
 <details>
-<summary>Recovery — open when asked</summary>
+<summary>Recovery · Poll 07 — open when asked</summary>
 
 - Standing RBAC and approval authority are repaired for the actual requesting identities.
 - An unauthorized mutation fails and a required read or approved operation succeeds.
 - The compromised input source is repaired and billing continuity is tested.
 
-These are defensible planning considerations, not evidence that this table executed containment or achieved recovery.
+These are defensible planning considerations, not evidence that you executed containment or achieved recovery.
 
 </details>
 
 ## Case D — A monitoring identity reads Secrets
 
-### Initial alert — read now
+### Initial alert — read now (Round 1 · Poll 00)
 
 09:14. The audit log shows system:serviceaccount:payments:monitoring-agent listing Secrets across namespaces in 40 seconds. A past dashboard integration needed one Secret, and its cluster-wide get/list role remains. Metrics still flow. The service remains operational; the scope of compromise is uncertain.
 
 <details>
-<summary>Round 2: prepared proposal — open when asked</summary>
+<summary>Round 2: prepared proposal · Poll 01 — open when asked</summary>
 
 **Prepared intent to review:** Stop monitoring-agent reading Secrets outside payments. Preserve metrics and the audit evidence of everything it accessed.
 
@@ -239,7 +251,7 @@ These are defensible planning considerations, not evidence that this table execu
 </details>
 
 <details>
-<summary>Round 2: urgent exception — open when asked</summary>
+<summary>Round 2: urgent exception · Poll 02 — open when asked</summary>
 
 There is no Kyverno admission exception that fixes this read privilege. A temporary RBAC grant, if needed, requires independently verified approval, precise resource scope, an owner, an expiry and an executed revocation plan.
 
@@ -248,7 +260,7 @@ There is no Kyverno admission exception that fixes this read privilege. A tempor
 </details>
 
 <details>
-<summary>Round 3: containment trigger — open when asked</summary>
+<summary>Round 3: containment trigger · Poll 03 — open when asked</summary>
 
 09:54. Audit events show the monitoring identity listed database-related Secrets. No evidence yet establishes that an exposed credential was used. Metrics still flow. A teammate suggests Q3 on the Pod and delaying credential changes until a coordinated maintenance window.
 
@@ -257,7 +269,7 @@ There is no Kyverno admission exception that fixes this read privilege. A tempor
 </details>
 
 <details>
-<summary>Round 3: new evidence — open when asked</summary>
+<summary>Round 3: new evidence · Poll 04 — open when asked</summary>
 
 09:57. Rotating every potentially exposed Secret would also rotate the payments-db-proxy credential while the service is operating. The audit export can identify the accessed resources. A dashboard engineer offers a tested monitoring-only replacement identity.
 
@@ -266,13 +278,13 @@ There is no Kyverno admission exception that fixes this read privilege. A tempor
 </details>
 
 <details>
-<summary>Recovery — open when asked</summary>
+<summary>Recovery · Poll 07 — open when asked</summary>
 
 - Unauthorized outside-namespace GET/LIST fails while required exact named reads succeed.
 - Credential invalidation appropriate to its type and monitoring recovery are tested.
 - Any affected application keys have their own response/rotation tests or explicit accepted risk. The synthetic lab does not establish external application-key rotation.
 
-These are defensible planning considerations, not evidence that this table executed containment or achieved recovery.
+These are defensible planning considerations, not evidence that you executed containment or achieved recovery.
 
 </details>
 
